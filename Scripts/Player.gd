@@ -1,44 +1,37 @@
+class_name Player
 extends CharacterBody2D
 
+## Entitas Pengendali Utama Protagonis Lentera Pudar
+
+@export_group("Movement Stats")
 @export var speed: float = 120.0
+
+@export_group("Curse & Combat")
+@export var max_health: int = 100
+@export var current_health: int = 100
+@export var curse_level: float = 0.0 # 0.0 s/d 1.0
+
+# Node References
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine: StateMachine = $StateMachine
+@onready var scarf_light: PointLight2D = $ScarfLight
 
+# State Variables
 var last_direction: String = "south"
+var can_dash: bool = true
 
-func _physics_process(_delta: float) -> void:
-	# Coba ambil input dari action resmi move_* (WASD + Panah)
-	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	# Fallback ke ui_* jika action custom belum terdaftar
-	if input_dir == Vector2.ZERO:
-		input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
-	if input_dir != Vector2.ZERO:
-		velocity = input_dir * speed
-		
-		# Kalkulasi string 8-arah kardinal
-		var dir_str: String = ""
-		if input_dir.y < -0.1:
-			dir_str += "north"
-		elif input_dir.y > 0.1:
-			dir_str += "south"
-			
-		if input_dir.x < -0.1:
-			if dir_str != "": dir_str += "-"
-			dir_str += "west"
-		elif input_dir.x > 0.1:
-			if dir_str != "": dir_str += "-"
-			dir_str += "east"
-			
-		if dir_str != "":
-			last_direction = dir_str
-			
-		anim.play("walk_" + last_direction)
-		
-		# Beritahu sistem bahwa pemain bergerak via Global Event Bus
-		GameEvents.player_moved.emit(global_position)
-	else:
-		velocity = Vector2.ZERO
-		anim.play("idle_" + last_direction)
+func _ready() -> void:
+	print("Player: Protagonist initialized with State Machine.")
 
-	move_and_slide()
+func take_damage(amount: int) -> void:
+	current_health = clampi(current_health - amount, 0, max_health)
+	GameEvents.player_health_changed.emit(current_health, max_health)
+	if current_health <= 0:
+		_die()
+
+func update_curse(amount: float) -> void:
+	curse_level = clampf(curse_level + amount, 0.0, 1.0)
+	GameEvents.player_curse_level_changed.emit(curse_level)
+
+func _die() -> void:
+	print("Player: Jiwa telah membeku seutuhnya.")
