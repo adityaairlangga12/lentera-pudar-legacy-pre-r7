@@ -1,0 +1,8 @@
+south        : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+north        : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+east         : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+west         : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+south-east   : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+south-west   : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+north-east   : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid
+north-west   : 8 Frames | Tags: idle(1-4), walk(5-8)      | Status: Cel Valid

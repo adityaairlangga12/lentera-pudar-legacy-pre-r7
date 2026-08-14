@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_player"]
+
+[node name="World" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.165, 0.129, 0.11, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(240, 135)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)

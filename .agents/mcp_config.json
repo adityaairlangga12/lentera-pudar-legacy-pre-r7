@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "lentera-aseprite": {
+      "command": "node",
+      "args": ["D:\\GodotProjects\\lentera-aseprite-mcp\\build\\index.js"],
+      "env": {
+        "ASEPRITE_PATH": "C:\\Program Files\\Aseprite\\Aseprite.exe",
+        "ASEPRITE_WS_PORT": "8099",
+        "LENTERA_PALETTE_PATH": "D:\\GodotProjects\\Lentera-Pudar\\assets_raw\\palet_lentera_pudar.gpl",
+        "SPRITES_OUTPUT_PATH": "D:\\GodotProjects\\Lentera-Pudar\\Assets\\Sprites\\Characters\\Protagonist"
+      }
+    },
+    "lentera-godot": {
+      "command": "node",
+      "args": ["D:\\GodotProjects\\lentera-godot-mcp\\build\\index.js"],
+      "env": {
+        "GODOT_PATH": "C:\\Users\\ADIT\\Downloads\\Godot_v4.7.1-stable_win64.exe\\Godot_v4.7.1-stable_win64.exe",
+        "GODOT_WS_PORT": "8098",
+        "GODOT_PROJECT_PATH": "D:\\GodotProjects\\Lentera-Pudar"
+      }
+    },
+    "pixellab": {
+      "url": "https://api.pixellab.ai/mcp",
+      "transport": "http",
+      "headers": {
+        "Authorization": "Bearer ecf86a11-7ea7-46df-afa1-45ab3a83d485"
+      }
+    }
+  }
+}

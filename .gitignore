@@ -1,0 +1,9 @@
+.godot/
+*.import
+export_presets.cfg
+.vscode/
+addons/*/
+!addons/aseprite_wizard/
+!addons/lentera_bridge/
+.agents/skills/*
+!.agents/skills/SKILL.md
