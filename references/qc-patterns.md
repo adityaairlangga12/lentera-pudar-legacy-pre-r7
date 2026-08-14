@@ -37,3 +37,19 @@ Dokumen ini adalah rekam jejak kegagalan kontrol kualitas (*Quality Control fail
 - **Langkah Preventif**:
   - Dilarang membuat file serialisasi biner/text `.tres` Godot menggunakan manipulasi teks luar jika bisa dijalankan langsung via Godot EditorScript/API.
   - Skrip pengujian otomatis (`TestRunner.gd`) wajib memverifikasi bahwa semua nama animasi di `Player.gd` terdaftar di `AnimatedSprite2D.sprite_frames.get_animation_names()`.
+
+### PATTERN-002: AI Diffusion Mirroring Asymmetry Bias & Color Bleed Glitch
+- **Tanggal**: 2026-08-14
+- **Kategori**: Visual QC & Consistency QC
+- **Komponen Terdampak**: `Assets/Sprites/Characters/Protagonist/`, `protagonist.tres`
+- **Gejala / Error**:
+  1. Pada sudut `East` / `North-East`, lengan depan Kaelen diberi warna biru es (padahal itu lengan kanan normal).
+  2. Pada sudut `West` / `North-West`, lengan depan Kaelen diberi warna putih polos (padahal itu lengan kiri kutukan).
+  3. Muncul artefak warna nyasar (*stray magenta pixels* `#D85888`) pada sudut `South-West`.
+- **Akar Masalah**: Model AI PixelLab menggunakan asumsi simetri tubuh saat merender rotasi 8-arah (*2D mirroring bias*), sehingga fitur asimetris (lengan kiri kutukan vs lengan kanan normal) tertukar saat menghadap ke arah berlawanan.
+- **Tindakan Perbaikan (Fix)**:
+  1. Membangun modul `triad_palette_quantizer.py` untuk mengunci seluruh warna ke palet baku *The Triad* dan melenyapkan 100% *color noise*.
+  2. Membangun engine `kaelen_pixel_surgeon.py` yang memindai koordinat spasial per frame dan mengoreksi warna lengan kutukan kiri (selalu `#4A6FA5`) dan lengan kanan (selalu normal wraps).
+- **Langkah Preventif**:
+  - Setiap aset karakter/musuh yang memiliki fitur asimetris wajib melalui pass `triad_palette_quantizer.py` dan bedah piksel arah sebelum digabungkan ke spritesheet Godot.
+

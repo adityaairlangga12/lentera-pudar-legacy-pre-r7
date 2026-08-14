@@ -3,7 +3,7 @@ import json
 import glob
 from PIL import Image
 
-RAW_DIR = r"C:\Users\ADIT\.gemini\antigravity-ide\brain\c041710e-3c46-44a8-a7aa-c1ee7f5420bf\scratch\kaelen_v2_raw\Idle"
+RAW_DIR = r"C:\Users\ADIT\.gemini\antigravity-ide\brain\c041710e-3c46-44a8-a7aa-c1ee7f5420bf\scratch\kaelen_v2_cleaned\Idle"
 OUT_DIR = r"D:\GodotProjects\Lentera-Pudar\Assets\Sprites\Characters\Protagonist"
 
 os.makedirs(OUT_DIR, exist_ok=True)
