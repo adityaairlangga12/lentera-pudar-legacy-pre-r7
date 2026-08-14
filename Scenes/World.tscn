@@ -4,15 +4,16 @@
 
 [node name="World" type="Node2D"]
 
+[node name="FloorBackdrop" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.35, 0.30, 0.26, 1.0)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.165, 0.129, 0.11, 1)
+color = Color(0.45, 0.38, 0.35, 1.0)
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(240, 135)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+zoom = Vector2(3, 3)

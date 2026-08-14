@@ -4,8 +4,8 @@ extends PlayerState
 ## State saat pemain melakukan manuver Dash / Menghindar
 
 @export var dash_speed_multiplier: float = 2.4
-@export var dash_duration: float = 0.2
-@export var dash_cooldown: float = 0.5
+@export var dash_duration: float = 0.25
+@export var dash_cooldown: float = 0.4
 
 var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
@@ -21,12 +21,10 @@ func enter() -> void:
 	else:
 		dash_direction = _get_vector_from_direction(player.last_direction)
 		
-	# Tetap mainkan animasi walk dengan efek kecepatan
-	player.anim.play("walk_" + player.last_direction)
-	player.anim.speed_scale = 2.0
+	player.anim.play("dash_" + player.last_direction)
+	GameEvents.emit_player_dashed(dash_direction)
 
 func exit() -> void:
-	player.anim.speed_scale = 1.0
 	_start_cooldown()
 
 func process_physics(delta: float) -> void:

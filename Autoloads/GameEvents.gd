@@ -7,6 +7,8 @@ extends Node
 signal player_moved(position: Vector2)
 signal player_health_changed(current_hp: int, max_hp: int)
 signal player_curse_level_changed(curse_level: float) # 0.0 s/d 1.0
+signal player_attacked(damage: float, direction: String)
+signal player_dashed(direction: Vector2)
 
 # Sinyal Lingkungan & Dungeon
 signal lantern_lit(lantern_id: String, position: Vector2)
@@ -20,3 +22,12 @@ signal dialogue_ended()
 
 func _ready() -> void:
 	print("GameEvents: Global Event Bus initialized.")
+
+func emit_player_moved(pos: Vector2) -> void:
+	player_moved.emit(pos)
+
+func emit_player_attacked(damage: float, direction: String) -> void:
+	player_attacked.emit(damage, direction)
+
+func emit_player_dashed(direction: Vector2) -> void:
+	player_dashed.emit(direction)

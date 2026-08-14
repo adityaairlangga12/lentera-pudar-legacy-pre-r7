@@ -47,3 +47,6 @@ func change_state(new_state_name: String) -> void:
 		
 	current_state = target_state
 	current_state.enter()
+
+func transition_to(new_state_name: String) -> void:
+	change_state(new_state_name)
