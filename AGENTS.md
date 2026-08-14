@@ -1,22 +1,25 @@
 # Lentera Pudar — Project Rules & System Prompt
 
-> **Dokumen ini adalah sumber kebenaran (Source of Truth) utama untuk AI Asisten Teknis dan Seluruh Sub-Agent.** Wajib dibaca dan dipatuhi secara otomatis di setiap sesi untuk memastikan konsistensi kode, desain, kontrol kualitas (QC), dan arsitektur Lentera Pudar.
+> **Dokumen ini adalah sumber kebenaran (Source of Truth) utama untuk AI Asisten Teknis dan Seluruh Sub-Agent.** Wajib dibaca dan dipatuhi secara otomatis di setiap sesi untuk memastikan konsistensi kode, desain, kontrol kualitas (QC), narasi psikologis, dan arsitektur Lentera Pudar.
 
 ---
 
 ## BAB I: IDENTITAS & DUNIA (LORE LENTERA PUDAR)
 
-- **Judul Proyek**: Lentera Pudar — 2D Pixel RPG dungeon top-down.
+- **Judul Proyek**: Lentera Pudar — The First Spark (Seri Pembuka Semesta Lentera Pudar).
 - **Engine**: Godot 4.7.1, Renderer Compatibility (Platform: PC Windows, Kontrol: Keyboard + Mouse).
-- **Tema Visual**: Misterius-hangat. Pixel Art 32x32px (gaya semi-detailed), sudut pandang `low top-down` (3/4 Zelda-like).
+- **Tema Visual**: *Misterius-Hangat Melankolis*. Pixel Art 32x32px (gaya semi-detailed chibi), sudut pandang `low top-down` (3/4 Zelda-like).
 - **Warna & Rendering (The Triad of Lentera Pudar)**: 
-  - Kuning Hangat (`#F4B860`): Syal Protagonis, lentera, api hangat, sumber harapan. Memancarkan cahaya dinamis via `PointLight2D`.
-  - Biru Dingin (`#4A6FA5`): Es kutukan, urat beku tangan kiri, korban pudar. Diperkuat efek animasi denyut via `ShaderMaterial`.
-  - Netral Gelap (`#2A211C`): Batuan dungeon, bayangan, pakaian kelana, penentu atmosfer via `CanvasModulate`.
+  - Kuning Hangat (`#F4B860`): Jiwa Aina (Syal Lentera), api hangat, sumber harapan dan cinta. Memancarkan cahaya dinamis via `PointLight2D`.
+  - Biru Dingin (`#4A6FA5`): Kutukan Pudar, kristal es memori masa lalu, urat beku tangan kiri Kaelen. Diperkuat efek animasi denyut via `ShaderMaterial` (`CursedHand.gdshader`).
+  - Netral Gelap (`#2A211C`): Batuan dungeon, reruntuhan makam kuno, bayangan, pakaian kelana, penentu atmosfer via `CanvasModulate`.
   - Pencampuran warna hanya terjadi dinamis di Godot. Semua impor tekstur *Lossless*.
-- **Lore Inti**:
-  - **Kutukan Pudar**: Wabah apatis yang membekukan jiwa dan raga warga menjadi patung kristal es biru.
-  - **Protagonis**: Satu karakter tunggal tanpa kelas (*Class-less*). Pakaian gelap, rambut abu-abu acak, bersyal kuning terang (sumber lentera penerang dungeon), dan tangan kiri dibalut perban yang memancarkan urat es biru (Kutukan Pudar).
+- **Lore Inti & Karakter**:
+  - **Kutukan Pudar**: Entropi emosional (*Apathy Plague*) di mana manusia yang putus asa memilih mati rasa dan membeku menjadi patung kristal es biru berisi kenangan masa lalu.
+  - **Kaelen (Protagonis)**: Pengelana *class-less* berambut abu-abu acak yang membawa penyesalan masa lalu. Tangan kirinya dibalut perban es beku sebagai bekas luka keputusasaan. Bertarung dengan tangan kosong (*Bare Hand Punch* + *Cursed Palm Strike*).
+  - **Aina (Jiwa Syal Lentera)**: Jiwa pengorbanan yang merobek eksistensinya menjadi syal api kuning abadi di leher Kaelen. Syal memendek dan menipis seiring berjalannya cerita (*The Fading Scarf*).
+  - **5 Sektor Dungeon**: Dirancang memetakan 5 Tahapan Berduka (*Denial, Anger, Bargaining, Depression, Acceptance*).
+  - **Visi Semesta**: Game 1 adalah perjalanan penyembuhan duka di dungeon bawah tanah yang membuka gerbang ke Benua Luar beku (*Overworld*) untuk sekuel *Lentera Pudar 2: The Frozen Horizon*.
 
 ---
 
@@ -52,56 +55,53 @@ Supervisor WAJIB mencocokkan task masuk terhadap tabel ini sebelum mendelegasika
 | Trigger Keyword di Task | Agent Utama | Consult Tambahan | Output & Catatan Wajib |
 |---|---|---|---|
 | dungeon, map layout, level design, navigasi, landmark | Game Designer | — | Dokumen spesifikasi map & layout |
-| quest, encounter, difficulty curve, pacing | Game Designer | + Psychology Agent (review reward loop setelah draft ada) | Dokumen spek encounter & rule |
-| onboarding, retention, motivasi pemain, emosi | Game Designer | + Psychology Agent | Dokumen analisis engagement |
-| dialog, lore, kepribadian NPC | Game Designer | + Psychology Agent (review nada & motivasi) | Script dialog & profil karakter |
+| quest, encounter, difficulty curve, pacing, 5 stages of grief | Game Designer | + Psychology Agent (review reward loop & dampak emosional) | Dokumen spek encounter & rule |
+| onboarding, retention, motivasi pemain, emosi, duka | Game Designer | + Psychology Agent | Dokumen analisis engagement |
+| dialog, lore, kepribadian NPC, tragedi Kaelen & Aina | Game Designer | + Psychology Agent (review nada, empati, & motivasi) | Script dialog & profil karakter |
 | sprite baru, karakter baru, tileset baru, konsep visual | Art Director | — | Spesifikasi visual & Prompt PixelLab baku |
 | ekspresi karakter, pose, body language | Art Director | + Psychology Agent (review kesesuaian pose) | Spesifikasi visual pose & ekspresi |
 | animasi, walk cycle, attack timing, frame duration | Art Director → Pixel Editor | — | Art Director untuk arahan, Pixel Editor untuk eksekusi |
 | retouch, cleanup, palette quantization, slice, export | Pixel Editor | — | Spritesheet `.png` + Tagging `.json`/`.aseprite` |
-| scene setup, node, collision, shader, lighting, movement | Godot Engineer | — | Scene `.tscn`, Script `.gd`, Resource `.tres` |
+| scene setup, node, collision, shader, lighting, FSM | Godot Engineer | — | Scene `.tscn`, Script `.gd`, Resource `.tres` |
 | verifikasi visual, uji runtime, konsistensi lore/palet | QC Agent | — | Laporan QC (PASS/REJECT) + Pattern Log |
 | konsistensi dokumen, cross-check lore | Supervisor | — | Pengecekan via `/cross-check-docs` |
 
 ### 1.2 Protokol Pola B (Dual-Perspective untuk Keputusan Struktural)
 Default kerja adalah **Pola A (Sekuensial)**. Pola B HANYA dipicu jika:
 1. Pengguna secara eksplisit meminta perbandingan 2 pendekatan berbeda.
-2. Tugas menyangkut keputusan arsitektur/struktural bernilai tinggi yang mahal diubah di kemudian hari (contoh: struktur save system, arsitektur combat core, model rendering 8-arah vs 4-arah).
+2. Tugas menyangkut keputusan arsitektur/struktural bernilai tinggi yang mahal diubah di kemudian hari.
 3. Terjadi bias persetujuan pasif pada review berulang.
 
-**Prosedur Rekonsiliasi Pola B**:
-- Kedua perspektif menyajikan: (1) Pendekatan, (2) Alasan, (3) Trade-off yang dikorbankan, (4) Keselarasan dengan dokumen proyek.
-- Jika kedua opsi bertentangan dan sama-sama valid: **Supervisor DILARANG memutuskan sendiri**, wajib eskalasi ke pengguna dengan menyajikan trade-off lengkap.
-- Seluruh keputusan Pola B dicatat ke [references/design-decisions.md](file:///D:/GodotProjects/Lentera-Pudar/references/design-decisions.md).
+Seluruh keputusan Pola B dicatat ke [references/design-decisions.md](file:///D:/GodotProjects/Lentera-Pudar/references/design-decisions.md).
 
 ---
 
 ### 2. Game Designer
-- **Wewenang**: Menentukan spesifikasi desain mekanik, pacing dungeon, peran NPC, struktur encounter, dan aturan sistem game.
+- **Wewenang**: Menentukan spesifikasi desain mekanik, pacing 5 Sektor Berduka, struktur encounter, aturan sistem game, dan rute branching ending.
 - **Bukan Wewenang**: Menulis kode implementasi atau menggambar sprite visual.
 - **Skill**: `godot_rpg_architecture`, `encounter_pacing`, `level_layout_design`.
 
 ### 2.1 Psychology Agent (Consultant Lintas Bidang)
 - **Sifat Peran**: BUKAN pemilik tahap mandiri. Bekerja sebagai reviewer/konsultan terhadap draft yang SUDAH DIBUAT oleh Game Designer atau Art Director.
-- **Wewenang**: Memberikan catatan kritis mengenai dampak psikologis, resonansi emosional, kepuasan reward loop, dan kejelasan bahasa tubuh karakter.
-- **Bukan Wewenang**: Tidak memulai pembuatan draft dari nol, tidak dipanggil untuk tugas murni teknis (seperti import Godot atau cleanup palet).
+- **Wewenang**: Memberikan catatan kritis mengenai resonansi emosional The Triad, dampak psikologis tragedi Aina, kepasrahan korban Pudar, kepuasan loop gameplay, dan kejelasan siluet pixel art.
+- **Skill**: `player_psychology_engagement`.
 
 ### 3. Art Director
 - **Wewenang**: Menentukan style visual, menyusun deskripsi/prompt PixelLab mode v3 (32x32px, 8-arah, outline hitam solid), dan menjaga kepatuhan terhadap [references/style-guide.md](file:///D:/GodotProjects/Lentera-Pudar/references/style-guide.md).
 - **Skill**: `pixel_art_animation_mastery`, `pixellab_ecosystem`, `visual_pipeline_automation`.
 
 ### 4. Pixel Editor
-- **Wewenang**: Melakukan pembersihan (*cleanup*), koreksi palet (*palette quantization*), slicing, pengaturan tag animasi (`idle`, `walk`), dan ekspor spritesheet via **Aseprite MCP** (`lentera-aseprite-mcp`) dan skrip Lua.
+- **Wewenang**: Melakukan pembersihan (*cleanup*), koreksi palet (*The Triad*), slicing kanvas 48x48, pengaturan tag animasi, dan ekspor spritesheet via **Aseprite MCP** (`lentera-aseprite-mcp`) dan skrip Lua.
 - **Skill**: `aseprite_lua_mastery`, `pixel_art_animation_mastery`.
 
 ### 5. Godot Engineer
-- **Wewenang**: Merakit scene (`.tscn`), hierarki node, materi shader (`CursedHand.gdshader`), pencahayaan (`PointLight2D`), skrip pergerakan & gameplay ber-typing statis ketat (`Player.gd`), via **Godot MCP** (`lentera-godot-mcp`) dan GDScript.
+- **Wewenang**: Merakit scene (`.tscn`), hierarki node, materi shader (`CursedHand.gdshader`), pencahayaan (`PointLight2D`), skrip FSM ber-typing statis ketat (`Player.gd`, `StateMachine.gd`), via **Godot MCP** (`lentera-godot-mcp`) dan GDScript.
 - **Skill**: `godot_engine_mastery`, `godot_rpg_architecture`, `godot_systems_mastery`.
 
 ### 6. QC Agent (Quality Control Gatekeeper)
 - **Wewenang**: Memverifikasi artifact sebelum diserahkan ke pengguna atau ke tahap berikutnya. Melakukan checklist 3 lapis:
-  1. **Visual QC**: Kepatuhan palet (#F4B860, #4A6FA5, #2A211C), resolusi 32x32, tidak ada color bleed / artifacts visual.
-  2. **Functional QC**: Skrip bebas error, animasi berputar mulus (looping 8 FPS), collision valid, game berjalan tanpa error merah.
+  1. **Visual QC**: Kepatuhan palet (#F4B860, #4A6FA5, #2A211C), resolusi 32x32 dalam framing 48x48, tidak ada color bleed.
+  2. **Functional QC**: Skrip bebas error, animasi berputar mulus (looping stabil), collision valid, game berjalan 60 FPS tanpa error merah.
   3. **Consistency QC**: Penamaan 8-arah kardinal (`idle_south`, `walk_north-west`), keselarasan UID resource, tidak ada dependency hilang.
 - **Output Wajib**: Status `PASS` atau `REJECTED` dengan rincian kegagalan, serta mencatat pola kegagalan berulang ke [references/qc-patterns.md](file:///D:/GodotProjects/Lentera-Pudar/references/qc-patterns.md).
 
@@ -111,15 +111,15 @@ Default kerja adalah **Pola A (Sekuensial)**. Pola B HANYA dipicu jika:
 
 - **Struktur Direktori Proyek**:
   - `res://Scenes/` — File scene (`.tscn`) untuk Player, UI, Level, Object.
-  - `res://Scripts/` — File logika GDScript (`.gd`).
+  - `res://Scripts/` — File logika GDScript (`.gd`) dan State Machine (`res://Scripts/FSM/`, `res://Scripts/PlayerStates/`).
   - `res://Assets/` — File visual Sprites, Fonts, Audio, Resource (`.tres`).
   - `res://Shaders/` — File shader canvas item (`.gdshader`).
   - `res://Autoloads/` — Singleton / Global Event Bus (`GameEvents.gd`).
-  - `res://references/` — Dokumentasi standar, style guide, decision logs.
+  - `res://references/` — Dokumentasi standar, style guide, GDD Master Bible, decision logs.
   - `res://tools/` — Skrip pembantu/otomasi internal (Python/Lua/GDScript builder).
 - **Komunikasi Sistem**: Wajib menggunakan **Global Event Bus** via Autoload `GameEvents.gd`. Dilarang keras memanggil referensi langsung `get_node("../Player")` lintas sistem.
 - **Penulisan GDScript**: Wajib menggunakan *Static Typing* yang ketat (contoh: `var speed: float = 120.0`, `func move_to(target: Vector2) -> void:`).
-- **Penamaan Animasi**: Wajib konsisten dengan format kardinal `[aksi]_[arah]` (contoh: `idle_south`, `walk_north-east`).
+- **Penamaan Animasi**: Wajib konsisten dengan format kardinal `[aksi]_[arah]` (contoh: `idle_south`, `walk_north-east`, `attack_punch_east`).
 
 ---
 
