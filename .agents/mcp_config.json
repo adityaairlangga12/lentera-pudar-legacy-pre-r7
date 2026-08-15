@@ -19,6 +19,15 @@
         "GODOT_PROJECT_PATH": "D:\\GodotProjects\\Lentera-Pudar"
       }
     },
+    "lentera-blender": {
+      "command": "node",
+      "args": ["D:\\GodotProjects\\lentera-blender-mcp\\build\\index.js"],
+      "env": {
+        "BLENDER_PATH": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+        "BLENDER_WS_PORT": "8097",
+        "LENTERA_PROJECT_PATH": "D:\\GodotProjects\\Lentera-Pudar"
+      }
+    },
     "pixellab": {
       "url": "https://api.pixellab.ai/mcp",
       "transport": "http",
