@@ -41,8 +41,9 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 ```
 
 ### A. Protagonis: Kaelen (Sang Pengelana Patah Hati)
-- Karakter tunggal *class-less*, berambut abu-abu acak, berpakaian kelana gelap (`#2A211C`).
-- **Lengan Kiri Beku (`#4A6FA5`)**: Dibalut perban cokelat kusam dengan urat kristal es menyembul keluar (`CursedHand.gdshader`). Bukti bahwa Kaelen pernah hampir menyerah dan membekukan dirinya sendiri di masa lalu.
+- Karakter tunggal *class-less*, berambut abu-abu acak, berpakaian jubah kelana gelap (`#2A211C`) dengan tali selempang kulit (*baldric harness*).
+- **Mata Kanan Tertutup Eyepatch**: Mengenakan penutup mata kulit hitam (`#141013`) sebagai segel bekas luka beku perambatan Kutukan Pudar masa lalu sebelum Aina mengorbankan jiwanya.
+- **Lengan Kiri Beku (`#4A6FA5`)**: Dibalut kristal es dan perban beku dengan urat es menyembul keluar (`CursedHand.gdshader`). Bukti bahwa Kaelen pernah hampir menyerah dan membekukan dirinya sendiri di masa lalu.
 - **Kombat Awal**: Bertarung menggunakan tangan kosong (*Bare Hand*). Kombo 2-Hit: Pukulan kanan fisik (`attack_punch`) disambung Hantaman telapak tangan kiri es kutukan (`attack_cursed`).
 
 ### B. Sang Lentera: Aina (Jiwa di Balik Syal Kuning)

@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://c0xdirkk8fl0f"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_player"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1764999224]
 
-[node name="FloorBackdrop" type="ColorRect" parent="."]
+[node name="FloorBackdrop" type="ColorRect" parent="." unique_id=202006209]
 offset_right = 960.0
 offset_bottom = 540.0
-color = Color(0.35, 0.30, 0.26, 1.0)
+color = Color(0.18, 0.19, 0.22, 1)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.45, 0.38, 0.35, 1.0)
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1071752233]
+color = Color(0.65, 0.65, 0.7, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(240, 135)
+[node name="Player" parent="." unique_id=1301936618 instance=ExtResource("1_player")]
+position = Vector2(244, 164)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=955438619]
 zoom = Vector2(3, 3)

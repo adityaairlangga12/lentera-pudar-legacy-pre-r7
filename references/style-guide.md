@@ -46,13 +46,15 @@ Pewarnaan berakar pada kontras eksistensial antara kehangatan cinta/harapan, din
 
 ---
 
-## 3. Anatomi Desain Kaelen (Protagonis V2 Definitif)
+## 3. Anatomi Desain Kaelen (Protagonis V3 Definitif)
 
 - **Rambut**: Abu-abu acak (*Messy Grey Hair*), sedikit menutupi dahi, memberi kesan pengelana tangguh yang lelah membawa penyesalan.
-- **Pakaian**: Jubah kelana gelap netral (`#2A211C`), tanpa zirah besi berat (kesan *class-less/fragile traveler*).
-- **Syal Kuning Aina (`#F4B860`)**: Melingkar di leher dengan ekor syal panjang melayang di punggung sebagai sumber `PointLight2D` dinamis.
-- **Lengan Kiri Kutukan (`#4A6FA5`)**: Dibalut perban kusam dengan jemari dan urat es biru menyala yang berdenyut halus via `CursedHand.gdshader`.
-- **Lengan Kanan**: Tangan fisik normal dengan perban pelindung kepalan tangan untuk pukulan jarak dekat.
+- **Wajah & Mata**: Mata kiri terbuka fokus melankolis, mata kanan mengenakan **Penutup Mata Kulit Hitam (*Leather Eyepatch* `#141013`)** sebagai segel bekas luka beku Kutukan Pudar masa lalu.
+- **Pakaian**: Jubah kelana gelap netral (`#2A211C`) dengan tali selempang kulit kantung bekal (*baldric harness*), tanpa zirah besi berat (kesan *class-less/fragile traveler*).
+- **Syal Kuning Aina (`#F4B860`)**: Melingkar di leher dengan ekor syal panjang melayang dinamis di punggung/bahu sebagai sumber `PointLight2D` dinamis.
+- **Lengan Kiri Kutukan (`#4A6FA5`)**: Dibalut kristal es biru menyala dan aura beku yang berdenyut halus via `CursedHand.gdshader`.
+- **Lengan Kanan**: Tangan fisik normal dengan perban pelindung kepalan tangan (`#D7CCC8` / `#A1887F`) untuk pukulan jarak dekat.
+- **Pijakan Kaki**: Memiliki bayangan tanah elips dinamis (*Directional Ground Shadow*) di seluruh 8 arah rotasi.
 
 ---
 

@@ -48,4 +48,15 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Status**: Accepted
 - **Konteks**: Membangun fondasi semesta yang mampu menampung sekuel (Lentera Pudar 2: The Frozen Horizon & Lentera Pudar 3: The Sovereign of Dawn).
 - **Keputusan Terpilih**: Game 1 berfokus pada penyembuhan duka pribadi di dungeon bawah tanah dan berakhir dengan terbukanya gerbang ke Benua Luar (*Overworld* beku).
-- **Dampak**: Lore skala besar tetap konsisten dan tidak perlu di-retcon saat mengembangkan sekuel di masa depan.
+- **Dampak**: Arsitektur dungeon, mekanik kutukan, dan data item dirancang extensible untuk ekspansi franchise.
+
+### ADR-007: Standardisasi Desain Visual & Anatomi Kaelen V3 (Eyepatch, Baldric, & Directional Shadows)
+- **Tanggal**: 2026-08-14
+- **Status**: Accepted
+- **Konteks**: Memilih base art definitif yang menyeimbangkan estetika pixel art semi-detailed bergaya *Eastward*, resonansi emosional duka, dan kepatuhan lore asimetri.
+- **Keputusan Terpilih**: 
+  1. Base art resmi mengadopsi Kaelen V3 (PixelLab v3 Mode, 32x32px, rasio 1:3.2).
+  2. Mengesahkan Penutup Mata Kulit Hitam (*Eyepatch*) pada mata kanan sebagai segel bekas luka beku Kutukan Pudar masa lalu.
+  3. Mengesahkan Tali Selempang Kantung Kelana (*Baldric Harness*) untuk memecah bidang jubah gelap dan mempertegas identitas pengelana.
+  4. Menerapkan *Directional Footprint Shadow* (bayangan tanah elips dinamis yang mengikuti bukaan kaki di 8 arah).
+- **Dampak**: Identitas visual Kaelen terkunci kokoh, bernyawa, dan bebas dari kejanggalan proporsi di seluruh ekosistem game.

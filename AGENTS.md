@@ -16,7 +16,7 @@
   - Pencampuran warna hanya terjadi dinamis di Godot. Semua impor tekstur *Lossless*.
 - **Lore Inti & Karakter**:
   - **Kutukan Pudar**: Entropi emosional (*Apathy Plague*) di mana manusia yang putus asa memilih mati rasa dan membeku menjadi patung kristal es biru berisi kenangan masa lalu.
-  - **Kaelen (Protagonis)**: Pengelana *class-less* berambut abu-abu acak yang membawa penyesalan masa lalu. Tangan kirinya dibalut perban es beku sebagai bekas luka keputusasaan. Bertarung dengan tangan kosong (*Bare Hand Punch* + *Cursed Palm Strike*).
+  - **Kaelen (Protagonis)**: Pengelana *class-less* berambut abu-abu acak yang membawa penyesalan masa lalu. Tangan kirinya dibalut kristal es beku Kutukan Pudar, dan mata kanannya mengenakan penutup mata kulit hitam (*eyepatch*) sebagai segel bekas luka perambatan es keputusasaan masa lalu. Mengenakan tali selempang kantung kelana (*baldric harness*). Bertarung dengan tangan kosong (*Bare Hand Punch* + *Cursed Palm Strike*).
   - **Aina (Jiwa Syal Lentera)**: Jiwa pengorbanan yang merobek eksistensinya menjadi syal api kuning abadi di leher Kaelen. Syal memendek dan menipis seiring berjalannya cerita (*The Fading Scarf*).
   - **5 Sektor Dungeon**: Dirancang memetakan 5 Tahapan Berduka (*Denial, Anger, Bargaining, Depression, Acceptance*).
   - **Visi Semesta**: Game 1 adalah perjalanan penyembuhan duka di dungeon bawah tanah yang membuka gerbang ke Benua Luar beku (*Overworld*) untuk sekuel *Lentera Pudar 2: The Frozen Horizon*.
