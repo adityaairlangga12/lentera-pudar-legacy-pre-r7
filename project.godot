@@ -11,16 +11,11 @@ config_version=5
 [application]
 
 config/name="Lentera Pudar"
-run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.7")
 
 [aseprite]
 
 general/command_path="C:/Program Files/Aseprite/Aseprite.exe"
-
-[autoload]
-
-GameEvents="*res://Autoloads/GameEvents.gd"
 
 [display]
 
