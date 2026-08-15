@@ -7,17 +7,13 @@ extends Node
 var _client := WebSocketPeer.new()
 var _ws_port: int = 8098
 var _connected: bool = false
-var _poll_timer: Timer
+var _reconnect_timer: float = 0.0
 
 func _ready() -> void:
-	_poll_timer = Timer.new()
-	_poll_timer.wait_time = 0.1
-	_poll_timer.autostart = true
-	_poll_timer.timeout.connect(_on_poll_timer_timeout)
-	add_child(_poll_timer)
+	set_process(true)
 	connect_to_mcp()
 
-func _on_poll_timer_timeout() -> void:
+func _process(delta: float) -> void:
 	_client.poll()
 	var state = _client.get_ready_state()
 	
@@ -32,18 +28,17 @@ func _on_poll_timer_timeout() -> void:
 		if _connected:
 			print("[Lentera Godot Bridge] Disconnected from MCP Server.")
 			_connected = false
-		
-		# Auto-reconnect loop
-		_poll_timer.stop()
-		await get_tree().create_timer(3.0).timeout
-		connect_to_mcp()
-		_poll_timer.start()
+		_reconnect_timer += delta
+		if _reconnect_timer >= 2.0:
+			_reconnect_timer = 0.0
+			connect_to_mcp()
 
 func connect_to_mcp() -> void:
+	_client = WebSocketPeer.new()
 	var url = "ws://127.0.0.1:%d" % _ws_port
 	var err = _client.connect_to_url(url)
-	if err != OK:
-		print("[Lentera Godot Bridge] Failed to connect to MCP. Code: ", err)
+	if err == OK:
+		pass
 
 func _handle_message(msg_str: String) -> void:
 	var json = JSON.new()
