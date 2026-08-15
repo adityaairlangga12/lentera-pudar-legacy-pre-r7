@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" path="res://Assets/Models/Kaelen_V3.gltf" id="1_kaelen"]
 [ext_resource type="Script" path="res://Scripts/Core/QCSceneRunnerKaelen.gd" id="2_qc"]
-[ext_resource type="Shader" path="res://Shaders/TruePixelArtQuantizer.gdshader" id="3_outline"]
+[ext_resource type="Shader" path="res://Shaders/CleanPixelOutline.gdshader" id="3_outline"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
 shader = ExtResource("3_outline")
-shader_parameter/outline_color = Color(0.08, 0.06, 0.07, 1)
+shader_parameter/outline_color = Color(0.078, 0.063, 0.075, 1)
+shader_parameter/outline_thickness = 1.0
 
 [node name="TestKaelenV3" type="Node2D"]
 script = ExtResource("2_qc")

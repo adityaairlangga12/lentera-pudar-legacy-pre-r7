@@ -21,6 +21,28 @@ var _captured_images: Array[Image] = []
 func _ready() -> void:
 	if _model != null:
 		_model.rotation_degrees.y = DIRECTIONS[0]["rot_y"]
+		_apply_cel_shader(_model)
+
+func _apply_cel_shader(node: Node) -> void:
+	if node is MeshInstance3D:
+		var mi: MeshInstance3D = node as MeshInstance3D
+		var count: int = 1
+		if mi.mesh != null:
+			count = mi.mesh.get_surface_count()
+		for i in range(count):
+			var orig = mi.get_active_material(i)
+			var cel_mat = ShaderMaterial.new()
+			cel_mat.shader = preload("res://Shaders/CelShader.gdshader")
+			if orig is StandardMaterial3D:
+				var std: StandardMaterial3D = orig as StandardMaterial3D
+				cel_mat.set_shader_parameter("albedo_color", std.albedo_color)
+				if std.albedo_texture != null:
+					cel_mat.set_shader_parameter("albedo_texture", std.albedo_texture)
+					cel_mat.set_shader_parameter("use_texture", true)
+			mi.set_surface_override_material(i, cel_mat)
+			
+	for c in node.get_children():
+		_apply_cel_shader(c)
 
 func _process(_delta: float) -> void:
 	if _model == null or _viewport == null:
@@ -35,7 +57,6 @@ func _process(_delta: float) -> void:
 			if tex != null:
 				var img: Image = tex.get_image()
 				if img != null:
-					# Screen center of SubViewportContainer (pos 80, 45 + size 320/2, 180/2 = 240, 135)
 					var screen_center_x: int = 240
 					var screen_center_y: int = 135
 					var crop_w: int = 110
@@ -44,6 +65,7 @@ func _process(_delta: float) -> void:
 					var cropped_img: Image = Image.create(crop_w, crop_h, false, Image.FORMAT_RGBA8)
 					cropped_img.blit_rect(img, src_rect, Vector2i.ZERO)
 					_captured_images.append(cropped_img)
+					
 					var dir_name = DIRECTIONS[_dir_idx]["name"].split(" ")[0].to_lower()
 					var ind_path = "res://qc_kaelen_dir_%s.png" % dir_name
 					cropped_img.save_png(ProjectSettings.globalize_path(ind_path))
@@ -81,14 +103,12 @@ func _create_composite_showcase() -> void:
 	var path_art = "C:/Users/ADIT/.gemini/antigravity-ide/brain/a2da4a95-9af8-46dc-9bec-041d1bb1c0dd/qc_kaelen_v3_8directions.png"
 	composite.save_png(path_res)
 	composite.save_png(path_art)
-	print("UNCLIPPED FULL-BODY 8-DIRECTION SHOWCASE SAVED TO:", path_res)
-	print("UNCLIPPED FULL-BODY 8-DIRECTION SHOWCASE SAVED TO:", path_art)
+	print("SHOWCASE_8DIRECTIONS_SAVED:", path_art)
 
 func _create_pixel_magnified_inspection() -> void:
 	if _captured_images.size() < 8:
 		return
 		
-	# Select 3 key views: 0 (South/Front), 6 (West/Frost Arm Side), 4 (North/Back Scarf)
 	var key_indices: Array[int] = [0, 6, 4]
 	var scale_factor: int = 4
 	var base_w: int = 110
@@ -117,5 +137,4 @@ func _create_pixel_magnified_inspection() -> void:
 	var path_mag_art = "C:/Users/ADIT/.gemini/antigravity-ide/brain/a2da4a95-9af8-46dc-9bec-041d1bb1c0dd/qc_kaelen_v3_pixel_inspection.png"
 	mag_img.save_png(path_mag_res)
 	mag_img.save_png(path_mag_art)
-	print("4X PIXEL MAGNIFICATION INSPECTION SAVED TO:", path_mag_res)
-	print("4X PIXEL MAGNIFICATION INSPECTION SAVED TO:", path_mag_art)
+	print("MAGNIFIED_INSPECTION_SAVED:", path_mag_art)
