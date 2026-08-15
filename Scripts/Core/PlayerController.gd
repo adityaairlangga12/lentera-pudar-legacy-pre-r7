@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name PlayerController
 
 @export_group("Locomotion")
-@export var speed: float = 160.0
-@export var acceleration: float = 900.0
-@export var friction: float = 1200.0
+@export var speed: float = 140.0
+@export var acceleration: float = 800.0
+@export var friction: float = 1000.0
 
 @export_group("Visuals")
 @onready var sprite: Sprite2D = $Sprite2D
@@ -15,8 +15,15 @@ var _current_dir: Direction = Direction.SOUTH
 
 func _physics_process(delta: float) -> void:
 	var input_vector: Vector2 = Vector2.ZERO
-	input_vector.x = Input.get_axis("ui_left", "ui_right")
-	input_vector.y = Input.get_axis("ui_up", "ui_down")
+	
+	# Support both default ui_* and custom move_* inputs
+	input_vector.x = Input.get_axis("move_left", "move_right")
+	if input_vector.x == 0.0:
+		input_vector.x = Input.get_axis("ui_left", "ui_right")
+		
+	input_vector.y = Input.get_axis("move_up", "move_down")
+	if input_vector.y == 0.0:
+		input_vector.y = Input.get_axis("ui_up", "ui_down")
 	
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
