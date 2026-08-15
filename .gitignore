@@ -1,7 +1,32 @@
-.godot/
-*.import
-export_presets.cfg
+# ===================================================
+# Lentera Pudar — .gitignore
+# Engine: Unreal Engine 5 + Blender 5.2 LTS
+# ===================================================
+
+# --- Unreal Engine 5 ---
+Saved/
+Intermediate/
+DerivedDataCache/
+Binaries/
+Build/
+*.VC.db
+*.VC.opendb
+*.sln
+*.vcxproj
+*.vcxproj.filters
+.vs/
+
+# --- Blender ---
+*.blend1
+*.blend2
+__pycache__/
+*.pyc
+
+# --- OS & Editor ---
+.DS_Store
 .vscode/
-addons/*/
-!addons/AsepriteWizard/
-!addons/lentera_bridge/
+Thumbs.db
+desktop.ini
+
+# --- Git LFS tracked (DO NOT ignore) ---
+# *.blend, *.fbx, *.gltf, *.wav, *.uasset — tracked via Git LFS, bukan di-ignore

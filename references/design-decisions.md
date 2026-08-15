@@ -8,109 +8,106 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 
 ### ADR-001: Model Rendering 8-Arah Murni & Asimetri Lore
 - **Tanggal**: 2026-08-13
-- **Status**: Superseded by ADR-008
+- **Status**: Superseded by ADR-008 ➔ Digantikan sepenuhnya oleh 3D Native di ADR-013
 - **Konteks**: Karakter utama memiliki desain asimetris: tangan kiri dibalut perban dengan urat es biru (Kutukan Pudar), mata kanan mengenakan eyepatch, sedangkan tangan kanan normal.
 - **Keputusan Awal**: 2D True 8-Way.
-- **Evolusi**: Digantikan oleh ADR-008 (Jalur B: 3D Low-Poly Rig) yang secara otomatis menjamin akurasi geometris asimetri di seluruh 8 arah tanpa resiko mirroring glitch.
+- **Evolusi**: Digantikan oleh ADR-008 (Jalur B), dan selanjutnya ditransisikan penuh ke **3D High-Detail Armature Rigging di Blender 5.2 LTS + Unreal Engine 5** pada ADR-013 yang menjamin akurasi asimetri 360° secara native.
 
-### ADR-002: Arsitektur Komunikasi Global Event Bus (GameEvents.gd)
+### ADR-002: Arsitektur Komunikasi Global Event Bus
 - **Tanggal**: 2026-08-13
-- **Status**: Accepted (Standard Baku)
-- **Konteks**: Komunikasi antar node di Godot rawan spaghetti code jika menggunakan direct tree querying.
-- **Keputusan Terpilih**: Seluruh interaksi lintas sistem wajib disalurkan melalui Autoload `GameEvents.gd`.
-- **Dampak**: Node modular, decoupled, dan dapat diuji secara independen.
+- **Status**: Superseded by ADR-013 & ADR-014 (Diadaptasi ke Unreal Engine 5)
+- **Konteks**: Komunikasi antar komponen sistem game rawan spaghetti code jika menggunakan direct querying yang erat (*tight coupling*).
+- **Keputusan Awal**: Seluruh interaksi lintas sistem disalurkan melalui Event Bus terpusat.
+- **Evolusi 3D (UE5)**: Ditransisikan ke arsitektur **Unreal Engine 5 Gameplay Ability System (GAS), Event Delegates, Blueprint Interfaces, dan Subsystems** pada ADR-013 & ADR-015.
 
 ### ADR-003: Pipeline Visual Berbasis Otomasi & Observabilitas
 - **Tanggal**: 2026-08-13
-- **Status**: Superseded by ADR-008
-- **Konteks**: Memaksimalkan kecepatan produksi tanpa mengorbankan kualitas pixel art 32x32 dan kepatuhan lore.
+- **Status**: Superseded by ADR-008 ➔ Digantikan oleh Pipeline 3D di ADR-013 & ADR-015
+- **Konteks**: Memaksimalkan kecepatan produksi tanpa mengorbankan kualitas visual dan kepatuhan lore.
 - **Keputusan Awal**: Alur 3 tahap Pixellab ➔ Aseprite ➔ Godot.
-- **Evolusi**: Digantikan oleh arsitektur 3-MCP bergradasi pada ADR-008.
+- **Evolusi**: Digantikan secara total oleh pipeline **Blender 5.2 LTS (Port 8097) + Unreal Engine 5 Python Scripting MCP** pada ADR-013 & ADR-015.
 
 ### ADR-004: Arsitektur Narasi Berbasis 5 Tahap Berduka (5 Stages of Grief)
 - **Tanggal**: 2026-08-14
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Dipertahankan di 3D)
 - **Konteks**: Mencegah alur cerita RPG terasa monoton atau berulang dengan menyematkan struktur psikologis mendalam di setiap sektor dungeon.
 - **Keputusan Terpilih**: 5 Sektor Dungeon memetakan Kübler-Ross Model (Sektor 1: Denial - Lord Alden, Sektor 2: Anger - Ignis Vulkan, Sektor 3: Bargaining - Lady Vespera, Sektor 4: Depression - The Hollow Reflection, Sektor 5: Acceptance - The Frost Sovereign & Fajar Terakhir).
-- **Dampak**: Setiap bos dan lingkungan memiliki resonansi tematik yang terhubung langsung dengan perkembangan psikologis pemain dan protagonis.
+- **Dampak**: Setiap bos dan lingkungan memiliki resonansi tematik yang terhubung langsung dengan perkembangan psikologis pemain dan protagonis di semesta 3D.
 
 ### ADR-005: Mekanik Karakter Dualitas (The Fading Scarf & Temptation of Frost)
 - **Tanggal**: 2026-08-14
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Dipertahankan di 3D)
 - **Konteks**: Menghubungkan narasi Kaelen & Aina langsung ke elemen visual dan gameplay.
 - **Keputusan Terpilih**: 
-  1. *The Fading Scarf*: Syal kuning Aina memendek secara visual seiring berjalannya progres cerita (diimplementasikan via multi-variant assets di ADR-010).
-  2. *The Temptation of Frost*: Bertarung di kegelapan membuat serangan tangan kiri es semakin mematikan tetapi berisiko membeku (*Game Over*).
+  1. *The Fading Scarf*: Syal kuning Aina memendek secara visual seiring berjalannya progres cerita (diimplementasikan via Chaos Cloth 4 stages di ADR-014).
+  2. *The Temptation of Frost*: Penggunaan kekuatan tangan kiri es semakin mematikan tetapi berisiko membeku (*Freeze of Despair*).
 - **Dampak**: Pemain merasakan bobot pengorbanan Aina dan godaan kekuatan keputusasaan secara konstan.
 
 ### ADR-006: Visi Skalabilitas Franchise (Lentera Pudar Expanded Universe)
 - **Tanggal**: 2026-08-14
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Dipertahankan di 3D)
 - **Konteks**: Membangun fondasi semesta yang mampu menampung sekuel (*Lentera Pudar 2: The Frozen Horizon* & *Lentera Pudar 3: The Sovereign of Dawn*).
 - **Keputusan Terpilih**: Game 1 berfokus pada penyembuhan duka pribadi di dungeon bawah tanah dan berakhir dengan terbukanya gerbang ke Benua Luar (*Overworld* beku).
-- **Dampak**: Arsitektur dungeon, mekanik kutukan, dan data item dirancang extensible untuk ekspansi franchise.
+- **Dampak**: Arsitektur dungeon, mekanik kutukan, dan data item dirancang extensible untuk ekspansi franchise 3D.
 
-### ADR-007: Standardisasi Desain Visual & Anatomi Kaelen V3 (Eyepatch, Baldric, & Directional Shadows)
+### ADR-007: Standardisasi Desain Visual Anatomi Kaelen (Eyepatch, Baldric, & Directional Details)
 - **Tanggal**: 2026-08-14
-- **Status**: Accepted (Standard Baku)
-- **Konteks**: Memilih base art definitif yang menyeimbangkan estetika pixel art semi-detailed, resonansi emosional duka, dan kepatuhan lore asimetri.
+- **Status**: Partially Superseded by ADR-013 & ADR-014 (Desain visual Eyepatch & Baldric dipertahankan; proporsi diperbarui ke 1:6.8)
+- **Konteks**: Memilih base art definitif yang menyeimbangkan estetika visual, resonansi emosional duka, dan kepatuhan lore asimetri.
 - **Keputusan Terpilih**: 
-  1. Mengesahkan Penutup Mata Kulit Hitam (*Eyepatch* `#141013`) pada mata kanan sebagai segel bekas luka beku Kutukan Pudar masa lalu.
+  1. Mengesahkan Penutup Mata Kulit Hitam (*Eyepatch* `#141013`) pada mata kanan sebagai segel bekas luka beku Kutukan Pudar masa lalu (diperluas jadi mekanik persepsi *The Eye of Frost* di ADR-014).
   2. Mengesahkan Tali Selempang Kantung Kelana (*Baldric Harness*) untuk memecah bidang jubah gelap dan mempertegas identitas pengelana.
-  3. Menerapkan rasio proporsi 1:3 hingga 1:3.5 chibi semi-detailed.
-- **Dampak**: Identitas visual Kaelen terkunci kokoh dan bebas dari kejanggalan proporsi.
+  3. Mengadopsi proporsi atletis 1:6.8 stylized-realistic (*FF7 Remake / Kena Grade*) menggantikan rasio awal pada era 2D.
+- **Dampak**: Identitas visual Kaelen terkunci kokoh, matang, dan bebas dari kejanggalan proporsi.
 
 ---
 
-### ADR-008: Transisi Menyeluruh ke Jalur B (Hybrid 3-MCP: Blender 5.2 + Godot 4.7.1 + Aseprite)
+### ADR-008: Transisi Menyeluruh ke Jalur B (Hybrid 3D Low-Poly)
 - **Tanggal**: 2026-08-15
-- **Status**: Accepted (Master Architecture)
-- **Konteks**: Pendekatan full-AI 2D generation sebelumnya mengalami kegagalan akibat diskontinuitas asimetri (lengan kutukan tertukar saat mirror) dan kesulitan menganimasikan Syal Aina di 8 arah.
-- **Keputusan Terpilih**: 
-  1. **Karakter Utama, Boss, & NPC Frekuensi Tinggi**: Mengadopsi **Jalur B (3D Low-Poly 300–1000 tris di Blender 5.2 LTS + glTF 2.0 ➔ Render Camera3D Orthogonal + SubViewport Pixelation di Godot 4.7.1)**.
-  2. **Domain Aseprite MCP**: Difokuskan secara penuh untuk UI (9-slice panels, HUD, icons, bitmap typography), Props/Tileset Dungeon (walls, floors, autotiling), dan FX Flipbook Hard-Edge (tebasan pedang, hit-flash, sparks).
-  3. **Standardisasi 3-Layer MCP**: Seluruh MCP (Blender, Godot, Aseprite) menerapkan pemisahan *Atomic*, *Macro*, dan *Workflow Tools* dengan observability wajib sebelum mutasi.
-- **Dampak**: Asimetri Kaelen 100% konsisten secara geometris, animasi hanya perlu dibuat 1x untuk mencakup seluruh 8 arah, dan performa render tetap menghasilkan estetika pixel art autentik.
+- **Status**: Superseded by ADR-013 (Transisi Total ke 3D Action RPG UE5 + Blender 5.2 LTS)
+- **Konteks**: Pendekatan 2D pixel art manual mengalami kegagalan akibat diskontinuitas asimetri (lengan kutukan tertukar saat mirror) dan kesulitan menganimasikan Syal Aina di seluruh arah.
+- **Keputusan Awal**: Mengadopsi Jalur B (3D Low-Poly 300–1000 tris pre-render).
+- **Evolusi**: Digantikan sepenuhnya oleh **Full 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS High-Detail 40k–60k tris LOD0)** pada ADR-013, menghapus seluruh ekosistem pixelation/2D.
 
 ### ADR-009: Standardisasi Mesin Animasi Berbasis Matematika & Fisika
 - **Tanggal**: 2026-08-15
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Diperluas ke UE5 Control Rig & Chaos Cloth)
 - **Konteks**: Animasi murni manual sering kaku dan memakan waktu tinggi, sedangkan AI generatif murni tidak memiliki insting fisiologis.
 - **Keputusan Terpilih**: 
-  1. **Locomotion Periodik (Idle/Walk/Run)**: Dijalankan via *Procedural Sinusoidal Gait Function* (inverted pendulum, phase offset $\pi$, body bob frekuensi 2x) dan *Inverse Kinematics* (Two-Bone untuk kaki/tangan, FABRIK untuk chain panjang).
-  2. **Secondary Motion (Syal Aina & Jubah)**: Dijalankan via *Spring-Damper System* (Hukum Hooke) dan variasi *Velvet Modifier* untuk inersia kain dinamis.
-  3. **Transisi State**: Dihaluskan menggunakan *PD Controller (Proportional-Derivative)* untuk mencegah snap kaku.
-  4. **Aksi Reaktif One-Shot (Punch, Cursed Strike, Hurt, Death)**: Tetap menggunakan *Keyframe Pose + Easing Curve*.
-- **Dampak**: Karakter terasa berbobot, hidup, dan responsif terhadap input pemain.
+  1. **Locomotion Periodik (Idle/Walk/Run)**: Dijalankan via *Procedural Sinusoidal Gait Function*, *Blend Trees*, dan *Inverse Kinematics (IK Foot Adjustment)* pada kontur lantai dungeon.
+  2. **Secondary Motion (Syal Aina & Jubah)**: Dijalankan via *UE5 Chaos Cloth & 5-Bone Spring Chain* (Stiffness: 0.4–0.6, Damping: 0.3–0.5).
+  3. **Transisi State**: Dihaluskan menggunakan *Animation Blueprint State Machines* dan *Easing Curves*.
+  4. **Aksi Reaktif One-Shot (Punch, Cursed Strike, Hurt, Death)**: Menggunakan *Keyframe Animation + Hit-Stop 3 frame*.
+- **Dampak**: Karakter terasa berbobot, hidup, dan responsif terhadap input pemain di ruang 3D.
 
-### ADR-010: Arsitektur State-Driven untuk Gap Fitur Lentera Pudar
+### ADR-010: Arsitektur State-Driven untuk Fitur Khusus Lentera Pudar
 - **Tanggal**: 2026-08-15
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Diadaptasi ke UE5)
 - **Konteks**: Elemen kunci lore seperti Syal yang memendek, tangan es yang berdenyut sesuai kutukan, dan penglihatan memori masa lalu membutuhkan jembatan langsung antara variabel gameplay dan representasi visual.
 - **Keputusan Terpilih**: 
-  1. **The Fading Scarf**: Dikelola sebagai *Asset Variant Set* (Panjang ➔ Sedang ➔ Pendek ➔ Koyak) dan ditukar via fungsi jembatan generik `bind_visual_state_to_flag(node, flag, variant_map)`.
-  2. **CursedHand.gdshader**: Shader uniform live-driven via `bind_uniform_to_gamestate(material, "intensity", "curse_meter")` yang merespons real-time pada rentang 0% hingga 100%.
-  3. **Echoes of the Past**: Ruangan dirancang sebagai *Dual-Layer Room* (Foreground Runtuh + Memory Layer Transparan) yang ditransisikan menggunakan *Noise-based Dissolve Shader* selama 5–10 detik.
+  1. **The Fading Scarf**: Dikelola sebagai *4 Stages of Sacrifice* pada simulasi kain dinamis syal.
+  2. **Cursed Ice Arm Shader (`M_Cursed_Crystal`)**: Shader dinamis terhubung ke parameter `Curse_Spread` pada *Material Parameter Collection (MPC)* yang merespons real-time pada rentang 0 s.d. 100 poin.
+  3. **Echoes of the Past & Spectral View**: Transisi lingkungan melalui *Perception Eyepatch Mode* dengan *Post-Process Material* dan *World Position Offset*.
 - **Dampak**: Integrasi penuh antara narasi psikologis dan sistem engine tanpa spaghetti code.
 
-### ADR-011: Standar Domain Baru (Lighting, Kamera, Audio, & AI Replay)
+### ADR-011: Standar Domain Baru (Pencahayaan Kelvin, Kamera Adaptif, Audio Spasial)
 - **Tanggal**: 2026-08-15
-- **Status**: Accepted (Standard Baku)
+- **Status**: Accepted (Standard Baku — Diadaptasi ke UE5)
 - **Konteks**: Memastikan aspek visual pencahayaan, navigasi kamera, atmosfer audio, dan bos khusus memiliki landasan teori numerik terukur.
 - **Keputusan Terpilih**: 
-  1. **Lighting Theory**: Menggunakan skala temperatur Kelvin (2700K Warm Light `#F4B860` vs 6500K Ice `#4A6FA5`), *photometric falloff*, `LightOccluder2D` bayangan dinding, dan radius cahaya menyusut 50% di Sektor 4 (Depression).
-  2. **Camera Theory**: Kamera follow prediktif (*Look-Ahead Offset*), *Room Bounds Clamping*, dan transisi *PD Controller* saat entering arena bos.
-  3. **Audio Theory**: Hirarki bus terstruktur (`Master ➔ Music / SFX / Voice`), *Gain Staging*, *Ducking* saat narasi penting Aina, dan *State-Based Adaptive Music Layers*.
-  4. **AI The Hollow Reflection**: Menggunakan *Circular Input Replay Buffer* dengan frame-delay sebagai pengatur tingkat kesulitan (makin pendek delay, makin agresif tiruannya).
-- **Dampak**: Presentasi game terasa kohesif, mendalam, dan berkualitas premium.
+  1. **Lighting Theory**: Menggunakan skala temperatur Kelvin (2700K Warm Light `#F4B860` 800–1200 lm vs 6500K Cold Shard `#4A6FA5`), pencahayaan dinamis Lumen GI, rasio chiaroscuro 8:1 s.d. 12:1, dan desaturasi global di Sektor 4.
+  2. **Camera Theory**: *Adaptive Dynamic Camera Stance* (FOV 78° eksplorasi vs FOV 70° lock-on duel over-the-shoulder) dengan *Collision Avoidance Buffer* 15–25cm.
+  3. **Audio Theory**: Hirarki bus terstruktur (`Master ➔ Music / SFX / Voice`), *Target Loudness -16 LUFS*, *Dynamic Ducking -6dB* saat bisikan, dan *3D Binaural Whispers*.
+  4. **AI The Hollow Reflection**: Menggunakan *Circular Input Replay Buffer* dengan frame-delay sebagai pengatur tingkat kesulitan.
+- **Dampak**: Presentasi game terasa kohesif, mendalam, dan berkualitas AAA.
 
 ### ADR-012: Fondasi Infrastruktur Produksi & Ekosistem Game
 - **Tanggal**: 2026-08-15
 - **Status**: Accepted (Standard Baku)
 - **Konteks**: Memastikan stabilitas repositori kode, kemudahan pengujian sistem non-visual, dan kelancaran narasi percabangan.
 - **Keputusan Terpilih**: 
-  1. **Version Control**: Git dengan konfigurasi **Git LFS** aktif untuk file biner besar (`.blend`, `.gltf`, `.wav`, `.png`).
-  2. **Quality Control Standard**: Menerapkan **The 4-Tier Commercial Gate** untuk memastikan kelayakan rilis komersial di Steam/PC.
+  1. **Version Control**: Git dengan konfigurasi **Git LFS** aktif untuk file biner besar (`.blend`, `.fbx`, `.uasset`, `.wav`).
+  2. **Quality Control Standard**: Menerapkan **The 4-Tier Commercial Gate & 6 Pilar Definition of Done (DoD)** untuk memastikan kelayakan rilis komersial di Steam/PC.
 - **Dampak**: Proses pengembangan terukur, data save aman dari crash/power-loss, zero regression bug, dan siap rilis komersial di Steam.
 
 ---
@@ -127,4 +124,47 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   - Model 3D Kaelen dimodelkan satu kali secara high-detail dan dapat dianimasikan bebas ke seluruh sudut 360 derajat.
   - Syal Aina dan jubah dapat memanfaatkan simulasi fisika kain (*Cloth Physics & Spring Bones*) dinamis secara real-time.
   - Pencahayaan lentera 2700K dan pendaran kristal es kutukan 6500K menghasilkan kualitas visual 3D AAA di Unreal Engine 5.
+
+---
+
+### ADR-014: Arsitektur Dual-Layer (Kena Visual + Hellblade Gameplay/Psikologi) & Sistem Diegetik
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master System Architecture)
+- **Konteks**: Mencegah percampuran gaya yang membingungkan antara estetika visual dan kedalaman gameplay emosional.
+- **Keputusan Terpilih**: 
+  1. **Layer 1: Visual & Environment (Kena: Bridge of Spirits)**: Menentukan estetika 3D stylized-realistic (proporsi 1:6.8), pencahayaan Kelvin kontras tinggi (2700K vs 6500K), reruntuhan organik kuno, dan partikel restorasi hangat (*Niagara Warmth Embers*).
+  2. **Layer 2: Gameplay & Psikologi (Hellblade: Senua's Sacrifice & II)**: Menentukan sistem psikologis diegetik (rambatan es fisik di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), audio 3D binaural whispers, live mental morphing environment, dan combat 1v1 deliberate parry-focused.
+  3. **Mekanik Persepsi Eyepatch (*The Eye of Frost / Temptation of Sight*)**: Penutup mata kanan berfungsi sebagai saklar penglihatan spektral dengan sistem *Risk-Reward* (membuka mata meningkatkan Curse Meter & bisikan jiwa beku).
+  4. **Kamera Adaptif (*Adaptive Dynamic Stance*)**: Kamera berjarak bebas saat eksplorasi (FOV 78°), dan otomatis mendekat intimate over-shoulder saat Lock-On / Boss Duel / Parry (FOV 70°).
+- **Dampak**: Visi visual dan mekanik terpisah dengan tegas, memberikan identitas unik yang sangat puitis, cantik secara visual, namun berat dan menegangkan saat dimainkan.
+
+---
+
+### ADR-015: Standardisasi Tools/MCP Stack & Kerangka 6-DoD Stage-Gate QA/QC
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Production Standard)
+- **Konteks**: Memastikan alur eksekusi AI Agent terikat pada toolset nyata yang teruji dan memiliki kriteria penerimaan kualitas (Quality Gate) yang tidak ambigu sebelum masuk ke fase rilis komersial.
+- **Keputusan Terpilih**: 
+  1. **Toolset & MCP Stack**: Menetapkan rantai alat resmi: Blender 5.2 LTS (MCP port 8097) + Unreal Engine 5 (Python Editor Scripting MCP) + Substance 3D (Texturing) + Wwise/MetaSounds (Audio) + Quixel (Megascans).
+  2. **Enam Pilar Definition of Done (DoD)**: Standar verifikasi eksplisit untuk Model 3D, Material/Shader, Rigging & Animasi, Audio Spasial, Level Sektor, dan Sistem Gameplay.
+  3. **The 8-Stage Gate Process**: Transisi proyek dari Gate 0 (Pra-Produksi) hingga Gate 7 (Release Candidate) dengan syarat mutlak lolos review fisik.
+  4. **Klasifikasi Bug 4-Tier**: Pengelompokan bug berbasis severity (Blocking, Critical, Major, Minor) dengan aturan penanganan ketat.
+- **Dampak**: Seluruh sub-agent AI dan developer memiliki parameter kelayakan yang objektif, mencegah cacat aset lolos ke build rilis, dan menjaga pipeline produksi tetap stabil.
+
+---
+
+### ADR-016: Standardisasi Parameter Presisi Numerik (Style Guide Numerik)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Numeric Standard)
+- **Konteks**: Mencegah deviasi nilai, tebakan acak, atau inkonsistensi parameter shader, lighting, timing animasi, cloth physics, dan audio pada setiap sesi kerja AI Agent.
+- **Keputusan Terpilih**: 
+  1. **Color & Lighting Metrics**: Standar hex sekunder (Kulit `#D8B79A`, Rambut `#C9CDD1`), PointLight Lumen Syal 800–1200 lm (3–5m / 1.5–2.5m S4), Chiaroscuro 8:1 ke 12:1, dan desaturasi global 100% S1 ke 40–50% S4.
+  2. **Material & Emissive (MPC)**: Subsurface Scattering (Radius 0.5–1.2cm, Scatter `#7EE8FA`) dan kurva intensitas emissive Curse Meter (0.5–1.0 s.d. 8.0–12.0 pulse 2–3Hz).
+  3. **Chaos Cloth & Spring Damper**: Syal Aina (Stiffness 0.4–0.6, Damping 0.3–0.5, Wind 1.2x) vs Jubah Kaelen (Stiffness 0.6–0.8, Damping 0.5–0.7, Wind 0.8x).
+  4. **Combat Timing & Curse Limits**: Light (3–5f startup), Heavy (12–18f), Dash (8–10f i-frames), Parry (4–6f @30fps / 8–12f @60fps), Hitstop (3-frame), dan Curse Meter 100 poin (+8–15 per hit, decay 2–4/s, Surge 90).
+  5. **Audio & Poly Budget**: Loudness -16 LUFS (Combat BGM) / -18 LUFS (Dialog) dengan Ducking -6dB (150ms attack, 400ms release), Hero Poly Budget 40k–60k tris (LOD0–LOD3).
+- **Dampak**: AI Agent dan sistem engine memiliki angka pasti yang terverifikasi, menjamin konsistensi visual dan gameplay feel di seluruh sesi kerja.
+
+
+
 

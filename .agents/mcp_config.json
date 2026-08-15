@@ -8,6 +8,9 @@
         "BLENDER_WS_PORT": "8097",
         "LENTERA_PROJECT_PATH": "D:\\GodotProjects\\Lentera-Pudar"
       }
+    },
+    "_TODO_lentera-ue5": {
+      "_comment": "UE5 Python MCP Plugin belum terhubung. Tambahkan entry ini setelah Unreal Python Editor Scripting Plugin aktif dan MCP server/endpoint UE5 sudah dikonfigurasi. Referensi: references/tools-mcp-stack.md Bab 2."
     }
   }
 }

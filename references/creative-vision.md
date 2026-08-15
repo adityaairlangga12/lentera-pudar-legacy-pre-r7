@@ -22,9 +22,9 @@ flowchart LR
 ```
 
 ### 1.2 Referensi Visi & Karya Inspirasi 3D:
-- **Atmosfer & Kesunyian Puitis 3D**: *NieR: Automata*, *Ender Lilies*, *Shadow of the Colossus*.
-- **Gaya Karakter & Action Combat**: *Final Fantasy VII Remake*, *Crisis Core*, *Genshin Impact*.
-- **Psikologi Penerimaan Duka**: *Gris*, *Celeste*, *ICO*.
+- **Visual, Environment & Lighting (Layer 1)**: *Kena: Bridge of Spirits* (Stylized-Realistic, Reruntuhan Organik, Restorasi Jejak Hangat), *NieR: Automata*, *Final Fantasy VII Remake*.
+- **Psikologi Gameplay, Audio & Combat Feel (Layer 2)**: *Hellblade: Senua's Sacrifice & Hellblade II* (Diegetic UI, Binaural Whispers, Live Morphing Environment, Deliberate Combat), *Gris*, *Ender Lilies*.
+
 
 ---
 

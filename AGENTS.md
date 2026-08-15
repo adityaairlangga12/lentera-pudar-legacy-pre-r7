@@ -6,12 +6,15 @@
 
 ## BAB I: IDENTITAS, LORE, FILOSOFI DUNIA & ARSITEKTUR 3D
 
-### 1.1 Identitas Proyek & Spesifikasi Teknis
+### 1.1 Identitas Proyek & Arsitektur Dual-Layer
 - **Judul Resmi**: *Lentera Pudar — The First Spark* (Seri Pembuka Semesta Lentera Pudar).
-- **Genre**: 3D Third-Person Action-Adventure RPG (Stylized Anime / Poetic Dark Fantasy — Inspirasi: *Final Fantasy VII*, *NieR: Automata*, *Genshin Impact*).
+- **Genre**: 3D Third-Person Action-Adventure RPG (Stylized-Realistic / Poetic Dark Fantasy).
 - **Target Platform**: PC Windows (Steam-Ready), Steam Deck, dan Controller Support penuh.
-- **Engine**: Unreal Engine 5 (UE5) / Blender 5.2 LTS Pipeline.
-- **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K.
+- **Engine & Pipeline**: Unreal Engine 5 (UE5) / Blender 5.2 LTS Pipeline.
+- **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K ($99^{th}\text{ percentile} < 16.6\text{ ms}$).
+- **Dual-Layer Architecture Benchmark**:
+  - **Layer Visual (Kena: Bridge of Spirits)**: Menentukan estetika stylized-realistic, rasio 1:6.8, pencahayaan Kelvin kontras tinggi (2700K vs 6500K Lumen GI), reruntuhan organik, dan restorasi jejak hangat (*Niagara Warmth Embers*).
+  - **Layer Gameplay & Psikologi (Hellblade I & II)**: Menentukan sistem diegetik (es merambat di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), spatial 3D binaural whispers, live mental morphing environment, dan combat 1v1 deliberate parry-focused.
 
 ### 1.2 Lore Inti, Karakter & Metafora 5 Tahapan Berduka
 - **Kutukan Pudar (The Fading Curse / Apathy Plague)**:
@@ -19,24 +22,24 @@
 - **Kaelen (Protagonis — Sang Pengelana Duka)**:
   Pengelana *class-less* bertubuh atletis (proporsi 1:6.8) berambut abu-abu perak acak yang memikul rasa bersalah atas tragedi masa lalu.
   - **Lengan Kiri**: Membeku total dibalut kluster prisma kristal es kutukan (`#4A6FA5` & `#7EE8FA`), berdenyut reaktif dengan pendaran emissive seiring meningkatnya *Curse Meter*. Dilengkapi cakar es (*crystal talons*).
-  - **Mata Kanan**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) dengan gesper perak sebagai segel bekas luka beku.
+  - **Mata Kanan (The Sealed Eye)**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku. Menjadi mekanik persepsi *Risk-Reward* (membuka segel sesaat mengungkap simbol tersembunyi & jalur memori, namun mempercepat laju kutukan).
   - **Pakaian**: Jubah kelana usang gelap (`#2A211C`) dengan tali selempang kantung (*baldric harness*) bersilang di dada.
-  - **Combat Style**: Bertarung tangan kosong & cakar es (*Bare Hand Punch* + *Cursed Ice Palm Strike*).
+  - **Combat Style**: Bertarung tangan kosong berbobot & cakar es (*Bare Hand Punch* + *Cursed Ice Palm Strike* + *12-Frame Tight Parry*).
 - **Aina (Jiwa Syal Lentera — Sang Pelindung Abadi)**:
   Sahabat sekaligus belahan jiwa Kaelen yang mengorbankan wujud fisiknya menjadi syal api kuning abadi di leher Kaelen.
-  - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Cloth Physics & Spring Bones*) yang berkibar dinamis mengikuti gravitasi dan ayunan langkah Kaelen. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
+  - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Cloth Physics & Spring Bones*) yang berkibar dinamis sebagai kompas emosional penunjuk arah. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
 - **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief)**:
-  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada.
-  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak.
-  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir.
-  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total.
+  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada (Bos: Lord Alden).
+  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak (Bos: Ignis Vulkan).
+  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir (Bos: Lady Vespera).
+  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total (Bos: The Hollow Reflection).
   5. **Sektor 5: Acceptance (Penerimaan)** — *The Dawning Altar*: Puncak rekonsiliasi emosional Kaelen dan Aina, membuka gerbang keluar dungeon menuju Benua Luar (*Overworld*).
 
 ### 1.3 Teori Warna & Kontras Suhu Kelvin (The Triad of Lentera Pudar)
 Seluruh perancangan seni visual 3D, pencahayaan, shader, dan material wajib tunduk pada **Hukum Tiga Warna (The Triad)**:
 1. **Kuning Hangat (`#F4B860` — 2700K Kelvin Warm Emissive)**:
    Mewakili Jiwa Aina, api syal lentera, sumber harapan, dan cinta tanpa pamrih. Memancarkan cahaya dinamis lembut via point light 3D.
-2. **Biru Dingin (`#4A6FA5` — 6500K Kelvin Cold Shard)**:
+2. **Biru Dingin (`#4A6FA5` & `#7EE8FA` — 6500K Kelvin Cold Shard)**:
    Mewakili Kutukan Pudar, kristal es memori, dan keputusasaan. Memancarkan uap beku dan pendaran emissive kristal pada lengan kiri Kaelen.
 3. **Netral Gelap (`#2A211C` — Dark Neutral Stone)**:
    Mewakili batuan dungeon kuno, tanah fana, bayangan, pakaian kelana, dan penentu atmosferik kegelapan 3D.
@@ -44,13 +47,14 @@ Seluruh perancangan seni visual 3D, pencahayaan, shader, dan material wajib tund
 ### 1.4 Arsitektur Pipeline 3D (Blender 5.2 LTS + Unreal Engine 5)
 Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
 - **Blender 5.2 LTS (3D Modeler & Rigger)**:
-  - Memodelkan karakter high-detail proporsional (1:6.5–1:7) bergaya anime semi-realistis (*FF7 Remake Grade*).
-  - Rigging armature biomekanik lengkap (jari, lengan, kaki, spine) dan rantai tulang syal dinamis (*spring bones*).
-  - Material PBR / Cel Stylized (transmissive crystal ice, emissive gold fabric, weathered leather).
+  - Memodelkan karakter high-detail proporsional (1:6.8) bergaya anime semi-realistis (*FF7 Remake / Kena Grade*).
+  - Rigging armature biomekanik lengkap (jari, lengan, kaki, spine) dan rantai tulang syal dinamis (*spring bones* 5-chain).
+  - Material PBR / Stylized (transmissive crystal ice, emissive gold fabric, weathered leather).
   - Ekspor glTF 2.0 / FBX deterministik ($+Z$ up / forward) ke Unreal Engine 5.
 - **Unreal Engine 5 (Game Engine & Systems)**:
-  - Rendering 3D modern (Lumen Lighting, Nanite, Niagara Particles untuk uap es & percikan lentera).
-  - Character Controller 3D (Third-Person Action Combat FSM).
+  - Rendering 3D modern (Lumen Lighting, Nanite, Niagara Particles untuk uap es & percikan hangat lentera).
+  - Character Controller 3D dengan *Adaptive Dynamic Camera* (Eksplorasi FOV 78° vs Duel Lock-On FOV 70°).
+  - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 3 frame.
   - Dynamic Cloth Simulation pada Syal Aina dan jubah.
 
 ---
@@ -59,11 +63,13 @@ Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
 
 1. **Observability-First Mandate (Inspeksi Sebelum Mutasi)**: Tool pembaca status dan pelacak error WAJIB dipanggil SEBELUM mengeksekusi modifikasi file, mesh, atau shader.
 2. **Wajib Bukti Fisik Konkret (Artifact-Driven)**: Dilarang keras mengklaim "selesai" hanya melalui narasi teks. Setiap klaim selesai WAJIB disertai bukti fisik konkret: path file aktual di disk, data numerik tool call, atau screenshot render 3D aktual.
-3. **Kepatuhan Standar Komersial (Steam-Ready Grade Compliance)**:
-   - Performa solid 60 FPS lock ($99^{th}\text{ percentile frame time} < 16.6\text{ ms}$).
-   - Zero fatal errors, zero broken asset dependencies.
-4. **Disiplin Peran Hub-and-Spoke**: Seluruh koordinasi dilakukan terarah dengan fokus alat utama pada **Blender 5.2 LTS** dan **Unreal Engine 5**.
-5. **Kepatuhan Dokumen Master & Filosofi The Triad**: Seluruh perancangan aset 3D wajib patuh pada palet *The Triad* (`#F4B860`, `#4A6FA5`, `#2A211C`) serta Kitab Visi Kreatif.
+3. **Kepatuhan Standar Komersial (Steam-Ready Grade & 6-DoD Compliance)**:
+   - Wajib memenuhi checklist **6 Pilar Definition of Done (DoD)** sesuai [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) (Model 3D, Material, Rigging/Animasi, Audio, Level, dan Gameplay).
+   - Performa solid 60 FPS lock ($99^{th}\text{ percentile frame time} < 16.6\text{ ms}$) dan zero blocking bugs.
+4. **Disiplin Peran Hub-and-Spoke**: Seluruh koordinasi dilakukan terarah dengan fokus alat utama pada **Blender 5.2 LTS (Port 8097)** dan **Unreal Engine 5 (Python Scripting MCP)** sesuai [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/tools-mcp-stack.md).
+5. **Kepatuhan Dokumen Master & Filosofi The Triad**: Seluruh perancangan aset 3D dan sistem wajib patuh pada palet *The Triad* (`#F4B860`, `#4A6FA5`, `#2A211C`), Master GDD ([game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md)), Master Theory Bible ([theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md)), Kitab Visi Kreatif ([creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md)), serta Rantai Tools ([tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/tools-mcp-stack.md)).
+
+
 
 ---
 
