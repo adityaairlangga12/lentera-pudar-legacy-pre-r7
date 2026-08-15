@@ -205,17 +205,74 @@ res://
 
 ---
 
-## BAB V: WORKFLOW OPERASIONAL & PERINTAH KHUSUS
+## BAB V: WORKFLOW OPERASIONAL, ROADMAP PRODUKSI & PERINTAH KHUSUS
 
-1. **Pipeline Karakter Jalur B (Blender ➔ Godot)**:
-   - **Fase 0a–0d (Observability & Proof of Concept)**: Uji koneksi MCP Blender ➔ Mesh primitif low-poly ➔ Ekspor glTF ➔ Import ke Godot SubViewport Orthogonal ➔ Verifikasi screenshot.
-   - **Fase 1–5 (Produksi Karakter)**: Pemodelan low-poly Kaelen (300–1000 tris) ➔ Rigging Armature ➔ Perakitan scene Godot ➔ Procedural gait & spring-damper syal ➔ Integrasi combat keyframe.
-   - **Fase Integrasi Gap**: Binding shader live `CursedHand.gdshader` ke *Curse Meter* + Asset variant *The Fading Scarf* + Dual-layer room *Echoes of the Past*.
-   - **Vertical Slice**: Penyelesaian Sektor 1 (Denial) sebagai pembuktian pipeline penuh.
-2. **Perintah Operasional Khusus**:
-   - `/cross-check-docs`: Menjalankan audit konsistensi silang antara dokumen lore, GDD, AGENTS.md, dan file skill.
-   - `/qc-check`: Menjalankan checklist inspeksi kualitas 4 lapis (The 4-Tier Commercial Gate) terhadap scene/aset yang baru selesai dibangun.
-   - `/learn`: Mengabadikan solusi teknis atau preferensi kreatif kompleks dari pengguna ke dalam repositori memori/skill proyek.
+### 5.1 Roadmap Produksi Bertahap (Jalur B: 3D-to-Pixel Hybrid RPG)
+
+```mermaid
+flowchart TD
+    F0["FASE 0: Proof of Concept Pipeline & Observability Gate"]
+    F1["FASE 1: High-Fidelity Low-Poly Modeling Kaelen (Blender 5.2)"]
+    F2["FASE 2: Biomechanical Rigging & Scarf Spring-Damper"]
+    F3["FASE 3: Godot 4.7 Scene Assembly, Procedural Gait & Cel-Shading"]
+    F4["FASE 4: Combat FSM, Hit-Stop & Circular Replay Buffer"]
+    F5["FASE 5: Aseprite UI 9-Slice, HUD & Hard-Edge FX Flipbooks"]
+    VS["VERTICAL SLICE: Sektor 1 (Denial) Steam-Ready Playable Demo"]
+
+    F0 --> F1 --> F2 --> F3 --> F4 --> F5 --> VS
+```
+
+1. **Fase 0: Proof of Concept Pipeline & Observability Gate**
+   - **0a (Observability)**: Validasi status koneksi live 3-MCP suite (Blender 8097, Godot 8098, Aseprite 8099).
+   - **0b (Dummy Mesh)**: Generate low-poly test dummy (300–1000 tris) di Blender 5.2 dengan flat material *The Triad* (`#F4B860`, `#4A6FA5`, `#2A211C`).
+   - **0c (glTF Export)**: Ekspor glTF 2.0 deterministik ($+Z$ forward) & validasi integritas struktur file.
+   - **0d (SubViewport Pixelation)**: Rakit scene test di Godot 4.7.1 (`SubViewport` 320x180 + `Camera3D Orthogonal` 25° + `CelShader.gdshader`) ➔ Verifikasi screenshot Tier 1 Visual QC.
+
+2. **Fase 1: Pemodelan Low-Poly Kaelen (Blender 5.2 LTS)**
+   - Proporsi Chibi 1:3.2 (Tinggi total ~3.2x tinggi kepala).
+   - Detail Asimetris: Lengan kiri urat es kristal (`#4A6FA5`), lengan kanan kulit kusam (`#2A211C`), penutup mata kanan hitam (`#141013`), syal melingkar leher (`#F4B860`).
+   - Batasan Poligon: 300 s.d. 1000 tris (optimal untuk pixelation 32x32px).
+
+3. **Fase 2: Biomechanical Armature Rigging & Bone Roll Alignment**
+   - Hierarki Armature: `root` ➔ `hips` ➔ `spine` ➔ `chest` ➔ `neck` ➔ `head`.
+   - Rantai Syal: 4-bone chain (`scarf_01` s.d. `scarf_04`) untuk simulasi spring-damper.
+   - Validasi Bone Roll: Zero twist pada sumbu sendi siku dan lutut.
+
+4. **Fase 3: Perakitan Scene Godot, Procedural Locomotion & Shader Binding**
+   - Integrasi `Player.tscn` dengan `SubViewportContainer` filter `Nearest`.
+   - Procedural Sinusoidal Gait pada `Skeleton3D` (ayunan langkah natural tanpa *foot sliding*).
+   - Binding live `CursedHand.gdshader` ke *Curse Meter* via GDScript typed.
+
+5. **Fase 4: Finite State Machine (FSM) & Combat Feel**
+   - State: `Idle`, `Walk`, `BarePunch`, `CursedStrike`, `Dash`, `HitStun`, `Death`.
+   - Combat Juice: *Hit-Stop* 3-frame (0.05s jeda frame), screen shake 2D, circular replay buffer 60 frame untuk parry window.
+
+6. **Fase 5: Aseprite UI, HUD & Hard-Edge FX Flipbooks**
+   - UI 9-Slice Panels, Status Syal Aina HUD, Bar Curse Meter, Wheel Stamina.
+   - FX Flipbook: Tebasan es, percikan api lentera, hit-flash 1-frame putih.
+
+7. **Vertical Slice Milestone**:
+   - Penyelesaian Sektor 1 (*Denial*) lengkap dengan puzzle altar duka, dialog Dialogic 2, encounter musuh Crystallized Echoes, dan boss fight pertama.
+
+---
+
+### 5.2 Perintah Operasional Khusus (Slash Commands)
+
+- **/cross-check-docs**: Menjalankan audit konsistensi silang 100% antara dokumen lore, GDD, ADR, dan kode implementasi.
+- **/qc-check**: Menjalankan checklist inspeksi kualitas 4 lapis (*The 4-Tier Commercial Gate*) terhadap scene/aset yang baru selesai dibangun.
+- **/learn**: Mengabadikan solusi teknis, arsitektur baru, atau preferensi estetika unik dari pengguna ke dalam repositori memori/skill proyek.
+- **/grill-me**: Membuka sesi wawancara interaktif mendalam untuk menguji, memvalidasi, dan menyempurnakan keputusan desain mekanik sebelum mulai dikerjakan.
+- **/goal**: Menjalankan instruksi berskala besar secara komprehensif, teliti, dan tuntas hingga seluruh kriteria verifikasi terpenuhi.
+
+---
+
+### 5.3 Siklus Kerja Sub-Fase Mandiri (Execution Life-Cycle per Turn)
+Setiap giliran kerja sub-agent wajib melalui 5 tahapan deterministik:
+1. **INSPECT**: Memanggil tool observabilitas untuk membaca state awal.
+2. **PLAN**: Menyatakan sub-langkah konkret yang akan dijalankan.
+3. **EXECUTE**: Menjalankan pemanggilan tool MCP teknis atau penulisan kode.
+4. **VERIFY**: Memeriksa file fisik di disk dan validasi data numerik/visual.
+5. **REPORT**: Menyajikan laporan ringkas faktual dengan tautan file fisik (`file:///...`).
 
 ---
 
