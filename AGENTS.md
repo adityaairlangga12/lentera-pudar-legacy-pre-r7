@@ -35,6 +35,7 @@
    - `D:\GodotProjects\Lentera-Pudar`
    - `D:\GodotProjects\lentera-godot-mcp`
    - `D:\GodotProjects\lentera-aseprite-mcp`
+   - `D:\GodotProjects\lentera-blender-mcp`
 
 ---
 
