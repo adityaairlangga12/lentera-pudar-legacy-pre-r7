@@ -16,7 +16,7 @@ Variabel yang wajib disimpan antar sesi bermain:
 - `unlocked_dungeon_sectors: Array[int]`.
 - `current_player_stats: Dictionary`.
 
-### Implementasi Menggunakan `ResourceSaver`:
+### Implementasi Protokol Atomic Write (Steam Cloud Compliant):
 ```gdscript
 class_name SaveData extends Resource
 
@@ -24,14 +24,46 @@ class_name SaveData extends Resource
 @export var scarf_stage: int = 1
 @export var curse_evolution_path: String = "Neutral"
 @export var sector_progress: int = 1
+@export var player_stats: Dictionary = {}
 
-func save_to_disk(slot_name: String = "save_01.tres") -> Error:
-    return ResourceSaver.save(self, "user://" + slot_name)
+func save_atomic(slot_id: int = 1) -> Error:
+    var save_dir = "user://saves/"
+    DirAccess.make_dir_recursive_absolute(save_dir)
+    var tmp_path = save_dir + "slot_%d.tmp" % slot_id
+    var dat_path = save_dir + "slot_%d.dat" % slot_id
+    var bak_path = save_dir + "slot_%d.bak" % slot_id
+    
+    # 1. Tulis ke file sementara .tmp
+    var err = ResourceSaver.save(self, tmp_path)
+    if err != OK:
+        return err
+        
+    # 2. Backup file .dat lama ke .bak (jika ada)
+    if FileAccess.file_exists(dat_path):
+        DirAccess.copy_absolute(dat_path, bak_path)
+        
+    # 3. Atomic rename dari .tmp ke .dat
+    DirAccess.rename_absolute(tmp_path, dat_path)
+    return OK
 
-static func load_from_disk(slot_name: String = "save_01.tres") -> SaveData:
-    var path = "user://" + slot_name
-    if ResourceLoader.exists(path):
-        return ResourceLoader.load(path) as SaveData
+static func load_with_failover(slot_id: int = 1) -> SaveData:
+    var save_dir = "user://saves/"
+    var dat_path = save_dir + "slot_%d.dat" % slot_id
+    var bak_path = save_dir + "slot_%d.bak" % slot_id
+    
+    # 1. Coba muat file utama .dat
+    if ResourceLoader.exists(dat_path):
+        var res = ResourceLoader.load(dat_path) as SaveData
+        if res != null:
+            return res
+            
+    # 2. Failover recovery: Muat dari berkas cadangan .bak jika .dat korup
+    if ResourceLoader.exists(bak_path):
+        var backup_res = ResourceLoader.load(bak_path) as SaveData
+        if backup_res != null:
+            return backup_res
+            
+    # 3. Return data baru jika belum ada save file
     return SaveData.new()
 ```
 
