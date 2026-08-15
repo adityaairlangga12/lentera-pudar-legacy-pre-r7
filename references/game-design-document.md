@@ -156,8 +156,9 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 - **Infrastruktur Ekosistem**:
   - **Git LFS**: Mengelola aset biner (`.blend`, `.aseprite`, `.wav`, `.png`).
   - **GUT (Godot Unit Test)**: Pengujian unit otomatis untuk *Curse Meter*, formula damage, dan kalkulasi branching ending.
+  - **Quality Control (QC Gate)**: Mengadopsi **The 4-Tier Commercial Gate** (Visual Fidelity 4K, 60 FPS 0-Error Runtime, Multi-Controller & Steam Compliance, 100% GUT Test Pass).
   - **Dialogic 2**: Integrasi editor dialog dan sistem percabangan naratif.
-  - **Save/Load System**: Serialisasi `ResourceSaver` untuk persistensi data *The Fading Scarf* dan progres dungeon antar sesi.
+  - **Atomic Save/Load System**: Protokol penulisan simpanan atomic anti-korupsi (`.tmp` ➔ SHA-256 Checksum ➔ `.bak` backup ➔ `.dat`) untuk persistensi data *The Fading Scarf* dan progres dungeon antar sesi (Steam Cloud Ready).
 - **Target MVP (Vertical Slice)**: Menyelesaikan secara sempurna **Karakter Kaelen + Sektor 1 (Denial) + Bos Lord Alden + Mekanik Dual-Layer Echoes of the Past + Audio/Lighting Pipeline** sebelum melakukan ekspansi ke sektor 2–5.
 
 ---

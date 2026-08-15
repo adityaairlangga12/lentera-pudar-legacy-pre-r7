@@ -112,6 +112,7 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   1. **Version Control**: Git dengan konfigurasi **Git LFS** aktif untuk file biner besar (`.aseprite`, `.blend`, `.png`, `.wav`).
   2. **Testing Logic**: Pemanfaatan **GUT (Godot Unit Test)** untuk menguji Curse Meter, damage calculation, dan branching 3 ending secara otomatis.
   3. **Dialog & Narasi**: Mengadopsi **Dialogic 2** sebagai editor percabangan teks dan lore.
-  4. **Save/Load System**: Menggunakan `ResourceSaver`/`ResourceLoader` untuk persistensi state *The Fading Scarf* dan *Dual Evolution Tree*.
-  5. **Roadmap MVP**: Mengunci target produksi awal pada *Vertical Slice Sektor 1 (Denial)* sebagai pembuktian pipeline penuh sebelum ekspansi 5 sektor.
-- **Dampak**: Proses pengembangan terukur, minim regresi bug, dan siap rilis PC Windows.
+  4. **Save/Load System**: Menggunakan protokol **Atomic Write (SHA-256 Checksum + Dual-Slot .tmp/.bak)** untuk persistensi state *The Fading Scarf* dan *Dual Evolution Tree* anti-korupsi data.
+  5. **Quality Control Standard**: Menerapkan **The 4-Tier Commercial Gate** untuk memastikan kelayakan rilis komersial di Steam/PC.
+  6. **Roadmap MVP**: Mengunci target produksi awal pada *Vertical Slice Sektor 1 (Denial)* sebagai pembuktian pipeline penuh sebelum ekspansi 5 sektor.
+- **Dampak**: Proses pengembangan terukur, data save aman dari crash/power-loss, zero regression bug, dan siap rilis komersial di Steam.
