@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfk8v9tq2e1"]
+
+[ext_resource type="PackedScene" path="res://Assets/Models/test_dummy.gltf" id="1_dummy"]
+[ext_resource type="Script" path="res://Scripts/Core/QCSceneRunner.gd" id="2_qc"]
+
+[node name="TestPixelationPipeline" type="Node2D"]
+script = ExtResource("2_qc")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.101961, 0.0745098, 0.0627451, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 400.0
+offset_bottom = 225.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="World3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/World3D"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 2.8)
+projection = 1
+size = 2.4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/World3D"]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 3, 0)
+light_energy = 1.2
+
+[node name="TestDummyModel" parent="SubViewportContainer/SubViewport/World3D" instance=ExtResource("1_dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ScarfLight2D" type="PointLight2D" parent="."]
+position = Vector2(240, 135)
+color = Color(0.956863, 0.721569, 0.376471, 1)
+energy = 0.85
