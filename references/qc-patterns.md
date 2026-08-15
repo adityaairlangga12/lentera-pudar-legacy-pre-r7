@@ -72,3 +72,22 @@ Dokumen ini adalah rekam jejak kegagalan kontrol kualitas (*Quality Control fail
   1. Menjalankan `apply_all_transforms` dan `validate_bone_roll_consistency` di Blender sebelum ekspor glTF.
   2. Memverifikasi orientasi rest pose pada importer Godot.
 - **Langkah Preventif**: Setiap file glTF yang baru diekspor wajib divalidasi via tool `validate_export` sebelum dirakit ke scene Godot.
+
+### PATTERN-005: Unhandled Window Focus Loss & Audio Popping (Alt-Tab Stutter)
+- **Tanggal**: 2026-08-15
+- **Kategori**: Platform & Compliance QC (Steam Release Standard)
+- **Komponen Terdampak**: `Main.gd`, `AudioManager.gd`
+- **Gejala / Error**: Saat pemain menekan Alt-Tab atau meminimalkan game, musik terus berputar patah-patah (*stuttering audio glitch*) atau game tetap berjalan di latar belakang hingga pemain terbunuh musuh.
+- **Akar Masalah**: Tidak adanya penanganan sinyal `MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT` dan `NOTIFICATION_APPLICATION_FOCUS_IN` dari Godot OS window manager.
+- **Tindakan Perbaikan (Fix)**: Mengimplementasikan auto-pause scene tree dan audio bus muting saat window kehilangan fokus.
+- **Langkah Preventif**: Tier 3 QC wajib menguji window focus toggle (Alt-Tab) pada mode Fullscreen, Borderless, dan Windowed.
+
+### PATTERN-006: Non-Atomic Save File Power-Loss Corruption (Steam Cloud Risk)
+- **Tanggal**: 2026-08-15
+- **Kategori**: Consistency & Save-State QC (Steam Release Standard)
+- **Komponen Terdampak**: `SaveSystem.gd`, `user://saves/`
+- **Gejala / Error**: Save file rusak (*corrupted / 0-byte file*) jika PC mati mendadak, listrik padam, atau game crash di tengah penulisan save.
+- **Akar Masalah**: Penulisan langsung ke file target utama tanpa file temporary (`.tmp`), checksum hash validation, dan berkas cadangan (`.bak`).
+- **Tindakan Perbaikan (Fix)**: Menerapkan skema **Atomic Write**: Tulis payload ke `save.tmp` ➔ Hitung SHA-256 Checksum ➔ Salin `save.dat` lama ke `save.bak` ➔ Rename `save.tmp` menjadi `save.dat`.
+- **Langkah Preventif**: Tier 3 QC wajib menguji recovery test dengan menyimulasikan save file yang tidak lengkap.
+
