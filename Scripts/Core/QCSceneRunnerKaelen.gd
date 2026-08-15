@@ -29,24 +29,25 @@ func _process(_delta: float) -> void:
 	_frame_in_dir += 1
 	
 	if _frame_in_dir == 6:
-		var tex: Texture2D = _viewport.get_texture()
-		if tex != null:
-			var img: Image = tex.get_image()
-			if img != null:
-				# Full-Body Unclipped Frame (110x150 px)
-				var center_x: int = _viewport.size.x / 2
-				var center_y: int = _viewport.size.y / 2
-				var crop_w: int = 110
-				var crop_h: int = 150
-				var src_rect: Rect2i = Rect2i(center_x - crop_w / 2, center_y - crop_h / 2, crop_w, crop_h)
-				var cropped_img: Image = Image.create(crop_w, crop_h, false, Image.FORMAT_RGBA8)
-				cropped_img.blit_rect(img, src_rect, Vector2i.ZERO)
-				_captured_images.append(cropped_img)
-				
-				var dir_name = DIRECTIONS[_dir_idx]["name"].split(" ")[0].to_lower()
-				var ind_path = "res://qc_kaelen_dir_%s.png" % dir_name
-				cropped_img.save_png(ProjectSettings.globalize_path(ind_path))
-				print("Captured Kaelen V3 direction: ", DIRECTIONS[_dir_idx]["name"])
+		var root_vp: Viewport = get_viewport()
+		if root_vp != null:
+			var tex: Texture2D = root_vp.get_texture()
+			if tex != null:
+				var img: Image = tex.get_image()
+				if img != null:
+					# Screen center of SubViewportContainer (pos 80, 45 + size 320/2, 180/2 = 240, 135)
+					var screen_center_x: int = 240
+					var screen_center_y: int = 135
+					var crop_w: int = 110
+					var crop_h: int = 150
+					var src_rect: Rect2i = Rect2i(screen_center_x - crop_w / 2, screen_center_y - crop_h / 2, crop_w, crop_h)
+					var cropped_img: Image = Image.create(crop_w, crop_h, false, Image.FORMAT_RGBA8)
+					cropped_img.blit_rect(img, src_rect, Vector2i.ZERO)
+					_captured_images.append(cropped_img)
+					var dir_name = DIRECTIONS[_dir_idx]["name"].split(" ")[0].to_lower()
+					var ind_path = "res://qc_kaelen_dir_%s.png" % dir_name
+					cropped_img.save_png(ProjectSettings.globalize_path(ind_path))
+					print("Captured Kaelen V3 direction: ", DIRECTIONS[_dir_idx]["name"])
 				
 		_dir_idx += 1
 		_frame_in_dir = 0
