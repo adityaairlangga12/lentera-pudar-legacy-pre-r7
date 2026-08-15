@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8v2q1m4k8p0"]
 
 [ext_resource type="Script" path="res://Scripts/Core/PlayerController.gd" id="1_player"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Kaelen_TopDown_Master_Sheet.png" id="2_sheet"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Kaelen_Master_Golden_Sheet.png" id="2_sheet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
 radius = 10.0
@@ -41,4 +41,4 @@ position = Vector2(0, -24)
 color = Color(0.957, 0.722, 0.376, 1)
 energy = 1.35
 texture = SubResource("GradientTexture2D_light")
-texture_scale = 2.0
+texture_scale = 2.2
