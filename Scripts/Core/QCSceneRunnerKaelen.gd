@@ -34,9 +34,9 @@ func _process(_delta: float) -> void:
 			var img: Image = tex.get_image()
 			if img != null:
 				var center_x: int = _viewport.size.x / 2
-				var center_y: int = 42
-				var crop_w: int = 80
-				var crop_h: int = 106
+				var center_y: int = _viewport.size.y / 2
+				var crop_w: int = 88
+				var crop_h: int = 128
 				var src_rect: Rect2i = Rect2i(center_x - crop_w / 2, center_y - crop_h / 2, crop_w, crop_h)
 				var cropped_img: Image = Image.create(crop_w, crop_h, false, Image.FORMAT_RGBA8)
 				cropped_img.blit_rect(img, src_rect, Vector2i.ZERO)
@@ -61,8 +61,8 @@ func _create_composite_showcase() -> void:
 		return
 		
 	var padding: int = 10
-	var card_w: int = 80
-	var card_h: int = 106
+	var card_w: int = 88
+	var card_h: int = 128
 	var total_w: int = (card_w + padding) * 8 + padding
 	var total_h: int = card_h + padding * 2
 	
