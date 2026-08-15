@@ -22,20 +22,24 @@
 
 ---
 
-## BAB II: PRINSIP DASAR & INTEGRITAS TEKNIS (ANTI-THEATER PROTOCOL)
+## BAB II: PRINSIP DASAR & INTEGRITAS TEKNIS (ANTI-THEATER & PRODUCTION PROTOCOL)
 
-1. **Observability Sebelum Kemampuan**: Tool untuk "melihat status/hasil saat ini" (`render_viewport_screenshot`, `capture_viewport_screenshot`, `capture_canvas_as_image`) dan tool pelacak error (`get_console_output`, `get_last_error`) WAJIB berfungsi dan dipanggil SEBELUM mengeksekusi tool modifikasi yang lebih kompleks.
-2. **Wajib Bukti Konkret (Artifact-Driven)**: Dilarang mengklaim "selesai" tanpa menyertakan bukti nyata — path file yang dibuat/diedit, log tool call, atau screenshot aktual. Laporan naratif tanpa artifact dianggap **TIDAK VALID**.
-3. **Anti-Percaya Klaim Sendiri**: Dilarang mempercayai klaim "sudah selesai" dari giliran percakapan sebelumnya secara membabi buta. Setiap kali diminta verifikasi, periksa kondisi file/state aktual di filesystem.
-4. **Granular & Bertahap (Jangan Lompat Tier)**: Satu tool call = satu aksi kecil yang terisolasi dan mudah di-rollback. Setiap fase (Fase 0a–0d ➔ Fase 1–5) harus terbukti stabil (berhasil berulang) sebelum lanjut ke fase berikutnya.
-5. **Verifikasi Deterministik Selalu Jadi Sumber Kebenaran Akhir**: Vision/screenshot adalah alat bantu evaluasi cepat; validasi data numerik (posisi, ukuran, hierarki bone, status kode) adalah acuan mutlak.
-6. **Disiplin Peran & Wewenang**: Setiap peran/sub-agent hanya bekerja dalam wewenang dan tool yang telah di-assign.
-7. **Larangan Keras Roleplay Teater**: Dilarang menggunakan persona fiktif, sebutan berlebihan, atau mensimulasikan rapat multi-agent palsu dalam satu teks prompt. Semua koordinasi harus berupa pemanggilan tool, penulisan artifact, atau laporan teknis faktual.
-8. **Sinkronisasi Lintas Direktori Ekosistem**: Setiap perubahan arsitektur disinkronkan secara konsisten di seluruh ekosistem proyek:
-   - `D:\GodotProjects\Lentera-Pudar`
-   - `D:\GodotProjects\lentera-godot-mcp`
-   - `D:\GodotProjects\lentera-aseprite-mcp`
-   - `D:\GodotProjects\lentera-blender-mcp`
+1. **Observability-First Mandate (Inspeksi Sebelum Mutasi)**: Tool pembaca status (`get_scene_state`, `list_objects`, `get_editor_status`, `get_debug_output`) dan pelacak error (`get_console_output`, `get_last_error`) WAJIB dipanggil SEBELUM mengeksekusi modifikasi file, node, mesh, atau shader. Dilarang melakukan mutasi secara buta tanpa mengetahui state awal.
+2. **Wajib Bukti Fisik Konkret (Artifact-Driven)**: Dilarang keras mengklaim "selesai" hanya melalui narasi teks. Setiap klaim selesai WAJIB disertai bukti fisik konkret: path file aktual di disk, data numerik tool call (vertices, tris, bones, FPS), atau screenshot QC aktual. Laporan tanpa artifact dianggap **TIDAK VALID**.
+3. **Anti-Klaim Buta & Verifikasi Deterministik State**: Dilarang mempercayai klaim "sudah selesai" dari giliran sebelumnya tanpa verifikasi ulang. Validasi data deterministik (posisi 3D, rest pose $+Z$, integritas UID, hash sha256) adalah acuan mutlak.
+4. **Alur Granular 4-Tier & Larangan Lompat Fase (Phase-Gated Execution)**: Satu giliran kerja = satu sub-fase terisolasi yang dapat diuji dan di-rollback. Setiap fase (Fase 0a–0d ➔ Fase 1–5) harus terbukti stabil (berhasil berulang) sebelum lanjut ke fase berikutnya.
+5. **Kepatuhan Standar Komersial (Steam-Ready Grade Compliance)**:
+   - Skrip GDScript wajib menggunakan *Strict Static Typing* (`var x: float = 0.0`, `func move_to(target: Vector2) -> void:`).
+   - Zero Console Errors/Warnings merah, performa solid 60 FPS lock ($99^{th}\text{ percentile frame time} < 16.6\text{ ms}$), dan penulisan save atomic (anti-korupsi).
+6. **Disiplin Peran Hub-and-Spoke & Wewenang Tool**: Setiap sub-agent hanya bekerja di dalam domain wewenang dan tool MCP yang telah ditentukan (3D Modeler = Blender MCP; Godot Engineer = Godot MCP; Pixel Editor = Aseprite MCP).
+7. **Larangan Keras Roleplay Teater (Zero-Theater Protocol)**: Dilarang menggunakan persona fiktif, sebutan berlebihan, atau mensimulasikan rapat obrolan multi-agent palsu dalam teks prompt. Semua koordinasi harus berupa pemanggilan tool teknis, penulisan artifact, atau laporan teknis faktual.
+8. **Sinkronisasi Lintas 4 Ekosistem Otomatis (Continuous Multi-Repo Sync)**: Setiap perubahan arsitektur, script bridge, atau tool disinkronkan secara konsisten di seluruh 4 repositori ekosistem:
+   - `D:\GodotProjects\Lentera-Pudar` (Main Game Project)
+   - `D:\GodotProjects\lentera-godot-mcp` (Godot 4.7 MCP Server)
+   - `D:\GodotProjects\lentera-aseprite-mcp` (Aseprite MCP Server)
+   - `D:\GodotProjects\lentera-blender-mcp` (Blender 5.2 LTS MCP Server)
+9. **Kepatuhan Dokumen Master & Filosofi The Triad**: Seluruh perancangan aset visual, audio, dialog, dan mekanik wajib patuh pada palet *The Triad* (`#F4B860` 2700K Kelvin, `#4A6FA5` 6500K Kelvin, `#2A211C`) serta Kitab Visi Kreatif (`references/creative-vision.md`).
+10. **Protokol Self-Correction & Rejection Pattern Logging**: Setiap kali terjadi kegagalan QC atau error teknis, akar masalah wajib dicatat ke [references/qc-patterns.md](file:///D:/GodotProjects/Lentera-Pudar/references/qc-patterns.md) beserta langkah preventif agar kesalahan yang sama tidak pernah terulang.
 
 ---
 
