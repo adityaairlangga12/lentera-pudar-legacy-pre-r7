@@ -109,10 +109,22 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Status**: Accepted (Standard Baku)
 - **Konteks**: Memastikan stabilitas repositori kode, kemudahan pengujian sistem non-visual, dan kelancaran narasi percabangan.
 - **Keputusan Terpilih**: 
-  1. **Version Control**: Git dengan konfigurasi **Git LFS** aktif untuk file biner besar (`.aseprite`, `.blend`, `.png`, `.wav`).
-  2. **Testing Logic**: Pemanfaatan **GUT (Godot Unit Test)** untuk menguji Curse Meter, damage calculation, dan branching 3 ending secara otomatis.
-  3. **Dialog & Narasi**: Mengadopsi **Dialogic 2** sebagai editor percabangan teks dan lore.
-  4. **Save/Load System**: Menggunakan protokol **Atomic Write (SHA-256 Checksum + Dual-Slot .tmp/.bak)** untuk persistensi state *The Fading Scarf* dan *Dual Evolution Tree* anti-korupsi data.
-  5. **Quality Control Standard**: Menerapkan **The 4-Tier Commercial Gate** untuk memastikan kelayakan rilis komersial di Steam/PC.
-  6. **Roadmap MVP**: Mengunci target produksi awal pada *Vertical Slice Sektor 1 (Denial)* sebagai pembuktian pipeline penuh sebelum ekspansi 5 sektor.
+  1. **Version Control**: Git dengan konfigurasi **Git LFS** aktif untuk file biner besar (`.blend`, `.gltf`, `.wav`, `.png`).
+  2. **Quality Control Standard**: Menerapkan **The 4-Tier Commercial Gate** untuk memastikan kelayakan rilis komersial di Steam/PC.
 - **Dampak**: Proses pengembangan terukur, data save aman dari crash/power-loss, zero regression bug, dan siap rilis komersial di Steam.
+
+---
+
+### ADR-013: Transisi Total Menuju 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Strategic Pivot)
+- **Konteks**: Pendekatan 2D pixel top-down memerlukan penggambaran frame-by-frame manual yang sangat masif (terutama dengan asimetri kompleks Kaelen: lengan kiri kristal es, eyepatch kanan, syal mengalir), sehingga membatasi keluwesan animasi dan kecepatan produksi.
+- **Keputusan Terpilih**: 
+  1. **Peralihan Engine**: Berpindah dari 2D/Godot menuju **3D Action RPG (Unreal Engine 5)**.
+  2. **Pipeline Visual**: Menggunakan **Blender 5.2 LTS** sebagai pusat pemodelan 3D High-Detail (gaya anime/stylized ala *Final Fantasy VII Remake / Crisis Core*), biomechanical rigging, dan animasi 3D 360°.
+  3. **Pembersihan Ekosistem 2D**: Menghapus seluruh artifak, skrip generator, spritesheet 2D, shader pixelation, dan konfigurasi MCP yang tidak relevan (Aseprite, Pixellab, Godot), dan memusatkan fokus alat pada **Blender 5.2 LTS + Unreal Engine 5**.
+- **Dampak**: 
+  - Model 3D Kaelen dimodelkan satu kali secara high-detail dan dapat dianimasikan bebas ke seluruh sudut 360 derajat.
+  - Syal Aina dan jubah dapat memanfaatkan simulasi fisika kain (*Cloth Physics & Spring Bones*) dinamis secara real-time.
+  - Pencahayaan lentera 2700K dan pendaran kristal es kutukan 6500K menghasilkan kualitas visual 3D AAA di Unreal Engine 5.
+

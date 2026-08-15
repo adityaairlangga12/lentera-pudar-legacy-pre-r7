@@ -1,44 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfk8v9tq2e1"]
+[gd_scene format=3 uid="uid://cfk8watq2e1"]
 
-[ext_resource type="PackedScene" path="res://Assets/Models/test_dummy.gltf" id="1_dummy"]
-[ext_resource type="Script" path="res://Scripts/Core/QCSceneRunner.gd" id="2_qc"]
+[ext_resource type="PackedScene" uid="uid://ulbt5knvixk4" path="res://Assets/Models/test_dummy.gltf" id="1_dummy"]
+[ext_resource type="Script" uid="uid://bp3ux1nvw2gr" path="res://Scripts/Core/QCSceneRunner.gd" id="2_qc"]
 
-[node name="TestPixelationPipeline" type="Node2D"]
+[node name="TestPixelationPipeline" type="Node2D" unique_id=1500127467]
 script = ExtResource("2_qc")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=846942370]
 offset_right = 480.0
 offset_bottom = 270.0
 color = Color(0.101961, 0.0745098, 0.0627451, 1)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1221209991]
 texture_filter = 1
 offset_left = 80.0
 offset_top = 45.0
 offset_right = 400.0
 offset_bottom = 225.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=774005868]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="World3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="World3D" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2050865874]
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/World3D"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/World3D" unique_id=2136378379]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 2.8)
 projection = 1
 size = 2.4
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/World3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/World3D" unique_id=747513371]
 transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 3, 0)
 light_energy = 1.2
 
-[node name="TestDummyModel" parent="SubViewportContainer/SubViewport/World3D" instance=ExtResource("1_dummy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="TestDummyModel" parent="SubViewportContainer/SubViewport/World3D" unique_id=518650284 instance=ExtResource("1_dummy")]
 
-[node name="ScarfLight2D" type="PointLight2D" parent="."]
+[node name="ScarfLight2D" type="PointLight2D" parent="." unique_id=310306745]
 position = Vector2(240, 135)
 color = Color(0.956863, 0.721569, 0.376471, 1)
 energy = 0.85
