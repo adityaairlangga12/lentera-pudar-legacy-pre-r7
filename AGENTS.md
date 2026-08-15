@@ -4,21 +4,58 @@
 
 ---
 
-## BAB I: IDENTITAS & DUNIA (LORE LENTERA PUDAR)
+## BAB I: IDENTITAS, LORE, FILOSOFI DUNIA & ARSITEKTUR VISUAL
 
-- **Judul Proyek**: Lentera Pudar — The First Spark (Seri Pembuka Semesta Lentera Pudar).
-- **Engine**: Godot 4.7.1, Renderer Compatibility (Platform: PC Windows, Kontrol: Keyboard + Mouse).
-- **Arsitektur Visual**: **Jalur B (Hybrid 3-MCP)** — Karakter low-poly 3D (300–1000 tris) di Blender 5.2 LTS ➔ Render via `Camera3D Orthogonal` ke `SubViewport` resolusi rendah + Filter `Nearest` + Cel-Shader di Godot 4.7.1 untuk menghasilkan pixel art 32x32px yang berbobot. Aset UI, Tileset Dungeon, dan FX Flipbook Hard-Edge dibuat di Aseprite.
-- **Warna & Rendering (The Triad of Lentera Pudar)**: 
-  - Kuning Hangat (`#F4B860` — 2700K Kelvin): Jiwa Aina (Syal Lentera), api hangat, sumber harapan dan cinta. Memancarkan cahaya dinamis via `PointLight2D`.
-  - Biru Dingin (`#4A6FA5` — 6500K Kelvin): Kutukan Pudar, kristal es memori masa lalu, urat beku tangan kiri Kaelen. Diperkuat efek animasi denyut live via `ShaderMaterial` (`CursedHand.gdshader`) yang di-bind ke *Curse Meter*.
-  - Netral Gelap (`#2A211C`): Batuan dungeon, reruntuhan makam kuno, bayangan, pakaian kelana, penentu atmosfer via `CanvasModulate`.
-- **Lore Inti & Karakter**:
-  - **Kutukan Pudar**: Entropi emosional (*Apathy Plague*) di mana manusia yang putus asa memilih mati rasa dan membeku menjadi patung kristal es biru berisi kenangan masa lalu.
-  - **Kaelen (Protagonis)**: Pengelana *class-less* berambut abu-abu acak yang membawa penyesalan masa lalu. Tangan kirinya dibalut kristal es beku Kutukan Pudar, dan mata kanannya mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku. Mengenakan tali selempang kantung kelana (*baldric harness*). Bertarung dengan tangan kosong (*Bare Hand Punch* + *Cursed Palm Strike*).
-  - **Aina (Jiwa Syal Lentera)**: Jiwa pengorbanan yang merobek eksistensinya menjadi syal api kuning abadi di leher Kaelen. Syal memendek secara permanen dalam 4 tahap (*The Fading Scarf*) seiring altar dungeon dinyalakan.
-  - **5 Sektor Dungeon**: Dirancang memetakan 5 Tahapan Berduka (*Denial, Anger, Bargaining, Depression, Acceptance*).
-  - **Visi Semesta**: Game 1 adalah perjalanan penyembuhan duka di dungeon bawah tanah yang membuka gerbang ke Benua Luar beku (*Overworld*) untuk sekuel *Lentera Pudar 2: The Frozen Horizon*.
+### 1.1 Identitas Proyek & Spesifikasi Teknis
+- **Judul Resmi**: *Lentera Pudar — The First Spark* (Seri Pembuka Semesta Lentera Pudar).
+- **Genre**: 2D/3D Hybrid Action-Adventure Pixel RPG (Melankolis-Hangat / Poetic Dark Fantasy).
+- **Target Platform**: PC Windows (Steam-Ready), Steam Deck, dan Controller Support penuh.
+- **Engine**: Godot 4.7.1 (Renderer Compatibility / Forward+ ready).
+- **Resolusi Rendering**:
+  - Viewport Render Internal: $480 \times 270$ (atau $320 \times 180$ untuk pixelation ultra-retro).
+  - Skala Tampilan (Window Override): $1920 \times 1080$ (Integer Scaling 4x / 6x pixel-perfect tanpa blur).
+
+### 1.2 Lore Inti, Karakter & Metafora 5 Tahapan Berduka
+- **Kutukan Pudar (The Fading Curse / Apathy Plague)**:
+  Fenomena entropi emosional di mana manusia yang mengalami duka mendalam dan keputusasaan memilih mati rasa (*emotional apathy*). Mereka membeku perlahan menjadi patung kristal es biru berisi fragmen ingatan masa lalu yang terperangkap dalam siklus penderitaan abadi.
+- **Kaelen (Protagonis — Sang Pengelana Duka)**:
+  Pengelana *class-less* berambut abu-abu acak yang memikul rasa bersalah atas tragedi masa lalu.
+  - **Lengan Kiri**: Membeku total dibalut kristal es kutukan (`#4A6FA5`), berdenyut reaktif via shader seiring meningkatnya *Curse Meter*.
+  - **Mata Kanan**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku.
+  - **Pakaian**: Jubah kelana usang (`#2A211C`) dengan tali selempang kantung (*baldric harness*).
+  - **Combat Style**: Bertarung tangan kosong (*Bare Hand Punch* + *Cursed Palm Strike*).
+- **Aina (Jiwa Syal Lentera — Sang Pelindung Abadi)**:
+  Sahabat sekaligus belahan jiwa Kaelen yang mengorbankan wujud fisiknya menjadi syal api kuning abadi di leher Kaelen.
+  - **The Fading Scarf**: Syal memancarkan cahaya hangat (`#F4B860` 2700K). Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*). Altar membawa harapan bagi dungeon, namun secara bertahap mengikis eksistensi fisik Aina.
+- **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief)**:
+  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku di mana roh menolak kenyataan bahwa mereka telah tiada.
+  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak.
+  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir.
+  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total.
+  5. **Sektor 5: Acceptance (Penerimaan)** — *The Dawning Altar*: Puncak rekonsiliasi emosional Kaelen dan Aina, membuka gerbang keluar dungeon menuju Benua Luar (*Overworld*).
+- **Visi Semesta (The Franchise Vision)**:
+  *Game 1 (The First Spark)* adalah perjalanan penyembuhan duka di labirin bawah tanah yang membuka gerbang ke Benua Luar beku untuk sekuel epik *Lentera Pudar 2: The Frozen Horizon*.
+
+### 1.3 Teori Warna & Kontras Suhu Kelvin (The Triad of Lentera Pudar)
+Seluruh perancangan seni visual, pencahayaan, shader, dan material wajib tunduk pada **Hukum Tiga Warna (The Triad)**:
+1. **Kuning Hangat (`#F4B860` — 2700K Kelvin Warm Emissive)**:
+   Mewakili Jiwa Aina, api syal lentera, sumber harapan, dan cinta tanpa pamrih. Memancarkan cahaya dinamis lembut via `PointLight2D`.
+2. **Biru Dingin (`#4A6FA5` — 6500K Kelvin Cold Shard)**:
+   Mewakili Kutukan Pudar, kristal es memori, dan keputusasaan. Memancarkan uap beku dan denyut shader live pada lengan kiri Kaelen.
+3. **Netral Gelap (`#2A211C` — Dark Neutral Stone)**:
+   Mewakili batuan dungeon kuno, tanah fana, bayangan, pakaian kelana, dan penentu atmosferik kegelapan via `CanvasModulate`.
+
+### 1.4 Arsitektur Visual Jalur B (Hybrid 3-MCP Rendering Pipeline)
+Proyek ini mengadopsi pipeline visual hibrida **3D Low-Poly ke Pixel Art 2D**:
+- **Blender 5.2 LTS (3D Modeler)**:
+  - Memodelkan karakter low-poly 300–1000 tris dengan proporsi Chibi 1:3.2.
+  - Rigging armature biomekanik (rantai syal 4-bone) dan verifikasi bone roll presisi.
+  - Ekspor glTF 2.0 deterministik ($+Z$ forward) ke Godot.
+- **Godot 4.7.1 (Godot Engineer)**:
+  - Merender model 3D menggunakan `Camera3D Orthogonal` (kemiringan sudut $X: -25^\circ, Y: 0^\circ$) di dalam `SubViewport` beresolusi rendah.
+  - Menerapkan filter `TEXTURE_FILTER_NEAREST` pada `SubViewportContainer` dan Cel-Shader spatial untuk menghasilkan pixel art 32x32px yang berbobot fisik, memiliki pencahayaan retro chiaroscuro 3-step, dan 100% konsisten asimetris di seluruh 8 arah kardinal.
+- **Aseprite (Pixel Editor)**:
+  - Merakit UI 9-slice, HUD status syal Aina, typography bitmap tajam, tileset autotile bitmask, dan FX flipbook hard-edge (tebasan, percikan api, hit-flash).
 
 ---
 
