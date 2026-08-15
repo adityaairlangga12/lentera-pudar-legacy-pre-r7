@@ -276,9 +276,30 @@ Setiap giliran kerja sub-agent wajib melalui 5 tahapan deterministik:
 
 ---
 
-## BAB VI: INDIKATOR EVALUASI DIRI (SELF-MONITORING)
+## BAB VI: INDIKATOR EVALUASI DIRI, DETEKSI ANOMALI & SELF-CORRECTION PROTOCOL
 
-Sistem wajib segera melakukan introspeksi jika muncul tanda-tanda berikut:
-- Seluruh tugas dilaporkan "sukses sempurna" tanpa pernah ada temuan error atau catatan perbaikan dalam durasi lama.
-- Laporan hanya berupa teks naratif panjang tanpa menyertakan path file aktual atau bukti visual tangkapan layar.
-- Mengabaikan pemeriksaan console/error (`get_console_output`, `get_last_error`) sebelum menyatakan scene/skrip siap digunakan.
+Untuk menjaga integritas teknis dan menjamin game layak rilis komersial di Steam, sistem wajib secara proaktif menjalankan **Self-Monitoring Reflex** di setiap giliran kerja.
+
+### 6.1 Daftar Gejala Bahaya & Anomali (Red-Flag Symptoms)
+Sistem wajib segera **BERHENTI & MELAKUKAN AUDIT ULANG** jika muncul salah satu dari 6 gejala berikut:
+1. **The "Too-Perfect" Trap**: Melaporkan semua tahapan "sukses sempurna" secara berulang tanpa pernah menyertakan bukti inspeksi konsol atau data numerik aktual.
+2. **The "Ghost File" Illusion**: Mengklaim suatu scene/skrip/model telah dibuat tanpa memverifikasi keberadaan fisik file di disk via tool observabilitas atau filesystem check.
+3. **The "Narrative Theater" Regression**: Memunculkan teks fiktif atau simulasi rapat multi-agen palsu dalam prompt alih-alih mengeksekusi pemanggilan tool teknis atau penulisan kode terstruktur.
+4. **The "Silent Warning" Ignorance**: Mengabaikan warning kuning GDScript (misal: implicit cast, cyclic reference, unused parameter) yang berpotensi menyebabkan memory leak atau micro-stutter saat runtime.
+5. **The "Asymmetry Mirroring" Glitch**: Lupa memverifikasi orientasi 8-arah sehingga lengan kiri kutukan es (`#4A6FA5`) dan eyepatch kanan (`#141013`) tertukar akibat efek 2D mirroring.
+6. **The "Broken Dependency" Oversight**: Mengubah nama node, script, atau path tanpa memvalidasi keterkaitan UID pada file `.tscn` dan `.tres` terkait.
+
+### 6.2 Protokol Refleks Koreksi Diri Mandiri (Self-Correction Reflex)
+Jika terdeteksi kegagalan QC, error konsol, atau anomali teknis:
+1. **Hentikan Mutasi Baru**: Jangan menambah fitur baru di atas fondasi yang sedang error.
+2. **Isolasi Akar Masalah**: Gunakan `get_last_error()` atau `get_console_output()` untuk melacak baris kode/mesh/shader penyebab error.
+3. **Rollback / Patch**: Kembalikan ke state stabil atau terapkan perbaikan minimal yang terisolasi.
+4. **Catat ke QC Patterns**: Catat pola kegagalan ke [references/qc-patterns.md](file:///D:/GodotProjects/Lentera-Pudar/references/qc-patterns.md) beserta tindakan preventif permanen.
+
+### 6.3 Checklist Refleksi Akhir Giliran Kerja (End-of-Turn Self-Check)
+Sebelum menyerahkan respons ke pengguna, sistem wajib memastikan:
+- [ ] **Observability**: Apakah tool pembaca state telah dipanggil sebelum dan sesudah mutasi?
+- [ ] **Physical Proof**: Apakah laporan menyertakan path file aktual (`file:///...`), log numerik, atau screenshot QC?
+- [ ] **Code Hygiene**: Apakah skrip menggunakan *Strict Static Typing* dan 0 error konsol?
+- [ ] **Lore & Triad**: Apakah visual dan dialog patuh pada palet *The Triad* dan Visi Kreatif Lentera Pudar?
+
