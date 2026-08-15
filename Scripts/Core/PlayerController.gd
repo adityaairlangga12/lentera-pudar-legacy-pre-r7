@@ -2,16 +2,16 @@ extends CharacterBody2D
 class_name PlayerController
 
 @export_group("Locomotion")
-@export var speed: float = 140.0
-@export var acceleration: float = 800.0
-@export var friction: float = 1000.0
+@export var speed: float = 160.0
+@export var acceleration: float = 900.0
+@export var friction: float = 1200.0
 
 @export_group("Visuals")
-@onready var model_root: Node3D = $SubViewportContainer/SubViewport/World3D/KaelenV3Model
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var scarf_light: PointLight2D = $ScarfLight2D
 
-var _facing_direction: Vector2 = Vector2.DOWN
-var _target_angle_y: float = 0.0
+enum Direction { SOUTH = 0, NORTH = 1, EAST = 2, WEST = 3 }
+var _current_dir: Direction = Direction.SOUTH
 
 func _physics_process(delta: float) -> void:
 	var input_vector: Vector2 = Vector2.ZERO
@@ -20,23 +20,27 @@ func _physics_process(delta: float) -> void:
 	
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
-		_facing_direction = input_vector
 		velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
-		_update_model_rotation(input_vector)
+		_update_sprite_direction(input_vector)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		
 	move_and_slide()
 
-func _update_model_rotation(dir: Vector2) -> void:
-	if model_root == null:
+func _update_sprite_direction(dir: Vector2) -> void:
+	if sprite == null:
 		return
 		
-	# Map 2D direction (X=right, Y=down) to 3D Y-rotation
-	# Down (0, 1) -> 0° (South)
-	# Right (1, 0) -> -90° (East)
-	# Up (0, -1) -> 180° (North)
-	# Left (-1, 0) -> 90° (West)
-	var angle_rad = atan2(-dir.x, dir.y)
-	_target_angle_y = rad_to_deg(angle_rad)
-	model_root.rotation_degrees.y = _target_angle_y
+	# Determine cardinal direction from 2D vector
+	if abs(dir.x) > abs(dir.y):
+		if dir.x > 0:
+			_current_dir = Direction.EAST
+		else:
+			_current_dir = Direction.WEST
+	else:
+		if dir.y > 0:
+			_current_dir = Direction.SOUTH
+		else:
+			_current_dir = Direction.NORTH
+			
+	sprite.frame = int(_current_dir)
