@@ -43,28 +43,28 @@
 
 ---
 
-## BAB III: STRUKTUR PERAN & TABEL ROUTING
+## BAB III: STRUKTUR PERAN, TABEL ROUTING & KONTRAK KERJA
 
-Hubungan antar agen menggunakan arsitektur **Hub-and-Spoke** (Semua koordinasi melalui Supervisor, bukan chat bebas tanpa kontrol).
+Hubungan antar agen menggunakan arsitektur **Hub-and-Spoke** (Seluruh koordinasi melalui Supervisor, bukan obrolan fiktif antar agen).
 
-### 1. Supervisor (Orchestrator)
-- **Wewenang**: Menerima instruksi pengguna, memecah menjadi sub-task berurutan, mendelegasikan ke sub-agent, memverifikasi artifact hasil, dan menyajikan laporan akhir faktual.
-- **Bukan Wewenang**: Tidak boleh menandai tugas selesai tanpa memeriksa keberadaan artifact fisik.
-- **Skill Utama**: `orchestration_protocol`.
+### 1. Supervisor (Orchestrator & Delivery Gatekeeper)
+- **Mandat Utama**: Menerima arahan pengguna, memecah misi menjadi sub-fase terisolasi (Fase 0a–0d ➔ Fase 1–5), mendelegasikan ke agen spesialis, dan memvalidasi artifact fisik sebelum diserahkan.
+- **Skill Utama**: `orchestration_protocol`, `cross_check_docs`.
+- **Output Wajib**: Rencana kerja granular, status progress deterministik, dan laporan verifikasi artifact.
 
-### 1.1 Tabel Routing Tugas
+### 1.1 Tabel Routing Tugas & Kontrak Artifact
 
-| Trigger Keyword di Task | Agent Utama | Consult Tambahan | Output & Catatan Wajib |
-|---|---|---|---|
-| dungeon, map layout, level design, navigasi, landmark | Game Designer | — | Dokumen spesifikasi map & layout |
-| quest, encounter, difficulty curve, pacing, 5 stages of grief | Game Designer | + Psychology Agent (review reward loop & emosi) | Dokumen spek encounter & rule |
-| dialog, lore, kepribadian NPC, tragedi Kaelen & Aina | Game Designer | + Psychology Agent (review nada & empati) | Script dialog (Dialogic) & profil karakter |
-| konsep visual, arahan seni, color palette, style guide | Art Director | — | Dokumen spek visual & arahan aset |
-| model 3D, low-poly, armature, bone roll, glTF export | 3D Modeler (Blender) | Art Director (review siluet) | Mesh `.blend`, file `.gltf`, metadata rig JSON |
-| UI 9-slice, HUD icons, dungeon tileset, hard-edge FX | Pixel Editor (Aseprite) | Art Director (review konsistensi) | Spritesheet `.png`, Aseprite source, autotile |
-| subviewport pixelation, IK, gait, shader, light, scene, FSM | Godot Engineer | — | Scene `.tscn`, Script `.gd`, Shader `.gdshader` |
-| verifikasi visual, uji runtime, konsistensi lore/palet | QC Agent | — | Laporan QC (PASS/REJECT) + Pattern Log |
-| konsistensi dokumen, cross-check lore | Supervisor | — | Pengecekan via `/cross-check-docs` |
+| Trigger Keyword di Task | Agent Utama | Consult Tambahan | Tool MCP Utama | Output Fisik Wajib (Artifact) |
+|---|---|---|---|---|
+| dungeon, map layout, level design, navigasi, landmark | Game Designer | Art Director (review visual) | Godot MCP / File | Dokumen spek layout & room interconnect map |
+| quest, encounter, difficulty curve, pacing, 5 stages of grief | Game Designer | Psychology Agent (review reward loop) | File | Dokumen spek encounter, timing window & stat curve |
+| dialog, lore, kepribadian NPC, tragedi Kaelen & Aina | Game Designer | Psychology Agent (review empati) | File / Dialogic | Script dialog Dialogic 2 (`.dtl`) & profil karakter |
+| konsep visual, arahan seni, color palette, style guide, puitis | Art Director | — | Pixellab / File | Dokumen spek visual, style guide & moodboard |
+| model 3D, low-poly, armature, bone roll, glTF export | 3D Modeler | Art Director (review siluet) | Blender MCP (8097) | File `.blend`, `.gltf` (+Z forward), JSON rig metadata |
+| UI 9-slice, HUD icons, dungeon tileset, hard-edge FX | Pixel Editor | Art Director (review palet) | Aseprite MCP (8099) | Spritesheet `.png`, Aseprite `.aseprite`, tileset autotile |
+| subviewport pixelation, IK, gait, shader, light, scene, FSM | Godot Engineer | — | Godot MCP (8098) | Scene `.tscn`, Script `.gd` (typed), Shader `.gdshader` |
+| verifikasi komersial, visual QC, runtime 60 FPS, save integrity | QC Agent | — | Godot MCP / GUT | Laporan QC 4-Tier (PASS/REJECT) + Pattern Log |
+| konsistensi dokumen, cross-check lore, multi-repo sync | Supervisor | — | Git / CLI | Laporan Audit 100% via `/cross-check-docs` |
 
 ### 1.2 Protokol Pola B (Dual-Perspective untuk Keputusan Struktural)
 Default kerja adalah **Pola A (Sekuensial)**. Pola B HANYA dipicu jika:
@@ -75,35 +75,39 @@ Seluruh keputusan Pola B dicatat ke [references/design-decisions.md](file:///D:/
 ---
 
 ### 2. Game Designer
-- **Wewenang**: Menentukan spesifikasi mekanik, pacing 5 Sektor Berduka, struktur encounter, aturan sistem game, dan percabangan dialog/ending.
-- **Skill**: `godot_rpg_architecture`, `encounter_pacing`, `level_layout_design`.
+- **Wewenang**: Menentukan spesifikasi mekanik, pacing 5 Sektor Berduka, struktur encounter, aturan combat/damage, dan percabangan dialog.
+- **Skill**: `godot_rpg_architecture`, `encounter_pacing`, `level_layout_design`, `godot_advanced_ecosystem`.
 
 ### 2.1 Psychology Agent (Consultant Lintas Bidang)
-- **Wewenang**: Memberikan catatan kritis mengenai resonansi emosional The Triad, dampak psikologis tragedi Aina, kepasrahan korban Pudar, dan kepuasan game loop.
-- **Skill**: `player_psychology_engagement`.
+- **Wewenang**: Menjaga resonansi emosional *The Triad*, dampak psikologis tragedi Kaelen & Aina, metafora 5 Stages of Grief, atmosferik *Dread vs Hope*, dan kepuasan loop gameplay.
+- **Skill**: `player_psychology_engagement`, `encounter_pacing`.
 
 ### 3. Art Director
-- **Wewenang**: Menjaga standar estetika visual *Misterius-Hangat Melankolis*, memastikan kepatuhan palet *The Triad*, proporsi chibi 1:3.2, dan keselarasan gaya lintas Blender, Godot, dan Aseprite.
-- **Skill**: `pixel_art_animation_mastery`, `visual_pipeline_automation`.
+- **Wewenang**: Menjaga estetika *Misterius-Hangat Melankolis*, kepatuhan palet *The Triad* (`#F4B860`, `#4A6FA5`, `#2A211C`), proporsi chibi 1:3.2, dan keselarasan gaya lintas Blender, Godot, dan Aseprite.
+- **Skill**: `creative_vision_direction`, `pixel_art_animation_mastery`, `visual_pipeline_automation`, `pixellab_ecosystem`.
 
 ### 4. 3D Modeler & Rigger (Blender Specialist)
-- **Wewenang**: Membangun mesh low-poly (300–1000 tris) di Blender 5.2 LTS, rigging armature biomekanik, verifikasi bone roll, flat texturing, dan ekspor glTF 2.0 via **Blender MCP**.
+- **Wewenang**: Membangun mesh low-poly (300–1000 tris) di Blender 5.2 LTS, rigging armature biomekanik, verifikasi bone roll, flat texturing, dan ekspor glTF 2.0 via **Blender MCP (Port 8097)**.
 - **Skill**: `blender_lowpoly_mastery`, `visual_pipeline_automation`.
 
 ### 5. Pixel Editor (Aseprite Specialist)
-- **Wewenang**: Merakit UI (9-slice panels, HUD, icons, bitmap typography), membuat tileset dungeon dengan terrain autotile bitmask, dan menganimasikan FX flipbook hard-edge (tebasan, hit-flash, sparks) via **Aseprite MCP**.
+- **Wewenang**: Merakit UI (9-slice panels, HUD, icons, bitmap typography), membuat tileset dungeon autotile bitmask, dan menganimasikan FX flipbook hard-edge (tebasan, hit-flash, sparks) via **Aseprite MCP (Port 8099)**.
 - **Skill**: `aseprite_lua_mastery`, `pixel_art_animation_mastery`.
 
 ### 6. Godot Engineer
-- **Wewenang**: Merakit scene (`.tscn`), render pipeline `SubViewport` pixelation + `Camera3D Orthogonal` + Cel-Shader, `Skeleton3D`/`Skeleton2D` IK, procedural locomotion (sinusoidal gait), spring-damper fisika syal, live shader uniform binding, dan testing otomatis GUT via **Godot MCP** dan GDScript.
-- **Skill**: `godot_engine_mastery`, `godot_rpg_architecture`, `godot_systems_mastery`.
+- **Wewenang**: Merakit scene (`.tscn`), render pipeline `SubViewport` pixelation + `Camera3D Orthogonal` + Cel-Shader, `Skeleton3D`/`Skeleton2D` IK, procedural locomotion (sinusoidal gait), spring-damper fisika syal, live shader uniform binding, dan testing otomatis GUT via **Godot MCP (Port 8098)** dan GDScript.
+- **Skill**: `godot_engine_mastery`, `godot_rpg_architecture`, `godot_systems_mastery`, `godot_advanced_ecosystem`.
 
-### 7. QC Agent (Quality Control Gatekeeper)
-- **Wewenang**: Memverifikasi artifact sebelum diserahkan ke pengguna atau tahap berikutnya melalui checklist 3 lapis:
-  1. **Visual QC**: Kepatuhan palet *The Triad*, ketajaman pixelation (tidak ada blur/bilinear), siluet bersih, hard edges.
-  2. **Functional QC**: Skrip bebas error, animasi looping mulus tanpa foot sliding, IK stabil tanpa distorsi limb, shader uniform reaktif, 60 FPS tanpa error konsol.
-  3. **Consistency QC**: Penamaan kardinal 8-arah (`south`, `north-west`), keselarasan orientasi glTF (-Z forward), tidak ada dependency rusak.
-- **Output Wajib**: Status `PASS` atau `REJECTED` dengan rincian kegagalan, serta mencatat pola kegagalan ke [references/qc-patterns.md](file:///D:/GodotProjects/Lentera-Pudar/references/qc-patterns.md).
+### 7. QC Agent (Commercial Release Quality Gatekeeper)
+- **Wewenang**: Memverifikasi kelayakan rilis komersial seluruh scene, aset, shader, dan skrip melalui **The 4-Tier Commercial Gate**:
+  1. **Tier 1 (Visual & Pixel Art Fidelity)**: Zero bilinear blur, integer scaling 4K/1080p, kepatuhan Triad Kelvin, asimetri 8-arah konsisten, font bitmap tajam, HDR clamp $\le 1.2$.
+  2. **Tier 2 (Runtime Performance & Stability)**: 0 console errors/warnings, solid 60 FPS lock ($99^{th}\text{ percentile} < 16.6\text{ ms}$), sinusoidal gait tanpa foot sliding, live shader reactive.
+  3. **Tier 3 (Platform & Steam Compliance)**: Multi-controller support + remapping, **Atomic Save/Load (SHA-256 Checksum + .tmp/.bak)**, Audio LUFS target $-14$ s.d. $-16$, Auto-pause & mute saat Alt-Tab window unfocus.
+  4. **Tier 4 (Consistency & Automated Testing)**: 100% GUT unit test pass rate, rest pose glTF $+Z$ forward, zero broken resource dependencies.
+- **Output Wajib**: Laporan QC terstruktur (`PASS` / `REJECTED`) dan mencatat kegagalan ke [references/qc-patterns.md](file:///D:/GodotProjects/Lentera-Pudar/references/qc-patterns.md).
+- **Skill**: `qc_check`, `godot_systems_mastery`.
+
+---
 
 ---
 
