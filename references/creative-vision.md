@@ -1,6 +1,6 @@
-# Lentera Pudar — Master Creative Vision & Artistic Direction
+# Lentera Pudar — Master Creative Vision & Artistic Direction (3D Action RPG Edition)
 
-> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, Pixel Editor, Godot Engineer) wajib merujuk dokumen ini untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
+> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
 
 ---
 
@@ -21,10 +21,10 @@ flowchart LR
     Neutral <--> Cold
 ```
 
-### 1.2 Referensi Visi & Karya Inspirasi:
-- **Atmosfer & Kesunyian Puitis**: *Hyper Light Drifter*, *Signalis*, *Ender Lilies: Quietus of the Knights*.
+### 1.2 Referensi Visi & Karya Inspirasi 3D:
+- **Atmosfer & Kesunyian Puitis 3D**: *NieR: Automata*, *Ender Lilies*, *Shadow of the Colossus*.
+- **Gaya Karakter & Action Combat**: *Final Fantasy VII Remake*, *Crisis Core*, *Genshin Impact*.
 - **Psikologi Penerimaan Duka**: *Gris*, *Celeste*, *ICO*.
-- **Bobot Fisik & Ketajaman Visual Retro**: *Chrono Trigger*, *Vagrant Story*, *Sword & Sworcery*.
 
 ---
 
@@ -34,7 +34,7 @@ flowchart LR
 - **Kepribadian**: Pria pendiam, membawa rasa bersalah mendalam atas tragedi masa lalu. Bertarung bukan untuk mencari kejayaan, tetapi untuk menuntaskan janji terakhirnya kepada Aina.
 - **Gaya Bicara**:
   - Hemat kata (*laconic*), kalimat pendek, nada rendah, tanpa basa-basi heroik klise.
-  - Sering merespons dunia melalui bahasa tubuh (menggenggam syal, menatap tangan esnya, menghela napas panjang).
+  - Sering merespons dunia melalui bahasa tubuh 3D (menggenggam syal, menatap tangan esnya, menghela napas panjang).
 - **Contoh Diksi**:
   > *"Syal ini... semakin pendek. Tapi langkahku belum boleh berhenti."*  
   > *"Jangan membeku di sini. Duka ini memang sakit, tapi kau harus tetap merasakannya."*
@@ -48,39 +48,24 @@ flowchart LR
   > *"Jangan takut saat apiku memendek, Kaelen. Setiap percikan yang hilang sedang menyalakan kembali dunia yang sempat padam."*  
   > *"Dinginnya dungeon ini tidak akan sanggup menyentuh hatimu, selama kau masih mengingat mengapa kita memulai perjalanan ini."*
 
-### 2.3 Korban Pudar & Roh Kenangan (The Echoes)
-- Terikat pada **5 Tahapan Berduka (*5 Stages of Grief*)** sesuai sektornya:
-  1. **Sektor 1 (Denial)**: Menolak kenyataan bahwa mereka telah mati, mengulangi rutinitas harian di makam beku.
-  2. **Sektor 2 (Anger)**: Menyalahkan takdir, meledak-ledak, membakar diri dalam amarah dingin.
-  3. **Sektor 3 (Bargaining)**: Mencoba bertransaksi dengan waktu, memohon penundaan kematian.
-  4. **Sektor 4 (Depression)**: Tenggelam dalam keheningan total, pasrah hancur menjadi debu es.
-  5. **Sektor 5 (Acceptance)**: Melepaskan masa lalu dan membimbing Kaelen menuju pintu keluar dungeon.
+---
+
+## BAB III: PEDOMAN VISUAL & DESAIN 3D
+
+### 3.1 Kontras Siluet & Kejelasan Asimetri 3D
+- **Tangan Kiri Kutukan Es**: Kluster kristal es prisma bersudut tajam (`#4A6FA5` & `#7EE8FA`) dengan cakar es dan partikel uap beku halus (*frost mist Niagara*).
+- **Tangan Reruntuhan Normal**: Dibalut perban spiral pelindung kepalan tangan (`#FAF2EC` / `#D0C4BA`). Pukulan berbobot fisik nyata (*earthy impact*).
+- **Syal Aina (The Fading Scarf)**: Menjuntai di punggung Kaelen, berkibar lembut dengan simulasi fisika kain (*Cloth Simulation & Spring Bones*). Memancarkan cahaya keemasan lembut (PointLight 2700K Lumen) yang menerangi dungeon.
 
 ---
 
-## BAB III: PEDOMAN VISUAL & DESAIN PIKSEL 3D-TO-PIXEL
-
-### 3.1 Kontras Siluet & Kejelasan Asimetri (Asymmetry Readability)
-- **Tangan Kiri Kutukan Es**: Memancarkan urat es biru retak (`#4A6FA5`) dengan partikel uap beku halus (*frost mist*). Saat memukul, kristal es merekah dan pecah.
-- **Tangan Kanan Normal**: Dibalut perban cokelat kusam dan kulit kelana (`#2A211C`). Pukulan berbobot tanah (*earthy impact*).
-- **Syal Aina (The Fading Scarf)**: Menjuntai di punggung Kaelen, meliuk lembut dengan fisika spring-damper. Memancarkan cahaya keemasan lembut (`PointLight2D` 2700K) yang menerangi langkah Kaelen di lantai batu yang gelap.
-
-### 3.2 Kerapihan Kluster Piksel & Hard Edges
-- Dilarang membuat piksel tunggal yang tercecer (*orphan/stray pixels*).
-- Warna harus dikelompokkan dalam kluster tegas (*clean color clusters*) dengan **Hue Shifting**:
-  - Bayangan bergeser ke arah dingin kebiruan (`#2A211C` ➔ `#1A1829`).
-  - Sorotan terang bergeser ke arah kuning hangat keemasan (`#F4B860` ➔ `#FFF275`).
-
----
-
-## BAB IV: PEDOMAN GERAK, BOBOT FISIK & COMBAT FEEL
+## BAB IV: PEDOMAN COMBAT FEEL & KINEMATIKA 3D
 
 1. **Weight & Impact (Rasa Hantaman Nyata)**:
-   - Setiap serangan Kaelen memiliki fase *anticipation* (tarikan napas), *snap impact* (hentakan pukulan), dan *recovery* (hembusan napas).
-   - **Hit-Stop**: Jeda 3 frame (0.05 detik) saat pukulan mengenai musuh, disertai percikan api kuning dan pecahan es biru.
-2. **Kamera & Ruang Emosional**:
-   - Kamera menggunakan proyeksi **Orthogonal Low Top-Down 3/4** (kemiringan sudut ~25°).
-   - Saat Kaelen diam di dekat Altar atau area aman, kamera melakukan *subtle breathing zoom-in* untuk menciptakan rasa intim dan tenang.
+   - Setiap serangan Kaelen memiliki fase *anticipation*, *snap impact*, dan *recovery*.
+   - **Hit-Stop & Screen Shake**: Jeda 3 frame (0.05 detik) saat pukulan mengenai musuh, disertai percikan api emas dan pecahan es kristal.
+2. **Kamera 3D Third-Person**:
+   - Kamera over-the-shoulder dinamis dengan rotasi bebas 360° dan arena lock-on saat boss fight.
 
 ---
 
