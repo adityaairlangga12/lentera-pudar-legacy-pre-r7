@@ -1,15 +1,21 @@
 # Style Guide — Lentera Pudar: Master Visual Standard
 
-Dokumen ini adalah acuan visual baku (*Visual Source of Truth*) untuk seluruh aset pixel art, teori palet warna, standar animasi, desain karakter Kaelen, dan arsitektur lingkungan proyek **Lentera Pudar**.
+Dokumen ini adalah acuan visual baku (*Visual Source of Truth*) untuk seluruh aset visual, teori palet warna, standar pemodelan 3D low-poly, pipeline render pixelation di Godot, dan aset 2D Aseprite pada proyek **Lentera Pudar**.
 
 ---
 
-## 1. Resolusi, Framing, & Perspektif
+## 1. Resolusi, Rendering, & Perspektif (Jalur B Master Pipeline)
 
-- **Grid Dasar Karakter & Tile**: `32x32 px` (semi-detailed chibi proportion).
-- **Perspektif**: `low top-down` (sudut pandang 3/4 Zelda-like / RPG 2D klasik).
-- **Outline**: `single color solid black outline` (`#000000` / `#141013` selective dark outline) dengan *hard edges, no color bleed*.
-- **Bingkai Ekspor Spritesheet**: Kanvas seragam `48x48 px` per frame dengan titik poros (*pivot/anchor*) berada di tengah bawah (`center-bottom` / kaki menyentuh Y: 42-44px).
+- **Target Tampilan Visual**: Pixel art semi-detailed chibi `32x32 px` dalam sudut pandang `low top-down` (kemiringan kamera 20°–30° Zelda-like).
+- **Arsitektur Rendering Karakter (Jalur B)**:
+  - Karakter dimodelkan sebagai **3D Low-Poly Mesh di Blender 5.2 LTS** dengan batasan ketat **300–1000 triangle (tris) per karakter**.
+  - Anggota badan (lengan/kaki) memiliki minimal 6–8 segmen agar siluet tetap mulus saat diputar ke 8 arah.
+  - Shading pada mesh wajib **Flat Shading** (bukan smooth shading) untuk menjaga ketegasan batas warna saat dipixelasi.
+  - Di-render di Godot 4.7.1 menggunakan **`Camera3D Orthogonal`** (bukan Perspective) ke dalam **`SubViewport` beresolusi rendah** (misal `320x180` atau `480x270`).
+  - Tekstur `SubViewport` di-upscale ke layar menggunakan filter **`Nearest`** (Nearest-Neighbor) dan dilapisi **Toon/Cel-Shader** untuk menghasilkan shading bertingkat khas pixel art otentik.
+- **Outline & Ketajaman**:
+  - Karakter dibingkai dengan *selective dark outline* (`#141013` / `#000000`) dengan tepi keras (*hard edges, no color bleed*).
+  - Seluruh filter texture dan canvas item di-set ke **Nearest** untuk mencegah blur.
 
 ---
 
@@ -40,53 +46,58 @@ Pewarnaan berakar pada kontras eksistensial antara kehangatan cinta/harapan, din
 ### Palet Aksen Karakter & Lingkungan (Sub-Palette)
 - **Kulit Kaelen**: `#FFE0B2` (Highlight), `#E0A96D` (Base), `#A86F3E` (Shadow).
 - **Rambut Abu-Abu Kaelen**: `#E0E0E0` (Kilau), `#9E9E9E` (Abu-Abu Kelana), `#616161` (Bayangan Gelap).
-- **Perban Kering Tangan Kiri**: `#D7CCC8` (Highlight), `#A1887F` (Base), `#6D4C41` (Shadow) + urat biru `#4A6FA5` di sela perban.
-- **Lumut Es Reruntuhan (Environment Accent)**: Hijau Lumut Beku `#3D5A50` / `#5C7F72`.
+- **Perban Kering Tangan Kanan & Tubuh**: `#D7CCC8` (Highlight), `#A1887F` (Base), `#6D4C41` (Shadow).
+- **Kristal Es Tangan Kiri**: `#99B9E0` (Kilau), `#4A6FA5` (Kristal), `#2C4875` (Bayangan Beku).
+- **Penutup Mata (*Eyepatch*)**: `#141013` (Hitam Kulit Kering).
+- **Tali Selempang Kantung (*Baldric*)**: `#7A4B28` (Kulit Coklat Tua), `#4E2E16` (Bayangan).
+- **Lumut Es Reruntuhan (Environment Accent)**: `#3D5A50` / `#5C7F72`.
 - **Emas Kuno (Altar & Relik)**: `#D4AF37` / `#C58B3E`.
 
 ---
 
 ## 3. Anatomi Desain Kaelen (Protagonis V3 Definitif)
 
+- **Rasio Proporsi**: Chibi semi-detailed 1:3 hingga 1:3.5 (Tinggi total ~32 unit di dunia low-poly).
 - **Rambut**: Abu-abu acak (*Messy Grey Hair*), sedikit menutupi dahi, memberi kesan pengelana tangguh yang lelah membawa penyesalan.
-- **Wajah & Mata**: Mata kiri terbuka fokus melankolis, mata kanan mengenakan **Penutup Mata Kulit Hitam (*Leather Eyepatch* `#141013`)** sebagai segel bekas luka beku Kutukan Pudar masa lalu.
+- **Wajah & Mata**: Mata kiri terbuka fokus melankolis dengan bayangan alis di bawah poni, mata kanan mengenakan **Penutup Mata Kulit Hitam (*Leather Eyepatch* `#141013`)** sebagai segel bekas luka beku Kutukan Pudar masa lalu.
 - **Pakaian**: Jubah kelana gelap netral (`#2A211C`) dengan tali selempang kulit kantung bekal (*baldric harness*), tanpa zirah besi berat (kesan *class-less/fragile traveler*).
-- **Syal Kuning Aina (`#F4B860`)**: Melingkar di leher dengan ekor syal panjang melayang dinamis di punggung/bahu sebagai sumber `PointLight2D` dinamis.
-- **Lengan Kiri Kutukan (`#4A6FA5`)**: Dibalut kristal es biru menyala dan aura beku yang berdenyut halus via `CursedHand.gdshader`.
+- **Syal Kuning Aina (`#F4B860`)**: Melingkar di leher dengan juntaian kain panjang di punggung yang dikendalikan oleh *Spring-Damper / Velvet modifier*, memancarkan cahaya `PointLight2D` (2700K).
+- **Lengan Kiri Kutukan (`#4A6FA5`)**: Dibalut kristal es biru menyala dan aura beku yang berdenyut live via `CursedHand.gdshader` (merespons *Curse Meter* 0%–100%).
 - **Lengan Kanan**: Tangan fisik normal dengan perban pelindung kepalan tangan (`#D7CCC8` / `#A1887F`) untuk pukulan jarak dekat.
 - **Pijakan Kaki**: Memiliki bayangan tanah elips dinamis (*Directional Ground Shadow*) di seluruh 8 arah rotasi.
 
 ---
 
-## 4. Standar Animasi Modern 8-Arah (True 8-Way Cardinal)
+## 4. Standar Gerak & Animasi 8-Arah
 
-Semua 8 arah (`south`, `north`, `east`, `west`, `south-east`, `south-west`, `north-east`, `north-west`) di-render secara nyata:
-
-| Nama Animasi di Godot | Jumlah Frame | Framerate (FPS) | Durasi / Frame | Deskripsi & Nuansa Visual |
-|---|---|---|---|---|
-| `idle_[arah]` | **6 Frame** | **8 FPS** | 125 ms | Nafas dada halus 1px + kain syal Aina mengayun lembut seperti lidah api. |
-| `walk_[arah]` | **6 Frame** | **10 FPS** | 100 ms | Siklus langkah berbobot (*weighty step*) di lantai beku + kibaran syal lentur. |
-| `dash_[arah]` | **4 Frame** | **15 FPS** | 66 ms | Badan meluncur tajam ke depan dengan garis bayangan *motion blur*. |
-| `attack_punch_[arah]` | **4 Frame** | **12 FPS** | 83 ms | Serangan 1 (Tangan Kanan): Pukulan lurus fisik cepat. |
-| `attack_cursed_[arah]` | **5 Frame** | **12 FPS** | 83 ms | Serangan 2 (Tangan Kiri): Hantaman telapak es dengan kilatan partikel biru `#4A6FA5`. |
-| `hurt_[arah]` | **3 Frame** | **10 FPS** | 100 ms | Karakter tersentak mundur 2px dengan kilatan putih sesaat. |
-| `interact_[arah]` | **4 Frame** | **8 FPS** | 125 ms | Merentangkan tangan menyentuh altar/obor untuk menyalurkan kehangatan. |
-| `death_[arah]` | **6 Frame** | **8 FPS** | 125 ms | Berlutut pasrah, urat es merambat membekukan tubuh jadi patung kristal (*one-shot*). |
-
----
-
-## 5. Standar Lingkungan Sektor 1: Reruntuhan Kristal Beku (*Frozen Ruins*)
-
-- **Lantai Dungeon**: Ubin batu bata kuno gelap `#2A211C` bertekstur retakan dengan lapisan es tipis.
-- **Dinding Dungeon**: Formasi dinding batu berornamen kuno yang ditembus pilar kristal es biru `#4A6FA5`.
-- **Props Khusus**:
-  - **Patung Korban Pudar**: Warga yang membeku dalam pose hening damai.
-  - **Altar Lentera Kuno**: Altar batu emas kuno `#C58B3E` tempat menyalakan api pengorbanan.
+Karena menggunakan rig 3D low-poly di Blender yang dirender ke Godot:
+1. **Locomotion Periodik (Procedural Gait)**:
+   - `idle`: Gerak napas halus (*chest breathing*) frekuensi lambat + kibaran lembut ekor syal Aina.
+   - `walk`: Model *inverted pendulum* sinusoidal (kaki kiri-kanan phase offset $\pi$, body bob frekuensi 2x) + ayunan inersia syal.
+   - `run / dash`: Langkah panjang cepat dengan kemiringan torso ke depan + transisi *PD Controller*.
+2. **Aksi Reaktif One-Shot (Keyframe Pose + Easing Curve)**:
+   - `attack_punch` (Tangan Kanan): Pukulan lurus fisik cepat dengan easing *ease_out*.
+   - `attack_cursed` (Tangan Kiri): Hantaman telapak tangan es dengan kilatan partikel es `#4A6FA5`.
+   - `hurt`: Tersentak mundur dengan frame freeze singkat (0.05 detik *hit-stop*).
+   - `death`: Berlutut pasrah, kristal es merambat membekukan seluruh tubuh menjadi patung kristal.
+- **Konsistensi 8-Arah**: Karena berakar pada rig 3D, seluruh 8 arah kardinal (`south`, `north`, `east`, `west`, `south-east`, `south-west`, `north-east`, `north-west`) memiliki asimetri geometris yang 100% konsisten tanpa distorsi mirroring.
 
 ---
 
-## 6. Formula Baku Prompt PixelLab v3 (Art Director)
+## 5. Standar Domain Aseprite: UI, Tileset Dungeon, & FX
 
-```
-A 32x32 pixel art low top-down 3/4 perspective RPG male adventurer named Kaelen, messy grey hair, wearing dark travel tunic in neutral dark brown #2A211C, glowing warm yellow scarf #F4B860 wrapped around neck with long flowing scarf tail behind him, left arm wrapped in worn bandages with glowing blue ice crystal veins #4A6FA5 visible on fingers and forearm, right hand is bare with light wrapped fist. Single color solid black outline, clean readable semi-detailed chibi pixel art proportions, no blur, lossless color separation.
-```
+Domain Aseprite memegang peranan mutlak untuk elemen 2D murni:
+
+### A. User Interface (UI) & Typography
+- **Panel & Box**: Wajib menggunakan teknik **9-Slice Scaling** bertekstur batu dungeon `#2A211C` dengan trim emas kuno `#C58B3E` agar tidak terdistorsi saat di-resize.
+- **Bitmap Font**: Font pixel bergaya *Misterius-Hangat Melankolis* dengan keterbacaan tinggi pada resolusi rendah.
+- **Icons & HUD**: Simbol lentera, meter kutukan es, dan item inventory berukuran 16x16 / 24x24 px dengan outline solid.
+
+### B. Environment & Dungeon Tilesets
+- **Lantai Dungeon Sektor 1**: Ubin batu bata kuno gelap `#2A211C` dengan retakan es halus dan sistem Terrain autotiling bitmask Godot 4.
+- **Dinding Dungeon Sektor 1**: Formasi dinding batu berornamen kuno yang ditembus pilar kristal es biru `#4A6FA5` lengkap dengan `LightOccluder2D` polygon.
+- **Props**: Patung warga beku hening, Altar Lentera kuno `#D4AF37`, dan obor api padam.
+
+### C. FX / VFX Hard-Edge Pixel Art
+- **Tebasan & Flash (Bentuk Grafis Murni)**: Dibuat sebagai **Flipbook Frame-by-Frame di Aseprite** (durasi total 0.2–0.4 detik, peak flash di 0.05–0.1 detik pertama, dibatasi 2–3 warna kontras tinggi). Dilarang keras menggunakan gradient alpha lembut modern.
+- **Partikel Ambien (Debu & Serpihan Es)**: Menggunakan `GPUParticles2D` Godot dengan tekstur hard-edge terkuantisasi (2x2 / 4x4 px) dan filter `Nearest`.

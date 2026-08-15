@@ -3,7 +3,5 @@
 export_presets.cfg
 .vscode/
 addons/*/
-!addons/aseprite_wizard/
+!addons/AsepriteWizard/
 !addons/lentera_bridge/
-.agents/skills/*
-!.agents/skills/SKILL.md
