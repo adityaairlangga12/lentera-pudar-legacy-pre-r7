@@ -111,19 +111,97 @@ Seluruh keputusan Pola B dicatat ke [references/design-decisions.md](file:///D:/
 
 ---
 
-## BAB IV: STANDAR TEKNIS GODOT & ARSITEKTUR KODE
+## BAB IV: STANDAR TEKNIS GODOT & ARSITEKTUR KODE KOMERSIAL
 
-- **Struktur Direktori Proyek**:
-  - `res://Scenes/` — File scene (`.tscn`) untuk Player, UI, Level, Object.
-  - `res://Scripts/` — File logika GDScript (`.gd`) dan State Machine (`res://Scripts/FSM/`, `res://Scripts/PlayerStates/`).
-  - `res://Assets/` — File visual 3D Models (`.gltf`), Sprites (`.png`), Fonts, Audio, Resource (`.tres`).
-  - `res://Shaders/` — File shader canvas item & spatial (`.gdshader`).
-  - `res://Autoloads/` — Singleton / Global Event Bus (`GameEvents.gd`).
-  - `res://references/` — Dokumentasi standar, style guide, GDD Master Bible, decision logs.
-  - `res://tools/` — Skrip pembantu/otomasi internal.
-- **Komunikasi Sistem**: Wajib menggunakan **Global Event Bus** via Autoload `GameEvents.gd`. Dilarang keras memanggil referensi langsung lintas sistem tanpa perantara sinyal/event bus.
-- **Penulisan GDScript**: Wajib menggunakan *Static Typing* yang ketat (contoh: `var speed: float = 120.0`, `func move_to(target: Vector2) -> void:`).
-- **Penamaan Animasi/State**: Wajib konsisten dengan format kardinal `[aksi]_[arah]` (contoh: `idle_south`, `walk_north-east`, `attack_punch_east`).
+Arsitektur kode Lentera Pudar dirancang dengan prinsip **Modular, Strict Static Typing, Decoupled Event-Driven**, dan **Zero Memory Leak** untuk menjamin kestabilan kelas komersial.
+
+### 4.1 Struktur Direktori Standar Proyek
+```text
+res://
+├── Scenes/           # File scene (.tscn) modular: Characters, UI, Levels, Objects
+├── Scripts/          # File logika GDScript (.gd)
+│   ├── FSM/          # Base State Machine dan State interface
+│   ├── PlayerStates/ # Implementasi concrete state Kaelen (Idle, Walk, Attack, etc.)
+│   ├── Core/         # Sistem inti (SaveSystem, AudioManager, SceneTransition)
+│   └── Resources/    # Definisi Custom Resource (PlayerData, ItemData, SkillData)
+├── Assets/           # Aset visual & audio siap pakai
+│   ├── Models/       # Model 3D low-poly (.gltf, .blend)
+│   ├── Sprites/      # Spritesheet UI & FX flipbook (.png)
+│   ├── Audio/        # Sound effects (SFX) & Background Music (BGM)
+│   └── Fonts/        # Font bitmap pixel-perfect (.ttf, .fnt)
+├── Shaders/          # File shader (.gdshader) untuk Cel-Shading, CursedHand, Pixelation
+├── Autoloads/        # Singleton global (GameEvents.gd, GameState.gd, SoundManager.gd)
+├── references/       # Kitab dokumen master (GDD, Visi Kreatif, QC Patterns, ADR)
+└── tools/            # Skrip EditorScript dan otomasi pipeline internal
+```
+
+### 4.2 Standar Penulisan GDScript 4.7 (Strict Static Typing)
+1. **Wajib Strict Typing Penuh**: Seluruh variabel, konstanta, parameter fungsi, dan nilai balik fungsi (*return type*) WAJIB memiliki anotasi tipe data statis eksplisit:
+   ```gdscript
+   var current_curse: float = 0.0
+   var target_direction: Vector2 = Vector2.ZERO
+   
+   func apply_damage(amount: float, source_position: Vector2) -> void:
+       current_curse = clampf(current_curse + amount, 0.0, 100.0)
+       GameEvents.curse_meter_changed.emit(current_curse)
+   ```
+2. **Standar Naming Convention**:
+   - `PascalCase` untuk Class Name dan Custom Resource (`class_name PlayerStateMachine extends Node`).
+   - `snake_case` untuk nama file, fungsi, dan variabel (`func calculate_stamina_drain() -> float:`).
+   - `CONSTANT_CASE` untuk konstanta dan Enum (`const MAX_CURSE_CAP: float = 100.0`, `enum GriefSector { DENIAL, ANGER, BARGAINING, DEPRESSION, ACCEPTANCE }`).
+   - `_snake_case` (prefix underscore) untuk fungsi/variabel privat (`var _is_invulnerable: bool = false`).
+3. **Inspector Ergonomics (@export)**:
+   Gunakan `@export_group`, `@export_subgroup`, dan `@export_range` secara rapi agar parameter mudah di-tweak di editor tanpa menyentuh kode:
+   ```gdscript
+   @export_group("Combat Stats")
+   @export_range(1.0, 500.0, 1.0) var base_punch_damage: float = 25.0
+   @export_range(0.05, 1.0, 0.01) var hit_stop_duration: float = 0.05
+   ```
+
+### 4.3 Pola Komunikasi Terdekupel (Decoupled Event-Driven & Signal Up, Call Down)
+1. **Signal Up, Call Down**:
+   - Node Induk (Parent) boleh memanggil method Node Anak (Child) secara langsung (`call down`).
+   - Node Anak HANYA boleh berkomunikasi ke Induk melalui `signal` (`signal up`).
+   - **Dilarang Keras** menggunakan pemanggilan langsung lintas sibling (`get_node("../../../OtherNode")`) yang menyebabkan *spaghetti code*.
+2. **Global Event Bus (`Autoloads/GameEvents.gd`)**:
+   Seluruh event makro antar-sistem wajib disiarkan melalui Global Event Bus:
+   ```gdscript
+   # GameEvents.gd (Autoload)
+   signal grief_stage_advanced(new_stage: int)
+   signal scarf_length_reduced(current_stage: int)
+   signal cursed_strike_executed(origin: Vector2, direction: Vector2)
+   signal player_health_depleted()
+   signal camera_shake_requested(intensity: float, duration: float)
+   ```
+
+### 4.4 Arsitektur Finite State Machine (FSM)
+- State Machine menggunakan arsitektur modular berbasis Node.
+- Setiap State merupakan script terpisah turunan `State.gd` dengan siklus hidup: `enter()`, `exit()`, `process(delta: float) -> State`, `physics_process(delta: float) -> State`, `handle_input(event: InputEvent) -> State`.
+- Transisi state bersifat deterministik dan dikontrol penuh oleh State Machine.
+- Dilengkapi **Circular Input Replay Buffer** untuk mencatat input 60 frame terakhir guna mendeteksi window *parry / cursed counter* serta input buffer anti-drop.
+
+### 4.5 Pipeline Render 3D-to-Pixel SubViewport & Lighting
+- **SubViewport Resolution**: Ukuran render internal `320x180` atau `480x270` di dalam `SubViewportContainer` dengan `texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST`.
+- **Camera3D Orthogonal**: Menggunakan proyeksi Orthogonal dengan rotasi kemiringan $X: -25^\circ, Y: 0^\circ$ (low top-down 3/4) untuk mempertahankan proporsi karakter chibi 1:3.2.
+- **Cel-Shader Spatial**: Material spatial pada karakter menggunakan quantized lighting steps untuk membatasi gradient cahaya menjadi 3 tingkat chiaroscuro retro.
+- **Dua Suhu Pencahayaan (Kelvin Lighting)**:
+  - Api Syal Aina: `PointLight2D` dengan warna `#F4B860` (2700K Kelvin Warm Emissive).
+  - Area Kutukan: Ambient Modulate dingin `#4A6FA5` (6500K Kelvin Cold).
+
+### 4.6 Sistem Data Persisten (Atomic Save/Load System)
+- Data simpanan game disimpan dalam Custom Resource `SaveGameData.gd`.
+- **Protokol Atomic Write (Steam Cloud Compliant)**:
+  1. Serialisasi data ke file sementara `user://saves/slot_1.tmp`.
+  2. Hitung SHA-256 Checksum dari file `.tmp`.
+  3. Buat salinan cadangan dari save sebelumnya ke `user://saves/slot_1.bak`.
+  4. Ganti nama (*atomic rename*) file `.tmp` menjadi `user://saves/slot_1.dat`.
+  5. Jika file `.dat` terdeteksi korup saat boot, sistem otomatis melakukan pemulihan (*failover recovery*) dari `.bak`.
+
+### 4.7 Standar Audio Bus & Dynamic Ducking
+- **Hirarki Bus Audio**:
+  `Master` ➔ `Music (BGM)` / `Sound Effects (SFX)` / `Ambience` / `Voice`.
+- **Normalisasi Loudness**: Target terintegrasi $-14$ s.d. $-16$ LUFS sesuai standar platform PC/Steam.
+- **Dynamic Ducking**: Bus `Music` dan `Ambience` otomatis meredup (*ducking -6dB*) via tweening saat dialog Aina, altar activation, atau critical strike SFX berbunyi.
 
 ---
 
@@ -136,8 +214,8 @@ Seluruh keputusan Pola B dicatat ke [references/design-decisions.md](file:///D:/
    - **Vertical Slice**: Penyelesaian Sektor 1 (Denial) sebagai pembuktian pipeline penuh.
 2. **Perintah Operasional Khusus**:
    - `/cross-check-docs`: Menjalankan audit konsistensi silang antara dokumen lore, GDD, AGENTS.md, dan file skill.
-   - `/qc-check`: Menjalankan checklist inspeksi kualitas 3 lapis terhadap scene/aset yang baru selesai dibangun.
-   - `/learn`: Mengabadikan solusi teknis atau perbaikan kompleks dari pengguna ke dalam repositori memori/skill proyek.
+   - `/qc-check`: Menjalankan checklist inspeksi kualitas 4 lapis (The 4-Tier Commercial Gate) terhadap scene/aset yang baru selesai dibangun.
+   - `/learn`: Mengabadikan solusi teknis atau preferensi kreatif kompleks dari pengguna ke dalam repositori memori/skill proyek.
 
 ---
 
