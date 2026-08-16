@@ -99,9 +99,14 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 
 ## 4. Parameter Simulasi Kain & Dual-Mode Animation (Syal Aina & Jubah)
 
-### A. Dual-Mode Animation Pipeline
+### A. Dual-Mode Animation Pipeline & Blend Weight Transition
 1. **Mode Gameplay Runtime (Locomotion & Combat 60 FPS)**: Menerapkan **UE5 Chaos Cloth Solver** dan 5-bone spring chain untuk efisiensi performa dan respons inersia dinamis.
 2. **Mode Sinematik Naratif (Altar Duka & Boss Intro)**: Menerapkan **Hand-Keyframed Control Rig** pada rantai 5-bone syal untuk kontrol emosi puitis sutradara (syal memeluk leher, meredup, atau melambai terarah).
+3. **Protokol Handoff Transisi Halus (*Cloth Physical Blend Weight Curve*)**:
+   - Transisi antara Hand-Keyframed Control Rig dan Chaos Cloth Solver **DILARANG MENGGUNAKAN TOGGLE BINER (0/1 instan)**.
+   - Wajib menerapkan **Blend Weight Transition Curve (0.0 ➔ 1.0) selama 0.5 detik (15 frame @30fps / 30 frame @60fps)** via parameter `ClothPhysicalBlendWeight`. Saat cutscene berakhir, Control Rig memegang 100% kendali pada frame awal, lalu secara mulus menyerahkan bobot inersia ke Chaos Cloth Solver untuk mencegah visual snapping, artefak melompat, atau penetrasi mesh ke dada Kaelen.
+4. **Proteksi Oklusi Kamera (*Camera Occlusion Avoidance*)**:
+   - Spring arm kamera *Over-The-Shoulder* dilengkapi *Invisible Collision Volume* tipis yang menolak kibasan ujung kain syal agar tidak menempel atau menghalangi pandangan kamera saat Kaelen berputar cepat atau melakukan *Evade Dash*.
 
 ### B. Parameter Solver Chaos Cloth
 | Parameter Fisika | Syal Aina (`M_Aina_Scarf`) | Jubah Kaelen (`M_Tunic`) |
@@ -116,18 +121,27 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 
 ---
 
-## 5. Parameter Pencahayaan Lumen & Chiaroscuro
+## 5. Parameter Pencahayaan Lumen, Radius Syal & Chiaroscuro
 
+### A. Dinamika Radius Cahaya Syal Aina per Sektor (2700K Warm Light)
+| Sektor & Tahap Pengorbanan | Panjang Fisik Syal | Intensitas Lumen | Radius Atenuasi (*PointLight*) | Karakteristik Persepsi |
+|---|---|---|---|---|
+| **Prologue (Pra-Altar)** | 180 cm (Utuh) | 1200 lm | **800 cm (8.0 m)** | Terang benderang, panduan aman & hangat. |
+| **Sektor 1 (Denial)** | 120 cm (Sedang) | 1000 lm | **600 cm (6.0 m)** | Luas pandang stabil, reruntuhan makam terlihat jelas. |
+| **Sektor 2 (Anger)** | 70 cm (Pendek) | 800 lm | **450 cm (4.5 m)** | Sudut bayangan mulai merapat di peleburan es. |
+| **Sektor 3 (Bargaining)** | 30 cm (Koyak) | 600 lm | **320 cm (3.2 m)** | Cahaya intim, refleksi cermin es menjadi krusial. |
+| **Sektor 4 (Depression)** | 10 cm (Serat Bara) | 350 lm | **200 cm (2.0 m)** | Sangat sempit & claustrophobic di danau es raksasa. |
+| **Sektor 5 (Acceptance)** | Bersatu Abadi | Dinamis Fajar | **Penuh / Global GI** | Pencerahan fajar menyinari gerbang Benua Luar. |
+
+### B. Sumber Cahaya Sekunder & Rasio Kontras Cahaya (Chiaroscuro)
 | Sumber Cahaya | Suhu Kelvin | Intensitas (Lumen) | Radius / Attenuation |
 |---|---|---|---|
-| **Syal Aina (PointLight Melekat)** | 2700K | 800–1200 lm (Baseline) | Radius 3.0–5.0m (Menyusut ke 1.5–2.5m di Sektor 4) |
 | **Kristal Es Kaelen (Rim Light)** | 6500K | 200–600 lm (Proporsional Curse) | Radius 1.0–2.0m |
 | **Ambient Dungeon (Fill Light)** | 6000–6500K | 50–150 lm (Sangat redup) | Menyebar luas (*soft ambient fill*) |
 | **Altar Duka & Arena Bos** | Variatif | 400–1000 lm | Disesuaikan dengan skala ruang arena |
 
-### Rasio Kontras Cahaya (Chiaroscuro)
 - **Sektor 1–3**: Rasio Key Light (Syal) terhadap Ambient Dungeon minimal **8:1**.
-- **Sektor 4 (Depression)**: Rasio naik menjadi **12:1 atau lebih** untuk mempertegas isolasi emosional.
+- **Sektor 4 (Depression)**: Rasio naik menjadi **12:1 atau lebih** untuk mempertegas isolasi emosional di tengah kegelapan hampa.
 
 ---
 

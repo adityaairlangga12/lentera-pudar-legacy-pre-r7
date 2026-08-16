@@ -53,3 +53,19 @@
   - Mengontrol visual reveal musuh (foreshadowing siluet dari balik es transparan sebelum encounter) untuk membangun tensi psikologis bertahap.
 - **Hazard Lingkungan Tematik**:
   - Es licin rapuh (Sektor 2) dan kabut beku penguras stamina (Sektor 4) bertindak sebagai ekstensi tema duka, bukan sekadar rintangan mekanik biasa.
+
+---
+
+## 6. Paradoks Gamifikasi Sektor 4: Beban Inersia Spasial & Anti-Fatigue Guardrails
+
+Merancang panggung duka **Depresi (*The Abyss of Stillness*)** tanpa menjerumuskan pemain ke dalam rasa bosan (*Disengaged Fatigue*):
+
+1. **Dinamika Skala Monumental (*Monumental Framing*)**:
+   - Ruangan danau es gelap dirancang dengan skala arsitektur raksasa di mana Kaelen tampak sangat kecil di tengah layar (*extreme long shot composition*). Kekosongan ruang bukan berarti "dungeon kosong tanpa aset", melainkan manifestasi visual kehampaan batin yang menekan ego.
+2. **Keterikatan Visibilitas Intim (*Claustrophobic Light in Vast Space*)**:
+   - Di Sektor 4, Syal Aina memendek hingga serat terakhir (radius Lumen turun drastis ke **$200\text{ cm}$**). Kontras antara ruangan yang maha luas dengan lingkaran cahaya yang sangat sempit memaksa pemain mengandalkan audio binaural 3D dan kilau samar refleksi es lantai untuk melangkah.
+3. **Inersia Kinetik Manusiawi (*Emotional Molasses*)**:
+   - Kecepatan lari Kaelen **TIDAK dipangkas menjadi lambat merayap** (untuk mencegah frustrasi kontrol mekanik), melainkan diberi *torsi inersia belokan yang lebih berbobot*. 
+   - Audio desah napas Kaelen di headphone berpindah dari tarikan napas dada biasa ke hembusan lelah tenggorokan (*throat exhalation*).
+4. **Jangkar Perhatian Mikro 45–60 Detik (*Micro-Engagement Intervals*)**:
+   - Setiap 45–60 detik perjalanan di danau es hening diselingi jangkar atmosferik lembut (kilau retakan es bercahaya di bawah kaki, serangga kristal es yang merayap di pilar, atau 1 baris bisikan binaural Aina) untuk menjaga pemain tetap berada pada kondisi kontemplatif mendalam (*Solemn Engagement*).

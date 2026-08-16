@@ -479,6 +479,20 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Guardrail Anti-Interupsi**: Tag GAS `State.TraumaCutsceneLock` & `State.Invulnerable`, penghentian AI bos instan (`DeactivateBehaviorTree`), dan eksekusi `ClearAllSpectralStates`.
 - **Dampak**: Menjaga tensi psikologis kekalahan bos tetap bermakna, puitis, dan aman dari bug race condition kamera/input.
 
+---
+
+### ADR-039: Integrasi Radius Cahaya Diegetik Syal Aina, Pacing Monumental Sektor 4, dan Handoff Blend Weight Chaos Cloth
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Gameplay Stakes & Engine Integration Standard)
+- **Konteks**: Mengatasi 3 titik kritis perancangan pra-produksi: (1) memastikan pengorbanan Syal Aina memiliki konsekuensi visibilitas nyata (*Loss Aversion $2.5\times$*), (2) merancang panggung duka Depresi di Sektor 4 tanpa memicu rasa bosan (*anti-fatigue*), dan (3) menghilangkan artefak visual snapping saat transisi cutscene ke gameplay.
+- **Keputusan Terpilih**: 
+  1. **Taruhan Visibilitas Syal (*Lumen Light Attenuation Stakes*)**: Radius PointLight Syal Aina (2700K) menyusut secara berjenjang: Prologue 800 cm (1200 lm) ➔ Sektor 1 600 cm (1000 lm) ➔ Sektor 2 450 cm (800 lm) ➔ Sektor 3 320 cm (600 lm) ➔ Sektor 4 200 cm (350 lm) ➔ Sektor 5 Penuh (Fajar).
+  2. **Pacing Monumental Sektor 4 (*The Abyss of Stillness*)**: Menerapkan framing arsitektur raksasa (*extreme long shot*), kecepatan lari stabil dengan inersia belokan berat, audio napas tenggorokan, dan jangkar mikro atmosferik setiap 45–60 detik (*Solemn Engagement*).
+  3. **Handoff Transisi Halus Chaos Cloth**: Melarang toggle biner (0/1 instan) pada aktivasi kain; wajib menggunakan *Cloth Physical Blend Weight Curve* (0.0 ➔ 1.0) berdurasi 0.5 detik (15 frame @30fps) saat cutscene menyerahkan kontrol ke gameplay, ditambah *Camera Occlusion Collision* pada spring arm.
+  4. **Kinesiologi Combat Berbobot (*Earthy Kinetic Chain*)**: Serangan finisher (`GA_ShatterStrike`) memiliki *recoil kinesiologis berat* dan *un-cancellable commitment window* (16 frame pertama recovery terkunci mutlak).
+- **Dampak**: Mengunci keselarasan sempurna antara kedalaman psikologis, kepuasan mekanik combat, dan stabilitas simulasi grafis 3D UE5.
+
+
 
 
 

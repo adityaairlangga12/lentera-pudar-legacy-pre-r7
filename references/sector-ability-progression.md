@@ -33,18 +33,22 @@ Sebelum menyalakan Altar Duka pertama, Kaelen mengandalkan perlengkapan dasar:
 ## 3. Matriks Progresi 5 Kemampuan per Sektor Duka
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                PROGRESI KEMAMPUAN KAELEN (MODEL GRIS)                                  │
-├───────────┬──────────────────────────┬─────────────────────────────┬───────────────────────────────────┤
-│ SEKTOR    │ KEMAMPUAN BARU           │ PENGORBANAN SYAL AINA       │ FOKUS MEKANIK UTAMA               │
-├───────────┼──────────────────────────┼─────────────────────────────┼───────────────────────────────────┤
-│ Sektor 1  │ Retakan Penyangkalan     │ Tahap 1: Panjang ➔ Sedang   │ Guard Break, Shatter, Destructible│
-│ Sektor 2  │ Pusaran Amarah Beku      │ Tahap 2: Sedang ➔ Pendek    │ Forward Surge, Knockback, Gap-Jump│
-│ Sektor 3  │ Kilasan Cermin Waktu     │ Tahap 3: Pendek ➔ Koyak     │ Reflector Pulse, Puzzle Optik     │
-│ Sektor 4  │ Jangkar Keheningan       │ Tahap 4: Koyak ➔ Fragmen    │ Shockwave, Curse Dampener, Ice-Bed│
-│ Sektor 5  │ Percikan Fajar Abadi     │ Puncak: Penyerahan Penuh    │ Frost-Fire Purge, Overworld Unlock│
-└───────────┴──────────────────────────┴─────────────────────────────┴───────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                        PROGRESI KEMAMPUAN KAELEN (MODEL GRIS)                                         │
+├───────────┬──────────────────────────┬─────────────────────────────┬──────────────┬───────────────┬───────────────────┤
+│ SEKTOR    │ KEMAMPUAN (GAS CLASS)    │ TAHAP PENGORBANAN SYAL      │ PANJANG KAIN │ RADIUS LUMEN  │ FOKUS MEKANIK     │
+├───────────┼──────────────────────────┼─────────────────────────────┼──────────────┼───────────────┼───────────────────┤
+│ Prologue  │ Perlengkapan Dasar       │ Utuh / Pra-Altar            │ 180 cm       │ 800 cm        │ Onboarding & Base │
+│ Sektor 1  │ Retakan Penyangkalan     │ Tahap 1: Panjang ➔ Sedang   │ 120 cm       │ 600 cm        │ Guard Break/Walls │
+│ Sektor 2  │ Pusaran Amarah Beku      │ Tahap 2: Sedang ➔ Pendek    │ 70 cm        │ 450 cm        │ Surge Thrust/Jump │
+│ Sektor 3  │ Kilasan Cermin Waktu     │ Tahap 3: Pendek ➔ Koyak     │ 30 cm        │ 320 cm        │ 360° Deflect/Rune │
+│ Sektor 4  │ Jangkar Keheningan       │ Tahap 4: Koyak ➔ Bara Redup │ 10 cm (serat)│ 200 cm        │ Shockwave/Ground  │
+│ Sektor 5  │ Percikan Fajar Abadi     │ Puncak: Penyerahan Penuh    │ Bersatu Abadi│ Penuh (Fajar) │ Frost-Fire Purge  │
+└───────────┴──────────────────────────┴─────────────────────────────┴──────────────┴───────────────┴───────────────────┘
 ```
+
+> **Hukum Taruhan Visibilitas (*Visibility Loss Aversion Stakes*)**:  
+> Setiap kali Kaelen menyalakan Altar Duka, ia memperoleh kemampuan mekanik baru yang semakin kuat, namun **kehilangan radius cahaya Lumen secara permanen**. Di Sektor 4, kegelapan dungeon merapat hingga radius 200 cm, memaksa pemain mengandalkan isyarat audio spasial 3D binaural dan kilau samar refleksi es di lantai untuk bernavigasi.
 
 ---
 

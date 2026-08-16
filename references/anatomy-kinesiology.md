@@ -69,6 +69,9 @@ Serangan pukulan dan cakar es Kaelen bukan gerak lengan terisolasi, melainkan **
 ### Aplikasi Kombat Kaelen:
 - **Light Punch Combo (Startup 3–5 frame)**: Rantai kinetik pendek; rotasi panggul cepat, fokus pada kelincahan dan pemulihan cepat.
 - **Heavy Cursed Strike (Startup 12–18 frame)**: Rantai kinetik penuh. Membutuhkan waktu untuk transfer berat badan dari kaki belakang ke kaki depan, memuntir panggul secara maksimal, dan mengalirkan energi kutukan ke cakar es.
+- **GA_ShatterStrike / Heavy Finisher (Startup 18 frame, Active 8 frame, Recovery 22 frame)**:
+  - *Earthy Kinetic Chain & Heavy Recoil*: Pukulan menghantamkan seluruh massa tubuh Kaelen ke depan. Tumbukan *Guard Break* menghasilkan *recoil kinesiologis nyata* di mana tubuh Kaelen sedikit terdorong mundur oleh gaya reaksi inersia tanah (*Ground Reaction Force*).
+  - *Non-Cancellable Commitment Window*: 16 frame pertama dari masa recovery ($22\text{ frame}$) merupakan komitmen gerak mutlak (*un-cancellable*). Pemain hanya dapat melakukan *Parry/Dash Cancel* pada 6 frame terakhir recovery, menjaga tensi pertarungan *deliberate ala Hellblade* dan mencegah game berubah menjadi aksi arcade ringan tanpa risiko.
 - **Prinsip *Head Stays Level***: Walaupun torso dan panggul berputar kuat, kepala Kaelen tetap terkontrol stabil sebagai sauh visual pemain.
 
 ---
