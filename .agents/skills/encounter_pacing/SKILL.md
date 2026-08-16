@@ -54,3 +54,11 @@ Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, da
 ## 5. Aturan Breather Room (Tension-Release & Anti-Burnout)
 - Setiap 2–3 arena encounter, WAJIB ada satu ruang *Breather Room* (sumber cahaya hangat, non-combat).
 - Breather Room berfungsi sebagai: 1) titik *save/checkpoint*, 2) reset Curse Meter alami, 3) alokasi jeda afektif untuk memulihkan *Emotional Bandwidth* pemain, 4) interaksi dialog Aina untuk lore delivery.
+
+---
+
+## 6. Desain Spasial Arena vs FSM Musuh (Lihat [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md))
+- **Arena Sempit / Koridor Rapat**: Disesuaikan untuk musuh bertipe melee brawler (Lord Alden) agar duel tight parry 1v1 terasa intens.
+- **Arena Terbuka Berpilar**: Disesuaikan untuk ranged casters / teleporting enemies (Lady Vespera) untuk pemanfaatan cover sistem.
+- **Sightline & Anticipation**: Kontrol visual reveal siluet musuh sebelum encounter untuk membangun tensi terukur.
+- **Diegetic Breadcrumbing**: Pandu alur eksplorasi menggunakan cahaya syal lentera 2700K dan jejak pencairan es tanpa marker UI.

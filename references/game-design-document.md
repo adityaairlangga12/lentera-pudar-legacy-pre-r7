@@ -76,7 +76,8 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 2. **The Ash Fanatics (Pemuja Abu)**: Membakar rumah, sejarah, dan kemanusiaan mereka demi menjaga api unggun tetap menyala karena takut mati rasa.
 3. **The Drifters (Para Pengelana — Seperti Kaelen)**: Terjebak di batas kenyataan: separuh tubuh mati rasa oleh es, separuh tubuh menahan perihnya api lentera.
 
-### 2.3 Pemetaan 5 Sektor Dungeon (Model Kübler-Ross)
+### 2.3 Pemetaan 5 Sektor Dungeon (Model Kübler-Ross & Environmental Storytelling)
+*Detail tata ruang spasial, verticality, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md).*
 
 ```
 [Sektor 1: DENIAL] ➔ [Sektor 2: ANGER] ➔ [Sektor 3: BARGAINING] ➔ [Sektor 4: DEPRESSION] ➔ [Sektor 5: ACCEPTANCE]
@@ -84,11 +85,11 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 
 | Sektor | Tahap Duka | Nama Wilayah | Suasana Visual & Atmosfer | Bos Wilayah |
 |---|---|---|---|---|
-| **Sektor 1** | **Denial** (Penyangkalan) | *The Silent Crypts* | Makam beku kuno di mana patung-patung warga membeku saat sedang berpura-pura beraktivitas normal. | **Lord Alden**, Sang Penjaga Gerbang Kosong (Kesatria zirah es yang menolak kerajaannya telah musnah). |
-| **Sektor 2** | **Anger** (Kemarahan) | *The Blazing Frost* | Peleburan es di mana amarah dingin meledak-ledak. Percikan api merah bertabrakan dengan kristal es beku. | **Ignis Vulkan**, Sang Pandai Besi Api Hampa. |
-| **Sektor 3** | **Bargaining** (Tawar-Menawar) | *The Hall of Mirrors* | Labirin cermin waktu dan arsip perjanjian kuno terendam air es. Pantulan cermin memperlihatkan masa lalu palsu. | **Lady Vespera**, Sang Penenun Perjanjian. |
-| **Sektor 4** | **Depression** (Depresi) | *The Abyss of Stillness* | Danau keheningan gelap tanpa suara. Radius cahaya syal menyusut 50%, langkah kaki terasa sangat berat. | **The Hollow Reflection** (Manifestasi bayangan trauma Kaelen sendiri). |
-| **Sektor 5** | **Acceptance** (Penerimaan) | *The Dawning Altar* | Puncak menara di mana fajar pertama menembus badai es abadi. Membuka gerbang keluar dungeon menuju Benua Luar (*Overworld*). | **The Sovereign of Dawn** (Ujian akhir rekonsiliasi batin). |
+| **Sektor 1** | **Denial** (Penyangkalan) | *The Silent Crypts* | Makam beku kuno di mana patung-patung warga membeku saat sedang berpura-pura beraktivitas normal. Koridor sempit simetris berulang (*looping claustrophobia*). | **Lord Alden**, Sang Penjaga Gerbang Kosong (Kesatria zirah es yang menolak kerajaannya telah musnah). |
+| **Sektor 2** | **Anger** (Kemarahan) | *The Blazing Frost* | Peleburan es di mana amarah dingin meledak-ledak. Jalur terputus tajam, friksi navigasi tinggi, dan reruntuhan *destructible*. | **Ignis Vulkan**, Sang Pandai Besi Api Hampa. |
+| **Sektor 3** | **Bargaining** (Tawar-Menawar) | *The Hall of Mirrors* | Labirin cermin waktu dan arsip perjanjian kuno terendam air es. Pantulan cermin memperlihatkan masa lalu palsu dan rute bercabang semu. | **Lady Vespera**, Sang Penenun Perjanjian. |
+| **Sektor 4** | **Depression** (Depresi) | *The Abyss of Stillness* | Danau keheningan gelap tanpa suara. Ruang luas hampa (*descending verticality*), langkah kaki terasa sangat berat. | **The Hollow Reflection** (Manifestasi bayangan trauma Kaelen sendiri). |
+| **Sektor 5** | **Acceptance** (Penerimaan) | *The Dawning Altar* | Puncak menara di mana fajar pertama menembus badai es abadi. Ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*). | **The Sovereign of Dawn** (Ujian akhir rekonsiliasi batin). |
 
 ---
 

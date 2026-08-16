@@ -28,12 +28,13 @@
 - **Aina (Jiwa Syal Lentera — Sang Pelindung Abadi)**:
   Sahabat sekaligus belahan jiwa Kaelen yang mengorbankan wujud fisiknya menjadi syal api kuning abadi di leher Kaelen.
   - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Dual-Mode*: Chaos Cloth Stiffness 0.4–0.6 saat gameplay & Hand-Keyframed Control Rig saat cutscene) yang berkibar dinamis sebagai kompas emosional penunjuk arah. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
-- **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief)**:
-  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada (Bos: Lord Alden).
-  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak (Bos: Ignis Vulkan).
-  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir (Bos: Lady Vespera).
-  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total (Bos: The Hollow Reflection).
-  5. **Sektor 5: Acceptance (Penerimaan)** — *The Dawning Altar*: Puncak rekonsiliasi emosional Kaelen dan Aina, membuka gerbang keluar dungeon menuju Benua Luar (*Overworld*).
+- **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief & Environmental Storytelling)**:
+  *Tata ruang spasial, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md).*
+  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada. Koridor sempit simetris berulang (*looping claustrophobia*, Bos: Lord Alden).
+  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak. Jalur terputus tajam, friksi navigasi tinggi, dan reruntuhan *destructible* (Bos: Ignis Vulkan).
+  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir. Rute bercabang semu dan refleksi es manipulatif (Bos: Lady Vespera).
+  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total. Ruang luas hampa dengan *descending verticality* (Bos: The Hollow Reflection).
+  5. **Sektor 5: Acceptance (Penerimaan)** — *The Dawning Altar*: Puncak rekonsiliasi emosional Kaelen dan Aina, ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*).
 
 ### 1.3 Teori Warna & Kontras Suhu Kelvin (The Triad of Lentera Pudar)
 Seluruh perancangan seni visual 3D, pencahayaan, shader, dan material wajib tunduk pada **Hukum Tiga Warna (The Triad)**:

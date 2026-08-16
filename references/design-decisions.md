@@ -303,6 +303,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Dinamika Gaze & Eye-Tracking**: Mengimplementasikan 4 pola tatapan (Gaze aversion, lock, downward, drift) dengan parameter hold duration.
 - **Dampak**: Wajah Kaelen dan Aina memiliki daya ungkap emosional mendalam (*high emotional nuance*), terhindar dari kesan kaku/*uncanny valley*, dan memperkuat resonansi naratif cutscene.
 
+---
+
+### ADR-027: Standardisasi Level Design & Environmental Storytelling (Spasial Duka, Breadcrumbing Diegetik, dan Simbiosis Arena FSM)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Level Design & Spatial Storytelling Standard)
+- **Konteks**: Menetapkan arsitektur level 3D grey-box, penataan koridor dungeon, penempatan prop naratif, dan breadcrumbing visual diegetik agar ruang itu sendiri bercerita tanpa ketergantungan pada dialog verbal atau marker UI buatan.
+- **Keputusan Terpilih**: 
+  1. **Pemetaan Spasial 5 Tahap Berduka**: Merancang layout koridor (S1 simetris looping, S2 asimetris friksi tinggi, S3 labirin cermin waktu, S4 hampa descending, S5 lapang terbuka).
+  2. **Diegetic Breadcrumbing & Minimal-HUD**: Menghapus seluruh marker UI buatan; navigasi dipandu oleh pendaran Syal Aina (`#F4B860`), jejak es mencair, dan pencahayaan chiaroscuro.
+  3. **Rest Beats & Emotional Breathing Rooms**: Menyisipkan ruang hening kontemplatif setelah encounter kombat intens untuk memulihkan *emotional bandwidth* pemain.
+  4. **Prop Naratif & The Power of Absence**: Menerapkan *Rule of Intentional Wear* sesuai lore dan memanfaatkan kekosongan objek (*absence storytelling*) untuk menyiratkan kehilangan mendalam.
+  5. **Simbiosis Arena vs FSM Musuh**: Menyesuaikan dimensi arena secara presisi dengan arketipe kecerdasan buatan musuh (arena sempit untuk brawler melee vs arena berpilar untuk ranged caster).
+- **Dampak**: Setiap jengkal dungeon *The Silent Crypts* hingga *The Dawning Altar* memiliki bobot naratif immersif, mendukung gameplay kombat deliberate 1v1, dan memperkuat arsitektur psikologis Hellblade-grade.
+
+
 
 
 
