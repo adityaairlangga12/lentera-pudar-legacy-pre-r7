@@ -124,3 +124,5 @@ flowchart TD
    - Pencahayaan Lumen 3D di dungeon makam beku (*The Silent Crypts*) dengan Post-Process LUT.
 5. **Fase 5: Combat FSM & Boss Fight Sektor 1**
    - State: `Idle`, `Jog`, `Sprint`, `PunchCombo_1..3`, `CursedIceStrike`, `DashEvade`, `Hurt`, `Death`.
+   - Enemy Archetypes: S1 *The Echo* & *Lord Alden* dengan telegraf serangan 12–18 frame dan fun guardrails sesuai [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md).
+

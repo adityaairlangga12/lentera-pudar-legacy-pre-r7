@@ -62,3 +62,15 @@ Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, da
 - **Arena Terbuka Berpilar**: Disesuaikan untuk ranged casters / teleporting enemies (Lady Vespera) untuk pemanfaatan cover sistem.
 - **Sightline & Anticipation**: Kontrol visual reveal siluet musuh sebelum encounter untuk membangun tensi terukur.
 - **Diegetic Breadcrumbing**: Pandu alur eksplorasi menggunakan cahaya syal lentera 2700K dan jejak pencairan es tanpa marker UI.
+
+---
+
+## 7. Arketipe Musuh & Fun Guardrails (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md))
+- **Arketipe Berbasis Duka**:
+  - *The Echo* (S1 Denial): Duplikasi ilusi & peniruan gerak; uji membaca tell otentik.
+  - *The Berserker* (S2 Anger): Agresif tergesa-gesa; reward kesabaran parry 12-frame.
+  - *The Deceiver* (S3 Bargaining): Teleportasi & proyektil semu.
+  - *The Weight* (S4 Depression): Lambat, tanky, shockwave tebal.
+  - *The Mirror* (S5 Acceptance): Peniruan teknik bertarung Kaelen dari masa lalu.
+- **Fun Guardrails**: Nilai kepuasan mekanik (*hit-stop 3-frame*, kontrol responsif, feedback es pecah) tidak boleh dikorbankan demi tema berat duka.
+- **Alur Pacing Encounter**: Onboarding ➔ Escalation ➔ Combo Archetypes ➔ Recovery.

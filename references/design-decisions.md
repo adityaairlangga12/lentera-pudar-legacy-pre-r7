@@ -331,6 +331,20 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Prosedur Sesi 5-Tahap & Retensi Memori**: Menjalankan sesi unprimed 30–45 menit dengan evaluasi memori jangka panjang 1 minggu pasca-sesi.
 - **Dampak**: Mencegah bias internal pengembang/AI, memastikan tema 5 Tahapan Berduka beresonansi kuat secara emosional, dan menjamin karya akhir mencapai standar puitis bertaraf internasional.
 
+---
+
+### ADR-029: Standardisasi Desain Musuh, Arketipe Duka & Balancing Kombat (Enemy Archetypes, Telegraphing Readability, & Mechanical Fun Guardrails)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Enemy Design & Combat Balancing Standard)
+- **Konteks**: Menetapkan perancangan arketipe musuh sebagai representasi psikologis 5 Tahapan Berduka, kurva kesulitan encounter mikro, keterbacaan serangan (telegraphing), serta jaminan kepuasan mekanik agar combat tidak terasa membosankan.
+- **Keputusan Terpilih**: 
+  1. **Arketipe Duka Tematik**: Menolak musuh generik; merancang *The Echo* (Denial), *The Berserker* (Anger), *The Deceiver* (Bargaining), *The Weight* (Depression), dan *The Mirror* (Acceptance).
+  2. **Kurva Kesulitan Encounter 4-Tahap**: Menerapkan siklus Onboarding ➔ Escalation ➔ Combo Archetypes ➔ Recovery Rest Beat.
+  3. **Mandat Keterbacaan & Telegraphing**: Mengharuskan windup minimal 12–18 frame, perubahan siluet kontras instan, audio cues 3D spasial, dan sinyal otentik khusus The Echo.
+  4. **Fun Guardrails (Anti-Boredom Mandate)**: Menjaga satisfaction dasar (hit-stop 3-frame, impact es retak, kontrol responsif) agar tema berat tidak mengurangi keseruan bertarung.
+- **Dampak**: Pertempuran di semesta Lentera Pudar memiliki kedalaman psikologis, menuntut penguasaan parry deliberate, adil (*fair*), dan memuaskan untuk dimainkan.
+
+
 
 
 
