@@ -235,6 +235,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Emotional Bandwidth & Non-Linear Grief**: Menyelipkan jeda kontemplatif untuk mencegah kelelahan emosional dan mengizinkan gema (echoes) lintas sektor duka.
 - **Dampak**: Gameplay, visual, audio, dan alur narasi memiliki dasar komputasi yang terbukti secara matematis dan psikologis, mengangkat kualitas Lentera Pudar ke standar karya komersial berkualitas tinggi.
 
+---
+
+### ADR-022: Standardisasi Kreativitas, Nilai Seni & Evaluasi Estetika Tingkat Lanjut (Expert Art & Aesthetic Framework)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Artistic & Aesthetic Standard)
+- **Konteks**: Memastikan output visual, desain karakter, level lighting, sinematografi, dan simbolisme naratif dinilai menggunakan kriteria estetika formal yang kuat, bukan hanya kebenaran teknis atau selera subjektif.
+- **Keputusan Terpilih**: 
+  1. **Value-First Grayscale Mandate**: Setiap komposisi visual dan shot kamera wajib lolos uji kontras terang-gelap dalam mode monokrom hitam-putih sebelum warna dievaluasi.
+  2. **Rasio Dominasi Warna 60-30-10**: Menerapkan proporsi terstruktur (60% netral gelap `#2A211C`, 30% biru dingin `#4A6FA5`/`#7EE8FA`, 10% kuning hangat `#F4B860`) dengan indirect color bleed via Lumen.
+  3. **Siluet & Readability Murni**: Menetapkan keterbacaan instan telegraph musuh dari siluet hitam-putih murni tanpa bergantung pada efek partikel VFX.
+  4. **Triad Kritik Seni (Unity, Tension, Resolution)**: Menjadikan tiga pilar formal ini sebagai checklist visual self-review loop AI agent.
+  5. **Semiotika Visual Kumulatif**: Mengunci makna simbolis Syal Aina (pengorbanan terkikis), Retakan Es (kerapuhan batin), dan Cahaya Lentera (harapan) secara konsisten.
+- **Dampak**: Kualitas visual semesta Lentera Pudar memiliki daya pikat artistik tinggi (*high artistic resonance*), konsistensi gaya Kena yang terjaga, serta bobot sinematik yang mendalam.
+
+
 
 
 

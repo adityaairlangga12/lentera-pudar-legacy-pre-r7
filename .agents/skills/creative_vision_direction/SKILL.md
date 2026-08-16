@@ -5,7 +5,7 @@ description: "Pustaka keahlian arahan visi kreatif, filosofi seni melankolis-han
 
 # Creative Vision & Poetic Narrative Direction
 
-Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md) dan kalibrasi [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md).
+Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md).
 
 ---
 
@@ -24,7 +24,28 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ---
 
-## 2. Standar Karakterisasi & Diksi Dialog
+## 2. Kerangka Estetika & Kritik Seni Expert
+
+### A. Uji Nilai Grayscale (*Value-First Mandate*)
+- Setiap shot sinematik, komposisi kamera, dan desain level wajib diuji dalam mode **Grayscale**.
+- Titik fokus utama (Syal Aina / Landmark Altar) harus tetap kontras dan terbaca jelas tanpa bantuan warna.
+
+### B. Rasio Dominasi Warna Terkontrol 60-30-10
+- **60% Dominan**: Netral Gelap (`#2A211C` & `#141013`) — batuan dan bayangan.
+- **30% Sekunder**: Biru Dingin Kutukan (`#4A6FA5` & `#7EE8FA`) — es dan kabut.
+- **10% Aksen**: Kuning Hangat Jiwa Aina (`#F4B860`) — pendaran syal dan percikan bara.
+
+### C. Triad Kritik Seni Formal (Unity, Tension, Resolution)
+- **Unity**: Seluruh aset melayani satu mood melankolis yang koheren.
+- **Tension**: Kontras suhu 2700K vs 6500K dan asimetri cakar es vs perban.
+- **Resolution**: Mata selalu diarahkan pada titik istirahat/harapan yang jelas (Altar Duka / Syal).
+
+### D. Semiotika Visual Kumulatif
+- Perubahan visual pada motif berulang (pemendekan syal, pembesaran retakan es, intensitas pendaran bara) wajib memiliki dasar naratif yang dibangun secara kumulatif.
+
+---
+
+## 3. Standar Karakterisasi & Diksi Dialog
 
 ### A. Kaelen (Protagonis — Pengelana Tangan Beku)
 - **Ciri Khas**: Dingin di luar, hancur di dalam. Menolak mati rasa demi menepati janji pada Aina.
@@ -33,7 +54,7 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
   - Kalimat Kaelen harus padat, berat, dan reflektif.
   - Sering merespons dunia melalui bahasa tubuh 3D (menggenggam syal, menatap tangan esnya, menghela napas panjang — bukan melalui teks deskriptif).
 - **Contoh Diksi**:
-  > *"Syal ini... semakin pendek. Tapi langkahku belum boleh berhenti."*
+  > *"Syal ini... semakin pendek. Tapi langkahku belum boleh berhenti."*  
   > *"Jangan membeku di sini. Duka ini memang sakit, tapi kau harus tetap merasakannya."*
 
 ### B. Aina (Jiwa Syal Lentera)
@@ -47,7 +68,7 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ---
 
-## 3. Integrasi Estetika ke Dalam Gameplay & Mekanik 3D
+## 4. Integrasi Estetika ke Dalam Gameplay & Mekanik 3D
 
 - **The Fading Scarf (Pengorbanan Mekanik — SOP 4)**:
   - Pemendekan syal Aina di tiap altar bukan sekadar penurunan stat visual, melainkan momen emosional yang diperkuat oleh kamera close-up wajah Kaelen (FOV 35°–50°, jarak 1.2–1.8m ala Hellblade II — Kategori `06_kamera_closeup_emosional`), melodi piano berdebu yang semakin intim, dan desaturasi dunia progresif.
@@ -58,7 +79,7 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ---
 
-## 4. Panduan Konsistensi Artstyle 3D (Kena Benchmark — SOP 5)
+## 5. Panduan Konsistensi Artstyle 3D (Kena Benchmark — SOP 5)
 - Siluet karakter (Kaelen) harus selalu terbaca bersih dari kejauhan — syal kuning Aina harus kontras terhadap jubah gelap `#2A211C`.
 - Setiap environment yang "dipulihkan" oleh syal Aina mendapat rona hangat bertahap — partikel `FX_Warmth_Embers` menyebar organik di area yang dilalui Kaelen.
 - Rasio kontras cahaya hangat vs ambient dungeon minimum **8:1** (Sektor 1–3) hingga **12:1** (Sektor 4) — verifikasi via [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) Contoh 4.
@@ -66,7 +87,8 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ---
 
-## 5. Referensi Dokumen Lengkap
+## 6. Referensi Dokumen Lengkap
+- [references/expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
 - [references/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) — Pedoman artistik penuh & dualitas combat feel.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Master GDD 9 Bab.
 - [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Style Guide Numerik 11 Bab.
