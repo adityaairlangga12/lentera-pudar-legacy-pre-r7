@@ -371,6 +371,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Format Standar Lembar Voice Actor**: Menetapkan template 7 parameter (Line, Karakter, Sektor, Subteks, Tempo/Dinamika, Catatan Fisik/FACS, Tonal).
 - **Dampak**: Menghasilkan delivery dialog yang hidup, natural, menyentuh batin, dan selaras sempurna secara audio-visual dengan animasi Control Rig wajah.
 
+---
+
+### ADR-032: Standardisasi UI/UX, Minimal-Diegetic HUD & Aksesibilitas Komprehensif (Diegetic UI Priority, Cognitive Load Reduction, Colorblind/Hearing Accessibility, & Localization-Ready Architecture)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master UI/UX & Accessibility Standard)
+- **Konteks**: Menetapkan arsitektur antarmuka pengguna minimalis diegetik guna mereduksi beban kognitif pemain serta menyediakan fitur aksesibilitas empatik yang komprehensif bagi pemain dengan berbagai kebutuhan khusus.
+- **Keputusan Terpilih**: 
+  1. **Prioritas UI Diegetik**: Mengintegrasikan indikator status utama langsung ke tubuh Kaelen (es lengan kiri & panjang fisik Syal Aina); HUD non-diegetik memudar otomatis.
+  2. **Aksesibilitas Visual Inklusif**: Menyediakan filter buta warna (Protanopia, Deuteranopia, Tritanopia) yang diperkuat oleh bentuk simbol geometris unik, penskalaan teks, dan reduksi screen shake/flashing.
+  3. **Aksesibilitas Auditori & Closed Captions**: Menyertakan closed captions vokal emosional non-verbal, alternatif visual untuk attack tell audio, dan slider audio independen.
+  4. **Kontrol Adaptif & Assist Mode**: Remapping tombol penuh (termasuk skema satu tangan) dan opsi pelebaran parry window assist.
+  5. **Arsitektur Siap Lokalisasi**: Menjamin text container adaptif (+40% ekspansi) dan larangan mutlak atas teks baked pada tekstur 3D.
+- **Dampak**: Menjamin permainan dapat diakses secara nyaman dan setara oleh seluruh pemain di dunia tanpa mengorbankan integritas artistik dan imersi emosional.
+
+
 
 
 

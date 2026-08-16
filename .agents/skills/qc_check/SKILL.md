@@ -62,6 +62,11 @@ flowchart TD
 - [ ] **Audio Dynamic Ducking & Binaural Spatialization**:
   - Normalisasi loudness $-16\text{ LUFS}$ (Combat BGM) / $-18\text{ LUFS}$ (Dialog) dengan audio ducking ($-6\text{ dB}$, attack 150ms, release 400ms) saat narasi/bisikan jiwa beku.
   - Tata suara 3D binaural terverifikasi via headphone fisik.
+- [ ] **Kepatuhan UI/UX & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))**:
+  - Mode Buta Warna teruji (Protanopia/Deuteranopia/Tritanopia) dengan pembedaan bentuk/simbol.
+  - Closed Captions lengkap mencakup deskripsi vokal non-verbal (`[napas tercekat]`, `[jeda hening]`).
+  - Full Control Remapping & Parry Window Assist slider berfungsi tanpa distorsi gameplay.
+  - Text container adaptif (+40% ekspansi) dan zero baked text pada aset tekstur 3D.
 
 ---
 

@@ -149,6 +149,11 @@ flowchart LR
 - Jika *Curse Meter* penuh total 3 kali dalam satu pertempuran, layar menggelap dengan suara es yang membekukan jantung Kaelen.
 - Alih-alih menghapus save game pemain, sistem memicu **cutscene refleksi trauma personal Kaelen**, di mana bisikan Aina menariknya kembali dari jurang mati rasa sebelum ia membeku selamanya.
 
+### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))
+- **Antarmuka Diegetik Utama**: Indikator status tersemat langsung pada tubuh Kaelen (es lengan kiri & panjang syal emas). HUD non-diegetik memudar otomatis saat eksplorasi.
+- **Aksesibilitas Komprehensif**: Mode buta warna berbasis bentuk simbol, closed captions vokal emosional, visual cues untuk audio tell, dan slider parry window assist (12 frame ➔ 18 frame).
+- **Localization-Ready Architecture**: Desain text container dinamis (+40% ekspansi) dan zero baked text pada aset tekstur 3D.
+
 ---
 
 ## BAB V: MEKANIK PERSEPSI & EKSPLORASI (THE EYE OF FROST / EYEPATCH SYSTEM)
