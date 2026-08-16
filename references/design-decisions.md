@@ -492,6 +492,19 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Kinesiologi Combat Berbobot (*Earthy Kinetic Chain*)**: Serangan finisher (`GA_ShatterStrike`) memiliki *recoil kinesiologis berat* dan *un-cancellable commitment window* (16 frame pertama recovery terkunci mutlak).
 - **Dampak**: Mengunci keselarasan sempurna antara kedalaman psikologis, kepuasan mekanik combat, dan stabilitas simulasi grafis 3D UE5.
 
+---
+
+### ADR-040: Standardisasi Modular Scarf Physics Pre-Roll, GAS Hit-Stop Delta-Time Accumulator, dan Gameplay Loop Danau Es Sektor 4
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Production Refinement Standard)
+- **Konteks**: Menyempurnakan 3 detail teknis tingkat lanjut pada arsitektur UE5 dan desain level: (1) mencegah artefak jiggle/drop saat pertukaran mesh syal modular, (2) memastikan bobot hit-stop combat independen dari fluktuasi framerate PC vs Steam Deck, dan (3) memberikan loop gameplay mekanik aktif pada Danau Es Sektor 4 agar tidak menjadi sekadar walking simulator.
+- **Keputusan Terpilih**: 
+  1. **Modular Scarf Swapping & 5-Frame Pre-Roll**: Keempat variasi syal (`SK_Scarf_Stage1` s.d. `SK_Scarf_Stage4`) berbagi skeleton rig 5-bone yang sama (`scarf_01..05`). Eksekusi `SetSkeletalMeshAsset` terjadi saat blackout frame cutscene Altar Duka dengan eksekusi *5-frame Pre-Roll Physics Warm-Up* tersembunyi off-screen sebelum kamera memudar kembali (fade-in).
+  2. **Hit-Stop Delta-Time Accumulator (`UAbilityTask_HitStop`)**: Hit-stop $50\text{ ms}$ diimplementasikan sebagai custom GAS Ability Task berbasis akumulasi delta-time render aktual (menghentikan Anim Montage `PlayRate = 0.0f` dan mereset ke `1.0f` setelah 50ms akumulasi), menjamin benturan stabil di 30 FPS, 60 FPS, maupun 120 FPS.
+  3. **Gameplay Loop & Hazard Danau Es Sektor 4**: Menambahkan hazard *Apathy Statues* (patung jiwa beku reaktif kecepatan/suara yang merengkuh kaki Kaelen jika panik), refleksi cermin trauma *The Black Mirror*, pemanfaatan aktif *Jangkar Keheningan* (`GA_AnchorStillness`) untuk memadatkan pijakan es, dan *binaural drone 40Hz breadcrumbing*.
+- **Dampak**: Menjamin stabilitas simulasi grafis UE5, presisi absolut rasa hantaman combat, dan ketegangan eksplorasi duka yang kaya agensi mekanik.
+
+
 
 
 

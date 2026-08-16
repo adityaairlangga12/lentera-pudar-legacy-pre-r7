@@ -107,6 +107,10 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
    - Wajib menerapkan **Blend Weight Transition Curve (0.0 ➔ 1.0) selama 0.5 detik (15 frame @30fps / 30 frame @60fps)** via parameter `ClothPhysicalBlendWeight`. Saat cutscene berakhir, Control Rig memegang 100% kendali pada frame awal, lalu secara mulus menyerahkan bobot inersia ke Chaos Cloth Solver untuk mencegah visual snapping, artefak melompat, atau penetrasi mesh ke dada Kaelen.
 4. **Proteksi Oklusi Kamera (*Camera Occlusion Avoidance*)**:
    - Spring arm kamera *Over-The-Shoulder* dilengkapi *Invisible Collision Volume* tipis yang menolak kibasan ujung kain syal agar tidak menempel atau menghalangi pandangan kamera saat Kaelen berputar cepat atau melakukan *Evade Dash*.
+5. **Modular Scarf Swapping & Physics Pre-Roll Warm-Up**:
+   - Empat variasi panjang syal (`SK_Scarf_Stage1` 180cm, `SK_Scarf_Stage2` 120cm, `SK_Scarf_Stage3` 70cm, `SK_Scarf_Stage4` 10cm) berbagi **satu hierarki skeleton rig 5-bone yang sama** (`scarf_01` s.d. `scarf_05`).
+   - Eksekusi pertukaran asset mesh (`SetSkeletalMeshAsset`) dilakukan **persis pada frame blackout transisi cutscene Altar Duka**.
+   - Sistem wajib menjalankan **5-frame Pre-Roll Physics Warm-Up** secara tersembunyi (*off-screen*) sebelum kamera memudar kembali (*fade-in*), sehingga saat layar terang kembali, kain sudah berada dalam kondisi kestabilan inersia alami tanpa artefak drop atau jiggle di frame awal.
 
 ### B. Parameter Solver Chaos Cloth
 | Parameter Fisika | Syal Aina (`M_Aina_Scarf`) | Jubah Kaelen (`M_Tunic`) |

@@ -293,7 +293,9 @@ stateDiagram-v2
    Gerakan meluncur cepat ke samping/belakang meninggalkan jejak percikan api emas syal Aina (`#F4B860`), memiliki *invulnerability frames* (i-frames) singkat.
 
 ### 6.3 Rasa Hantaman & Kinematika (*Combat Kinematics & Weight*)
-- **Hit-Stop (Impact Freeze)**: Jeda 3 frame (0.05 detik) saat serangan bertabrakan dengan tubuh musuh, memberi rasa hantaman tulang dan kristal yang sangat berbobot.
+- **Hit-Stop (Delta-Time Accumulator / Impact Freeze)**: 
+  - Diimplementasikan melalui GAS Ability Task khusus (`UAbilityTask_HitStop`) dengan durasi waktu absolut **$50\text{ ms}$ ($0.050\text{ detik}$)** menggunakan *Delta-Time Accumulator* (menghentikan `PlayRate = 0.0f` pada Anim Montage dan mengembalikannya ke `1.0f` saat akumulasi waktu tercapai).
+  - *Frame-Rate Independent*: Menjamin rasa benturan tulang dan kristal es terasa konsisten dan berbobot di 30 FPS (Steam Deck), 60 FPS, maupun 120 FPS tanpa terpengaruh lonjakan *frame-drop*.
 - **Procedural Screen Shake & Impulse**: Getaran kamera directional sesuai sudut tebasan/pukulan.
 - **Physical Particle Feedback**: Pecahan kristal es tajam dan debu reruntuhan batu berhamburan saat pukulan mendarat.
 

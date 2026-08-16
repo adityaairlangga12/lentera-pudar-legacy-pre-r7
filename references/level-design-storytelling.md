@@ -69,3 +69,8 @@ Merancang panggung duka **Depresi (*The Abyss of Stillness*)** tanpa menjerumusk
    - Audio desah napas Kaelen di headphone berpindah dari tarikan napas dada biasa ke hembusan lelah tenggorokan (*throat exhalation*).
 4. **Jangkar Perhatian Mikro 45–60 Detik (*Micro-Engagement Intervals*)**:
    - Setiap 45–60 detik perjalanan di danau es hening diselingi jangkar atmosferik lembut (kilau retakan es bercahaya di bawah kaki, serangga kristal es yang merayap di pilar, atau 1 baris bisikan binaural Aina) untuk menjaga pemain tetap berada pada kondisi kontemplatif mendalam (*Solemn Engagement*).
+5. **Gameplay Loop Danau Es & Hazard Patung Apatis (*The Black Mirror & Apathy Statues*)**:
+   - *The Black Mirror*: Permukaan danau es bertindak sebagai cermin gelap yang memantulkan siluet masa lalu Kaelen secara terbalik di bawah kakinya.
+   - *Apathy Statues (Patung Jiwa Beku)*: Danau es dipenuhi patung-patung kristal manusia yang mati rasa. Patung ini tidak agresif, namun merupakan hazard reaktif kecepatan/suara: jika pemain berlari panik secara membabi buta, tangan-tangan es akan merengkuh kaki Kaelen (*grasping frost trap*).
+   - *Sinergi `GA_AnchorStillness`*: Pemain menggunakan jurus *Jangkar Keheningan* untuk memadatkan lempengan es rapuh, menenangkan patung apatis di sekitarnya, dan menciptakan pijakan tumpuan stabil menuju Altar Duka 4.
+   - *Binaural Audio Breadcrumbing*: Suara dengung rendah (*sub-bass drone* 40Hz) dari Altar Duka 4 di kejauhan memandu telinga kiri/kanan pemain saat Kaelen menghadap ke arah yang benar.
