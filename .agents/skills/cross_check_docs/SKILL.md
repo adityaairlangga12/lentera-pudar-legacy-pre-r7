@@ -49,11 +49,12 @@ Setiap agen yang menjalankan tugas audit `/cross-check-docs` WAJIB mematuhi 8 at
 - Audit wajib memindai file di root workspace (misal: `32_Daftar_Kemampuan...`, `33_Skenario_Tutorial...`) vs file di folder `references/`.
 - Jika ditemukan duplikasi isi atau potensi tumpang tindih sumber kebenaran, audit wajib melaporkannya sebagai **Anomali Duplikasi** dan menetapkan file master di `references/` sebagai *Single Source of Truth (SSoT)* utama.
 
-### 8. Bagian Wajib "Titik Lemah & Risiko" (Fragility & Assumptions Assessment)
-- Setiap laporan audit wajib menyertakan analisis kritis:
-  1. Bagian sistem mana yang paling rapuh (*fragile*).
-  2. Bagian mana yang paling berpotensi disalahpahami oleh sub-agent AI lain.
-  3. Bagian mana yang paling bergantung pada asumsi desain yang belum divalidasi oleh playtest manusia nyata (`[Needs Human Playtest Validation]`).
+### 8. Bagian Wajib "Titik Lemah, Asumsi Kritis & Risiko Implementasi" (Deep Critical Reasoning Mandate)
+- Setiap laporan audit WAJIB menjalankan analisis metakognitif mendalam (*deep critical reasoning*, bukan sekadar mendata keluhan umum) yang mencakup 4 pilar evaluasi kritis:
+  1. **Analisis Tarikan Filosofis (*Core Tension Analysis*)**: Membedah potensi benturan filosofis antar pilar desain (misal: menjaga tensi duka lambat dan hening ala *Hellblade* tanpa mengorbankan kepuasan agensi mekanik ala *GRIS/Kena*).
+  2. **Titik Rapuh Handoff Antar-Sistem (*System-Boundary Failure Modes*)**: Mengidentifikasi titik rawan kegagalan integrasi antar modul/engine (misal: transisi *Chaos Cloth vs Control Rig*, *Local CustomTimeDilation vs Global/Niagara Time*, live update *Material Parameter Collection*). **Setiap titik rapuh WAJIB langsung disertai rancangan mitigasi teknis konkret**.
+  3. **Pencegahan Bias Generik AI (*Agent Alignment Guard*)**: Menilai kerentanan dokumen terhadap *creeping features* atau bias generik model AI (seperti kecenderungan mengusulkan skill tree/toko koin RPG konvensional).
+  4. **Asumsi Psikologis yang Membutuhkan Validasi Playtest Manusia (`[Needs Human Playtest Validation]`)**: Mengidentifikasi hipotesis emosional yang tidak bisa divalidasi oleh AI semata (misal: *Pacing Monumental Sektor 4 / Solemn Engagement vs Disengaged Fatigue*, efektivitas *Loss Aversion $2.5\times$* dari penyempitan radius cahaya syal).
 
 ---
 
@@ -76,9 +77,12 @@ Setiap laporan `/cross-check-docs` wajib mengikuti struktur berikut:
 |---|---|---|---|
 
 ## 4. Evaluasi Titik Lemah, Asumsi Kritis & Risiko Implementasi
-- Titik Rapuh Teknis / Logika
-- Risiko Miskonsepsi AI Sub-Agent
-- Asumsi Emosional yang Membutuhkan Validasi Playtest Manusia
+### A. Titik Rapuh Teknis, Kinesiologi & Integrasi Engine (dengan Solusi Arsitektur)
+- [Masalah Handoff / Boundary] ➔ Solusi Teknis Terukur
+### B. Analisis Tarikan Filosofis & Pencegahan Bias AI Sub-Agent
+- Penegakan Anti-RPG Mandate & Grounded Kinetic Commitment
+### C. Asumsi Emosional yang Membutuhkan Validasi Playtest Manusia ([Needs Human Playtest Validation])
+- Hipotesis Emosional Intended vs Perceived & Indikator Lolos Uji
 
 ## 5. Rekomendasi Tindakan Selanjutnya (Action Items)
 ```
