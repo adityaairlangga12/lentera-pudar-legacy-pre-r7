@@ -23,6 +23,10 @@ Setiap agen yang menjalankan tugas audit `/cross-check-docs` WAJIB mematuhi 8 at
   - **Tautan File Markdown**: `[nama-file.md](file:///d:/GodotProjects/Lentera-Pudar/references/nama-file.md)`
   - **Nomor Bab / Seksi / Baris** yang tepat.
   - **Cuplikan Teks Kutipan Singkat** yang membuktikan klaim tersebut.
+- **Aturan Baku Kolom Status Keselarasan & Larangan Self-Reference Cross-Check**:
+  - Kolom `Status Keselarasan ✅` **HANYA boleh diisi** jika istilah/kode yang diklaim (nama variabel, tag GAS, event, Blueprint class) ditemukan **tertulis kata-per-kata di file eksternal yang dirujuk** saat pengecekan langsung dijalankan.
+  - Jika klaim hanya berasal dari file yang sedang diedit/diaudit itu sendiri (*self-reference*) atau belum ditulis di file rujukan eksternal, **WAJIB ditulis `⚠️ Self-Reference / Belum Ada di File Eksternal` atau `❌ Belum Ada Referensi Eksternal`** apa adanya.
+  - Dilarang keras menyimpulkan "selaras" dari kesamaan topik atau nama sistem yang mirip.
 - Klaim tanpa kutipan teks dianggap **TIDAK VALID** dan harus diberi label `[Perlu Verifikasi]`.
 
 ### 3. Eksplisit Menyatakan Gap (Anti-Smoothing & No-Assumption Mandate)
