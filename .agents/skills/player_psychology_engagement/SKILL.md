@@ -5,7 +5,7 @@ description: Panduan psikologi pemain untuk Psychology Agent (Consultant). Digun
 
 # Player Psychology & Emotional Engagement (Psychology Agent)
 
-Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS).
+Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md).
 
 ---
 
@@ -37,7 +37,27 @@ Saat mereview rancangan bos dan narasi per sektor dungeon, pastikan motivasi mer
 
 ---
 
-## 3. Evaluasi Bahasa Tubuh & Ekspresi 3D (Hellblade-Grade Cinematics & Kinesiologi)
+## 3. Diagnostik Desain Lanjutan (Self-Determination Theory & Loss Aversion)
+
+### A. 3 Kebutuhan Dasar SDT (Autonomy, Competence, Relatedness)
+- **Autonomy**: Pastikan pilihan rute via Eyepatch dan strategi bertarung adalah pilihan nyata, bukan kosmetik.
+- **Competence**: Kepuasan berasal dari penguasaan parry 12-frame dan pola musuh yang adil.
+- **Relatedness**: Hubungan Kaelen-Aina terbangun lewat ketergantungan gameplay nyata.
+- **Anti-Crowding Out**: Tolak sistem leaderboard/skor angka yang merusak motivasi intrinsik kontemplatif.
+
+### B. Prospect Theory & Loss Aversion 2.5x
+- Kerugian dirasakan **2.0–2.5x lebih berat** dibanding keuntungan bernilai setara ($V(\text{Loss}) \approx 2.25 \times V(\text{Gain})$).
+- Konsekuensi pemendekan fisik Syal Aina wajib diperlihatkan sebelum pemain mengonfirmasi aktivasi Altar Duka.
+
+### C. Emotional Bandwidth & Pacing Anti-Burnout
+- Sisipkan *Breather Rooms* dan jeda hening di antara beat emosional berat untuk mencegah kelelahan afektif (*emotional burnout*).
+
+### D. Dinamika Duka Non-Linear (Kübler-Ross Echoes)
+- Izinkan gema halus dari sektor sebelumnya (misal bisikan penolakan S1 di kedalaman S4) untuk mencerminkan proses berduka yang realistis.
+
+---
+
+## 4. Evaluasi Bahasa Tubuh & Ekspresi 3D (Hellblade-Grade Cinematics & Kinesiologi)
 
 Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomekanik, kamera intim, dan audio spasial:
 - **Postur Tubuh per Sektor Duka (Grief Body Language Archetypes)**:
@@ -51,7 +71,8 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 
 ---
 
-## 4. Referensi Dokumen
+## 5. Referensi Dokumen
+- [references/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
 - [references/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
 - [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).

@@ -222,6 +222,20 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   6. **Color Grading via Post-Process LUTs**: Mengaplikasikan desaturasi per sektor (100% di S1 ke 40–50% di S4) melalui 3D LUTs di PostProcessVolume.
 - **Dampak**: Alur kerja multi-agent bebas dari kesalahan sintaks API fiktif, aset lingkungan teroptimasi secara profesional, dan tampilan visual antar sektor terkalibrasi secara sinematik.
 
+---
+
+### ADR-021: Standardisasi Matematika, Fisika Numerik Real-Time, & Psikologi Pemain Tingkat Lanjut (Expert Suite)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Scientific & Psychological Standard)
+- **Konteks**: Mematangkan landasan kalkulasi rotasi, simulasi kain, perambatan retakan es, BRDF cahaya, dan manipulasi psikologi emosional duka agar seluruh sistem game didasari pemodelan ilmiah dan bukan tebakan intuitif.
+- **Keputusan Terpilih**: 
+  1. **Matematika Lanjutan**: Menetapkan penggunaan Quaternion SLERP untuk kamera, Arc-Length Reparameterized Splines dengan kontinuitas kelengkungan C2 untuk lorong dungeon, dan Fractional Brownian Motion (fBm) untuk procedural noise es.
+  2. **Fisika Numerik XPBD & Voronoi**: Mengadopsi Extended Position-Based Dynamics (XPBD) untuk kain syal stabil, Lattice-Biased Voronoi Fracture untuk pecahan es prisma, dan Cook-Torrance GGX BRDF untuk respons optik es realistis.
+  3. **Psikologi Naratif & SDT**: Memverifikasi mekanik game terhadap 3 Kebutuhan SDT (Autonomy, Competence, Relatedness), menolak motivasi crowding-out, dan menerapkan rasio Loss Aversion $2.5\text{x}$ pada pengorbanan permanen Syal Aina.
+  4. **Emotional Bandwidth & Non-Linear Grief**: Menyelipkan jeda kontemplatif untuk mencegah kelelahan emosional dan mengizinkan gema (echoes) lintas sektor duka.
+- **Dampak**: Gameplay, visual, audio, dan alur narasi memiliki dasar komputasi yang terbukti secara matematis dan psikologis, mengangkat kualitas Lentera Pudar ke standar karya komersial berkualitas tinggi.
+
+
 
 
 

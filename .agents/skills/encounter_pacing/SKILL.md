@@ -5,24 +5,24 @@ description: Standar kurva kesulitan (difficulty curve), ritme encounter musuh, 
 
 # Encounter Pacing & Combat Rhythm (Game Designer)
 
-Panduan perancangan intensitas pertempuran, pacing musuh, dan kurva emosi pemain di dalam dungeon Lentera Pudar. Seluruh parameter numerik merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md).
+Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, dan alokasi *Emotional Bandwidth* di dalam dungeon Lentera Pudar merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md), dan [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md).
 
 ---
 
-## 1. Ritme 4-Fase Encounter
+## 1. Ritme 4-Fase Encounter & Manajemen Emotional Bandwidth
 
 1. **Intro (Pengenalan)**: Memperkenalkan jenis ancaman baru dalam lingkungan terkontrol dengan 1 musuh tunggal dekat sumber cahaya syal Aina (radius 3–5m warm point light 2700K).
 2. **Escalation (Eskalasi)**: Menggabungkan musuh tersebut dengan variasi pola serangan atau rintangan lantai licin es. Ambient dungeon desaturasi mulai terasa — Curse Meter biasanya mulai meningkat ke rentang 26–60%.
 3. **Twist (Tekanan Lingkungan)**: Pertarungan di area gelap dengan sumber cahaya terbatas, memaksa pemain mengandalkan radius syal lentera dan keputusan risk-reward Eyepatch. Potensi Curse Meter masuk zona Bahaya (61–90%).
-4. **Relief & Reward (Pelepasan & Hadiah)**: Ruangan aman berpenerangan hangat (Altar Lentera atau Breather Room) berisi peti harta, sumber pemulihan, atau potongan lore. Syal Aina kembali berdenyut normal, binaural whispers meredup.
+4. **Relief & Reward (Pelepasan & Hadiah)**: Ruangan aman berpenerangan hangat (Altar Lentera atau Breather Room) berisi potongan memori Aina (Fixed Ratio Reward). Syal Aina kembali berdenyut normal, binaural whispers meredup.
 
 ---
 
-## 2. Manajemen Ketegangan (Tension vs Relief)
+## 2. Manajemen Ketegangan (Tension vs Relief) & Flow State
 
 - **Tekanan Kutukan (Curse Pressure)**: Tangan beku protagonis menciptakan urgensi bertarung taktis. Kaelen mendapat +8–15 poin Curse per hit yang diterima, decay alami -2 s.d. -4 poin/detik saat tidak kena hit — jangan biarkan pemain merasa terlalu aman di kegelapan tanpa batas.
 - **Lantern Light as Resource/Safety**: Cahaya syal Aina (800–1200 lm, radius 3–5m) adalah zona harapan. Pertempuran di luar radius cahaya memiliki risiko tinggi (Curse naik lebih cepat) tetapi reward kristal energi yang lebih berharga.
-- **Telegraph Serangan Jelas**: Serangan musuh wajib memiliki jeda animasi *wind-up* minimal 12 frame (0.40 detik @30fps) dengan warna kilau biru dingin `#4A6FA5` agar pemain dapat bereaksi (dodge: 2–4f startup, parry: 4–6f active window).
+- **Telegraph Serangan Jelas (Competence via Readability)**: Serangan musuh wajib memiliki jeda animasi *wind-up* minimal 12 frame (0.40 detik @30fps) dengan warna kilau biru dingin `#4A6FA5` agar pemain dapat bereaksi (dodge: 2–4f startup, parry: 4–6f active window).
 
 ---
 
@@ -51,6 +51,6 @@ Panduan perancangan intensitas pertempuran, pacing musuh, dan kurva emosi pemain
 
 ---
 
-## 5. Aturan Breather Room (Tension-Release)
+## 5. Aturan Breather Room (Tension-Release & Anti-Burnout)
 - Setiap 2–3 arena encounter, WAJIB ada satu ruang *Breather Room* (sumber cahaya hangat, non-combat).
-- Breather Room berfungsi sebagai: 1) titik *save/checkpoint*, 2) reset Curse Meter alami, 3) interaksi dialog Aina untuk lore delivery.
+- Breather Room berfungsi sebagai: 1) titik *save/checkpoint*, 2) reset Curse Meter alami, 3) alokasi jeda afektif untuk memulihkan *Emotional Bandwidth* pemain, 4) interaksi dialog Aina untuk lore delivery.

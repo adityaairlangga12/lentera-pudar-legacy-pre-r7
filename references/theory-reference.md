@@ -224,72 +224,72 @@ Karena syal Aina memendek permanen sebagai *cost* naratif, penting menjaga rasio
 
 ---
 
-## 13. Teori Fisika Tingkat Lanjut (Terapan untuk Real-Time Engine)
+## 13. Teori Fisika Tingkat Lanjut (Terapan Real-Time Engine — Lihat [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-physics.md))
 
-### A. Rigid Body & Collision Dynamics
-Objek keras (reruntuhan, pecahan es) disimulasikan lewat *rigid body dynamics* — massa, momen inersia, restitusi (seberapa "mantul" objek), dan friction coefficient. Untuk pecahan kristal es saat Heavy Cursed Strike, penting mengatur restitusi rendah-menengah supaya pecahan terasa "berat dan dingin", bukan memantul seperti karet.
+### A. Rigid Body & Sequential Impulse Solver
+Objek keras (reruntuhan, pecahan es) disimulasikan lewat persamaan Newton-Euler ($F=ma$, $\tau=I\alpha$) yang diselesaikan secara iteratif ($4–10\text{ iterasi/frame}$) oleh *Sequential Impulse Solver* UE5 Chaos Physics. Pecahan es menggunakan restitusi rendah ($e=0.1–0.3$) dan aproksimasi *Coulomb Friction Cone* agar jatuh berat menyerap momentum tumbukan.
 
-### B. Soft Body & Cloth Physics (Verlet Integration / Position-Based Dynamics)
-Simulasi syal Aina dan jubah Kaelen di UE5 (Chaos Cloth) umumnya berbasis *Position-Based Dynamics (PBD)* atau *Verlet Integration* — metode yang menghitung posisi partikel kain berikutnya dari posisi sekarang & sebelumnya plus gaya eksternal (gravitasi, angin), dengan *constraint solving* iteratif untuk menjaga jarak antar titik kain tetap masuk akal. Parameter kunci: *stiffness*, *damping*, *iteration count*.
+### B. Soft Body & XPBD Cloth Dynamics (Extended Position-Based Dynamics)
+Simulasi Syal Aina dan jubah Kaelen mengadopsi solver **XPBD** (Chaos Cloth & Blender Cloth) yang memanipulasi langsung posisi partikel dengan parameter *Compliance* ($\alpha$), menjamin kestabilan simulasi pada nilai kekakuan tinggi tanpa ledakan numerik. Bending stiffness ($0.4–0.6$) dipisahkan dari stretching stiffness, dipadu *BVH spatial hashing* untuk self-collision jubah.
 
-### C. Fracture Mechanics (untuk Pecahan Es)
-Simulasi retak/pecah (fracture) memodelkan bagaimana material rapuh (es) pecah berdasarkan *stress concentration* di titik lemah, bukan pecah acak merata. Untuk visual kristal es pecah, gunakan pola *Voronoi fracture* yang meniru retakan alami kristal, dikombinasikan dengan pre-fractured mesh untuk performa real-time.
+### C. Fracture Mechanics & Voronoi Lattice-Biased
+Pecahan es akibat pukulan cakar Kaelen dihitung dari konsentrasi tegangan ($K_t$) menggunakan sistem **Pre-Fractured Voronoi**. Distribusi titik seed menggunakan **Lattice-Biased Distribution** (mengikuti kisi kristal es) agar bongkahan es tampak prismatik dan runcing secara alami, bukan serpihan batu acak.
 
-### D. Fluid Dynamics (Disederhanakan) untuk Efek Leleh/Uap
-Efek es mencair/uap dingin menggunakan *flipbook texture* atau *Niagara fluid-like particle behavior* yang meniru perilaku fluida secara visual tanpa komputasi Navier-Stokes penuh — standar industri *plausible, not accurate*.
+### D. Fluid Dynamics Disederhanakan untuk Efek Uap & Lelehan
+Efek uap dingin dan embun beku menggunakan aproksimasi *Grid-Based Eulerian* atau *SPH Niagara Particles*, dipadu *Flipbook Textures* pre-rendered dan *Shallow Water Equations (SWE)* untuk riak genangan air es di lantai dungeon.
 
-### E. Global Illumination & Light Transport (Lumen)
-Lumen di UE5 menghitung *indirect lighting* (cahaya pantulan) secara real-time menggunakan kombinasi *Signed Distance Field tracing* dan *screen-space methods*. Warna dinding di dekat syal Aina akan "terwarnai" hangat oleh cahaya pantulnya secara otomatis sebagai visual storytelling pasif.
+### E. Light Transport, Cook-Torrance BRDF & Lumen
+Transportasi cahaya dirumuskan oleh *Rendering Equation*. UE5 menerapkan **Cook-Torrance BRDF** dengan distribusi **GGX / Trowbridge-Reitz** (Roughness es $0.15–0.30$ menghasilkan highlight specular tajam berkilau). Lumen mengaproksimasi global illumination real-time melalui kombinasi *SDF Tracing*, *Screen-Space Tracing*, dan *Surface Cache*.
 
-### F. Inverse Kinematics sebagai Constraint Solving
-Secara fisika, IK adalah masalah *constraint satisfaction* — mencari sudut sendi yang memenuhi posisi target (misal telapak kaki di permukaan tanah miring) dalam batas rotasi anatomis yang mungkin.
-
----
-
-## 14. Teori Matematika Tingkat Lanjut (Terapan)
-
-### A. Vektor & Quaternion untuk Rotasi 3D
-Rotasi karakter dan kamera di UE5 dihitung dengan *quaternion* (bukan Euler angle murni) untuk menghindari *gimbal lock*. Sangat penting untuk transisi rotasi kamera dekat ala Hellblade II yang mulus tanpa patah.
-
-### B. Interpolasi & Easing Curves
-Transisi nilai (posisi kamera, intensitas cahaya, blend animasi) menggunakan *easing curves* (ease-in, ease-out, cubic Bezier) agar gerakan terasa natural, bukan kaku/robotik.
-
-### C. Spline & Bezier Curves untuk Jalur Kamera dan Level
-Jalur kamera sinematik, patroli musuh, dan bentuk lorong dungeon organik dibangun di atas *spline* (kurva matematis titik kontrol) untuk membentuk lorong berkelok halus.
-
-### D. Signed Distance Fields (SDF)
-Dasar matematis di balik Nanite/Lumen dan teknik shader (termasuk soft shadow, fog volumetrik) — merepresentasikan jarak dari titik mana pun ke permukaan terdekat sebuah objek.
-
-### E. Perlin/Simplex Noise untuk Variasi Prosedural
-Noise function dipakai untuk variasi natural (tekstur es tidak seragam, pergerakan partikel kunang-kunang syal, distribusi reruntuhan) — memberi kesan "organik acak" tapi terkontrol.
-
-### F. State Machine (Finite State Machine / FSM) sebagai Struktur Logika
-FSM adalah struktur dasar untuk combat Kaelen (Idle → Attack → Recovery → Idle) dan AI musuh sebelum diperluas menjadi Behavior Tree di UE5.
+### F. Inverse Kinematics Solvers (FABRIK vs CCD)
+Two-Bone IK Kaelen menggunakan algoritma **FABRIK** (Forward And Backward Reaching IK) yang bekerja di ruang posisi dua arah (Backward-Forward Pass) untuk konvergensi lebih cepat dan bebas artefak sendi pada kontur lantai dungeon miring.
 
 ---
 
-## 15. Teori Psikologi Pemain (Player Psychology)
+## 14. Teori Matematika Tingkat Lanjut (Terapan — Lihat [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-mathematics.md))
 
-### A. Self-Determination Theory (Deci & Ryan)
-Motivasi intrinsik pemain didorong tiga kebutuhan: **Autonomy** (pilihan rute eksplorasi), **Competence** (kemahiran combat yang fair & readable), dan **Relatedness** (keterikatan emosional Kaelen-Aina). *Relatedness* adalah motivator emosional utama game ini.
+### A. Vektor & Quaternion (SLERP vs NLERP)
+Rotasi 3D merepresentasikan orientasi melalui quaternion 4D ($q = w + xi + yj + zk$) bebas *Gimbal Lock*. Wajib menggunakan **SLERP** (Spherical Linear Interpolation) untuk transisi kamera sinematik berkecepatan sudut konstan, dan **NLERP** untuk blending animasi mikro frekuensi tinggi (Idle ke Walk).
 
-### B. Operant Conditioning & Reward Timing
-Reward yang dapat diprediksi secara naratif (tiap Altar Duka = biaya syal + hadiah kemampuan/memori) memperkuat refleksi emosional, bukan sekadar retensi adiktif acak.
+### B. Interpolasi, Easing & Cubic Bezier sebagai Bahasa Emosi
+Transisi kamera dan UI disesuaikan dengan kurva **Cubic Bezier ($P(t)$)** emosional: kurva *overshoot & settle* untuk Sektor 2 (*Anger*) yang agresif, dan kurva *flat lalu deselerasi curam* untuk Sektor 4 (*Depression*) yang berat dan lambat.
 
-### C. Loss Aversion
-Manusia merasakan kehilangan jauh lebih berat dibanding mendapat keuntungan setara. Memendeknya Syal Aina secara permanen memicu beban emosional mendalam yang memperkuat tema duka & pengorbanan.
+### C. Spline Geometri, Arc-Length Reparameterization & C2 Continuity
+Jalur kamera sinematik menggunakan *Catmull-Rom Spline*, sedangkan lorong organik *Hall of Mirrors* menggunakan *Composite Bezier Spline* dengan kontinuitas kelengkungan **C2 Continuity** (turunan kedua kontinu) dan **Arc-Length Reparameterization** agar kecepatan objek sepanjang kurva stabil tanpa percepatan anomali.
 
-### D. Cognitive Load & Minimal HUD
-Mengurangi gangguan visual di layar agar kapasitas mental pemain tersisa untuk merasakan resonansi cerita dan atmosferik dungeon, bukan membaca angka UI.
+### D. Signed Distance Fields (SDF) Matematis
+SDF $f(p)$ dengan sifat 1-Lipschitz memungkinkan *Sphere Tracing* efisien untuk Lumen GI, collision proxy murah untuk puing es, dan kalkulasi soft shadow volumetrik analitik.
 
-### E. Presence & Embodiment
-Kamera dekat, audio binaural 3D, dan kontrol responsif menciptakan rasa *embodiment* — pemain merasa "menjadi" Kaelen yang memikul duka, bukan sekadar menggerakkan bidak 3D.
+### E. Noise Functions & Fractal Brownian Motion (fBm)
+Tekstur permukaan es dan partikel Niagara dibangun dari kombinasi Perlin, Simplex, dan Worley (Cellular) Noise yang ditumpuk secara multi-skala melalui **Fractal Brownian Motion (fBm)** (rasio frekuensi oktaf $2:1$).
 
-### F. Uncanny Valley (untuk Karakter Stylized-Realistic)
-Menjaga keseimbangan proporsi semi-realistis (1:6.8) dengan ekspresi wajah mikro yang presisi (blend shapes) agar terhindar dari kesan janggal / tidak nyaman.
+### F. Formalisasi Finite State Machine & Hierarchical AI
+Combat controller Kaelen diformalkan sebagai 5-tuple FSM, sedangkan AI musuh jiwa beku dan Boss 5 Sektor dimigrasikan ke **Behavior Tree & Hierarchical State Machine (HSM)** untuk mencegah ledakan kombinatorial transisi state.
 
-### G. Tension-Release Cycle (Psikologi Ketegangan Naratif)
-Memberikan jeda napas (*breather room*) di antara arena pertarungan berdarah/beku agar pemain tidak mengalami mati rasa emosional (*emotional burnout*).
+---
+
+## 15. Teori Psikologi Pemain (Player Psychology — Lihat [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md))
+
+### A. Self-Determination Theory (SDT) & Diagnostik Desain
+Motivasi intrinsik pemain dievaluasi lewat 3 pilar: **Autonomy** (kebebasan eksplorasi rute rahasia Eyepatch), **Competence** (penguasaan parry 12-frame dan pola musuh), dan **Relatedness** (ikatan emosional Kaelen-Aina). Menolak sistem leaderboard kompetitif untuk mencegah fenomena *Motivation Crowding-Out*.
+
+### B. Operant Conditioning & Sistem Reward Etis
+Menerapkan *Fixed Ratio Scheduling* (tiap Altar Duka dinyalakan = 1 fragmen memori Aina) dan **menolak sistem reward acak (Anti-Gacha/Loot Mandate)** agar setiap pengorbanan syal terasa sebagai keputusan sadar yang dapat direnungkan.
+
+### C. Prospect Theory & Loss Aversion 2.5x
+Kerugian psikologis dirasakan **2.0 hingga 2.5 kali lebih berat** dibanding keuntungan bernilai setara ($V(\text{Loss}) \approx 2.25 \times V(\text{Gain})$). Pemendekan permanen Syal Aina yang terlihat jelas di layar sebelum aktivasi altar memicu bobot keputusan naratif yang mendalam.
+
+### D. Cognitive Load & Minimal Diegetic HUD
+Menghilangkan UI konvensional demi menekan *Extraneous Load*, membebaskan kapasitas mental (*Germane Load*) dan *Emotional Bandwidth* pemain untuk meresapi duka cerita tanpa kelelahan kognitif.
+
+### E. Presence, Embodiment & Kerentanan Bug
+Spatial presence (kamera dekat, audio 3D binaural), Sensorimotor embodiment (kontrol instan tanpa input delay), dan Social presence (mikro-ekspresi Aina). Bug kecil pada input/hitbox wajib diprioritaskan saat QC karena dapat merusak kondisi *Presence* secara instan.
+
+### F. Dinamika Duka Non-Linear (Kübler-Ross Echoes)
+5 Tahap Berduka (Denial s.d. Acceptance) dipahami sebagai model non-linear; memperbolehkan gema visual/audio dari tahap sebelumnya muncul samar di sektor berikutnya untuk pengalaman duka yang realistis.
+
+### G. Tension-Release Cycle & Emotional Bandwidth Pacing
+Menyisipkan *Breather Rooms* dan jeda kontemplatif di antara beat emosional berat untuk mencegah desensitisasi dan kejenuhan emosional (*emotional burnout*).
 
 ---
 
