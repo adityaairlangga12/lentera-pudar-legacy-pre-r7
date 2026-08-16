@@ -1,6 +1,6 @@
 # Lentera Pudar — Project Rules & System Prompt (3D Action RPG Edition)
 
-> **Dokumen ini adalah sumber kebenaran (Source of Truth) utama untuk AI Asisten Teknis dan Seluruh Sub-Agent.** Wajib dibaca dan dipatuhi secara otomatis di setiap sesi untuk memastikan konsistensi kode, desain, kontrol kualitas (QC), narasi psikologis, dan arsitektur 3D Lentera Pudar.
+> **Dokumen ini adalah sumber kebenaran (Source of Truth) utama untuk AI Asisten Teknis dan Seluruh Sub-Agent.** Wajib dibaca dan dipatuhi secara otomatis di setiap sesi untuk memastikan konsistensi kode, desain, kontrol kualitas (QC), narasi psikologis, biomekanika, dan arsitektur 3D Lentera Pudar.
 
 ---
 
@@ -13,21 +13,21 @@
 - **Engine & Pipeline**: Unreal Engine 5 (UE5) / Blender 5.2 LTS Pipeline.
 - **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K ($99^{th}\text{ percentile} < 16.6\text{ ms}$).
 - **Dual-Layer Architecture Benchmark**:
-  - **Layer Visual (Kena: Bridge of Spirits)**: Menentukan estetika stylized-realistic, rasio 1:6.8, pencahayaan Kelvin kontras tinggi (2700K vs 6500K Lumen GI), reruntuhan organik, dan restorasi jejak hangat (*Niagara Warmth Embers*).
+  - **Layer Visual (Kena: Bridge of Spirits)**: Menentukan estetika stylized-realistic PBR non-outline, rasio 1:6.8, pencahayaan Kelvin kontras tinggi (2700K vs 6500K Lumen GI), hybrid hair (solid + alpha cards), reruntuhan organik, dan restorasi jejak hangat (*Niagara Warmth Embers* & Render Target Thawing) — merujuk pada [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md).
   - **Layer Gameplay & Psikologi (Hellblade I & II)**: Menentukan sistem diegetik (es merambat di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), spatial 3D binaural whispers, live mental morphing environment, dan combat 1v1 deliberate parry-focused.
 
 ### 1.2 Lore Inti, Karakter & Metafora 5 Tahapan Berduka
 - **Kutukan Pudar (The Fading Curse / Apathy Plague)**:
   Fenomena entropi emosional di mana manusia yang mengalami duka mendalam dan keputusasaan memilih mati rasa (*emotional apathy*). Mereka membeku perlahan menjadi patung kristal es biru berisi fragmen ingatan masa lalu yang terperangkap dalam siklus penderitaan abadi.
 - **Kaelen (Protagonis — Sang Pengelana Duka)**:
-  Pengelana *class-less* bertubuh atletis (proporsi 1:6.8) berambut abu-abu perak acak yang memikul rasa bersalah atas tragedi masa lalu.
+  Pengelana *class-less* bertubuh atletis (proporsi 1:6.8, tinggi $1.78\text{ m}$) berambut abu-abu perak acak (`#C9CDD1`) yang memikul rasa bersalah atas tragedi masa lalu.
   - **Lengan Kiri**: Membeku total dibalut kluster prisma kristal es kutukan (`#4A6FA5` & `#7EE8FA`), berdenyut reaktif dengan pendaran emissive seiring meningkatnya *Curse Meter*. Dilengkapi cakar es (*crystal talons*).
-  - **Mata Kanan (The Sealed Eye)**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku. Menjadi mekanik persepsi *Risk-Reward* (membuka segel sesaat mengungkap simbol tersembunyi & jalur memori, namun mempercepat laju kutukan).
+  - **Mata Kanan (The Sealed Eye)**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku. Menjadi mekanik persepsi *Risk-Reward* (membuka segel sesaat mengungkap simbol tersembunyi & jalur memori, namun mempercepat laju kutukan $+3\text{ poin/detik}$).
   - **Pakaian**: Jubah kelana usang gelap (`#2A211C`) dengan tali selempang kantung (*baldric harness*) bersilang di dada.
-  - **Combat Style**: Bertarung tangan kosong berbobot & cakar es (*Bare Hand Punch* + *Cursed Ice Palm Strike* + *12-Frame Tight Parry*).
+  - **Combat Style**: Bertarung tangan kosong berbobot & cakar es (*Bare Hand Punch* + *Cursed Ice Strike* + *12-Frame Tight Parry* dengan Rantai Kinetik penuh).
 - **Aina (Jiwa Syal Lentera — Sang Pelindung Abadi)**:
   Sahabat sekaligus belahan jiwa Kaelen yang mengorbankan wujud fisiknya menjadi syal api kuning abadi di leher Kaelen.
-  - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Cloth Physics & Spring Bones*) yang berkibar dinamis sebagai kompas emosional penunjuk arah. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
+  - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Dual-Mode*: Chaos Cloth Stiffness 0.4–0.6 saat gameplay & Hand-Keyframed Control Rig saat cutscene) yang berkibar dinamis sebagai kompas emosional penunjuk arah. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
 - **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief)**:
   1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada (Bos: Lord Alden).
   2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak (Bos: Ignis Vulkan).
@@ -41,21 +41,21 @@ Seluruh perancangan seni visual 3D, pencahayaan, shader, dan material wajib tund
    Mewakili Jiwa Aina, api syal lentera, sumber harapan, dan cinta tanpa pamrih. Memancarkan cahaya dinamis lembut via point light 3D.
 2. **Biru Dingin (`#4A6FA5` & `#7EE8FA` — 6500K Kelvin Cold Shard)**:
    Mewakili Kutukan Pudar, kristal es memori, dan keputusasaan. Memancarkan uap beku dan pendaran emissive kristal pada lengan kiri Kaelen.
-3. **Netral Gelap (`#2A211C` — Dark Neutral Stone)**:
+3. **Netral Gelap (`#2A211C` & `#141013` — Dark Neutral Stone & Leather)**:
    Mewakili batuan dungeon kuno, tanah fana, bayangan, pakaian kelana, dan penentu atmosferik kegelapan 3D.
 
 ### 1.4 Arsitektur Pipeline 3D (Blender 5.2 LTS + Unreal Engine 5)
 Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
 - **Blender 5.2 LTS (3D Modeler & Rigger)**:
-  - Memodelkan karakter high-detail proporsional (1:6.8) bergaya anime semi-realistis (*FF7 Remake / Kena Grade*).
-  - Rigging armature biomekanik lengkap (jari, lengan, kaki, spine) dan rantai tulang syal dinamis (*spring bones* 5-chain).
-  - Material PBR / Stylized (transmissive crystal ice, emissive gold fabric, weathered leather).
-  - Ekspor glTF 2.0 / FBX deterministik ($+Z$ up / forward) ke Unreal Engine 5.
+  - Memodelkan karakter high-detail proporsional (1:6.8, Hero LOD0 $40\text{k}–60\text{k}\text{ tris}$, Texel Density $512\text{ px/m}$).
+  - Rigging armature biomekanik lengkap, validasi Bony Landmarks, corrective shape keys, dan rantai tulang syal dinamis (*spring bones* 5-chain).
+  - Material PBR non-outline (transmissive crystal ice SSS, emissive gold fabric, weathered leather, trim sheets).
+  - Ekspor glTF 2.0 / FBX deterministik atau direct via **Blender-Unreal Pipeline Plugin** resmi Epic Games ke Unreal Engine 5.
 - **Unreal Engine 5 (Game Engine & Systems)**:
-  - Rendering 3D modern (Lumen Lighting, Nanite, Niagara Particles untuk uap es & percikan hangat lentera).
-  - Character Controller 3D dengan *Adaptive Dynamic Camera* (Eksplorasi FOV 78° vs Duel Lock-On FOV 70°).
+  - Rendering 3D modern (Lumen Lighting GI, Nanite, Niagara Particles untuk uap es & percikan hangat lentera, Lightmass hybrid).
+  - Character Controller 3D dengan *Adaptive Dynamic Camera* (Eksplorasi FOV 78° vs Duel Lock-On FOV 70° berbasis Quaternion SLERP).
   - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 3 frame.
-  - Dynamic Cloth Simulation pada Syal Aina dan jubah.
+  - Dynamic XPBD Chaos Cloth Simulation pada Syal Aina dan jubah.
 
 ---
 
@@ -71,8 +71,9 @@ Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
 6. **Kepatuhan Prosedural SOP 7-Tahap (SOP Workflow Compliance)**: Seluruh tugas operasional berulang (pembuatan prop, material, rigging, cloth sim, level grey-box, gameplay GAS, dan audio) WAJIB mengikuti urutan kerja sekuensial pada [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md). Dilarang melompati tahapan (contoh: dilarang masuk visual detail sebelum lolos playtest grey-box).
 7. **Kalibrasi Mutu Mandiri (Few-Shot Calibration & Gap-Handling)**: Setiap agen wajib melakukan evaluasi diri (*self-critique*) sebelum melapor selesai merujuk pada benchmark benar vs salah di [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md). Kebutuhan di luar dokumen wajib ditandai sebagai **GAP** dan dilarang diimprovisasi diam-diam.
 8. **Kurasi Visual Reference Board**: Pemodelan 3D, tata cahaya, dan environment wajib mengacu pada 9 kategori shot-list legal terkurasi pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md).
-
-
+9. **Kepatuhan Biomekanika & Kinesiologi**: Pemodelan mesh, rigging, dan animasi wajib mematuhi titik tumpu Bony Landmarks, rantai kinetik transfer tenaga combat, siklus 8-fase lokomosi, dan corrective morphs sesuai [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md).
+10. **Kepatuhan Integritas API & Teknik Praktis 3D**: Otomasi skrip `bpy` dan `unreal` wajib mengikuti protokol *Inspect-Before-Execute* pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md), serta menerapkan trim sheets, texel density ($512\text{ px/m}$), modular kit-bashing ($300\text{ cm}$), dan LUT post-process sesuai [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md).
+11. **Kepatuhan Fondasi Ilmiah Expert Suite**: Menyetel rotasi, kurva spline C2, solver kain XPBD, retakan es Voronoi lattice-bias, BRDF Cook-Torrance, SDT 3-Needs, Loss Aversion $2.5\text{x}$, dan pacing emotional bandwidth merujuk pada [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-mathematics.md), [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-physics.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md).
 
 ---
 
@@ -104,16 +105,17 @@ flowchart TD
 ```
 
 1. **Fase 1: Pemodelan 3D High-Detail Kaelen (Blender 5.2 LTS)**
-   - Proporsi Atletis 1:6.8 (Inspirasi: *Final Fantasy VII*).
-   - Detail Asimetris: Lengan kiri kluster kristal es prisma (`#4A6FA5` & `#7EE8FA`), lengan kanan balutan perban, penutup mata kulit hitam (`#141013`), jubah kelana bertali baldric, dan syal melingkar leher (`#F4B860`).
+   - Proporsi Atletis 1:6.8, Hero LOD0 $40\text{k}–60\text{k}\text{ tris}$, Texel Density $512\text{ px/m}$.
+   - Detail Asimetris: Lengan kiri kluster kristal es prisma (`#4A6FA5` & `#7EE8FA`), lengan kanan balutan perban, penutup mata kulit hitam (`#141013`), jubah kelana bertali baldric, hybrid hair (`#C9CDD1`), dan syal melingkar leher (`#F4B860`).
 2. **Fase 2: Biomechanical Armature Rigging & Scarf Spring-Damper Setup**
-   - Hierarki Armature: `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
-   - Rantai Syal: Rantai 5-bone (`scarf_01` s.d. `scarf_05`) untuk simulasi kain dinamis.
+   - Hierarki Armature: `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head` (Bony Landmarks & Corrective Morphs siku 140° + bisep bulge).
+   - Rantai Syal: Rantai 5-bone (`scarf_01` s.d. `scarf_05`) untuk simulasi kain dinamis XPBD & Dual-Mode cutscene.
 3. **Fase 3: Material Shading 3D & Efek Visual (The Triad 3D)**
-   - Shader Kaca Kristal Es Kutukan dengan pendaran biru dingin 6500K.
-   - Shader Kain Syal Emas Aina dengan pendaran hangat 2700K.
+   - Shader Kaca Kristal Es Kutukan dengan pendaran biru dingin 6500K, SSS 0.5–1.2cm, Cook-Torrance GGX.
+   - Shader Kain Syal Emas Aina dengan pendaran hangat 2700K (Lumen GI).
 4. **Fase 4: Integrasi Unreal Engine 5 & 3D Locomotion**
-   - Third-Person Character Controller 3D dengan rotasi kamera bebas.
-   - Pencahayaan Lumen 3D di dungeon makam beku (*The Silent Crypts*).
+   - Third-Person Character Controller 3D dengan rotasi kamera bebas (Quaternion SLERP).
+   - 8-Fase Gait Cycle dengan Pelvic Tilt, Counter-Rotation, dan Two-Bone FABRIK Foot IK.
+   - Pencahayaan Lumen 3D di dungeon makam beku (*The Silent Crypts*) dengan Post-Process LUT.
 5. **Fase 5: Combat FSM & Boss Fight Sektor 1**
    - State: `Idle`, `Jog`, `Sprint`, `PunchCombo_1..3`, `CursedIceStrike`, `DashEvade`, `Hurt`, `Death`.
