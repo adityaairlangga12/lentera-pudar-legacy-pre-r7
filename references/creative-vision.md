@@ -91,3 +91,13 @@ flowchart LR
 4. **Semiotika Visual**:
    - Syal yang memendek = Pengorbanan terkikis nyata.
    - Retakan es = Kerapuhan emosi duka yang ditekan.
+
+---
+
+## BAB VII: ARAHAN SINEMATIK & BAHASA KAMERA (LIHAT [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md))
+
+1. **Kamera Sebagai Representasi Mental Kaelen**: Sudut pandang kamera ditentukan berdasarkan kejujuran ekspresi kondisi batin Kaelen, bukan sekadar sudut estetis netral.
+2. **Bahasa Kamera per Sektor Duka**: S1 Denial (framing simetris kaku), S2 Anger (handheld shake & cut cepat), S3 Bargaining (Dutch angle & rotasi cermin), S4 Depression (long take lambat & framing luas kerdil), S5 Acceptance (framing lapang stabil & transisi fajar mulus).
+3. **Pacing & Transisi Seamless**: Transisi mulus tanpa hard-cut hitam antara gameplay dan cutscene; interaksi cutscene mikro dengan sinkronisasi presisi ke FACS Action Units (`AU1`, `AU4`, `AU17`).
+4. **Emotional Depth of Field**: Shallow DoF untuk isolasi introspektif Kaelen vs Deep DoF untuk keterikatan naratif ruang dungeon.
+

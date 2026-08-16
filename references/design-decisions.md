@@ -344,6 +344,20 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Fun Guardrails (Anti-Boredom Mandate)**: Menjaga satisfaction dasar (hit-stop 3-frame, impact es retak, kontrol responsif) agar tema berat tidak mengurangi keseruan bertarung.
 - **Dampak**: Pertempuran di semesta Lentera Pudar memiliki kedalaman psikologis, menuntut penguasaan parry deliberate, adil (*fair*), dan memuaskan untuk dimainkan.
 
+---
+
+### ADR-030: Standardisasi Arahan Sinematik, Pacing Cutscene & Bahasa Kamera Spasial (Cinematography Framework, AU Synchronization, & Seamless Transitions)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Cinematography & Cutscene Standard)
+- **Konteks**: Menetapkan bahasa pergerakan kamera sebagai representasi kondisi mental Kaelen, integrasi seamless gameplay-to-cutscene, sinkronisasi presisi pemotongan shot ke FACS Action Units, dan pengaturan depth of field emosional.
+- **Keputusan Terpilih**: 
+  1. **Bahasa Kamera per Sektor Duka**: S1 simetris kaku (Denial), S2 handheld shake cepat (Anger), S3 Dutch angle rotasi (Bargaining), S4 long take lambat framing luas (Depression), S5 framing lapang stabil (Acceptance).
+  2. **Transisi Seamless Anti-Hard Cut**: Menghilangkan hard-cut hitam menuju cutscene; kamera mengambil alih secara halus dari over-shoulder gameplay.
+  3. **Cakupan 3-Shot & Sinkronisasi FACS AU**: Memastikan cakupan Wide, Medium, dan Close-Up dengan timing pemotongan presisi saat AU ekspresi wajah aktif (`AU1`, `AU4`, `AU17`).
+  4. **Emotional Depth of Field & Silent Beats**: Memanfaatkan shallow DoF untuk isolasi intim personal dan menyisipkan jeda hening katarsis pada momen puncak duka.
+- **Dampak**: Memastikan setiap cutscene dan momen sinematik memiliki kualitas pengarahan setara film naratif bertaraf internasional (*Hellblade Cinematic Benchmark*), memperkuat imersi psikologis tanpa memutus keterlibatan pemain.
+
+
 
 
 

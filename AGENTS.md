@@ -14,7 +14,7 @@
 - **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K ($99^{th}\text{ percentile} < 16.6\text{ ms}$).
 - **Dual-Layer Architecture Benchmark**:
   - **Layer Visual (Kena: Bridge of Spirits)**: Menentukan estetika stylized-realistic PBR non-outline, rasio 1:6.8, pencahayaan Kelvin kontras tinggi (2700K vs 6500K Lumen GI), hybrid hair (solid + alpha cards), reruntuhan organik, dan restorasi jejak hangat (*Niagara Warmth Embers* & Render Target Thawing) — merujuk pada [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md).
-  - **Layer Gameplay & Psikologi (Hellblade I & II)**: Menentukan sistem diegetik (es merambat di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), spatial 3D binaural whispers, live mental morphing environment, dan combat 1v1 deliberate parry-focused.
+  - **Layer Gameplay & Psikologi (Hellblade I & II)**: Menentukan sistem diegetik (es merambat di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), spatial 3D binaural whispers, live mental morphing environment, combat 1v1 deliberate parry-focused, serta bahasa kamera sinematik emosional & transisi seamless — merujuk pada [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md).
 
 ### 1.2 Lore Inti, Karakter & Metafora 5 Tahapan Berduka
 - **Kutukan Pudar (The Fading Curse / Apathy Plague)**:

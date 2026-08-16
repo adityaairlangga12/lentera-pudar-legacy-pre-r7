@@ -87,7 +87,21 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ---
 
-## 6. Referensi Dokumen Lengkap
+## 6. Arahan Sinematik & Bahasa Kamera (Lihat [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md))
+- **Kamera Representasi Mental**: Sudut pengambilan gambar dipilih berdasarkan kejujuran kondisi psikologis Kaelen.
+- **Bahasa Kamera per Sektor**:
+  - *S1 Denial*: Framing simetris kaku & statis (menolak melihat dari sudut lain).
+  - *S2 Anger*: Handheld shake dinamis & cut cepat.
+  - *S3 Bargaining*: Dutch angle & rotasi cermin manipulatif.
+  - *S4 Depression*: Long take lambat, framing luas (karakter tenggelam dalam kehampaan).
+  - *S5 Acceptance*: Framing lapang stabil & transisi fajar mulus.
+- **Transisi Seamless**: Blend mulus over-shoulder gameplay ke shot sinematik tanpa hard cut hitam.
+- **Shot Coverage & FACS Sync**: Rencanakan 3 shot (Wide, Medium, Close-Up) dengan cut presisi ke AU ekspresi wajah (`AU1`, `AU4`, `AU17`).
+
+---
+
+## 7. Referensi Dokumen Lengkap
+- [references/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md) — Master Arahan Sinematik & Cutscene.
 - [references/expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
 - [references/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) — Pedoman artistik penuh & dualitas combat feel.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Master GDD 9 Bab.
