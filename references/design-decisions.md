@@ -429,6 +429,8 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   3. **Transisi Visual Respawn (*Dynamic Thawing & Breath*)**: Fade in memperlihatkan Kaelen bertumpu pada satu lutut, es di dada mencair kembali (*vertex thawing*), Syal Aina berkedip hangat 2x (2700K), dan desau napas lega (*soft exhalation*).
   4. **Penalti & Persistensi**: Curse Meter stabil pada 25% (tidak hilang total), formasi musuh di ruangan reset, namun reruntuhan dan destruksi lingkungan tetap hancur (*local persistence*).
   5. **Frekuensi Checkpoint**: 1 Major Checkpoint (Altar Duka) + 2–3 Minor Checkpoints (Breather Rooms) per sektor (interval 4–6 menit eksplorasi).
+  6. **Pemulihan Breather Room**: Pengurangan Curse Meter pasif $-2\text{ poin/detik}$ dengan batas ambang dasar $25\%$ dan pendaran uap es mencair ke bara emas Aina.
+  7. **Guardrails Teknis Edge-Case**: Imunitas interaksi cutscene Altar Duka (`State.Invulnerable`), batas aggro musuh (`BP_EncounterTriggerBoundary`), shader clamp $0.0 \le \text{Opacity} \le 1.0$, prioritas FSM Freeze of Despair (`Priority Level 1`), dan reset spektral otomatis (`ClearAllSpectralStates`) saat respawn.
 - **Dampak**: Menjaga imersi emosional dan integritas artistik dunia tanpa menghukum pemain secara frustratif atau merusak atmosfer melankolis game.
 
 ---
