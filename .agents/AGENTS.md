@@ -27,3 +27,17 @@ Dokumen ini adalah aturan yang di-scope khusus saat AI Agent bekerja atau memodi
 - **Larangan Penghapusan Penanda `_TODO_lentera-ue5`**: AI Agent **DILARANG** menghapus entri `_TODO_lentera-ue5` secara diam-diam saat mengedit `mcp_config.json`.
 - **Rasional Konfigurasi**: Entri `_TODO_lentera-ue5` adalah penanda sengaja (*intentional placeholder*) bahwa MCP Server untuk Unreal Engine 5 belum dikonfigurasi dan akan diaktifkan saat plugin Unreal Python Editor Scripting siap di Fase 4 Roadmap (merujuk pada `references/06-pipeline-qc/tools-mcp-stack.md` Bab 2).
 - **Protokol Mutasi MCP**: Perubahan pada konfigurasi MCP server `lentera-blender` (Port 8097) atau penambahan server baru harus melalui verifikasi status server lokal sebelum dieksekusi.
+
+---
+
+## 4. Intent Transparency System (ITS) — Protokol Komunikasi Wajib
+
+Seluruh respons AI Agent di proyek ini **WAJIB** mengikuti protokol ITS v1 yang terdefinisi di [`skills/prompt_refinement/SKILL.md`](file:///d:/GodotProjects/Lentera-Pudar/.agents/skills/prompt_refinement/SKILL.md).
+
+**Aturan Inti (3 Baris Mutlak):**
+1. **Setiap respons WAJIB diawali dengan header ITS** dalam format: `[MODE] [TIER] [KEYAKINAN] → [Interpretasi 1 kalimat]`
+2. **Dilarang menampilkan angka persentase keyakinan** — gunakan label kualitatif: `YAKIN / RAGU / BUTUH KLARF.`
+3. **Aksi destruktif selalu CRITICAL + hard-stop** — tidak ada pengecualian berdasarkan nada atau konteks.
+
+**Pengecualian**: ITS dinonaktifkan saat user sedang membahas sistem ITS itu sendiri (meta-diskusi).
+
