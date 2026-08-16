@@ -11,7 +11,7 @@ Dokumen ini adalah aturan yang di-scope khusus saat AI Agent bekerja atau memodi
 ---
 
 ## 2. Konsistensi Format & Arsitektur Skill (`skills/*/SKILL.md`)
-- **Struktur Frontmatter Wajib**: Setiap file skill baru di dalam `skills/*/SKILL.md` WAJIB memiliki YAML frontmatter yang valid dengan field `name` dan `description` yang terdefinisi jelas, konsisten dengan 7 skill utama yang sudah ada:
+- **Struktur Frontmatter Wajib**: Setiap file skill baru di dalam `skills/*/SKILL.md` WAJIB memiliki YAML frontmatter yang valid dengan field `name` dan `description` yang terdefinisi jelas, konsisten dengan 9 skill utama yang sudah ada:
   ```yaml
   ---
   name: <nama_skill>

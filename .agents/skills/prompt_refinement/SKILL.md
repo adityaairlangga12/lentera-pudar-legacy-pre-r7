@@ -50,8 +50,14 @@ User cukup mengetik:
 | Tier | Simbol | Kriteria | Output Rekonstruksi |
 |---|---|---|---|
 | **MICRO** | 🟢 | Task kecil, jelas, mudah di-undo | Header 1 baris saja, langsung eksekusi |
-| **STANDARD** | 🟡 | Task teknis moderat, ada asumsi | Header + parameter aktif + referensi dokumen |
+| **STANDARD** | 🟡 | Task teknis moderat, ada asumsi | Header + rencana perubahan ditampilkan dulu → tunggu sinyal user → baru eksekusi |
 | **CRITICAL** | 🔴 | Destruktif / arsitektural / ambigu tinggi | Header + parameter + ADR check + cascading impact + rollback plan + konfirmasi wajib |
+
+> **Aturan Inspect-Before-Execute untuk STANDARD & CRITICAL**:
+> Saya WAJIB menampilkan rencana perubahan terlebih dahulu sebelum mengeksekusi apapun.
+> Eksekusi baru dilakukan setelah user memberikan sinyal lanjut:
+> - **Diam / "ya" / "lanjutkan"** → Eksekusi
+> - **Koreksi / "bukan"** → Saya revisi rencana, tidak eksekusi dulu
 
 ### Pemicu CRITICAL Otomatis (Hard-Stop Tanpa Pengecualian):
 Kata-kata berikut **selalu** memicu CRITICAL + konfirmasi wajib, **terlepas dari nada atau konteks**:
