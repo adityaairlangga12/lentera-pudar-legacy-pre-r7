@@ -1,9 +1,9 @@
 ---
-name: mcp_api_mastery
+name: mcp_tools_pipeline
 description: "Pemahaman mendalam mengenai arsitektur Blender 5.2 LTS MCP dan Unreal Engine 5 Python MCP, standar 3-layer API (Atomic, Macro, Workflow), dan protokol observabilitas 3D."
 ---
 
-# Lentera Pudar — 3D MCP Mastery (Blender 5.2 LTS + Unreal Engine 5)
+# Lentera Pudar — 3D MCP Tools Pipeline (Blender 5.2 LTS + Unreal Engine 5)
 
 Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, protokol anti-halusinasi sintaks API, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP** merujuk pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md) dan [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md).
 

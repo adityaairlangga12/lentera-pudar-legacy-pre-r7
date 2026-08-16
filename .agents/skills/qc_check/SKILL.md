@@ -5,7 +5,7 @@ description: "Standar eksekusi Quality Control (QC Gate) Komersial / Steam-Ready
 
 # Commercial Release Quality Control (3D QC Gate Protocol)
 
-> **Standar Mutu Komersial (Steam-Ready Grade)**: Setiap aset 3D, armature rig, material shader, skrip gameplay, level, dan audio diuji dengan tolok ukur kelayakan rilis publik di PC/Steam merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), alur eksekusi [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md), dan kalibrasi mutu [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md).
+> **Standar Mutu Komersial (Steam-Ready Grade)**: Setiap aset 3D, armature rig, material shader, skrip gameplay, level, dan audio diuji dengan tolok ukur kelayakan rilis publik di PC/Steam merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), alur eksekusi [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md), dan kalibrasi mutu [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md).
 
 ---
 
@@ -36,8 +36,9 @@ flowchart TD
   - **Texel Density**: $512\text{ px/m}$ untuk Hero & Boss, $256\text{ px/m}$ untuk Prop Lingkungan.
   - Pencahayaan dinamis Lumen/PointLight tidak overexposed (Chiaroscuro 8:1 s.d. 12:1).
   - Lolos uji simulasi filter buta warna (*Colorblind Accessibility Check*).
-- [ ] **Konsistensi Asimetri 3D**:
+- [ ] **Konsistensi Asimetri 3D & Tri-Layer Shingling**:
   - Lengan kiri kluster kristal es prisma $(-X)$ dan eyepatch mata kanan $(+X)$ konsisten secara geometris di seluruh sudut pandang kamera 360°.
+  - Uji fleksi siku $145^\circ$: Lempeng prisma kristal es siku meluncur masuk tumpang-tindih tanpa distorsi volume elastis (*zero rubbery deformation artifact*).
 
 ---
 
@@ -46,9 +47,10 @@ flowchart TD
   - Runtime bersih dari error fatal, warning memori, dan zero softlock.
 - [ ] **Penguncian Frame Rate Solid 60 FPS / 120 FPS**:
   - Waktu frame persentil ke-99 ($99^{th}$ percentile frame time) $< 16.6\text{ ms}$ di area terpadat sektor.
-- [ ] **Animasi & Kinematika Biomekanik**:
+- [ ] **Animasi, Kinematika & Hit-Stop Presisi**:
   - Siklus gerak 8-fase lokomosi mulus dengan *Pelvic Tilt* dan *Counter-Rotation* tanpa *foot sliding*.
-  - Simulasi fisika kain Syal Aina (*Chaos Cloth & 5-Bone Spring Chain*) berkibar alami tanpa distorsi atau clipping parah pada gerakan Idle, Jog, dan Evade Dash.
+  - Simulasi fisika kain Syal Aina (*Chaos Cloth & 5-Bone Spring Chain*) berkibar alami tanpa distorsi atau clipping parah pada gerakan Idle, Jog, dan Evade Dash dengan transisi *5-frame Pre-Roll Warm-Up*.
+  - **Hit-Stop Presisi 50ms**: GAS Ability Task `UAbilityTask_HitStop` berjalan stabil dan frame-rate independent di 30 FPS, 60 FPS, maupun 120 FPS.
   - IK kaki aktif menyesuaikan kontur tanah/lantai dungeon.
 
 ---
