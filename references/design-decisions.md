@@ -249,6 +249,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Semiotika Visual Kumulatif**: Mengunci makna simbolis Syal Aina (pengorbanan terkikis), Retakan Es (kerapuhan batin), dan Cahaya Lentera (harapan) secara konsisten.
 - **Dampak**: Kualitas visual semesta Lentera Pudar memiliki daya pikat artistik tinggi (*high artistic resonance*), konsistensi gaya Kena yang terjaga, serta bobot sinematik yang mendalam.
 
+---
+
+### ADR-023: Standardisasi Metodologi Kerja, Grounding Anti-Halusinasi & Protokol Berpikir AI Expert (Expert AI Methodology Framework)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master AI Behavioral & Methodological Standard)
+- **Konteks**: Menetapkan etika kerja, disiplin logika, dan protokol operasional AI agent agar bekerja murni sebagai alat produksi profesional yang akurat, transparan, bebas halusinasi, dan sistematis.
+- **Keputusan Terpilih**: 
+  1. **Anti-Roleplay Production Mandate**: Menghilangkan respons teatrikal/roleplay berlebihan saat mengerjakan tugas teknis; gaya naratif hanya diizinkan untuk deliverable konten in-game.
+  2. **Grounding 3-Sumber & Anti-Halusinasi**: Seluruh klaim wajib bersumber dari dokumen master, introspeksi API aktif, atau observasi konkret; saat tidak tahu, wajib mencari dan memverifikasi aktif.
+  3. **Problem Decomposition & Self-Verification**: Memecah tugas kompleks menjadi sub-langkah bertahap dan menjalankan verifikasi fisik sebelum menyatakan selesai.
+  4. **Isolasi Variabel Debugging**: Mengubah tepat satu variabel dalam satu waktu saat troubleshooting teknis (Blender/UE5).
+  5. **Pelaporan Jujur & Meta-Kognisi**: Menyajikan progress aktual secara transparan termasuk asumsi dan blocker aktif tanpa membulatkan status secara semu.
+- **Dampak**: Seluruh kolaborasi AI agent dan asisten teknis berjalan dengan integritas tinggi, zero fatal errors, dan hasil produksi yang dapat diandalkan secara komersial.
+
+
 
 
 
