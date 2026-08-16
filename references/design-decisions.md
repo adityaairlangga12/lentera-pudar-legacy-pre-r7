@@ -456,7 +456,7 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Status**: Accepted (Master Risk Mitigation & Breather Recovery Standard)
 - **Konteks**: Menindaklanjuti audit cross-check untuk memitigasi 3 risiko teridentifikasi (death spiral kutukan, risiko kebosanan Sektor 4, miskonsepsi RPG generik) serta menutup gap teknis pemulihan kutukan di Breather Room.
 - **Keputusan Terpilih**: 
-  1. **Landing Auto-Stop Trigger**: Laju kutukan $+3\text{ poin/detik}$ dari Sealed Eyepatch berhenti otomatis saat kaki Kaelen memasuki volume pendaratan platform (`BP_SafeLandingZone: OnComponentBeginOverlap`), memicu animasi penutupan penutup mata otomatis.
+  1. **Landing Auto-Stop Trigger**: Laju kutukan $+3\text{ poin/detik}$ dari Sealed Eyepatch berhenti otomatis saat kaki Kaelen memasuki volume pendaratan platform (`BP_SpectralLandingZone: OnComponentBeginOverlap`), memicu animasi penutupan penutup mata otomatis.
   2. **Protokol Stage-Gate 5 Sektor 4**: Menetapkan distingsi observasi non-verbal antara *Solemn Engagement* (lolos: tubuh condong ke depan, respirasi tenang) vs *Disengaged Fatigue* (gagal: bersandar, gelisah, spam sprint) di `emotional-playtesting.md`.
   3. **Mandat Anti-RPG Konvensional**: Melarang keras skill tree bebas, stat STR/DEX/INT/leveling, dan loot table acak di `AGENTS.md` Bab 1.5 dan `theory-reference.md` Bab 1.E.
   4. **Pemulihan Curse Meter di Breather Room**: Ditetapkan laju pemulihan $-2\text{ poin/detik}$ dengan batas ambang dasar $25\%$ dan isyarat diegetik pendaran es meredup serta uap beku mencair menjadi bara emas Aina.
