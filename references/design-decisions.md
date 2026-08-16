@@ -277,6 +277,19 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **LOD Berbasis Siluet & Baking Presisi**: Retensi siluet gameplay readability pada LOD, Tangent Space Normal Baking dengan Cage Mesh, dan pembatasan AO bake mikro agar tidak konflik dengan Lumen GI.
 - **Dampak**: Seluruh aset 3D (Kaelen, Boss, Sektor Dungeon) terbebas dari artefak shading, kerutan deformasi patah, distorsi tekstur UV, dan penurunan performa komputasi.
 
+---
+
+### ADR-025: Standardisasi Master Index & Peta Navigasi Dokumentasi Pra-Produksi (Master Documentation Map)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Information Architecture Standard)
+- **Konteks**: Menyediakan indeks master terpadu dan jalur navigasi rujukan baku agar seluruh AI agent dapat mengakses dokumen yang tepat tanpa redundansi konteks atau risiko kontradiksi internal.
+- **Keputusan Terpilih**: 
+  1. **Sentralisasi Rantai Rujukan**: Menetapkan `references/master-index.md` sebagai titik masuk resmi yang mengkategorisasikan seluruh 22 dokumen master ke dalam 5 domain utama.
+  2. **Protokol Urutan Baca Baku**: Menetapkan urutan wajib baca bagi AI agent baru (Metodologi AI ➔ GDD/Lore ➔ Style Guide ➔ Domain Expert ➔ SOP/Few-Shot ➔ QA/QC).
+  3. **Tautan Langsung & Zero Broken Links**: Seluruh rujukan dalam indeks terhubung langsung via tautan markdown lokal yang valid.
+- **Dampak**: Efisiensi pencarian konteks meningkat drastis, eliminasi waktu membaca berulang, dan kepatuhan mutlak terhadap arsitektur hierarki dokumen proyek.
+
+
 
 
 
