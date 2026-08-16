@@ -139,7 +139,28 @@ Bahasa tubuh Kaelen mengekspresikan dinamika 5 Tahap Berduka secara non-verbal:
 
 ---
 
-## 7. Batas Rotasi Sendi Realistis (Joint Constraint Limits)
+## 7. Biomekanika Asimetris Lengan Es Kaelen (*Tri-Layer Biomechanical Shingling*)
+
+Untuk mencegah kecacatan visual di mana material kristal es padat melar elastis seperti karet (*rubbery deformation artifact*) saat sendi siku ditekuk ekstrem ($0^\circ \text{ s.d. } 145^\circ$):
+
+```
+[Layer 1: Daging Bawah] ──> Smooth Weighting (Fleksibel, SSS, Pendaran Urat Es Reaktif)
+[Layer 2: Prisma Utama] ──> Rigid 100% Weighting (Kaku mutlak ke Bone Lengan Bawah/Atas)
+[Layer 3: Sendi Siku]   ──> Shingle/Plate System (Lempeng kristal geser tumpang-tindih)
+```
+
+1. **Layer 1 (Daging & Urat Subsurface)**:
+   - Daging lengan di bawah balutan es menggunakan *smooth skinning* standar dengan deformasi elastis alami, dihiasi material urat es biru yang berdenyut reaktif sesuai nilai `Curse_Spread`.
+2. **Layer 2 (Kluster Prisma Utama — Rigid 100% Weight)**:
+   - Prisma kristal es di sepanjang *humerus* dan *radius/ulna* di-weight $100\%$ kaku ke bone `upperarm_l` dan `lowerarm_l` masing-masing tanpa gradient falloff, mempertahankan sifat getas dan solid kristal es.
+3. **Layer 3 (Engsel Siku & Pergelangan — Olecranon Shingle System)**:
+   - Pada pivot sendi siku (*Olecranon Landmark*) dan pergelangan tangan (*Styloid Landmark*), kristal dimodelkan sebagai **lempeng prisma bertingkat (*interlocking geological shingles*)**. Saat siku ditekuk $\ge 90^\circ$, prisma lengan bawah meluncur masuk ke bawah prisma lengan atas secara mekanis mulus. Saat lengan lurus, lempeng kembali mengunci rapat tanpa meninggalkan celah kosong.
+4. **Efek Mikro-Friction Niagara (`FX_CrystalJointFriction`)**:
+   - Pemancaran partikel debu uap es beku halus pada titik gesekan engsel siku saat terjadi ekstensi/fleksi kecepatan tinggi (serangan pukulan dan parry).
+
+---
+
+## 8. Batas Rotasi Sendi Realistis (Joint Constraint Limits)
 
 Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
 
@@ -155,7 +176,7 @@ Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
 
 ---
 
-## 8. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md))
+## 9. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md))
 - **Otot Wajah Subkutan**: Frontalis, Corrugator Supercilii, Orbicularis Oculi, Zygomaticus Major, Depressor Anguli Oris, dan Mentalis.
 - **FACS Action Units (AU)**: Rigging shape keys berbasis AU (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU43`).
 - **Duchenne Marker**: Pembeda senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa `AU6`).

@@ -55,8 +55,12 @@ Sebelum menyalakan Altar Duka pertama, Kaelen mengandalkan perlengkapan dasar:
 ### 3.1 Sektor 1: Denial (*The Silent Crypts*)
 *Penyalaan Altar Duka 1 ➔ Syal Aina memendek dari Panjang ke Sedang.*
 
-- **Nama Kemampuan**: **Retakan Penyangkalan (*Fracture of Denial / Shatter Strike*)** (GAS: `GA_ShatterStrike`)
-- **Metode Input Eksekusi**: **Combo Finisher** — Menekan tombol **Heavy Attack** tepat di akhir rangkaian kombo 3-hit Light Punch (`Light ➔ Light ➔ Light ➔ Heavy`), bukan tombol terpisah.
+- **Metode Input Eksekusi**: **Combo Finisher via Impact-Linked Buffer Window (12 Frame / $0.20\text{s}$)**:
+  - *Jendela Input*: Tombol **Heavy Attack** baru mulai diterima tepat saat pukulan Light ke-3 mendarat (*Hit 3 Impact Frame* / selama hit-stop 50ms berlangsung) hingga 6 frame awal masa recovery Hit 3.
+  - *Anti-Mashing Guardrail*: Input Heavy sebelum Hit 3 mendarat diabaikan untuk mencegah pemicuan kombo tanpa intensi.
+  - *Hasil Input Tepat*: Recovery Hit 3 langsung di-cancel ke startup `GA_ShatterStrike` (**$0\text{ Biaya Kutukan}$**, Guaranteed Guard Break).
+  - *Hasil Input Terlambat*: Kaelen kembali ke stance netral dan mengeksekusi *Heavy Cursed Strike biasa* (**$+10\text{ Biaya Kutukan}$**, tanpa Guard Break otomatis).
+  - *Isyarat Visual Diegetik*: Syal Aina memancarkan kedipan pendaran emas instan (*subtle gold flash*) pada frame impact Hit 3 sebagai penanda visual jendela finisher.
 - **Biaya Kutukan (*Curse Cost*)**: **$0\text{ poin}$** (Bebas penambahan Curse Meter karena resonansi kemampuan telah disucikan oleh pengorbanan Syal Aina di Altar Duka).
 - **Efek Mekanik & Scaling Damage**:
   - *Guaranteed Guard Break*: Menembus dan menghancurkan 100% kondisi *Block / Guard State* musuh defensif dan memecahkan cangkang pelindung *The Echo*.

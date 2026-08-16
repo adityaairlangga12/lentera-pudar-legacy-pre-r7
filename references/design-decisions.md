@@ -504,6 +504,22 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   3. **Gameplay Loop & Hazard Danau Es Sektor 4**: Menambahkan hazard *Apathy Statues* (patung jiwa beku reaktif kecepatan/suara yang merengkuh kaki Kaelen jika panik), refleksi cermin trauma *The Black Mirror*, pemanfaatan aktif *Jangkar Keheningan* (`GA_AnchorStillness`) untuk memadatkan pijakan es, dan *binaural drone 40Hz breadcrumbing*.
 - **Dampak**: Menjamin stabilitas simulasi grafis UE5, presisi absolut rasa hantaman combat, dan ketegangan eksplorasi duka yang kaya agensi mekanik.
 
+---
+
+### ADR-041: Standarisasi Tri-Layer Biomechanical Shingling Lengan Es, Impact-Linked Finisher Buffer Window, dan 3-Tier Emotional Descent Sektor 4
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Biomechanics, Combat Timing & Pacing Standard)
+- **Konteks**: Mengunci 3 pilar teknis tingkat lanjut: (1) mencegah deformasi kristal es melar lentur (rubbery artifact) saat siku Kaelen menekuk 145°, (2) mengatur ritme eksekusi finisher `GA_ShatterStrike` agar tidak rawan tombol mashing namun tetap responsif, dan (3) merancang kurva adaptasi pemain di Sektor 4 agar duka terasa kontemplatif dan tidak membuat lelah mental.
+- **Keputusan Terpilih**: 
+  1. **Tri-Layer Biomechanical Shingling Lengan Es Kiri**:
+     - *Layer 1*: Daging bawah smooth skinning dengan SSS dan denyut urat es reaktif (`Curse_Spread`).
+     - *Layer 2*: Kluster prisma utama lengan atas dan bawah di-weight $100\%$ kaku (rigid) tanpa gradient falloff.
+     - *Layer 3 (Olecranon Shingle System)*: Lempeng kristal siku bertingkat geologis (*interlocking shingles*) yang meluncur masuk di bawah prisma lain saat siku ditekuk $\ge 90^\circ$, dilengkapi partikel mikro-gesekan `FX_CrystalJointFriction`.
+  2. **Impact-Linked Finisher Buffer Window (12 Frame / 0.20s)**: Jendela input tombol Heavy Attack baru mulai mendengarkan input tepat saat pukulan Light ke-3 mendarat (selama hit-stop 50ms berlangsung) hingga 6 frame awal recovery. Input sebelum hit 3 diabaikan (anti-mashing guardrail); input tepat memicu `GA_ShatterStrike` (0 Curse Cost), sedangkan input terlambat kembali ke stance netral (Heavy Cursed Strike biasa, +10 Curse Cost).
+  3. **3-Tier Emotional Descent Architecture Sektor 4**: Membagi eksplorasi danau es menjadi 3 babak bertahap: *Tier 1 The Void* (0–3m: hening murni, 200cm cahaya, nol musuh), *Tier 2 The Whispering Statues* (3–8m: pengenalan hazard patung beku 1v1 dan tutorial `GA_AnchorStillness`), dan *Tier 3 The Resonant Crossing* (8–15m: navigasi aktif puzzle pijakan es dan binaural drone 40Hz).
+- **Dampak**: Menghilangkan distorsi visual pada rigging hero Kaelen, menjamin presisi kendali finisher berbobot, dan mengunci transisi emosional yang menyentuh di babak Depresi.
+
+
 
 
 
