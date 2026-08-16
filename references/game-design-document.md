@@ -245,6 +245,14 @@ stateDiagram-v2
 - **Attack Telegraphing**: Fase windup minimal 12–18 frame dengan kilau biru dingin `#4A6FA5`, perubahan siluet instan, dan audio cues spasial.
 - **Fun Guardrails**: Nilai kepuasan mekanik (*mechanical satisfaction*) dan responsivitas kontrol tidak boleh dikorbankan demi tema berat.
 
+### 6.5 Progresi Kemampuan Kaelen per Sektor Duka (Lihat [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/sector-ability-progression.md))
+- **Model GRIS Naratif-Sekuensial**: Kemampuan baru terbuka di akhir sektor saat menyalakan Altar Duka dan mengorbankan panjang Syal Aina:
+  1. *Sektor 1 (Denial)* ➔ **Retakan Penyangkalan (*Fracture of Denial*)**: Guard break tameng tebal & penghancur dinding kristal es rapuh.
+  2. *Sektor 2 (Anger)* ➔ **Pusaran Amarah Beku (*Frost Surge*)**: Forward lunging thrust stagger, knockback area & gap-jump melintasi jurang es.
+  3. *Sektor 3 (Bargaining)* ➔ **Kilasan Cermin Waktu (*Reflective Echo*)**: Deflect pantulan proyektil 360° & pengaktifan puzzle rune cermin.
+  4. *Sektor 4 (Depression)* ➔ **Jangkar Keheningan (*Anchor of Stillness*)**: Shockwave anti-stagger, peredam curse meter 50%, dan pemadat pijakan es rapuh.
+  5. *Sektor 5 (Acceptance)* ➔ **Percikan Fajar Abadi (*The Sovereign Spark*)**: Frost-fire harmonization, pembersih kutukan instan, dan pembuka gerbang Overworld.
+
 ---
 
 ## BAB VII: PSIKOLOGI AUDITORI & ENVIRONMENT MENTAL REAL-TIME

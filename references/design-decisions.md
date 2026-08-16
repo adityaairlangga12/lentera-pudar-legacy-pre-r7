@@ -399,6 +399,25 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Side Character Berkesan**: Merancang karakter sampingan sebagai cermin alternatif respons kehilangan melalui satu detail spesifik yang tajam.
 - **Dampak**: Menciptakan dunia 3D yang terasa bernapas, hidup, dan memiliki bobot historis, memperkuat resonansi puitis duka Kaelen dan Aina.
 
+---
+
+### ADR-034: Standardisasi Sistem Progresi Naratif Kemampuan Kaelen per Sektor Duka (GRIS Model, Cumulative Utility, & Grief-Mapped Ability Framework)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Ability Progression Standard)
+- **Konteks**: Menetapkan daftar definitif kemampuan baru Kaelen yang terbuka secara sekuensial melalui pengorbanan Syal Aina di tiap Altar Duka, menolak sistem skill tree generik dan menjamin utilitas kumulatif lintas sektor.
+- **Keputusan Terpilih**: 
+  1. **Model Progresi GRIS**: Menghubungkan setiap pembukaan kemampuan baru dengan penyalaan Altar Duka dan pemendekan permanen Syal Aina (*4 Stages of Sacrifice*).
+  2. **Daftar 5 Kemampuan Spesifik per Sektor**:
+     - S1 Denial ➔ *Retakan Penyangkalan* (Guard break tameng es & destructible barriers).
+     - S2 Anger ➔ *Pusaran Amarah Beku* (Surge thrust stagger, knockback area & gap-jump).
+     - S3 Bargaining ➔ *Kilasan Cermin Waktu* (Reflective deflect proyektil 360° & puzzle optik).
+     - S4 Depression ➔ *Jangkar Keheningan* (Ground slam anti-stagger, curse dampener 50%, & pijakan danau es).
+     - S5 Acceptance ➔ *Percikan Fajar Abadi* (Frost-fire harmonization, pembersih kutukan instan, & pembuka gerbang Overworld).
+  3. **Prinsip Utilitas Kumulatif (*No-Obsolete Rule*)**: Kemampuan sektor awal tetap aktif dan esensial dalam combat, puzzle, dan navigasi di sektor-sektor berikutnya.
+  4. **Integrasi GAS & Biomekanika**: Seluruh kemampuan terikat ke GameplayAbility UE5 dengan kinematika rantai kinetik dan hit-stop 3 frame baku.
+- **Dampak**: Memberikan imbalan mekanik dan katarsis emosional yang seimbang atas pengorbanan Aina, menciptakan variasi combat dan puzzle yang terus berkembang secara bermakna.
+
+
 
 
 
