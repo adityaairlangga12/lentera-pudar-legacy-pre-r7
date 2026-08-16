@@ -165,6 +165,20 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Audio & Poly Budget**: Loudness -16 LUFS (Combat BGM) / -18 LUFS (Dialog) dengan Ducking -6dB (150ms attack, 400ms release), Hero Poly Budget 40k–60k tris (LOD0–LOD3).
 - **Dampak**: AI Agent dan sistem engine memiliki angka pasti yang terverifikasi, menjamin konsistensi visual dan gameplay feel di seluruh sesi kerja.
 
+---
+
+### ADR-017: Standardisasi SOP Operasional, Kalibrasi Few-Shot, & Kurasi Reference Board
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Operational Standard)
+- **Konteks**: Menghubungkan prinsip konseptual (GDD/Teori) dan angka pasti (Style Guide) ke dalam algoritma eksekusi operasional harian yang bebas dari tebakan, bias halusinasi, dan klaim subjektif.
+- **Keputusan Terpilih**: 
+  1. **Tujuh Prosedur Operasional Standar (SOP 1 s.d. SOP 7)**: Menetapkan langkah sekuensial baku untuk Pembuatan Prop, Setup Material PBR/MPC, Rigging Humanoid & Spring Bones, Chaos Cloth Simulation, Level Construction (Grey-Box ➔ Detailing), Combat FSM / GAS Blueprint, dan Audio Spasial 3D Binaural.
+  2. **Standar Kalibrasi Few-Shot**: Mewajibkan seluruh AI Agent melakukan penilaian mandiri (*Self-Correction*) menggunakan 6 benchmark perbandingan konkret (*Salah vs Benar*) sebelum melapor selesai.
+  3. **Struktur Reference Image Board (9 Kategori)**: Memformalkan struktur shot-list legal 9 kategori (`01_palet_warna_kontras` s.d. `09_minimal_hud`) sebagai acuan visual berbasis PureRef/Figma.
+  4. **Protokol Gap-Handling Eksplisit**: Mengunci aturan bahwa kebutuhan di luar dokumen wajib ditandai sebagai GAP terukur dan dilarang diimprovisasi secara diam-diam.
+- **Dampak**: Eksekusi multi-agent dan developer memiliki resep operasional baku yang deterministik, menutup celah halusinasi, dan menjamin hasil kerja selalu lolos 6 Pilar DoD.
+
+
 
 
 
