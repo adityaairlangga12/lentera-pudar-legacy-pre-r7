@@ -24,6 +24,7 @@
 | [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-mathematics.md) | Vektor, Quaternion SLERP/NLERP, Cubic Bezier emosi, Arc-Length Spline C2, SDF 1-Lipschitz, fBm noise | Implementasi teknis matematis kamera, spline level, atau noise prosedural. |
 | [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md) | SDT 3-Needs, motivasi crowding-out, Loss Aversion 2.5x, Emotional Bandwidth Pacing, Non-Linear Grief Echoes | Mendesain pacing reward, jeda kontemplatif, atau diegetic HUD. |
 | [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) | Proporsi 1:6.8, Bony Landmarks, Kinetic Chain Combat, 8-Fase Lokomosi, Corrective Shape Keys, Batas Sendi | Sculpting mesh, weight painting, rigging armature, atau animasi kombat. |
+| [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md) | Anatomi Otot Wajah, FACS Action Units, Duchenne Marker, Asimetri, Eye Gaze Dynamics | Rigging blend shape wajah, animasi ekspresi mikro, ekspresi 5 sektor duka. |
 
 ---
 

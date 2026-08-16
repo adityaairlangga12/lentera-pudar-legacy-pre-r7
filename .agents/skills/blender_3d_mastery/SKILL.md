@@ -43,11 +43,17 @@ Skill ini memuat seluruh standar teknis pemodelan 3D, topologi deformasi, penemp
 - **Integritas Skinning Weight**:
   - Total bobot per vertex $= 1.0$ ($100\%$) dengan maksimal 4 bone influences per vertex.
   - Blending gradual pada lipatan sendi untuk mencegah *pinching*.
+- **Rigging Wajah & FACS Blend Shapes (SOP 3)**:
+  - Setup Shape Keys per Action Unit (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU23`, `AU43`).
+  - Pemisahan independen antara *Eye Region* dan *Mouth Region* untuk ekspresi duka tertahan.
+  - Duchenne Marker (`AU6+AU12`) untuk senyum tulus vs Senyum topeng sosial (`AU12` tanpa `AU6`).
+  - Asimetri 5–15% dan ekspresi mikro 1/25–1/5 detik.
+  - Batasan rotasi rahang bawah (mandibula pitch $0^\circ–20^\circ$).
 - **Scarf Spring Bones (Dual-Mode)**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: 0.4–0.6, Damping: 0.3–0.5) — beralih mulus antara Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif).
 - **Corrective Shape Keys (Pose-Driven Morphs)**:
-  - Setup morph koreksi volume lipatan siku 140° (+ Muscle Bulge bisep), bahu elevasi, dan lutut fleksi 140°.
+  - Setup morph koreksi volume lipatan siku 140° (+ Muscle Bulge bisep), bahu elevasi, lutut fleksi 140°, dan kerutan dahi glabella (`AU1+AU4`).
 - **Batasan Rotasi Sendi (Joint Limits)**:
-  - Siku (0°–145° anti-hyperextension), Lutut (0°–140° fleksi belakang), Tulang Belakang ($\pm 35^\circ–45^\circ$).
+  - Siku (0°–145° anti-hyperextension), Lutut (0°–140° fleksi belakang), Tulang Belakang ($\pm 35^\circ–45^\circ$), Leher ($\pm 80^\circ$ yaw).
 
 ---
 

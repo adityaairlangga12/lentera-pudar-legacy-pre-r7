@@ -289,6 +289,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   3. **Tautan Langsung & Zero Broken Links**: Seluruh rujukan dalam indeks terhubung langsung via tautan markdown lokal yang valid.
 - **Dampak**: Efisiensi pencarian konteks meningkat drastis, eliminasi waktu membaca berulang, dan kepatuhan mutlak terhadap arsitektur hierarki dokumen proyek.
 
+---
+
+### ADR-026: Standardisasi Anatomi Ekspresi Wajah, FACS, & Bahasa Emosi Karakter (Facial Action Coding System & Emotional Gaze Framework)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Character Animation & Facial Rigging Standard)
+- **Konteks**: Menetapkan pemodelan blend shape dan animasi ekspresi wajah berbasis Facial Action Coding System (FACS) untuk menyampaikan nuansa psikologis 5 Tahapan Berduka secara otentik tanpa dialog verbal berlebih.
+- **Keputusan Terpilih**: 
+  1. **Rigging Blend Shapes Berbasis Action Units (AU)**: Membangun shape keys individual (AU1, AU4, AU6, AU12, AU15, AU17, AU43) bukan preset emosi kaku.
+  2. **Duchenne Marker & Senyum Bertopeng**: Membedakan senyum tulus (AU6+AU12) dengan senyum sosial/topeng (AU12 tanpa AU6) untuk menonjolkan kerapuhan emosional.
+  3. **Asimetri Wajah & Ekspresi Mikro**: Mengintegrasikan 5–15% offset intensitas kiri-kanan wajah dan ekspresi mikro berdurasi 1/25–1/5 detik.
+  4. **Pemisahan Kontrol Eye vs Mouth & Batas Rahang**: Memisahkan kontrol kelopak/mata dari mulut serta mengunci rotasi rahang (jaw pitch $\le 20^\circ$).
+  5. **Dinamika Gaze & Eye-Tracking**: Mengimplementasikan 4 pola tatapan (Gaze aversion, lock, downward, drift) dengan parameter hold duration.
+- **Dampak**: Wajah Kaelen dan Aina memiliki daya ungkap emosional mendalam (*high emotional nuance*), terhindar dari kesan kaku/*uncanny valley*, dan memperkuat resonansi naratif cutscene.
+
+
 
 
 

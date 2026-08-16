@@ -148,3 +148,14 @@ Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
 | **Panggul (Hip)** | 0° s.d. 120° (Fleksi Paha) | Disesuaikan dengan posisi lutut. |
 | **Leher (Neck)** | $\pm 80^\circ$ (Yaw), $+60^\circ / -40^\circ$ (Pitch) | Mencegah kepala berputar tidak wajar saat look-at target. |
 | **Tulang Belakang** | $\pm 35^\circ–45^\circ$ per segmen besar | Torsi terdistribusi merata sepanjang vertebra lumbar & thoracic. |
+| **Rahang (Jaw)** | $0^\circ$ s.d. $20^\circ$ (Pitch) | Mengunci artikulasi mandibula mulut. |
+
+---
+
+## 8. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md))
+- **Otot Wajah Subkutan**: Frontalis, Corrugator Supercilii, Orbicularis Oculi, Zygomaticus Major, Depressor Anguli Oris, dan Mentalis.
+- **FACS Action Units (AU)**: Rigging shape keys berbasis AU (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU43`).
+- **Duchenne Marker**: Pembeda senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa `AU6`).
+- **Asimetri & Micro-Expressions**: Offset 5–15% intensitas kiri-kanan wajah dan ekspresi mikro duka 1/25–1/5 detik.
+- **Eye Gaze Dynamics**: Gaze aversion (rasa bersalah), gaze lock (duel), downward gaze (depresi), dan gaze drift (disosiasi denial).
+

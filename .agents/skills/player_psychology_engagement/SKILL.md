@@ -68,11 +68,16 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 - **Kutukan Mengambil Alih**: Lengan kiri es merambat dari siku ke bahu ke dada, emissive kristal berdenyut 0.8–1.2 Hz saat Curse Meter 61–90%, intensitas meningkat ke 2.0–3.0 Hz saat Surge.
 - **Penutup Mata Kanan (*Eyepatch*)**: Simbol *grieving blindspot* (mata trauma yang disegel). Saat dibuka sesaat, post-process filter dingin mengubah persepsi visual dunia. Binaural whispers meningkat intensitasnya (+3 pts/detik pada Curse Meter).
 - **Momen Kamera Intim (Hellblade II Style)**: Saat Altar Duka menyala dan syal Aina memendek, kamera otomatis blur ke close-up wajah Kaelen (FOV 35°–50°, jarak 1.2–1.8m) — rekam ekspresi grief non-verbal untuk dampak emosional maksimal.
+- **Ekspresi Wajah FACS & Dinamika Gaze (Facial Expression Review)**:
+  - *FACS per Grief Stage*: S1 Denial (`AU1+AU2` + gaze drift), S2 Anger (`AU4` corrugator + `AU23`), S4 Depression (`AU1+AU15+AU43` parsial + downward gaze), S5 Acceptance (`AU12` lembut tanpa `AU6`).
+  - *Duchenne Marker vs Topeng*: Senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa kerutan mata `AU6`) saat berpura-pura tegar.
+  - *Gaze Dynamics*: Gaze aversion (rasa bersalah), gaze lock (duel 1v1 intens), gaze drift (disosiasi mental).
 
 ---
 
 ## 5. Referensi Dokumen
 - [references/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
+- [references/human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md) — Master Anatomi Wajah, FACS Action Units & Bahasa Emosi Gaze.
 - [references/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
 - [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).
