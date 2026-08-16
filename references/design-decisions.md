@@ -86,7 +86,7 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Konteks**: Elemen kunci lore seperti Syal yang memendek, tangan es yang berdenyut sesuai kutukan, dan penglihatan memori masa lalu membutuhkan jembatan langsung antara variabel gameplay dan representasi visual.
 - **Keputusan Terpilih**: 
   1. **The Fading Scarf**: Dikelola sebagai *4 Stages of Sacrifice* pada simulasi kain dinamis syal.
-  2. **Cursed Ice Arm Shader (`M_Cursed_Crystal`)**: Shader dinamis terhubung ke parameter `Curse_Spread` pada *Material Parameter Collection (MPC)* yang merespons real-time pada rentang 0 s.d. 100 poin.
+  2. **Cursed Ice Arm Shader (`M_Cursed_Crystal`)**: Shader dinamis terhubung ke parameter scalar `Curse_Spread` pada *Material Parameter Collection (MPC)* dengan skala ternormalisasi $0.0\text{ s.d. } 1.0$ (dipetakan dari nilai gameplay `CurseMeter` $0\text{ s.d. } 100\text{ poin}$ via formula $\text{Curse\_Spread} = \text{CurseMeter} / 100.0$).
   3. **Echoes of the Past & Spectral View**: Transisi lingkungan melalui *Perception Eyepatch Mode* dengan *Post-Process Material* dan *World Position Offset*.
 - **Dampak**: Integrasi penuh antara narasi psikologis dan sistem engine tanpa spaghetti code.
 

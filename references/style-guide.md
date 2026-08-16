@@ -78,15 +78,18 @@ Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara 
 
 ## 3. Parameter Emissive Real-Time & Render Target Thawing System
 
-### A. Parameter Emissive Kristal Es (Material Parameter Collection)
-Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Material Parameter Collection* (MPC):
+### A. Parameter Emissive & Rambatan Kristal Es (Material Parameter Collection)
+Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara real-time melalui 3 parameter yang saling terhubung:
+- **`CurseMeter` (Gameplay Attribute)**: Nilai logika gameplay berbobot $0\text{ s.d. } 100\text{ poin}$ ($0\%\text{ s.d. } 100\%$).
+- **`Curse_Spread` (MPC Scalar Parameter)**: Skala normalisasi $0.0\text{ s.d. } 1.0$ ($\text{Curse\_Spread} = \text{CurseMeter} / 100.0$) yang mengontrol vertex gradient rambatan es pada mesh Kaelen.
+- **`Emissive_Intensity` (Material Scalar Multiplier)**: Kekuatan pancaran cahaya pendaran kristal es ($0.5\text{ s.d. } 12.0$) pada sistem pencahayaan Lumen GI.
 
-| Rentang Curse Meter | Status Karakter | Intensitas Emissive | Karakteristik Visual |
+| Rentang Curse Meter (Gameplay) | Parameter `Curse_Spread` (MPC) | Intensitas Emissive (Multiplier) | Status Karakter & Karakteristik Visual |
 |---|---|---|---|
-| **0–25%** | Tenang / Aman | 0.5–1.0 | Pendaran `#7EE8FA` redup stabil pada cakar. |
-| **26–60%** | Waspada | 1.5–3.0 | Pendaran `#7EE8FA` sedang mulai merambat ke siku. |
-| **61–90%** | Bahaya | 4.0–6.0 | Es merambat ke bahu, berdenyut pelan (**Pulse: 0.8–1.2 Hz**). |
-| **91–100% (Surge)** | Kritis / Ledakan Es | 8.0–12.0 | Campuran pendaran putih 10–15%, berdenyut cepat (**Pulse: 2.0–3.0 Hz**). |
+| **0–25%** | **0.00–0.25** | **0.5–1.0** | *Tenang / Aman*: Pendaran `#7EE8FA` redup stabil pada cakar es tangan kiri. |
+| **26–60%** | **0.26–0.60** | **1.5–3.0** | *Waspada*: Pendaran `#7EE8FA` sedang mulai merambat dari pergelangan ke siku. |
+| **61–90%** | **0.61–0.90** | **4.0–6.0** | *Bahaya*: Es merambat ke bahu dan dada, berdenyut pelan (**Pulse: 0.8–1.2 Hz**). |
+| **91–100% (Surge)** | **0.91–1.00** | **8.0–12.0** | *Kritis / Ledakan Es*: Es menutupi leher dan pipi, berdenyut cepat (**Pulse: 2.0–3.0 Hz**). |
 
 ### B. Render Target Mask Dynamic Thawing (Pencairan Es Altar Duka)
 - **Mekanisme**: Saat Altar Duka diaktifkan, Blueprint memproyeksikan mask pemuaian radius melingkar ke *Render Target* lantai arena.

@@ -144,8 +144,8 @@ flowchart LR
 
 ### 4.1 Pertumbuhan Es Fisik (*The Curse Spread / The Darkness*)
 - Tidak ada health/curse bar konvensional yang mendominasi layar.
-- **Rambatan Kristal Es**: Saat Kaelen terkena serangan berat, gagal parry, atau menggunakan kekuatan es secara berlebihan, shader *Dynamic Material Instance* pada model 3D Kaelen (`Curse_Spread_0_to_1`) secara visual merambatkan es dari siku, bahu, dada, hingga menyentuh pipi dan lehernya.
-- **Peringatan Kritis**: Saat *Curse Meter* mendekati 90%, urat-urat es di wajah Kaelen berpendar biru tajam dan layar mengalami desaturasi dingin (*frost vignette*).
+- **Rambatan Kristal Es**: Saat Kaelen terkena serangan berat, gagal parry, atau menggunakan kekuatan es secara berlebihan, shader *Dynamic Material Instance* pada model 3D Kaelen via parameter MPC `Curse_Spread` (skala normalisasi $0.0\text{ s.d. } 1.0$, dipetakan dari gameplay `CurseMeter` $0\text{ s.d. } 100\text{ poin}$ via formula $\text{Curse\_Spread} = \text{CurseMeter} / 100.0$) secara visual merambatkan es dari cakar ($0.0$), siku ($0.25$), bahu ($0.60$), dada ($0.90$), hingga menyentuh pipi dan leher ($1.0$).
+- **Peringatan Kritis**: Saat *Curse Meter* mendekati 90% (`Curse_Spread \ge 0.90`), urat-urat es di wajah Kaelen berpendar biru tajam dan layar mengalami desaturasi dingin (*frost vignette*).
 
 ### 4.2 Kompas Emosional Syal Aina (*Scarf Emotional Compass*)
 - Tidak ada minimap atau penunjuk arah GPS buatan.
