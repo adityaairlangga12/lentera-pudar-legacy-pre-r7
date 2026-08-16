@@ -82,3 +82,11 @@ Otot wajah menempel langsung pada lapisan kulit subkutan (*dermis*) tanpa perant
 - **Downward Gaze + Slow Blink**: Tatapan menunduk lesu di Sektor 4 (*Depression*).
 - **Gaze Drift (Tatapan Mengambang Tanpa Titik Fokus)**: Disosiasi batin di Sektor 1 (*Denial*).
 - *Setup Teknis*: Modul Eye-Tracking Control Rig wajib memiliki parameter terpisah untuk *Look-At Target* dan *Hold Duration* sebelum transisi.
+
+---
+
+## 8. Sinkronisasi Audio-Visual Vokal & FACS (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md))
+- **Micro-Pause & Micro-Expression Sync**: Jeda mikro intonasi vokal dipadukan tepat dengan kedutan mikro `AU1+AU4` (1/25–1/5 detik).
+- **Suara Tercekat saat `AU17` (Chin Raiser)**: Penurunan volume vokal dan getaran suara tertahan saat otot dagu mengencang menahan tangis.
+- **Gaze Aversion & Proyeksi Suara**: Proyeksi vokal mengecil secara proporsional saat tatapan mata mengelak karena rasa bersalah.
+

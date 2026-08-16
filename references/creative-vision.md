@@ -75,6 +75,9 @@ flowchart LR
    - **Elemen Hangat (Jiwa Aina)**: Denting piano berdebu yang intim, petikan gitar akustik nylon, melodi soliter cello melankolis.
 2. **Dynamic Audio Ducking**:
    - Saat Kaelen memasuki zona altar lentera, gemuruh dungeon meredup (*ducking -6dB*), memberi ruang bagi melodi piano Aina yang lembut dan suara kayu terbakar hangat.
+3. **Arahan Vokal & Subteks Dialog (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md))**:
+   - Subteks emosional mendahului teks literal; distingsi vokal *Denial* (tenang karena menahan badai emosi) vs *Acceptance* (tenang karena keikhlasan melepaskan).
+   - Sinkronisasi intonasi vokal dengan FACS Action Units wajah (`AU1`, `AU4`, `AU17`) dan jeda hening bermakna (*meaningful silence*).
 
 ---
 

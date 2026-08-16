@@ -357,6 +357,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Emotional Depth of Field & Silent Beats**: Memanfaatkan shallow DoF untuk isolasi intim personal dan menyisipkan jeda hening katarsis pada momen puncak duka.
 - **Dampak**: Memastikan setiap cutscene dan momen sinematik memiliki kualitas pengarahan setara film naratif bertaraf internasional (*Hellblade Cinematic Benchmark*), memperkuat imersi psikologis tanpa memutus keterlibatan pemain.
 
+---
+
+### ADR-031: Standardisasi Arahan Vokal, Delivery Dialog & Sinkronisasi Subteks-FACS (Vocal Direction Framework, Subtext Priority, & Audio-Visual Unity)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Voice Direction & Audio-Visual Dialogue Standard)
+- **Konteks**: Menetapkan arahan vokal aktor dan penulisan dialog berbasis subteks batin, karakteristik intonasi 5 sektor duka, serta sinkronisasi audio-visual presisi dengan FACS Action Units wajah.
+- **Keputusan Terpilih**: 
+  1. **Prioritas Subteks**: Arahan vokal didasarkan pada apa yang sebenarnya dirasakan dan ditahan karakter (*suppressed emotion*), bukan teks literal.
+  2. **Distingsi Kritis Vokal Duka**: Membedakan intonasi *Denial* (tenang karena menahan badai emosi) vs *Acceptance* (tenang karena keikhlasan melepaskan).
+  3. **Sinkronisasi Presisi Vokal-FACS**: Memadukan micro-pause vokal dengan micro-expressions wajah (1/25–1/5s), suara tercekat saat `AU17` (menahan tangis), dan penurunan proyeksi saat *gaze aversion*.
+  4. **Vokalisasi Non-Verbal & Keheningan Bermakna**: Mengutamakan helaan napas, suara tertahan, dan *meaningful silence* dibanding dialog berlebihan.
+  5. **Format Standar Lembar Voice Actor**: Menetapkan template 7 parameter (Line, Karakter, Sektor, Subteks, Tempo/Dinamika, Catatan Fisik/FACS, Tonal).
+- **Dampak**: Menghasilkan delivery dialog yang hidup, natural, menyentuh batin, dan selaras sempurna secara audio-visual dengan animasi Control Rig wajah.
+
+
 
 
 

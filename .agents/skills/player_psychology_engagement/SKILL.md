@@ -78,6 +78,8 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 ## 5. Referensi Dokumen
 - [references/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
 - [references/emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md) — Master Playtesting & Validasi Emosional Duka.
+- [references/vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
+- [references/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md) — Master Arahan Sinematik & Bahasa Kamera Duka.
 - [references/human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md) — Master Anatomi Wajah, FACS Action Units & Bahasa Emosi Gaze.
 - [references/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
