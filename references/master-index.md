@@ -10,7 +10,7 @@
 
 | Dokumen Master | Isi & Fokus Utama | Kapan Harus Dirujuk |
 |---|---|---|
-| [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) | Master GDD 9 Bab: Mekanik Kena (Art) + Hellblade (Combat/Psikologi), Sektor Duka, Altar Duka, The Fading Scarf | Menentukan arah visual, sistem combat, atau mekanik dasar fitur baru. |
+| [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) | Master GDD 9 Bab: Kena/Hellblade Dual-Layer, Sektor Duka, Altar Duka, The Fading Scarf, Respawn Diegetik | Menentukan arah visual, sistem combat, sistem respawn, atau mekanik dasar fitur baru. |
 | [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md) | Master Theory Bible 19 Bab: Game design, kinesiologi, shader PBR, fisika XPBD, matematika SLERP/spline, psikologi SDT | Titik rujuk teori umum sebelum masuk ke dokumen expert domain spesifik. |
 | [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) | Master Visi Kreatif: Filosofi The Triad (2700K vs 6500K), resonansi puitis Kaelen & Aina, diksi dialog, semiotika visual | Menulis dialog, menyusun sinematografi, atau memvalidasi suasana emosional. |
 | [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md) | Tata Ruang Spasial 5 Sektor Duka, Breadcrumbing Diegetik, Breathing Rooms, Prop Wear Lore, Simbiosis Arena FSM | Desain level grey-box (SOP 5), penataan koridor dungeon, penempatan prop naratif. |

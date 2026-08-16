@@ -152,9 +152,30 @@ flowchart LR
 - **Ujung Kibaran Syal**: Ujung syal Aina selalu berkibar lembut mengarah ke Altar Duka terdekat atau jalan keluar.
 - **Denyut Cahaya**: Ketika Kaelen mendekati rahasia tersembunyi atau puzzle lingkungan, syal berdenyut lebih terang dengan frekuensi mirip detak jantung yang menenangkan.
 
-### 4.3 Ilusi Kepasrahan Abadi (*Permadeath Illusion / The Freeze of Despair*)
-- Jika *Curse Meter* penuh total 3 kali dalam satu pertempuran, layar menggelap dengan suara es yang membekukan jantung Kaelen.
+### 4.3 Kegagalan Kombat, Framing Kematian & Sistem Respawn Diegetik
+
+#### 4.3.1 Ilusi Kepasrahan Abadi (*Permadeath Illusion / The Freeze of Despair — Boss & Trauma Trigger*)
+- Jika *Curse Meter* penuh total 3 kali dalam satu pertempuran bos/intens, layar menggelap dengan suara es yang membekukan jantung Kaelen.
 - Alih-alih menghapus save game pemain, sistem memicu **cutscene refleksi trauma personal Kaelen**, di mana bisikan Aina menariknya kembali dari jurang mati rasa sebelum ia membeku selamanya.
+
+#### 4.3.2 Sistem Respawn Combat Biasa (*Non-Freeze of Despair / Minor Failure Loop*)
+Dirancang khusus untuk kegagalan saat melawan musuh koridor/kroco biasa tanpa merusak imersi atau memicu cutscene naratif berat:
+1. **Titik Respawn (Ambang Pintu Aman & Breather Room)**:
+   - Kaelen di-respawn pada **Ambang Pintu Masuk Arena (*Encounter Threshold / Safe Archway*)** atau *Breather Room* terdekat tepat sebelum ruangan pertarungan tersebut.
+   - *Logika Desain*: Menghindari frustrasi me-replay 15–30 menit eksplorasi dungeon, namun tetap memberikan jeda spasial agar pemain dapat menata ulang strategi duel 1v1.
+2. **Transisi Visual Saat Kalah (*Frost Glaze & Audio Muffle*)**:
+   - Tanpa teks "YOU DIED" atau "GAME OVER" generik di layar.
+   - Saat Kaelen tumbang, kamera terkunci rendah memperlihatkan lutut Kaelen jatuh ke lantai, lapisan kristal es tipis merambat cepat dari tepi layar (*Frost Vignette Glaze*), suara audio teredam (*low-pass filter 400Hz* seolah tenggelam dalam dingin), lalu layar memudar cepat (*fade to black-blue `#141013`*) selama 1.5 detik.
+3. **Transisi Visual Saat Respawn (*Dynamic Thawing & Aina's Warmth Pulse*)**:
+   - Layar memudar kembali (*fade in*) memperlihatkan Kaelen bertumpu pada satu lutut di ambang pintu aman.
+   - **Isyarat Diegetik**: Lapisan kristal es di dada dan pipi Kaelen merekah retak dan mencair kembali (*dynamic vertex thawing*), Syal Aina (`#F4B860` 2700K) berkedip hangat dua kali dengan pendaran Lumen lembut, disertai efek audio hembusan napas lega Kaelen (*soft exhalation*). Kaelen bangkit berdiri dan kontrol langsung aktif tanpa jeda.
+4. **Penalti & Konsekuensi (*Trade-Off & Retensi Persistensi*)**:
+   - *Curse Meter Stabilization*: Curse Meter diatur ulang ke batas ambang dasar sektor (misal: 25%), bukan 0% — mencerminkan bahwa duka dan kutukan tidak pernah hilang total secara magis.
+   - *Encounter Reset vs World Persistence*: Formasi musuh di ruangan terkait me-reset posisi, namun reruntuhan pilar dan objek yang telah dihancurkan Kaelen tetap hancur (*Local World Awareness persistensi*).
+   - *Zero Artificial Punishment*: Tidak ada pengurangan panjang Syal Aina atau kehilangan resource (panjang syal murni memendek hanya di Altar Duka secara naratif).
+5. **Frekuensi Checkpoint Minor per Sektor**:
+   - Setiap sektor memiliki **1 Major Checkpoint (Altar Duka)** di awal/akhir sektor dan **2–3 Minor Checkpoints (Breather Rooms / Safe Archways)** di sepanjang koridor.
+   - Interval penempatan: Rata-rata 1 checkpoint minor setiap 2–3 ruang encounter combat (waktu tempuh 4–6 menit eksplorasi), menjaga ritme ketegangan tanpa memanjakan atau menghukum berlebihan.
 
 ### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))
 - **Antarmuka Diegetik Utama**: Indikator status tersemat langsung pada tubuh Kaelen (es lengan kiri & panjang syal emas). HUD non-diegetik memudar otomatis saat eksplorasi.

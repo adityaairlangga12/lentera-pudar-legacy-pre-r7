@@ -417,6 +417,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Integrasi GAS & Biomekanika**: Seluruh kemampuan terikat ke GameplayAbility UE5 dengan kinematika rantai kinetik dan hit-stop 3 frame baku.
 - **Dampak**: Memberikan imbalan mekanik dan katarsis emosional yang seimbang atas pengorbanan Aina, menciptakan variasi combat dan puzzle yang terus berkembang secara bermakna.
 
+---
+
+### ADR-035: Standardisasi Sistem Respawn Diegetik & Kegagalan Kombat Biasa (Diegetic Thawing, Safe Archway Checkpoints, & Curse Stabilization)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Combat Failure & Respawn Standard)
+- **Konteks**: Menetapkan detail teknis loop kegagalan dan respawn saat Kaelen kalah dalam pertempuran koridor/kroco biasa (non-Freeze of Despair) agar tetap selaras secara diegetik dan bebas dari HUD teks game over generik.
+- **Keputusan Terpilih**: 
+  1. **Titik Respawn Aman**: Kaelen dibangkitkan pada *Encounter Threshold / Safe Archway* atau *Breather Room* terdekat sebelum ruangan pertempuran.
+  2. **Transisi Visual Kalah (*Frost Glaze*)**: Tidak ada teks game over; kamera jatuh rendah, frost vignette glaze merambat cepat, audio muffle low-pass filter 400Hz, lalu fade to dark-blue `#141013` (1.5 detik).
+  3. **Transisi Visual Respawn (*Dynamic Thawing & Breath*)**: Fade in memperlihatkan Kaelen bertumpu pada satu lutut, es di dada mencair kembali (*vertex thawing*), Syal Aina berkedip hangat 2x (2700K), dan desau napas lega (*soft exhalation*).
+  4. **Penalti & Persistensi**: Curse Meter stabil pada 25% (tidak hilang total), formasi musuh di ruangan reset, namun reruntuhan dan destruksi lingkungan tetap hancur (*local persistence*).
+  5. **Frekuensi Checkpoint**: 1 Major Checkpoint (Altar Duka) + 2–3 Minor Checkpoints (Breather Rooms) per sektor (interval 4–6 menit eksplorasi).
+- **Dampak**: Menjaga imersi emosional dan integritas artistik dunia tanpa menghukum pemain secara frustratif atau merusak atmosfer melankolis game.
+
+
 
 
 
