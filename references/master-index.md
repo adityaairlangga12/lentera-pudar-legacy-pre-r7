@@ -60,7 +60,8 @@
 | [qc-patterns.md](file:///d:/GodotProjects/Lentera-Pudar/references/qc-patterns.md) | Knowledge base pola anomali visual 3D, rigging, audio, dan tindakan korektif | Menangani bug atau anomali spesifik saat inspeksi QC. |
 | [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md) | 7 SOP Prosedural: Prop, Material, Rigging, Cloth, Level Grey-Box, Gameplay GAS, Audio | Mengerjakan tugas produksi operasional berulang secara konsisten. |
 | [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) | 7 Contoh Benchmark Benar vs Salah (Few-Shot Calibration) | Melakukan evaluasi mandiri (*self-critique*) sebelum melapor ke user. |
-| [design-decisions.md](file:///d:/GodotProjects/Lentera-Pudar/references/design-decisions.md) | Log Keputusan Arsitektur Resmi (ADR-001 s.d. ADR-025) | Meninjau alasan historis dan keputusan teknis/desain yang telah dikunci. |
+| [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md) | Validasi Emosional, Intended vs Perceived Framework, Observasi Non-Intrusif, Uji Retensi Memori | Memvalidasi apakah resonansi duka tersampaikan ke pemain manusia. |
+| [design-decisions.md](file:///d:/GodotProjects/Lentera-Pudar/references/design-decisions.md) | Log Keputusan Arsitektur Resmi (ADR-001 s.d. ADR-028) | Meninjau alasan historis dan keputusan teknis/desain yang telah dikunci. |
 
 ---
 

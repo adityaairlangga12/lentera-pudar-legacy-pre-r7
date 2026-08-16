@@ -75,6 +75,15 @@ flowchart TD
 
 ---
 
+### 💖 Gate Validasi Emosional (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md))
+- [ ] **Intended vs Perceived Alignment**:
+  - Momen naratif dan transisi altar duka memiliki dokumen *Intended Emotion* vs *Design Signals* (lighting, FACS, audio).
+  - Ditandai status `[Needs Human Playtest Validation]` — verifikasi AI tidak menggantikan validasi pemain manusia sungguhan.
+- [ ] **Observasi Non-Intrusif & Retensi**:
+  - Format wawancara pasca-sesi reflektif tanpa leading questions.
+
+---
+
 ## 2. Klasifikasi Severity Bug & Aturan Penanganan
 
 | Severity | Dampak | Aturan Tindakan |
@@ -92,7 +101,7 @@ flowchart TD
 # 🛡️ 3D Quality Control Inspection Report
 
 - **Target Inspeksi**: [Nama Asset 3D / Mesh / Scene]
-- **Kategori**: [3D Visual / Rigging / Combat / Audio / Level]
+- **Kategori**: [3D Visual / Rigging / Combat / Audio / Level / Narrative]
 - **Waktu Eksekusi**: [Timestamp]
 
 ### 📋 Checklist Evaluation (6-DoD & 4-Tier):
@@ -100,6 +109,7 @@ flowchart TD
 - [x] Tier 2: Functional & Runtime Performance (60 FPS) — PASS
 - [x] Tier 3: Input, Save & Platform Compliance — PASS
 - [x] Tier 4: Rigging & Export Integrity — PASS
+- [x] Emotional Gate: Intended vs Perceived Framework — PASS / [Needs Human Playtest Validation]
 
 ### 🎯 Keputusan Akhir:
 **STATUS: [PASS / REJECTED]**

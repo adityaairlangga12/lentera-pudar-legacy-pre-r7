@@ -317,6 +317,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Simbiosis Arena vs FSM Musuh**: Menyesuaikan dimensi arena secara presisi dengan arketipe kecerdasan buatan musuh (arena sempit untuk brawler melee vs arena berpilar untuk ranged caster).
 - **Dampak**: Setiap jengkal dungeon *The Silent Crypts* hingga *The Dawning Altar* memiliki bobot naratif immersif, mendukung gameplay kombat deliberate 1v1, dan memperkuat arsitektur psikologis Hellblade-grade.
 
+---
+
+### ADR-028: Standardisasi Playtesting & Validasi Emosional (Intended vs Perceived Framework & Human Resonance Gap Analysis)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Emotional Quality Assurance Standard)
+- **Konteks**: Menetapkan metodologi evaluasi dampak psikologis dan emosional duka terhadap pemain manusia sungguhan untuk memvalidasi bahwa kedalaman naratif tersampaikan secara efektif, bukan sekadar lolos uji teknis/fungsional.
+- **Keputusan Terpilih**: 
+  1. **Kerangka Intended vs Perceived Emotion**: Melakukan analisis kesenjangan (*gap analysis*) antara emosi desain dengan respon kualitatif playtester non-verbal/verbal.
+  2. **Protokol Observasi Non-Intrusif**: Meminimalkan think-aloud selama bermain, mengamati bahasa tubuh/jeda hening alami, dan wawancara reflektif terbuka pasca-sesi.
+  3. **Indikator Spesifik per Sektor Duka**: Mengevaluasi keberhasilan transmisi emosi (S1 keraguan simbolik, S2 intensitas tombol, S4 keheningan kontemplatif, S5 ketenangan relaksasi).
+  4. **Mandat Batasan Eksplisit AI Agent**: Kepatuhan teknis AI terhadap parameter desain tidak menggantikan validasi emosi manusia; wajib menandai status `[Needs Human Playtest Validation]`.
+  5. **Prosedur Sesi 5-Tahap & Retensi Memori**: Menjalankan sesi unprimed 30–45 menit dengan evaluasi memori jangka panjang 1 minggu pasca-sesi.
+- **Dampak**: Mencegah bias internal pengembang/AI, memastikan tema 5 Tahapan Berduka beresonansi kuat secara emosional, dan menjamin karya akhir mencapai standar puitis bertaraf internasional.
+
+
 
 
 

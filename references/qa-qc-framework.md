@@ -104,3 +104,10 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 1. **Observability-First Mandate**: AI Agent wajib memanggil tool inspeksi sebelum melakukan modifikasi file atau ekspor 3D.
 2. **No Auto-Merge**: Seluruh kode, mesh, dan blueprint dari AI Agent harus melalui review dan verifikasi fisik di editor.
 3. **Wajib Bukti Fisik Konkret**: Setiap laporan selesai wajib menyertakan path file aktual, data parameter numerik, atau screenshot visual.
+
+---
+
+## 6. Validasi Emosional & Playtesting Manusia (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md))
+- **Fungsional vs Emosional**: Pengujian teknis 6-DoD memastikan game bebas bug, sedangkan validasi emosional memastikan tema 5 Tahap Berduka dirasakan secara otentik oleh pemain.
+- **Kerangka Intended vs Perceived Emotion**: Menganalisis kesenjangan (*gap analysis*) antara emosi yang dirancang dengan respon alami playtester.
+- **Mandat Batasan AI Agent**: Kepatuhan teknis AI terhadap parameter desain **TIDAK MENGGANTIKAN** validasi emosional playtester manusia. Setiap beat naratif kunci wajib ditandai status `[Needs Human Playtest Validation]`.
