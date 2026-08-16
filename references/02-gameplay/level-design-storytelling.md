@@ -2,7 +2,7 @@
 ### Bagaimana Tata Ruang Spasial dan Penempatan Objek Bercerita Tanpa Kata
 
 > **Dokumen Sumber Kebenaran Desain Level (*Level Design & Environmental Storytelling Reference*)**  
-> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md). Menjadi pedoman arsitektur level 3D grey-box (SOP 5), penataan koridor dungeon, penempatan prop naratif, dan breadcrumbing diegetik di **Unreal Engine 5 + Blender 5.2 LTS**.
+> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md). Menjadi pedoman arsitektur level 3D grey-box (SOP 5), penataan koridor dungeon, penempatan prop naratif, dan breadcrumbing diegetik di **Unreal Engine 5 + Blender 5.2 LTS**.
 
 ---
 

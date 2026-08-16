@@ -2,7 +2,7 @@
 ### Anatomi Otot Wajah, Facial Action Coding System (FACS), Duchenne Marker, & Bahasa Emosi Gaze
 
 > **Dokumen Sumber Kebenaran Ekspresi Wajah Karakter (*Facial Anatomy & FACS Reference*)**  
-> Melengkapi biomekanika tubuh [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) dan psikologi pemain [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md). Menjadi pedoman teknis rigging blend shape, ekspresi mikro, dan tatapan mata (*eye gaze*) untuk karakter Kaelen dan Aina di **Blender 5.2 LTS + Unreal Engine 5**.
+> Melengkapi biomekanika tubuh [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) dan psikologi pemain [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md). Menjadi pedoman teknis rigging blend shape, ekspresi mikro, dan tatapan mata (*eye gaze*) untuk karakter Kaelen dan Aina di **Blender 5.2 LTS + Unreal Engine 5**.
 
 ---
 

@@ -5,7 +5,7 @@ description: Standar kurva kesulitan (difficulty curve), ritme encounter musuh, 
 
 # Encounter Pacing & Combat Rhythm (Game Designer)
 
-Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, dan alokasi *Emotional Bandwidth* di dalam dungeon Lentera Pudar merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md), dan [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md).
+Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, dan alokasi *Emotional Bandwidth* di dalam dungeon Lentera Pudar merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md), dan [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md).
 
 ---
 

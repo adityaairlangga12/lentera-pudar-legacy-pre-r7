@@ -25,24 +25,31 @@ FILE_MAPPING = {
     "vocal-direction-dialogue.md": "03-narrative/vocal-direction-dialogue.md",
     
     # 04-art-3d
-    "additional-techniques.md": "04-art-3d/additional-techniques.md",
+    "additional-techniques.md": "04-art-3d/environment-modular-techniques.md",
+    "environment-modular-techniques.md": "04-art-3d/environment-modular-techniques.md",
     "anatomy-kinesiology.md": "04-art-3d/anatomy-kinesiology.md",
-    "expert-3d-foundations.md": "04-art-3d/expert-3d-foundations.md",
+    "expert-3d-foundations.md": "04-art-3d/3d-asset-pipeline.md",
+    "3d-asset-pipeline.md": "04-art-3d/3d-asset-pipeline.md",
     "human-facial-expressions.md": "04-art-3d/human-facial-expressions.md",
     "kena-art-research.md": "04-art-3d/kena-art-research.md",
     "reference-board-guide.md": "04-art-3d/reference-board-guide.md",
     "style-guide.md": "04-art-3d/style-guide.md",
     
     # 05-foundations
-    "expert-art-creativity.md": "05-foundations/expert-art-creativity.md",
-    "expert-mathematics.md": "05-foundations/expert-mathematics.md",
-    "expert-physics.md": "05-foundations/expert-physics.md",
-    "expert-psychology.md": "05-foundations/expert-psychology.md",
+    "expert-art-creativity.md": "05-foundations/art-creativity.md",
+    "art-creativity.md": "05-foundations/art-creativity.md",
+    "expert-mathematics.md": "05-foundations/mathematics.md",
+    "mathematics.md": "05-foundations/mathematics.md",
+    "expert-physics.md": "05-foundations/physics.md",
+    "physics.md": "05-foundations/physics.md",
+    "expert-psychology.md": "05-foundations/psychology.md",
+    "psychology.md": "05-foundations/psychology.md",
     
     # 06-pipeline-qc
     "api-cheat-sheet.md": "06-pipeline-qc/api-cheat-sheet.md",
     "emotional-playtesting.md": "06-pipeline-qc/emotional-playtesting.md",
-    "expert-ai-methodology.md": "06-pipeline-qc/expert-ai-methodology.md",
+    "expert-ai-methodology.md": "06-pipeline-qc/ai-agent-methodology.md",
+    "ai-agent-methodology.md": "06-pipeline-qc/ai-agent-methodology.md",
     "few-shot-calibration.md": "06-pipeline-qc/few-shot-calibration.md",
     "qa-qc-framework.md": "06-pipeline-qc/qa-qc-framework.md",
     "qc-patterns.md": "06-pipeline-qc/qc-patterns.md",
@@ -50,15 +57,27 @@ FILE_MAPPING = {
     "tools-mcp-stack.md": "06-pipeline-qc/tools-mcp-stack.md",
 }
 
+REPLACE_MAP = {
+    "references/04-art-3d/additional-techniques.md": "references/04-art-3d/environment-modular-techniques.md",
+    "references/04-art-3d/expert-3d-foundations.md": "references/04-art-3d/3d-asset-pipeline.md",
+    "references/05-foundations/expert-mathematics.md": "references/05-foundations/mathematics.md",
+    "references/05-foundations/expert-physics.md": "references/05-foundations/physics.md",
+    "references/05-foundations/expert-psychology.md": "references/05-foundations/psychology.md",
+    "references/05-foundations/expert-art-creativity.md": "references/05-foundations/art-creativity.md",
+    "references/06-pipeline-qc/expert-ai-methodology.md": "references/06-pipeline-qc/ai-agent-methodology.md",
+}
+
 def update_links_in_file(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
     orig_content = content
+    
+    # Replace direct references
+    for old_ref, new_ref in REPLACE_MAP.items():
+        content = content.replace(old_ref, new_ref)
+        
     for old_name, new_subpath in FILE_MAPPING.items():
-        # Pattern 1: references/old_name (not already prefixed by 0X-...)
-        # e.g., references/master-index.md -> references/01-core/master-index.md
-        # Negative lookahead/behind to avoid double replacement
         pattern = re.compile(rf"(references/)(?!0[1-6]-)({re.escape(old_name)})")
         content = pattern.sub(rf"references/{new_subpath}", content)
 
@@ -76,7 +95,6 @@ def verify_all_links():
     link_pattern = re.compile(r"\[([^\]]+)\]\((file:///[^\)]+|references/[^\)]+)\)")
 
     for root, dirs, files in os.walk(WORKSPACE_ROOT):
-        # Skip git and cache
         if ".git" in root or "__pycache__" in root:
             continue
         for file in files:
@@ -90,11 +108,9 @@ def verify_all_links():
                     raw_url = match.group(2)
                     total_checked += 1
                     
-                    # Clean up url (strip anchors)
                     url_clean = raw_url.split("#")[0]
                     
                     if url_clean.startswith("file:///"):
-                        # Extract local absolute path
                         local_path = url_clean.replace("file:///", "").replace("/", "\\")
                         if not os.path.exists(local_path):
                             broken.append((filepath, raw_url, local_path))

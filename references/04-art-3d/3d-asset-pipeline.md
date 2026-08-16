@@ -28,7 +28,7 @@
   - Tempatkan seam pada perbatasan material alami (sambungan kain jubah-kulit, plat pelindung baldric).
   - Manfaatkan sudut kurvatur tajam untuk pemotongan UV yang bersih.
 - **Efisiensi UV Packing & Texel Density**:
-  - Mengatur ukuran pulau UV (*UV Islands*) secara proporsional sesuai target Texel Density: $512\text{ px/m}$ (Hero/Boss) dan $256\text{ px/m}$ (Props) mengacu pada [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md).
+  - Mengatur ukuran pulau UV (*UV Islands*) secara proporsional sesuai target Texel Density: $512\text{ px/m}$ (Hero/Boss) dan $256\text{ px/m}$ (Props) mengacu pada [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md).
 
 ---
 

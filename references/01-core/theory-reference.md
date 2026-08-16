@@ -172,7 +172,7 @@ Kombinasi Two-Bone IK dan Control Rig untuk adaptasi telapak kaki pada lantai du
 
 ---
 
-## 10. Teori Rigging, Anatomi Deformasi & Simulasi Kain (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/expert-3d-foundations.md))
+## 10. Teori Rigging, Anatomi Deformasi & Simulasi Kain (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md))
 
 ### A. Titik Rujukan Tulang Baku (*Bony Landmarks*)
 Titik tulang permukaan yang wajib terbaca pada sculpt dan menjadi pivot bone rig: *Acromion & Clavicle* (bahu), *Olecranon* (siku), *Iliac Crest & Greater Trochanter* (panggul/hip), *Patella* (lutut), *Malleolus* (mata kaki), dan *Vertebra Prominens* (pangkal leher/postur).
@@ -198,7 +198,7 @@ Memadukan **Solid Geometry** (bentuk massa volume utama) dengan **Alpha Cards** 
 
 ---
 
-## 11. Teori Shader & Material Pipeline (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/expert-3d-foundations.md))
+## 11. Teori Shader & Material Pipeline (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md))
 
 ### A. PBR (Physically Based Rendering) & Zero Black Outline
 Material di UE5 dibangun dari kombinasi *Base Color* (flat tanpa baked lighting), *Roughness*, *Metallic* (biner 0 atau 1), dan *Tangent Space Normal Map* dengan Cage ray-casting. Visual game adalah *Stylized-Realistic non-outline* (bukan cel-shading bergaris hitam).
@@ -230,7 +230,7 @@ Karena syal Aina memendek permanen sebagai *cost* naratif, penting menjaga rasio
 
 ---
 
-## 13. Teori Fisika Tingkat Lanjut (Terapan Real-Time Engine — Lihat [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-physics.md))
+## 13. Teori Fisika Tingkat Lanjut (Terapan Real-Time Engine — Lihat [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/physics.md))
 
 ### A. Rigid Body & Sequential Impulse Solver
 Objek keras (reruntuhan, pecahan es) disimulasikan lewat persamaan Newton-Euler ($F=ma$, $\tau=I\alpha$) yang diselesaikan secara iteratif ($4–10\text{ iterasi/frame}$) oleh *Sequential Impulse Solver* UE5 Chaos Physics. Pecahan es menggunakan restitusi rendah ($e=0.1–0.3$) dan aproksimasi *Coulomb Friction Cone* agar jatuh berat menyerap momentum tumbukan.
@@ -252,7 +252,7 @@ Two-Bone IK Kaelen menggunakan algoritma **FABRIK** (Forward And Backward Reachi
 
 ---
 
-## 14. Teori Matematika Tingkat Lanjut (Terapan — Lihat [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-mathematics.md))
+## 14. Teori Matematika Tingkat Lanjut (Terapan — Lihat [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/mathematics.md))
 
 ### A. Vektor & Quaternion (SLERP vs NLERP)
 Rotasi 3D merepresentasikan orientasi melalui quaternion 4D ($q = w + xi + yj + zk$) bebas *Gimbal Lock*. Wajib menggunakan **SLERP** (Spherical Linear Interpolation) untuk transisi kamera sinematik berkecepatan sudut konstan, dan **NLERP** untuk blending animasi mikro frekuensi tinggi (Idle ke Walk).
@@ -274,7 +274,7 @@ Combat controller Kaelen diformalkan sebagai 5-tuple FSM, sedangkan AI musuh jiw
 
 ---
 
-## 15. Teori Psikologi Pemain (Player Psychology — Lihat [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md))
+## 15. Teori Psikologi Pemain (Player Psychology — Lihat [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md))
 
 ### A. Self-Determination Theory (SDT) & Diagnostik Desain
 Motivasi intrinsik pemain dievaluasi lewat 3 pilar: **Autonomy** (kebebasan eksplorasi rute rahasia Eyepatch), **Competence** (penguasaan parry 12-frame dan pola musuh), dan **Relatedness** (ikatan emosional Kaelen-Aina). Menolak sistem leaderboard kompetitif untuk mencegah fenomena *Motivation Crowding-Out*.

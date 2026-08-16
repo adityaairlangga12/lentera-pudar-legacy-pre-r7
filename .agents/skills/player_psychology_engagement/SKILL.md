@@ -5,7 +5,7 @@ description: Panduan psikologi pemain untuk Psychology Agent (Consultant). Digun
 
 # Player Psychology & Emotional Engagement (Psychology Agent)
 
-Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md).
+Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md).
 
 ---
 
@@ -76,7 +76,7 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 ---
 
 ## 5. Referensi Dokumen
-- [references/05-foundations/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
+- [references/05-foundations/psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
 - [references/06-pipeline-qc/emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md) — Master Playtesting & Validasi Emosional Duka.
 - [references/03-narrative/vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
 - [references/03-narrative/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md) — Master Arahan Sinematik & Bahasa Kamera Duka.

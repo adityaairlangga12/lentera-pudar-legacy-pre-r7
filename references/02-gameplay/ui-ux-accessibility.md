@@ -2,7 +2,7 @@
 ### Spesifikasi Minimal-HUD, Antarmuka Diegetik, Fitur Aksesibilitas Empatik, & Arsitektur Siap Lokalisasi
 
 > **Dokumen Sumber Kebenaran UI/UX & Aksesibilitas (*UI/UX & Accessibility Reference*)**  
-> Melengkapi [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), dan [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md). Menetapkan antarmuka pengguna yang meminimalkan beban kognitif (*cognitive load*) dan menjamin aksesibilitas inklusif untuk seluruh pemain.
+> Melengkapi [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), dan [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md). Menetapkan antarmuka pengguna yang meminimalkan beban kognitif (*cognitive load*) dan menjamin aksesibilitas inklusif untuk seluruh pemain.
 
 ---
 

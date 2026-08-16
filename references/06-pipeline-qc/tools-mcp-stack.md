@@ -31,7 +31,7 @@
 
 | Tools | Fungsi | Terhubung ke GDD/Teori |
 |---|---|---|
-| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen, Syal Aina, dan aset dungeon. | Material PBR Stylized (Teori Bab 11.A, [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md)). |
+| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen, Syal Aina, dan aset dungeon. | Material PBR Stylized (Teori Bab 11.A, [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)). |
 | **Substance 3D Designer** | Pembuatan material prosedural: Kristal Es Transmissive (SSS) & batuan reruntuhan. | Teori Subsurface Scattering kristal es (Teori Bab 11.B). |
 | **Quixel Megascans + Bridge** | Pustaka aset scan batuan reruntuhan kuno terintegrasi native dengan UE5. | Estetika reruntuhan organik-kuno (GDD Bab I). |
 | **Poly Haven (Library Gratis)** | Sumber HDRI, tekstur PBR, dan model lingkungan gratis berkualitas tinggi. | Pelengkap Megascans untuk variasi material tanpa biaya lisensi. |

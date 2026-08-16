@@ -13,7 +13,7 @@ flowchart TD
     D2["02-gameplay/<br><i>Kemampuan, Level & Combat</i>"]
     D3["03-narrative/<br><i>Prolog, Dialog & Sinematik</i>"]
     D4["04-art-3d/<br><i>Seni Visual, Biomekanika & Rig</i>"]
-    D5["05-foundations/<br><i>Expert Bible (Fisika/Math/Psikologi)</i>"]
+    D5["05-foundations/<br><i>Expert Foundations (Fisika/Math/Psikologi)</i>"]
     D6["06-pipeline-qc/<br><i>SOP, Tools MCP & QA/QC</i>"]
 
     ROOT --> D1
@@ -69,8 +69,8 @@ flowchart TD
 | [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md) | Anatomi Otot Wajah, FACS Action Units, Duchenne Marker, Asimetri, Eye Gaze Dynamics | Rigging blend shape wajah, animasi ekspresi mikro, ekspresi 5 sektor duka. |
 | [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/kena-art-research.md) | Riset 3D Art Kena: Bridge of Spirits (Ember Lab), Hybrid Hair, Dynamic Environmental Thawing, Wind System | Memahami dan mereplikasi pipeline visual Stylized PBR non-outline. |
 | [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md) | 9 Kategori Shot-List Legal PureRef/Figma dari Kena dan Hellblade | Menyusun atau mengevaluasi papan referensi visual terkurasi. |
-| [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/expert-3d-foundations.md) | Teori Topologi Edge Flow, UV Seam, PBR Shading, Rigging Deformasi, LOD Siluet, Tangent Normal Baking Cage | Kerja teknis pemodelan, unwrapping, baking, dan rigging 3D. |
-| [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md) | Trim Sheets, Texel Density ($512/256\text{ px/m}$), Modular Kit-Bashing ($300\text{ cm}$), Normal Baking, Post-Process LUTs | Menerapkan teknik produksi lingkungan dan optimalisasi memori. |
+| [3d-asset-pipeline.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md) | Teori Topologi Edge Flow, UV Seam, PBR Shading, Rigging Deformasi, LOD Siluet, Tangent Normal Baking Cage | Kerja teknis pemodelan, unwrapping, baking, dan rigging 3D. |
+| [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md) | Trim Sheets, Texel Density ($512/256\text{ px/m}$), Modular Kit-Bashing ($300\text{ cm}$), Normal Baking, Post-Process LUTs | Menerapkan teknik produksi lingkungan dan optimalisasi memori. |
 
 ---
 
@@ -78,10 +78,10 @@ flowchart TD
 
 | Dokumen Master | Isi & Fokus Utama | Kapan Harus Dirujuk |
 |---|---|---|
-| [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-physics.md) | Solver Sequential Impulse, XPBD Cloth, Lattice-Biased Voronoi, Cook-Torrance GGX, FABRIK IK, trade-off 60 FPS | Menyetel parameter solver fisika secara presisi di UE5 Chaos / Blender. |
-| [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-mathematics.md) | Vektor, Quaternion SLERP/NLERP, Cubic Bezier emosi, Arc-Length Spline C2, SDF 1-Lipschitz, fBm noise | Implementasi teknis matematis kamera, spline level, atau noise prosedural. |
-| [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md) | SDT 3-Needs, motivasi crowding-out, Loss Aversion 2.5x, Emotional Bandwidth Pacing, Non-Linear Grief Echoes | Mendesain pacing reward, jeda kontemplatif, atau diegetic HUD. |
-| [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md) | Uji Nilai Grayscale Value-First, Dominasi Warna 60-30-10, Triad Kritik Seni (Unity, Tension, Resolution), Semiotika | Mengevaluasi kekuatan artistik dan komposisi visual sebelum finalisasi. |
+| [physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/physics.md) | Solver Sequential Impulse, XPBD Cloth, Lattice-Biased Voronoi, Cook-Torrance GGX, FABRIK IK, trade-off 60 FPS | Menyetel parameter solver fisika secara presisi di UE5 Chaos / Blender. |
+| [mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/mathematics.md) | Vektor, Quaternion SLERP/NLERP, Cubic Bezier emosi, Arc-Length Spline C2, SDF 1-Lipschitz, fBm noise | Implementasi teknis matematis kamera, spline level, atau noise prosedural. |
+| [psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md) | SDT 3-Needs, motivasi crowding-out, Loss Aversion 2.5x, Emotional Bandwidth Pacing, Non-Linear Grief Echoes | Mendesain pacing reward, jeda kontemplatif, atau diegetic HUD. |
+| [art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md) | Uji Nilai Grayscale Value-First, Dominasi Warna 60-30-10, Triad Kritik Seni (Unity, Tension, Resolution), Semiotika | Mengevaluasi kekuatan artistik dan komposisi visual sebelum finalisasi. |
 
 ---
 
@@ -96,19 +96,19 @@ flowchart TD
 | [qc-patterns.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qc-patterns.md) | Knowledge base pola anomali visual 3D, rigging, audio, dan tindakan korektif | Menangani bug atau anomali spesifik saat inspeksi QC. |
 | [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md) | 7 Contoh Benchmark Benar vs Salah (Few-Shot Calibration) | Melakukan evaluasi mandiri (*self-critique*) sebelum melapor ke user. |
 | [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md) | Validasi Emosional, Intended vs Perceived Framework, Observasi Non-Intrusif, Uji Retensi Memori | Memvalidasi apakah resonansi duka tersampaikan ke pemain manusia. |
-| [expert-ai-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/expert-ai-methodology.md) | Mode kerja Anti-Roleplay (alat produksi), Grounding 3-Sumber, Problem Decomposition, Self-Verification, Isolasi Debugging | Prinsip dasar cara berpikir dan bekerja AI agent di seluruh proyek. |
+| [ai-agent-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/ai-agent-methodology.md) | Mode kerja Anti-Roleplay (alat produksi), Grounding 3-Sumber, Problem Decomposition, Self-Verification, Isolasi Debugging | Prinsip dasar cara berpikir dan bekerja AI agent di seluruh proyek. |
 
 ---
 
 ## 7. Urutan Baca yang Wajib Diikuti AI Agent Baru
 
-1. [expert-ai-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/expert-ai-methodology.md) — Fondasi cara berpikir, grounding anti-halusinasi, dan etika kerja alat produksi.
+1. [ai-agent-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/ai-agent-methodology.md) — Fondasi cara berpikir, grounding anti-halusinasi, dan etika kerja alat produksi.
 2. [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) + [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md) — Pemahaman semesta, duka Kaelen-Aina, dan hukum suhu The Triad.
 3. [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) — Pengetahuan angka parameter pasti lintas-sistem.
 4. **Dokumen Expert Sesuai Domain**:
-   - 3D/Rigging/Shader: [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/expert-3d-foundations.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md), [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-physics.md).
-   - Estetika & Sinematik: [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md), [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md).
-   - Matematika & Kamera: [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-mathematics.md).
-   - Narasi & Pacing: [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md).
+   - 3D/Rigging/Shader: [3d-asset-pipeline.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md), [physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/physics.md).
+   - Estetika & Sinematik: [art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md), [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md).
+   - Matematika & Kamera: [mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/mathematics.md).
+   - Narasi & Pacing: [psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md).
 5. [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md) + [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md) — Eksekusi sekuensial dan evaluasi mandiri.
 6. [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) — Verifikasi 6-DoD dan penyerahan bukti fisik konkret (*artifact-driven*).

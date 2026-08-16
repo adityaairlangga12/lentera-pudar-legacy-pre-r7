@@ -5,7 +5,7 @@ description: Protokol orkestrasi untuk Supervisor Agent dalam memecah task besar
 
 # Orchestration Protocol (Supervisor Agent)
 
-Pustaka protokol untuk memandu Supervisor dalam mengelola alur kerja multi-agent secara sekuensial, terukur, transparan, dan bebas dari halusinasi/teater merujuk pada [expert-ai-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/expert-ai-methodology.md). Didesain untuk pipeline **3D Action RPG (Blender 5.2 LTS + Unreal Engine 5)** Lentera Pudar.
+Pustaka protokol untuk memandu Supervisor dalam mengelola alur kerja multi-agent secara sekuensial, terukur, transparan, dan bebas dari halusinasi/teater merujuk pada [expert-ai-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/ai-agent-methodology.md). Didesain untuk pipeline **3D Action RPG (Blender 5.2 LTS + Unreal Engine 5)** Lentera Pudar.
 
 ---
 

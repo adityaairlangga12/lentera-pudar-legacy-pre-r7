@@ -5,7 +5,7 @@ description: "Pustaka keahlian arahan visi kreatif, filosofi seni melankolis-han
 
 # Creative Vision & Poetic Narrative Direction
 
-Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md).
+Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md).
 
 ---
 
@@ -102,7 +102,7 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 
 ## 7. Referensi Dokumen Lengkap
 - [references/03-narrative/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md) — Master Arahan Sinematik & Cutscene.
-- [references/05-foundations/expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
+- [references/05-foundations/art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
 - [references/01-core/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md) — Pedoman artistik penuh & dualitas combat feel.
 - [references/01-core/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) — Master GDD 9 Bab.
 - [references/04-art-3d/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) — Style Guide Numerik 11 Bab.
