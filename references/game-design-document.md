@@ -154,9 +154,34 @@ flowchart LR
 
 ### 4.3 Kegagalan Kombat, Framing Kematian & Sistem Respawn Diegetik
 
-#### 4.3.1 Ilusi Kepasrahan Abadi (*Permadeath Illusion / The Freeze of Despair — Boss & Trauma Trigger*)
-- Jika *Curse Meter* penuh total 3 kali dalam satu pertempuran bos/intens, layar menggelap dengan suara es yang membekukan jantung Kaelen.
-- Alih-alih menghapus save game pemain, sistem memicu **cutscene refleksi trauma personal Kaelen**, di mana bisikan Aina menariknya kembali dari jurang mati rasa sebelum ia membeku selamanya.
+#### 4.3.1 Ilusi Kepasrahan Abadi (*Permadeath Illusion / The Freeze of Despair — Boss & Trauma Failure Loop*)
+Sistem kegagalan naratif khusus pada pertempuran bos atau pertempuran intens tingkat tinggi, menggabungkan tensi psikologis *permadeath* ala *Hellblade* dengan katarsis duka puitis:
+
+1. **Kondisi Pemicu (*Trigger Condition*)**:
+   - Terpicu ketika *Curse Meter* terisi penuh ($100\%$) sebanyak **3 kali kumulatif** dalam satu sesi pertempuran bos (`CurseOverloadCount == 3`).
+   - Berbeda dari kematian HP biasa (ADR-035), pemicuan ini menandakan Kaelen menyerah pada keputusasaan dan mati rasa emosional (*The Freeze of Despair*).
+
+2. **Sinematik Refleksi Trauma & Pacing Bertingkat (*Layered Narrative Pacing*)**:
+   - **Pemicuan Pertama (Full Trauma Cutscene)**:
+     - Layar membeku total dengan audio es retak tajam, kamera berputar ke *close-up* wajah Kaelen saat kristal es merambat menutupi pupil matanya.
+     - Layar bertransisi ke ruang memori monokrom gelap (*The Void of Memory*), memperlihatkan siluet masa lalu tragedi Kaelen sebelum bisikan hangat Aina (`#F4B860` 2700K Kelvin Lumen) menariknya kembali dari jurang mati rasa (*"Kaelen... jangan biarkan dingin ini mengambilmu..."*).
+     - Durasi sinematik: 8–10 detik, tidak dapat di-skip (*unskippable*) pada penayangan pertama demi resonansi emosional mendalam.
+   - **Pemicuan Berulang pada Bos yang Sama (*Abbreviated Trauma Whisper — Anti-Fatigue Guardrail*)**:
+     - Jika pemain mengalami *Freeze of Despair* kembali pada pertempuran bos yang sama, sistem **TIDAK MENGULANG** sinematik panjang secara utuh untuk menjaga ritme gameplay dan mencegah degradasi bobot naratif (*narrative fatigue*).
+     - Digantikan oleh transisi kilat 3 detik (*micro-fade*): desis es membeku, kilatan siluet Aina memeluk Kaelen, dan 1 baris bisikan vokal acak yang mendesak, lalu langsung respawn.
+
+3. **Titik Respawn & Pemulihan Kontrol (*Boss Checkpoint & Control Handoff*)**:
+   - **Titik Respawn**: Kaelen di-respawn di **Depan Gerbang Kabut Bos (*Boss Fog Gate / Arena Archway*)** atau *Major Checkpoint Altar Duka* terdekat di sektor tersebut.
+   - **Transisi Kamera**: Kamera kembali ke posisi *Third-Person Exploration* (FOV 78°) dengan transisi *fade-in* 1.5 detik saat Kaelen bangkit dari posisi berlutut.
+
+4. **Kondisi Status & Reset Dunia (*Boss State & Resource Reset*)**:
+   - **Curse Meter**: Di-reset penuh ke **$0\%$** (berbeda dari respawn biasa $25\%$), karena kehangatan pengorbanan jiwa Aina dalam cutscene telah menyucikan kembali kristal es yang membekukan jiwa Kaelen.
+   - **HP Kaelen**: Dipulihkan penuh ke $100\%$.
+   - **Status Bos & Arena**: Pertarungan bos me-reset penuh (**HP Bos $100\%$**, fase serangan kembali ke Fase 1, dan destruksi pilar khusus arena bos kembali utuh) untuk menjaga keutuhan tantangan duel 1v1.
+
+5. **Guardrails Teknis Anti-Interupsi & State Locks**:
+   - **Cutscene Invulnerability Lock**: Saat kondisi `CurseOverloadCount == 3` terdeteksi, sistem GAS langsung menyuntikkan tag `State.TraumaCutsceneLock` dan `State.Invulnerable`. Seluruh input pemain (gerak, serang, dodge) dikunci, damage eksternal dan akumulasi kutukan dihentikan total, dan AI bos langsung dinonaktifkan (`AIController: DeactivateBehaviorTree`) agar tidak ada proyektil atau animasi serangan yang menginterupsi sinematik.
+   - **Spectral & Animation Cleanup**: Event `OnFreezeOfDespairTrigger` memanggil pembersihan status spektral (`ClearAllSpectralStates`), mengunci kembali penutup mata (`bIsEyepatchActive = false`), mereset modifier kecepatan, dan melepas kuncian kamera (`ClearBossLockOn`).
 
 #### 4.3.2 Sistem Respawn Combat Biasa (*Non-Freeze of Despair / Minor Failure Loop*)
 Dirancang khusus untuk kegagalan saat melawan musuh koridor/kroco biasa tanpa merusak imersi atau memicu cutscene naratif berat:

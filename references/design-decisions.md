@@ -465,6 +465,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Konsolidasi Single Source of Truth (SSoT)**: Mengubah seluruh 29 file draf di root workspace menjadi tautan redirect bersih menuju folder `references/*.md`.
 - **Dampak**: Memastikan seluruh sistem aman dari celah logika teknis dan kebingungan arsitektural, menjaga integritas puitis duka semesta Lentera Pudar.
 
+---
+
+### ADR-038: Standarisasi Spesifikasi Teknis The Freeze of Despair & Trauma Failure Loop (Layered Cutscenes, Anti-Fatigue Guardrail, Boss Reset, & 0% Curse Restoration)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Boss Failure & Trauma Loop Standard)
+- **Konteks**: Melengkapi dan meresmikan guardrail teknis serta naratif untuk pemicuan kegagalan *The Freeze of Despair* saat pertempuran bos, membedakannya secara tegas dari sistem respawn combat kroco biasa (ADR-035).
+- **Keputusan Terpilih**: 
+  1. **Kondisi Pemicu**: 3x akumulasi Curse Meter 100% dalam satu pertempuran bos (`CurseOverloadCount == 3`).
+  2. **Layered Narrative Pacing**: Penayangan sinematik penuh (8–10s, unskippable) pada pemicuan pertama; digantikan oleh *Abbreviated Trauma Whisper* (3s micro-fade) jika berulang pada bos yang sama untuk mencegah degradasi tempo/naratif (*anti-fatigue guardrail*).
+  3. **Titik Respawn**: Depan *Boss Fog Gate* / *Major Checkpoint Altar Duka* terdekat di sektor tersebut.
+  4. **Status & Reset**: Curse Meter disucikan ke 0% (bukan 25%), HP Kaelen 100%, HP Bos me-reset penuh 100% dan fase bos kembali ke Fase 1.
+  5. **Guardrail Anti-Interupsi**: Tag GAS `State.TraumaCutsceneLock` & `State.Invulnerable`, penghentian AI bos instan (`DeactivateBehaviorTree`), dan eksekusi `ClearAllSpectralStates`.
+- **Dampak**: Menjaga tensi psikologis kekalahan bos tetap bermakna, puitis, dan aman dari bug race condition kamera/input.
+
+
 
 
 
