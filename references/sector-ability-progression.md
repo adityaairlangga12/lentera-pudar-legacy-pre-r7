@@ -51,15 +51,25 @@ Sebelum menyalakan Altar Duka pertama, Kaelen mengandalkan perlengkapan dasar:
 ### 3.1 Sektor 1: Denial (*The Silent Crypts*)
 *Penyalaan Altar Duka 1 ➔ Syal Aina memendek dari Panjang ke Sedang.*
 
-- **Nama Kemampuan**: **Retakan Penyangkalan (*Fracture of Denial / Shatter Strike*)**
-- **Fungsi Gameplay**:
-  - *Combat*: Serangan penutup kombo (*Heavy Finisher Modifier*) yang memancarkan hantaman resonansi kristal. Mampu menghancurkan tameng es tebal (*Guard Break*) pada musuh defensif dan memecahkan cangkang pelindung *The Echo*.
-  - *Traversal & Puzzle*: Mampu menghancurkan dinding kristal es tebal, pilar rapuh, dan penghalang makam kuno yang menyegel jalan rahasia (*destructible barriers*).
+- **Nama Kemampuan**: **Retakan Penyangkalan (*Fracture of Denial / Shatter Strike*)** (GAS: `GA_ShatterStrike`)
+- **Metode Input Eksekusi**: **Combo Finisher** — Menekan tombol **Heavy Attack** tepat di akhir rangkaian kombo 3-hit Light Punch (`Light ➔ Light ➔ Light ➔ Heavy`), bukan tombol terpisah.
+- **Biaya Kutukan (*Curse Cost*)**: **$0\text{ poin}$** (Bebas penambahan Curse Meter karena resonansi kemampuan telah disucikan oleh pengorbanan Syal Aina di Altar Duka).
+- **Efek Mekanik & Scaling Damage**:
+  - *Guaranteed Guard Break*: Menembus dan menghancurkan 100% kondisi *Block / Guard State* musuh defensif dan memecahkan cangkang pelindung *The Echo*.
+  - *Damage Value*: Mengikuti standar besaran *Heavy Attack* reguler (tanpa pengali damage khusus).
+  - *Hit-Stop*: $3\text{ frame}$ baku (0.05 detik).
+- **Frame Data (Basis 30 FPS)**:
+  - *Startup / Windup*: $18\text{ frame}$ (0.60 detik)
+  - *Active Hitbox*: $8\text{ frame}$ (0.27 detik)
+  - *Recovery*: $22\text{ frame}$ (0.73 detik)
+- **Fungsi Traversal & Puzzle**:
+  - Mampu menghancurkan dinding kristal es tebal, pilar rapuh, dan penghalang makam kuno yang menyegel jalan rahasia (*destructible barriers*).
 - **Alasan Naratif (Tema Duka: Penyangkalan)**:
   Kaelen dipaksa menghancurkan ilusi kenyamanan palsu warga makam beku Lord Alden. Menghancurkan cangkang zirah penolakan (*shattering the shell of denial*) menjadi simbol bahwa kepalsuan harus diruntuhkan dengan keras agar luka batin dapat mulai disembuhkan.
 - **Dampak ke Desain Level & Retensi Utility**:
   - *Sektor 2*: Memecahkan lempengan es beku di lantai peleburan.
   - *Sektor 3–5*: Menjadi alat wajib untuk membuka *shortcut* tersembunyi dan memecahkan zirah musuh bertameng di seluruh sisa dungeon.
+- *Catatan Status*: Seluruh nilai numerik (Curse Cost 0, Input Finisher, Guaranteed Guard Break, Frame Data 18/8/22 @30fps) adalah **Keputusan Desain Baru Resmi (User-Approved Design Decision)** paska-audit konsistensi lintas dokumen.
 
 ---
 

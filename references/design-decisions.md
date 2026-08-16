@@ -408,7 +408,7 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Keputusan Terpilih**: 
   1. **Model Progresi GRIS**: Menghubungkan setiap pembukaan kemampuan baru dengan penyalaan Altar Duka dan pemendekan permanen Syal Aina (*4 Stages of Sacrifice*).
   2. **Daftar 5 Kemampuan Spesifik per Sektor**:
-     - S1 Denial ➔ *Retakan Penyangkalan* (Guard break tameng es & destructible barriers).
+     - S1 Denial ➔ *Retakan Penyangkalan* (GAS: `GA_ShatterStrike`, input: combo finisher `Light ➔ Light ➔ Light ➔ Heavy`, 0 Curse Cost, guaranteed guard break, frame data: startup 18f, active 8f, recovery 22f @30fps, destructible barriers).
      - S2 Anger ➔ *Pusaran Amarah Beku* (Surge thrust stagger, knockback area & gap-jump).
      - S3 Bargaining ➔ *Kilasan Cermin Waktu* (Reflective deflect proyektil 360° & puzzle optik).
      - S4 Depression ➔ *Jangkar Keheningan* (Ground slam anti-stagger, curse dampener 50%, & pijakan danau es).
