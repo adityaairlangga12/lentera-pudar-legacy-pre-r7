@@ -385,6 +385,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Arsitektur Siap Lokalisasi**: Menjamin text container adaptif (+40% ekspansi) dan larangan mutlak atas teks baked pada tekstur 3D.
 - **Dampak**: Menjamin permainan dapat diakses secara nyaman dan setara oleh seluruh pemain di dunia tanpa mengorbankan integritas artistik dan imersi emosional.
 
+---
+
+### ADR-033: Standardisasi NPC Ambient, Kehidupan Lingkungan & World Awareness Lokal (Ambient World Life, Low-Cost High-Impact Believability, & Grief-Mapped Ecosystem)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Ambient World Life Standard)
+- **Konteks**: Menetapkan lapisan keempat dunia game berupa kehidupan netral/ambient yang terus berjalan tanpa menunggu pemain, mempertegas kontras emosional antara dunia luar yang acuh dengan beban duka Kaelen.
+- **Keputusan Terpilih**: 
+  1. **Subordinasi Naratif & 3 Aturan Dasar**: Memastikan ambient life tidak mencuri fokus cerita, dipetakan ke 5 sektor duka, serta murah secara implementasi namun berbobot tinggi.
+  2. **Rutinitas NPC Ambient**: Menerapkan 2–3 idle actions asinkron dengan kontak mata singkat sebelum memalingkan wajah (*aware state* halus).
+  3. **Ekosistem Satwa & Reaktivitas Pasif**: Menghadirkan fauna latar (burung/serangga) yang perilakunya mencerminkan fase duka sektor (panik di Anger, tenang di Acceptance).
+  4. **World Awareness & Persistensi Lokal**: Menjaga reruntuhan es tetap hancur dan jejak kaki di salju/abu bertahan selama sesi di sektor terkait.
+  5. **Side Character Berkesan**: Merancang karakter sampingan sebagai cermin alternatif respons kehilangan melalui satu detail spesifik yang tajam.
+- **Dampak**: Menciptakan dunia 3D yang terasa bernapas, hidup, dan memiliki bobot historis, memperkuat resonansi puitis duka Kaelen dan Aina.
+
+
 
 
 

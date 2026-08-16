@@ -91,6 +91,13 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 | **Sektor 4** | **Depression** (Depresi) | *The Abyss of Stillness* | Danau keheningan gelap tanpa suara. Ruang luas hampa (*descending verticality*), langkah kaki terasa sangat berat. | **The Hollow Reflection** (Manifestasi bayangan trauma Kaelen sendiri). |
 | **Sektor 5** | **Acceptance** (Penerimaan) | *The Dawning Altar* | Puncak menara di mana fajar pertama menembus badai es abadi. Ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*). | **The Sovereign of Dawn** (Ujian akhir rekonsiliasi batin). |
 
+### 2.4 Kehidupan Lingkungan & Reaktivitas Dunia (*Ambient World Life & Local World Awareness*)
+*Spesifikasi perilaku NPC latar, ekosistem satwa duka, dan persistensi lokal merujuk pada [ambient-world-life.md](file:///d:/GodotProjects/Lentera-Pudar/references/ambient-world-life.md).*
+- **Kontras Dunia Netral**: Dunia tetap hidup dan bergerak netral, mempertegas kontras dengan beban batin Kaelen.
+- **Rutinitas NPC Ambient**: 2–3 idle actions asinkron dengan kontak mata singkat halus saat Kaelen melintas.
+- **Ekosistem Satwa Spasial**: Perilaku satwa latar mencerminkan tahap duka (Denial: pola berulang; Anger: panik kabur; Acceptance: hinggap tenang).
+- **World Awareness Lokal**: Reruntuhan es yang hancur dan jejak kaki di salju/abu tetap bertahan selama sesi di sektor terkait.
+
 ---
 
 ## BAB III: DUALITAS KARAKTER & TRAGEDI IKATAN JIWA (KAELEN & AINA)
