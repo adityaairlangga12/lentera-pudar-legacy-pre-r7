@@ -5,7 +5,7 @@ description: "Standar eksekusi Quality Control (QC Gate) Komersial / Steam-Ready
 
 # Commercial Release Quality Control (3D QC Gate Protocol)
 
-> **Standar Mutu Komersial (Steam-Ready Grade)**: Setiap aset 3D, armature rig, material shader, skrip gameplay, level, dan audio diuji dengan tolok ukur kelayakan rilis publik di PC/Steam merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md), alur eksekusi [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md), dan kalibrasi mutu [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md).
+> **Standar Mutu Komersial (Steam-Ready Grade)**: Setiap aset 3D, armature rig, material shader, skrip gameplay, level, dan audio diuji dengan tolok ukur kelayakan rilis publik di PC/Steam merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), alur eksekusi [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md), dan kalibrasi mutu [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md).
 
 ---
 
@@ -62,7 +62,7 @@ flowchart TD
 - [ ] **Audio Dynamic Ducking & Binaural Spatialization**:
   - Normalisasi loudness $-16\text{ LUFS}$ (Combat BGM) / $-18\text{ LUFS}$ (Dialog) dengan audio ducking ($-6\text{ dB}$, attack 150ms, release 400ms) saat narasi/bisikan jiwa beku.
   - Tata suara 3D binaural terverifikasi via headphone fisik.
-- [ ] **Kepatuhan UI/UX & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))**:
+- [ ] **Kepatuhan UI/UX & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md))**:
   - Mode Buta Warna teruji (Protanopia/Deuteranopia/Tritanopia) dengan pembedaan bentuk/simbol.
   - Closed Captions lengkap mencakup deskripsi vokal non-verbal (`[napas tercekat]`, `[jeda hening]`).
   - Full Control Remapping & Parry Window Assist slider berfungsi tanpa distorsi gameplay.
@@ -80,7 +80,7 @@ flowchart TD
 
 ---
 
-### 💖 Gate Validasi Emosional (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md))
+### 💖 Gate Validasi Emosional (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md))
 - [ ] **Intended vs Perceived Alignment**:
   - Momen naratif dan transisi altar duka memiliki dokumen *Intended Emotion* vs *Design Signals* (lighting, FACS, audio).
   - Ditandai status `[Needs Human Playtest Validation]` — verifikasi AI tidak menggantikan validasi pemain manusia sungguhan.

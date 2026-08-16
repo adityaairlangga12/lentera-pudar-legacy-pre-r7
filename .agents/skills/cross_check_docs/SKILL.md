@@ -20,7 +20,7 @@ Setiap agen yang menjalankan tugas audit `/cross-check-docs` WAJIB mematuhi 8 at
 
 ### 2. Wajib Bukti Kutipan Konkret untuk Setiap Klaim "Sinkron / Ada"
 - Setiap baris verifikasi wajib mencantumkan bukti fisik dengan format minimal:
-  - **Tautan File Markdown**: `[nama-file.md](file:///d:/GodotProjects/Lentera-Pudar/references/nama-file.md)`
+  - **Tautan File Markdown**: `[master-index.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/master-index.md)`
   - **Nomor Bab / Seksi / Baris** yang tepat.
   - **Cuplikan Teks Kutipan Singkat** yang membuktikan klaim tersebut.
 - **Aturan Baku Kolom Status Keselarasan & Larangan Self-Reference Cross-Check**:

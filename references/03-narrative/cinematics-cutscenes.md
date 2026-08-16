@@ -2,7 +2,7 @@
 ### Bahasa Kamera Emosional per Sektor Duka, Pacing Cutscene, Sinkronisasi FACS AU, & Transisi Seamless
 
 > **Dokumen Sumber Kebenaran Sinematografi & Cutscene (*Cinematics & Cutscenes Reference*)**  
-> Melengkapi [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md), [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md). Mengatur pergerakan kamera sebagai representasi kondisi mental Kaelen (*Hellblade Cinematic Benchmark*).
+> Melengkapi [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md). Mengatur pergerakan kamera sebagai representasi kondisi mental Kaelen (*Hellblade Cinematic Benchmark*).
 
 ---
 

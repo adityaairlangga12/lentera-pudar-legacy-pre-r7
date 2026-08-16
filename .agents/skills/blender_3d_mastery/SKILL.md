@@ -5,7 +5,7 @@ description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, topo
 
 # Blender 5.2 LTS 3D High-Detail Mastery & UE5 Pipeline
 
-Skill ini memuat seluruh standar teknis pemodelan 3D, topologi deformasi, penempatan UV seam, rigging biomekanik, shading PBR, baking pipeline, dan ekspor aset karakter/lingkungan untuk semesta 3D Action RPG *Lentera Pudar* merujuk pada [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-3d-foundations.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md), [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md), prosedur kerja [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md), dan riset teknis [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md).
+Skill ini memuat seluruh standar teknis pemodelan 3D, topologi deformasi, penempatan UV seam, rigging biomekanik, shading PBR, baking pipeline, dan ekspor aset karakter/lingkungan untuk semesta 3D Action RPG *Lentera Pudar* merujuk pada [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/expert-3d-foundations.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md), [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md), prosedur kerja [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), dan riset teknis [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/kena-art-research.md).
 
 ---
 
@@ -70,4 +70,4 @@ Skill ini memuat seluruh standar teknis pemodelan 3D, topologi deformasi, penemp
 - **Sumbu**: $+Z$ Forward / $+Y$ Up. Skala $1\text{ unit} = 1\text{ cm}$.
 - **Transform**: Apply all transforms (`Location=(0,0,0)`, `Rotation=(0,0,0)`, `Scale=(1,1,1)`) sebelum ekspor.
 - **Metode Ekspor**: Blender-Unreal Pipeline Plugin ("Send to Unreal") atau FBX deterministik.
-- **Self-Critique Benchmark**: Validasi hasil ekspor merujuk ke [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) Contoh 1, 3, & 7.
+- **Self-Critique Benchmark**: Validasi hasil ekspor merujuk ke [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md) Contoh 1, 3, & 7.

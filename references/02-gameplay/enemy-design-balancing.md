@@ -2,7 +2,7 @@
 ### Dari FSM Generik Menuju Arketipe Manifestasi Duka, Telegraphing Readability, & Batasan Kepuasan Mekanik
 
 > **Dokumen Sumber Kebenaran Desain Musuh & Kombat (*Enemy Design & Combat Balancing Reference*)**  
-> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md), [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md), dan [encounter_pacing](file:///d:/GodotProjects/Lentera-Pudar/.agents/skills/encounter_pacing/SKILL.md). Mengatur arketipe musuh sebagai representasi psikologis 5 Tahapan Berduka, kurva kesulitan per-encounter, dan jaminan kepuasan bermain (*mechanical satisfaction*).
+> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md), dan [encounter_pacing](file:///d:/GodotProjects/Lentera-Pudar/.agents/skills/encounter_pacing/SKILL.md). Mengatur arketipe musuh sebagai representasi psikologis 5 Tahapan Berduka, kurva kesulitan per-encounter, dan jaminan kepuasan bermain (*mechanical satisfaction*).
 
 ---
 
@@ -36,7 +36,7 @@ Kurva kesulitan per-encounter mikro menerapkan pola 4-tahap terstruktur:
 ## 4. Keterbacaan Serangan & Telegraphing (*Readability Mandate*)
 Combat *Lentera Pudar* mengutamakan keadilan (*fairness*) dan keterbacaan instan telegraf serangan musuh:
 - **Windup Frames Baku**: Setiap serangan wajib memiliki fase ancang-ancang visual minimal $12–18\text{ frame}$ (0.40 detik @30fps) dengan pendaran kilau biru dingin `#4A6FA5`.
-- **Perubahan Siluet (Silhouette Shift)**: Perubahan postur tubuh musuh saat ancang-ancang wajib terbaca jelas dalam siluet monokrom (mengacu pada [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md)).
+- **Perubahan Siluet (Silhouette Shift)**: Perubahan postur tubuh musuh saat ancang-ancang wajib terbaca jelas dalam siluet monokrom (mengacu pada [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md)).
 - **Audio Spatial Tell**: Isyarat suara 3D binaural mendahului serangan untuk deteksi musuh di luar sudut pandang kamera.
 - **Tell Khusus The Echo**: Sinyal mikro halus yang konsisten untuk membedakan bayangan asli dari duplikat ilusi.
 

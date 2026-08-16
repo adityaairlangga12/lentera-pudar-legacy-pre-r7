@@ -43,7 +43,7 @@
 - **Target Baku Lentera Pudar**:
   - **Hero Kaelen & Boss Utama**: **$512\text{ px/m}$** (resolusi tinggi tajam untuk close-up kamera).
   - **Aset Environment & Props Umum**: **$256\text{ px/m}$** (keseimbangan optimal ketajaman vs VRAM).
-- **Kepatuhan**: Menjadi checklist wajib pada DoD Model 3D ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.A) untuk mencegah kontras blur antar prop berdampingan.
+- **Kepatuhan**: Menjadi checklist wajib pada DoD Model 3D ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.A) untuk mencegah kontras blur antar prop berdampingan.
 
 ---
 

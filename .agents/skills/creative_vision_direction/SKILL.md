@@ -5,7 +5,7 @@ description: "Pustaka keahlian arahan visi kreatif, filosofi seni melankolis-han
 
 # Creative Vision & Poetic Narrative Direction
 
-Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md).
+Skill ini membimbing seluruh agen (*Art Director*, *Game Designer*, *Psychology Agent*, *3D Modeler*) untuk melahirkan karya, dialog, desain level, dan visual yang memiliki jiwa puitis, resonansi duka mendalam, dan kehangatan khas *Lentera Pudar* merujuk pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md).
 
 ---
 
@@ -82,12 +82,12 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 ## 5. Panduan Konsistensi Artstyle 3D (Kena Benchmark — SOP 5)
 - Siluet karakter (Kaelen) harus selalu terbaca bersih dari kejauhan — syal kuning Aina harus kontras terhadap jubah gelap `#2A211C`.
 - Setiap environment yang "dipulihkan" oleh syal Aina mendapat rona hangat bertahap — partikel `FX_Warmth_Embers` menyebar organik di area yang dilalui Kaelen.
-- Rasio kontras cahaya hangat vs ambient dungeon minimum **8:1** (Sektor 1–3) hingga **12:1** (Sektor 4) — verifikasi via [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) Contoh 4.
+- Rasio kontras cahaya hangat vs ambient dungeon minimum **8:1** (Sektor 1–3) hingga **12:1** (Sektor 4) — verifikasi via [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md) Contoh 4.
 - Desain boss wajib merefleksikan manifestasi duka 5 tahap (Denial s.d. Acceptance) merujuk ke Contoh 6 pada Few-Shot Calibration.
 
 ---
 
-## 6. Arahan Sinematik & Bahasa Kamera (Lihat [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md))
+## 6. Arahan Sinematik & Bahasa Kamera (Lihat [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md))
 - **Kamera Representasi Mental**: Sudut pengambilan gambar dipilih berdasarkan kejujuran kondisi psikologis Kaelen.
 - **Bahasa Kamera per Sektor**:
   - *S1 Denial*: Framing simetris kaku & statis (menolak melihat dari sudut lain).
@@ -101,11 +101,11 @@ Setiap karya kreatif (baik itu siluet model 3D, efek partikel, tata cahaya Lumen
 ---
 
 ## 7. Referensi Dokumen Lengkap
-- [references/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md) — Master Arahan Sinematik & Cutscene.
-- [references/expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
-- [references/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) — Pedoman artistik penuh & dualitas combat feel.
-- [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Master GDD 9 Bab.
-- [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Style Guide Numerik 11 Bab.
-- [references/sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md) — 7 SOP Operasional.
-- [references/few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) — Benchmark Mutu Benar vs Salah.
-- [references/reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md) — 9 Kategori Shot-List Legal.
+- [references/03-narrative/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md) — Master Arahan Sinematik & Cutscene.
+- [references/05-foundations/expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md) — Master Kerangka Estetika & Kritik Seni Expert.
+- [references/01-core/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md) — Pedoman artistik penuh & dualitas combat feel.
+- [references/01-core/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) — Master GDD 9 Bab.
+- [references/04-art-3d/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) — Style Guide Numerik 11 Bab.
+- [references/06-pipeline-qc/sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md) — 7 SOP Operasional.
+- [references/06-pipeline-qc/few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md) — Benchmark Mutu Benar vs Salah.
+- [references/04-art-3d/reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md) — 9 Kategori Shot-List Legal.

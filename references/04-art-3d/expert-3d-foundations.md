@@ -9,7 +9,7 @@
 ## 1. Teori Topologi & Aliran Garis (*Topology Theory & Edge Flow*)
 - **Deformasi Sebagai Tolok Ukur Kualitas**: Kualitas mesh ditentukan oleh bagaimana poligon disusun untuk berdeformasi secara mulus saat dianimasikan, bukan sekadar tampilan statis di viewport.
 - **Prinsip Edge Flow Organik**:
-  - Edge loops wajib mengikuti arah serat otot dan kurvatur artikulasi sendi (mengacu pada [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md)).
+  - Edge loops wajib mengikuti arah serat otot dan kurvatur artikulasi sendi (mengacu pada [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md)).
   - Area artikulasi utama: Siku, lutut, bahu, dan otot ekspresi wajah (Orbicularis oculi & oris).
 - **Distribusi Face Geometry**:
   - *Quad (Segi Empat)*: Standar mutlak untuk area organik yang dianimasikan atau di-subdivide.
@@ -28,7 +28,7 @@
   - Tempatkan seam pada perbatasan material alami (sambungan kain jubah-kulit, plat pelindung baldric).
   - Manfaatkan sudut kurvatur tajam untuk pemotongan UV yang bersih.
 - **Efisiensi UV Packing & Texel Density**:
-  - Mengatur ukuran pulau UV (*UV Islands*) secara proporsional sesuai target Texel Density: $512\text{ px/m}$ (Hero/Boss) dan $256\text{ px/m}$ (Props) mengacu pada [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md).
+  - Mengatur ukuran pulau UV (*UV Islands*) secara proporsional sesuai target Texel Density: $512\text{ px/m}$ (Hero/Boss) dan $256\text{ px/m}$ (Props) mengacu pada [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md).
 
 ---
 

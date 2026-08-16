@@ -25,11 +25,11 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - [ ] Nama aset mengikuti standar konvensi baku (`SK_Kaelen_Body`, `SM_Crypt_Pillar_01`).
 - [ ] Topologi bersih: Nol non-manifold geometry, tidak ada n-gon bermasalah pada area deformasi.
 - [ ] UV Unwrap bersih tanpa overlap tidak disengaja; seam ditempatkan tersembunyi.
-- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
+- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md)).
 - [ ] Skala dan orientasi benar saat diimpor ke UE5 ($1\text{ unit} = 1\text{ cm}$, $+Z$ Up, $+Y$ Forward).
 - [ ] LOD tersedia untuk aset berulang (prop lingkungan dan musuh umum).
 - [ ] Custom collision mesh sudah dikonfigurasi (bukan auto-convex kasar untuk geometri kompleks).
-- [ ] Anggaran poligon (*Poly Budget*) sesuai kategori (**40.000–60.000 tris (LOD0) untuk Hero Character**, 50.000–80.000 tris untuk Boss, 8.000–15.000 tris untuk Musuh Umum — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 6).
+- [ ] Anggaran poligon (*Poly Budget*) sesuai kategori (**40.000–60.000 tris (LOD0) untuk Hero Character**, 50.000–80.000 tris untuk Boss, 8.000–15.000 tris untuk Musuh Umum — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 6).
 
 ### B. DoD — Material & Shaders (The Triad)
 - [ ] Struktur PBR lengkap (Base Color, Roughness, Metallic, Normal).
@@ -115,7 +115,7 @@ Setiap bug yang ditemukan (di severity manapun) wajib dicatat dengan field terst
 
 ---
 
-## 6. Validasi Emosional & Playtesting Manusia (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md))
+## 6. Validasi Emosional & Playtesting Manusia (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md))
 - **Fungsional vs Emosional**: Pengujian teknis 6-DoD memastikan game bebas bug, sedangkan validasi emosional memastikan tema 5 Tahap Berduka dirasakan secara otentik oleh pemain.
 - **Kerangka Intended vs Perceived Emotion**: Menganalisis kesenjangan (*gap analysis*) antara emosi yang dirancang dengan respon alami playtester.
 - **Mandat Batasan AI Agent**: Kepatuhan teknis AI terhadap parameter desain **TIDAK MENGGANTIKAN** validasi emosional playtester manusia. Setiap beat naratif kunci wajib ditandai status `[Needs Human Playtest Validation]`.

@@ -25,5 +25,5 @@ Dokumen ini adalah aturan yang di-scope khusus saat AI Agent bekerja atau memodi
 
 ## 3. Proteksi Konfigurasi MCP Server (`mcp_config.json`)
 - **Larangan Penghapusan Penanda `_TODO_lentera-ue5`**: AI Agent **DILARANG** menghapus entri `_TODO_lentera-ue5` secara diam-diam saat mengedit `mcp_config.json`.
-- **Rasional Konfigurasi**: Entri `_TODO_lentera-ue5` adalah penanda sengaja (*intentional placeholder*) bahwa MCP Server untuk Unreal Engine 5 belum dikonfigurasi dan akan diaktifkan saat plugin Unreal Python Editor Scripting siap di Fase 4 Roadmap (merujuk pada `references/tools-mcp-stack.md` Bab 2).
+- **Rasional Konfigurasi**: Entri `_TODO_lentera-ue5` adalah penanda sengaja (*intentional placeholder*) bahwa MCP Server untuk Unreal Engine 5 belum dikonfigurasi dan akan diaktifkan saat plugin Unreal Python Editor Scripting siap di Fase 4 Roadmap (merujuk pada `references/06-pipeline-qc/tools-mcp-stack.md` Bab 2).
 - **Protokol Mutasi MCP**: Perubahan pada konfigurasi MCP server `lentera-blender` (Port 8097) atau penambahan server baru harus melalui verifikasi status server lokal sebelum dieksekusi.

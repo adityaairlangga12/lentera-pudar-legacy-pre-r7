@@ -1,6 +1,6 @@
 # Lentera Pudar — Master Creative Vision & Artistic Direction (3D Action RPG Edition)
 
-> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md) untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
+> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-art-creativity.md) untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
 
 ---
 
@@ -75,7 +75,7 @@ flowchart LR
    - **Elemen Hangat (Jiwa Aina)**: Denting piano berdebu yang intim, petikan gitar akustik nylon, melodi soliter cello melankolis.
 2. **Dynamic Audio Ducking**:
    - Saat Kaelen memasuki zona altar lentera, gemuruh dungeon meredup (*ducking -6dB*), memberi ruang bagi melodi piano Aina yang lembut dan suara kayu terbakar hangat.
-3. **Arahan Vokal & Subteks Dialog (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md))**:
+3. **Arahan Vokal & Subteks Dialog (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md))**:
    - Subteks emosional mendahului teks literal; distingsi vokal *Denial* (tenang karena menahan badai emosi) vs *Acceptance* (tenang karena keikhlasan melepaskan).
    - Sinkronisasi intonasi vokal dengan FACS Action Units wajah (`AU1`, `AU4`, `AU17`) dan jeda hening bermakna (*meaningful silence*).
 
@@ -97,7 +97,7 @@ flowchart LR
 
 ---
 
-## BAB VII: ARAHAN SINEMATIK & BAHASA KAMERA (LIHAT [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md))
+## BAB VII: ARAHAN SINEMATIK & BAHASA KAMERA (LIHAT [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md))
 
 1. **Kamera Sebagai Representasi Mental Kaelen**: Sudut pandang kamera ditentukan berdasarkan kejujuran ekspresi kondisi batin Kaelen, bukan sekadar sudut estetis netral.
 2. **Bahasa Kamera per Sektor Duka**: S1 Denial (framing simetris kaku), S2 Anger (handheld shake & cut cepat), S3 Bargaining (Dutch angle & rotasi cermin), S4 Depression (long take lambat & framing luas kerdil), S5 Acceptance (framing lapang stabil & transisi fajar mulus).

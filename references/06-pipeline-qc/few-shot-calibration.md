@@ -31,7 +31,7 @@ SK_Kaelen_Body.blend
 ❌ **SALAH (Subjektif & Tanpa Dasar)**:
 > *"Saya membuat material es dengan roughness 0.05 dan warna biru terang supaya kelihatan berkilau dan bagus."*
 
-> *Akar Kesalahan*: Nilai Roughness 0.05 di luar batas [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) (0.15–0.30), mengabaikan Subsurface Scattering (SSS), dan beralasan subjektif.
+> *Akar Kesalahan*: Nilai Roughness 0.05 di luar batas [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) (0.15–0.30), mengabaikan Subsurface Scattering (SSS), dan beralasan subjektif.
 
 ✅ **BENAR (Berbasis Dokumen Acuan)**:
 > *"Material kristal es (`M_Cursed_Crystal`) dikonfigurasi dengan Base Color `#4A6FA5`, Roughness 0.22 (rentang Style Guide 0.15–0.30), Metallic 0.0, dan Subsurface Scattering Radius 0.8 cm dengan hamburan warna `#7EE8FA`. Emissive terhubung ke Material Parameter Collection `MPC_CurseMeter` sesuai Teori Bab 11.C, diuji pada kondisi pencahayaan terang dan gelap dungeon."*

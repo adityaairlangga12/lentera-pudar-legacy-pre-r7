@@ -284,7 +284,7 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
 - **Status**: Accepted (Master Information Architecture Standard)
 - **Konteks**: Menyediakan indeks master terpadu dan jalur navigasi rujukan baku agar seluruh AI agent dapat mengakses dokumen yang tepat tanpa redundansi konteks atau risiko kontradiksi internal.
 - **Keputusan Terpilih**: 
-  1. **Sentralisasi Rantai Rujukan**: Menetapkan `references/master-index.md` sebagai titik masuk resmi yang mengkategorisasikan seluruh 22 dokumen master ke dalam 5 domain utama.
+  1. **Sentralisasi Rantai Rujukan**: Menetapkan `references/01-core/master-index.md` sebagai titik masuk resmi yang mengkategorisasikan seluruh 22 dokumen master ke dalam 5 domain utama.
   2. **Protokol Urutan Baca Baku**: Menetapkan urutan wajib baca bagi AI agent baru (Metodologi AI ➔ GDD/Lore ➔ Style Guide ➔ Domain Expert ➔ SOP/Few-Shot ➔ QA/QC).
   3. **Tautan Langsung & Zero Broken Links**: Seluruh rujukan dalam indeks terhubung langsung via tautan markdown lokal yang valid.
 - **Dampak**: Efisiensi pencarian konteks meningkat drastis, eliminasi waktu membaca berulang, dan kepatuhan mutlak terhadap arsitektur hierarki dokumen proyek.

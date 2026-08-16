@@ -176,7 +176,7 @@ Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
 
 ---
 
-## 9. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md))
+## 9. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md))
 - **Otot Wajah Subkutan**: Frontalis, Corrugator Supercilii, Orbicularis Oculi, Zygomaticus Major, Depressor Anguli Oris, dan Mentalis.
 - **FACS Action Units (AU)**: Rigging shape keys berbasis AU (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU43`).
 - **Duchenne Marker**: Pembeda senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa `AU6`).

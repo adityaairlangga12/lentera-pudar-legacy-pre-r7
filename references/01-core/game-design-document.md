@@ -77,7 +77,7 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 3. **The Drifters (Para Pengelana — Seperti Kaelen)**: Terjebak di batas kenyataan: separuh tubuh mati rasa oleh es, separuh tubuh menahan perihnya api lentera.
 
 ### 2.3 Pemetaan 5 Sektor Dungeon (Model Kübler-Ross & Environmental Storytelling)
-*Detail tata ruang spasial, verticality, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md).*
+*Detail tata ruang spasial, verticality, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md).*
 
 ```
 [Sektor 1: DENIAL] ➔ [Sektor 2: ANGER] ➔ [Sektor 3: BARGAINING] ➔ [Sektor 4: DEPRESSION] ➔ [Sektor 5: ACCEPTANCE]
@@ -92,7 +92,7 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 | **Sektor 5** | **Acceptance** (Penerimaan) | *The Dawning Altar* | Puncak menara di mana fajar pertama menembus badai es abadi. Ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*). | **The Sovereign of Dawn** (Ujian akhir rekonsiliasi batin). |
 
 ### 2.4 Kehidupan Lingkungan & Reaktivitas Dunia (*Ambient World Life & Local World Awareness*)
-*Spesifikasi perilaku NPC latar, ekosistem satwa duka, dan persistensi lokal merujuk pada [ambient-world-life.md](file:///d:/GodotProjects/Lentera-Pudar/references/ambient-world-life.md).*
+*Spesifikasi perilaku NPC latar, ekosistem satwa duka, dan persistensi lokal merujuk pada [ambient-world-life.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ambient-world-life.md).*
 - **Kontras Dunia Netral**: Dunia tetap hidup dan bergerak netral, mempertegas kontras dengan beban batin Kaelen.
 - **Rutinitas NPC Ambient**: 2–3 idle actions asinkron dengan kontak mata singkat halus saat Kaelen melintas.
 - **Ekosistem Satwa Spasial**: Perilaku satwa latar mencerminkan tahap duka (Denial: pola berulang; Anger: panik kabur; Acceptance: hinggap tenang).
@@ -213,7 +213,7 @@ Dirancang khusus untuk kegagalan saat melawan musuh koridor/kroco biasa tanpa me
      - *Hierarki Failure*: Jika HP Kaelen habis tepat bersamaan dengan tercapainya ambang 3x Curse Meter 100% pada pertarungan bos, FSM kematian mendahulukan *The Freeze of Despair* (`Priority Level 1`) di atas *Minor Combat Respawn* (`Priority Level 2`).
      - *Spectral Reset on Respawn*: Pemicuan event respawn (`OnRespawnInitialize`) secara otomatis mengeksekusi pembersihan status spektral (`ClearAllSpectralStates`), mengunci kembali *Sealed Eyepatch* (`bIsEyepatchActive = false`), menghentikan timer laju kutukan $+3\text{ poin/detik}$, dan mengembalikan color grading kamera ke profil default.
 
-### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))
+### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md))
 - **Antarmuka Diegetik Utama**: Indikator status tersemat langsung pada tubuh Kaelen (es lengan kiri & panjang syal emas). HUD non-diegetik memudar otomatis saat eksplorasi.
 - **Aksesibilitas Komprehensif**: Mode buta warna berbasis bentuk simbol, closed captions vokal emosional, visual cues untuk audio tell, dan slider parry window assist (12 frame ➔ 18 frame).
 - **Localization-Ready Architecture**: Desain text container dinamis (+40% ekspansi) dan zero baked text pada aset tekstur 3D.
@@ -299,12 +299,12 @@ stateDiagram-v2
 - **Procedural Screen Shake & Impulse**: Getaran kamera directional sesuai sudut tebasan/pukulan.
 - **Physical Particle Feedback**: Pecahan kristal es tajam dan debu reruntuhan batu berhamburan saat pukulan mendarat.
 
-### 6.4 Arketipe Musuh & Balancing Kombat (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md))
+### 6.4 Arketipe Musuh & Balancing Kombat (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md))
 - **Arketipe Manifestasi Duka**: *The Echo* (Denial - duplikasi & ilusi), *The Berserker* (Anger - agresif & parry-reward), *The Deceiver* (Bargaining - proyektil semu & cover), *The Weight* (Depression - tanky & shockwave), *The Mirror* (Acceptance - refleksi gaya Kaelen).
 - **Attack Telegraphing**: Fase windup minimal 12–18 frame dengan kilau biru dingin `#4A6FA5`, perubahan siluet instan, dan audio cues spasial.
 - **Fun Guardrails**: Nilai kepuasan mekanik (*mechanical satisfaction*) dan responsivitas kontrol tidak boleh dikorbankan demi tema berat.
 
-### 6.5 Progresi Kemampuan Kaelen per Sektor Duka (Lihat [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/sector-ability-progression.md))
+### 6.5 Progresi Kemampuan Kaelen per Sektor Duka (Lihat [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/sector-ability-progression.md))
 - **Model GRIS Naratif-Sekuensial**: Kemampuan baru terbuka di akhir sektor saat menyalakan Altar Duka dan mengorbankan panjang Syal Aina:
   1. *Sektor 1 (Denial)* ➔ **Retakan Penyangkalan (*Fracture of Denial*)**: Guard break tameng tebal & penghancur dinding kristal es rapuh.
   2. *Sektor 2 (Anger)* ➔ **Pusaran Amarah Beku (*Frost Surge*)**: Forward lunging thrust stagger, knockback area & gap-jump melintasi jurang es.
@@ -378,7 +378,7 @@ flowchart TD
 - **Hybrid Hair System**: Rambut perak Kaelen (`#C9CDD1`) dimodelkan dengan *Solid Geometry Base Mesh* (massa volume utama) dipadu *Alpha Strip Cards* (helai acak alami/flyaways) — mengadopsi standar teknis Kena.
 - **Hierarki Armature Biomekanik**:
   - `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
-  - **Rantai Syal Dinamis (Dual-Mode)**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif Altar Duka) — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 4.
+  - **Rantai Syal Dinamis (Dual-Mode)**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif Altar Duka) — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 4.
 - **Konsistensi Bone Roll**: Bone Roll terkunci rapi ($+Y$ along bone, $+Z$ normal forward).
 - **Format Ekspor**: glTF 2.0 / FBX deterministik ($+Z$ Up, $+Y$ Forward) ke Unreal Engine 5.
 

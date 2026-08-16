@@ -2,7 +2,7 @@
 ### Sistem Progresi Naratif Sekuensial (Model GRIS), Pengorbanan Altar Duka, & Utilitas Kumulatif 5 Sektor
 
 > **Dokumen Sumber Kebenaran Progresi Kemampuan Kaelen (*Sector Ability Progression Reference*)**  
-> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md), [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md), dan [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md). Menetapkan daftar definitif kemampuan baru Kaelen yang terbuka secara sekuensial melalui pengorbanan Syal Aina di tiap Altar Duka.
+> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md), dan [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md). Menetapkan daftar definitif kemampuan baru Kaelen yang terbuka secara sekuensial melalui pengorbanan Syal Aina di tiap Altar Duka.
 
 ---
 
@@ -143,6 +143,6 @@ Sebelum menyalakan Altar Duka pertama, Kaelen mengandalkan perlengkapan dasar:
 1. **Integrasi UE5 Gameplay Ability System (GAS)**:
    - Setiap kemampuan dimodelkan sebagai `GameplayAbility` (`GA_ShatterStrike`, `GA_FrostSurge`, `GA_ReflectiveEcho`, `GA_AnchorStillness`, `GA_SovereignSpark`).
 2. **Kesesuaian Rantai Kinetik Biomekanika**:
-   - Seluruh animasi kemampuan mematuhi titik tumpu kaki, inersia torsi spinal, dan penguncian sendi saat impact sesuai [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md).
+   - Seluruh animasi kemampuan mematuhi titik tumpu kaki, inersia torsi spinal, dan penguncian sendi saat impact sesuai [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md).
 3. **Kepatuhan Nilai Frame & Hit-Stop**:
-   - Seluruh benturan hantaman kemampuan mempertahankan jeda *hit-stop 3 frame* (0.05 detik) dan getaran partikel es/api sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md).
+   - Seluruh benturan hantaman kemampuan mempertahankan jeda *hit-stop 3 frame* (0.05 detik) dan getaran partikel es/api sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md).

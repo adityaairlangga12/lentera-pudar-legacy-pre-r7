@@ -5,7 +5,7 @@ description: Standar kurva kesulitan (difficulty curve), ritme encounter musuh, 
 
 # Encounter Pacing & Combat Rhythm (Game Designer)
 
-Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, dan alokasi *Emotional Bandwidth* di dalam dungeon Lentera Pudar merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md), dan [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md).
+Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, dan alokasi *Emotional Bandwidth* di dalam dungeon Lentera Pudar merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md), dan [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md).
 
 ---
 
@@ -57,7 +57,7 @@ Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, da
 
 ---
 
-## 6. Desain Spasial Arena vs FSM Musuh (Lihat [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md))
+## 6. Desain Spasial Arena vs FSM Musuh (Lihat [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md))
 - **Arena Sempit / Koridor Rapat**: Disesuaikan untuk musuh bertipe melee brawler (Lord Alden) agar duel tight parry 1v1 terasa intens.
 - **Arena Terbuka Berpilar**: Disesuaikan untuk ranged casters / teleporting enemies (Lady Vespera) untuk pemanfaatan cover sistem.
 - **Sightline & Anticipation**: Kontrol visual reveal siluet musuh sebelum encounter untuk membangun tensi terukur.
@@ -65,7 +65,7 @@ Panduan perancangan intensitas pertempuran, pacing musuh, kurva emosi pemain, da
 
 ---
 
-## 7. Arketipe Musuh & Fun Guardrails (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md))
+## 7. Arketipe Musuh & Fun Guardrails (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md))
 - **Arketipe Berbasis Duka**:
   - *The Echo* (S1 Denial): Duplikasi ilusi & peniruan gerak; uji membaca tell otentik.
   - *The Berserker* (S2 Anger): Agresif tergesa-gesa; reward kesabaran parry 12-frame.

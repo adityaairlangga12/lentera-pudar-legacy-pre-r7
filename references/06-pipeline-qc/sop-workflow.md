@@ -2,7 +2,7 @@
 ### Resep Langkah-per-Langkah untuk Tugas Berulang (Blender 5.2 LTS + Unreal Engine 5)
 
 > **Dokumen Sumber Kebenaran Prosedural (*Operational Standard Operating Procedure*)**  
-> Menetapkan urutan kerja deterministik tanpa spekulasi untuk 7 alur produksi utama. Seluruh AI Agent dan developer wajib mengikuti urutan langkah ini secara disiplin merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) dan [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md).
+> Menetapkan urutan kerja deterministik tanpa spekulasi untuk 7 alur produksi utama. Seluruh AI Agent dan developer wajib mengikuti urutan langkah ini secara disiplin merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) dan [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md).
 
 ---
 
@@ -20,7 +20,7 @@
 ## SOP 1: Membuat Prop Baru (dari Nol sampai Masuk UE5)
 
 1. **Cek Pustaka Aset**: Periksa apakah prop serupa sudah ada di folder `/Props/` sesuai konvensi penamaan untuk mencegah duplikasi kerja.
-2. **Tentukan Poly Budget**: Tetapkan batas poligon merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 6 (Prop Besar: 15.000–30.000 tris Nanite, Prop Kecil: 500–3.000 tris).
+2. **Tentukan Poly Budget**: Tetapkan batas poligon merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 6 (Prop Besar: 15.000–30.000 tris Nanite, Prop Kecil: 500–3.000 tris).
 3. **Block-Out Dasar di Blender**: Buat bentuk primitif kasar, verifikasi siluet 360° dari 4 sudut pandang viewport.
 4. **Detailing Geometri**: Tambahkan edge loop, bevel, dan lekukan sesuai poly budget yang telah ditentukan.
 5. **UV Unwrapping**: Bentangkan peta UV bersih tanpa overlap yang tidak disengaja; sembunyikan seam di area lipatan alami.
@@ -31,14 +31,14 @@
 10. **Ekspor FBX/glTF**: Terapkan transformasi (`Ctrl+A ➔ Apply All Transforms`), ekspor dengan skala $1\text{ unit} = 1\text{ cm}$, sumbu $+Z$ Up, $+Y$ Forward.
 11. **Impor ke UE5**: Impor aset ke Content Browser (`Content/Props/...`) via MCP command atau Content Browser bridge.
 12. **Verifikasi Visual di UE5**: Cek skala prop terhadap hero Kaelen (1.78m), arah normal wajah, dan penugasan material instance.
-13. **Jalankan DoD Model 3D**: Verifikasi checklist DoD Model 3D ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.A).
+13. **Jalankan DoD Model 3D**: Verifikasi checklist DoD Model 3D ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.A).
 14. **Commit Version Control**: Commit perubahan ke Git/Git LFS dengan pesan terstruktur (`Add: SM_[NamaProp] - [deskripsi singkat]`).
 
 ---
 
 ## SOP 2: Setup Material & Shader Baru
 
-1. **Identifikasi Kategori**: Cek tabel material di [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 2.
+1. **Identifikasi Kategori**: Cek tabel material di [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 2.
 2. **Gunakan Nilai Resmi**: Jika kategori sudah ada (Kristal Es, Jubah, Syal, Kulit, Batu), gunakan parameter eksak yang tercantum.
 3. **Protokol Gap-Handling**: Jika kategori benar-benar baru, tandai sebagai **GAP**, ajukan usulan parameter terukur, dan tunggu approval sebelum melanjutkan.
 4. **Authoring Tekstur**: Buat grafik material di Substance 3D Designer (prosedural) atau Substance 3D Painter (detail spesifik).
@@ -47,7 +47,7 @@
 7. **Subsurface Scattering (SSS)**: Untuk material kristal es (`M_Cursed_Crystal`), atur SSS Radius 0.5–1.2cm dengan hamburan `#7EE8FA`.
 8. **Uji 2 Kondisi Cahaya**: Uji tampilan material di bawah pencahayaan terang dan pencahayaan dungeon gelap pekat.
 9. **Penamaan Standar**: Master Material (`M_[NamaMaterial]`), Material Instance (`MI_[NamaMaterial]_[Varian]`).
-10. **Jalankan DoD Material**: Verifikasi checklist DoD Material ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.B).
+10. **Jalankan DoD Material**: Verifikasi checklist DoD Material ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.B).
 11. **Commit Version Control**.
 
 ---
@@ -65,14 +65,14 @@
 6. **Set Batas Rotasi Sendi (Joint Constraint Limits)**: Kunci limit rotasi anatomis (Siku 0°–145°, Lutut 0°–140°, Tulang Belakang $\pm 35^\circ–45^\circ$) agar terhindar dari deformasi patah saat blend tree.
 7. **Uji Deformasi Ekstrem & Kinetic Chain**: Uji pose jongkok penuh, pukulan cakar es dengan rotasi panggul-tulang belakang, dan kuda-kuda dash.
 8. **Ekspor & Setup Control Rig di UE5**: Ekspor FBX Skeletal Mesh, konfigurasi Control Rig & IK Foot Placement pada kontur lantai dungeon.
-9. **Jalankan DoD Rigging & Animasi**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.C).
+9. **Jalankan DoD Rigging & Animasi**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.C).
 10. **Commit Version Control**.
 
 ---
 
 ## SOP 4: Setup Cloth Simulation Baru (Syal / Jubah / Elemen Kain)
 
-1. **Identifikasi Kategori Kain**: Syal Aina (Lentur & ringan: Stiffness 0.4–0.6) vs Jubah Kaelen (Tebal & berbobot: Stiffness 0.6–0.8) sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 4.
+1. **Identifikasi Kategori Kain**: Syal Aina (Lentur & ringan: Stiffness 0.4–0.6) vs Jubah Kaelen (Tebal & berbobot: Stiffness 0.6–0.8) sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 4.
 2. **Pembuatan Pola Drapery**: Buat pola kain di Marvelous Designer / Blender cloth sculpting sebelum disimulasikan.
 3. **Konfigurasi Pinning Points**: Kunci titik leher melingkar penuh untuk syal Aina; kunci 2 titik bahu untuk jubah.
 4. **Input Parameter Solver UE5 Chaos Cloth**: Masukkan Stiffness, Damping, Solver Iterations (8–12 iterasi), dan Wind Response Multiplier (1.2x untuk syal Aina).
@@ -82,7 +82,7 @@
    - Berlari (*Sprint $400\text{ cm/s}$*)
    - Melesat (*Evade Dash*)
 6. **Inspeksi Clipping**: Periksa apakah kain menembus geometri tubuh; sesuaikan collision capsule jika ditemukan overlap.
-7. **Jalankan DoD Cloth**: Verifikasi checklist fisik kain ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.C).
+7. **Jalankan DoD Cloth**: Verifikasi checklist fisik kain ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.C).
 8. **Commit Version Control**.
 
 ---
@@ -90,7 +90,7 @@
 ## SOP 5: Membangun Level & Sektor Baru (dari Grey-Box sampai Detail)
 
 ### Tahap 1: Grey-Box Prototype (WAJIB sebelum visual detail)
-1. **Layout Geometri Kasar**: Bangun blocking layout menggunakan BSP / geometry primitive shape berdasarkan pemisahan *Critical Path* dan *Optional Path* ([theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md) Bab 2.B).
+1. **Layout Geometri Kasar**: Bangun blocking layout menggunakan BSP / geometry primitive shape berdasarkan pemisahan *Critical Path* dan *Optional Path* ([theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md) Bab 2.B).
 2. **Penempatan Landmark Dominan**: Tempatkan menara/altar visual dominan sebagai kompas alami navigasi minimal HUD.
 3. **Penempatan Breather Room**: Sisipkan ruang tenang tanpa combat di antara arena pertarungan untuk menjaga ritme *Tension-Release*.
 4. **Playtest Internal Minimal 3x**: Uji pacing, navigasi, dan camera clipping di fase grey-box (Gate 2).
@@ -101,7 +101,7 @@
 7. **World Partition Setup**: Konfigurasi cell size streaming agar level termuat mulus tanpa pop-in.
 8. **Environmental Storytelling**: Tempatkan patung warga beku, artefak masa lalu, dan retakan es.
 9. **Audio Ambience & Trigger Spasial**: Pasang trigger bisikan binaural 3D dan volume ducking.
-10. **Jalankan DoD Level**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.E).
+10. **Jalankan DoD Level**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.E).
 11. **Commit Version Control**.
 
 ---
@@ -109,12 +109,12 @@
 ## SOP 6: Menambahkan Kemampuan/Sistem Gameplay Baru (Blueprint/GAS)
 
 1. **Audit Gameplay Ability System (GAS)**: Cek apakah kemampuan serupa sudah ada untuk menghindari duplikasi logika.
-2. **Kepatuhan Parameter Timing Frame**: Terapkan angka startup, active window, dan recovery frame merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 8 (Parry: 12 frame / 0.2 detik, Hit-Stop: 3 frame).
+2. **Kepatuhan Parameter Timing Frame**: Terapkan angka startup, active window, dan recovery frame merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 8 (Parry: 12 frame / 0.2 detik, Hit-Stop: 3 frame).
 3. **Implementasi State Machine**: Hubungkan logika ke Animation Blueprint (Kaelen) atau Behavior Tree (AI Musuh).
 4. **Uji Transisi State & Edge Cases**: Uji skenario tak terduga (contoh: Dash saat Curse Meter penuh 100%, parry tepat saat knockback).
 5. **Koneksi ke Curse Meter**: Terapkan penambahan/pengurangan poin curse (+8–15 hit, +3/s eyepatch, decay -2–4/s).
 6. **Uji Bebas Soft-Lock**: Uji kombinasi input cepat secara berurutan; pastikan karakter selalu dapat pulih ke state Idle.
-7. **Jalankan DoD Sistem Gameplay**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.F).
+7. **Jalankan DoD Sistem Gameplay**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.F).
 8. **Commit Version Control**.
 
 ---
@@ -123,11 +123,11 @@
 
 1. **Rekam / Authoring Raw Audio**: Rekam dialog, bisikan, atau instrumen (piano berdebu, cello, derit es) di DAW.
 2. **Restorasi & Denoise**: Bersihkan frekuensi kotor menggunakan iZotope RX.
-3. **Impor ke Wwise / MetaSounds**: Normalisasi loudness sesuai standar ([style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 10: Combat -16 LUFS, Dialog -18 LUFS, Ambience -28 s.d. -24 LUFS).
+3. **Impor ke Wwise / MetaSounds**: Normalisasi loudness sesuai standar ([style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 10: Combat -16 LUFS, Dialog -18 LUFS, Ambience -28 s.d. -24 LUFS).
 4. **Konfigurasi Dynamic Ducking**: Set side-chain ducking otomatis sebesar $-6\text{ dB}$ (Attack: 150ms, Release: 400ms) saat suara Aina atau bisikan jiwa beku aktif.
 5. **Tata Suara Spasial 3D Binaural**: Atur kurva atenuasi spasial 3D untuk bisikan di telinga kiri/kanan.
 6. **Verifikasi Headphone Fisik**: Uji hasil audio langsung menggunakan headphone fisik nyata.
-7. **Jalankan DoD Audio**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.D).
+7. **Jalankan DoD Audio**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.D).
 8. **Commit Version Control**.
 
 ---

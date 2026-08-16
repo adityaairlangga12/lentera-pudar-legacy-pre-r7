@@ -2,7 +2,7 @@
 ### Metodologi Pengukuran Resonansi Duka (*Grief Impact*), Observasi Non-Intrusif, & Evaluasi Intended vs Perceived
 
 > **Dokumen Sumber Kebenaran Validasi Emosional (*Emotional Playtesting Reference*)**  
-> Melengkapi [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md). Menjawab pertanyaan krusial: *"Apakah dampak emosional duka Kaelen & Aina benar-benar tersampaikan kepada pemain manusia, bukan sekadar berfungsi tanpa bug secara teknis?"*
+> Melengkapi [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md). Menjawab pertanyaan krusial: *"Apakah dampak emosional duka Kaelen & Aina benar-benar tersampaikan kepada pemain manusia, bukan sekadar berfungsi tanpa bug secara teknis?"*
 
 ---
 

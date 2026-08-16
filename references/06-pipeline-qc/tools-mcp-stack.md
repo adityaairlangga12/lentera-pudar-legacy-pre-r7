@@ -20,7 +20,7 @@
 
 | Komponen MCP | Fungsi | Catatan Arsitektur |
 |---|---|---|
-| **Blender MCP Server/Addon** | Memberi AI Agent akses perintah ke Blender: manipulasi mesh, material, UV, modifier, armature via `bpy` API. | Socket server lokal (port `8097`). Sintaks mengacu pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md). |
+| **Blender MCP Server/Addon** | Memberi AI Agent akses perintah ke Blender: manipulasi mesh, material, UV, modifier, armature via `bpy` API. | Socket server lokal (port `8097`). Sintaks mengacu pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md). |
 | **Unreal Engine MCP Plugin** | Memberi AI Agent akses ke Unreal Editor API: spawn actor, Blueprint, material instance, World Partition, Niagara. | Wrapper di atas `unreal` Python Editor Scripting. |
 | **Blender-Unreal Pipeline Plugin (Epic Games)** | Addon resmi Epic Games untuk otomasi "Send to Unreal" — ekspor mesh, rig, dan animasi langsung ke Content Browser UE5. | Menjamin transfer aset satu-klik yang deterministik dan stabil. |
 | **Shared Asset Bridge Folder** | Folder sinkronisasi ekspor FBX/glTF 2.0 deterministik dari Blender ke Content Browser UE5. | Alternatif jembatan aset lokal deterministik. |
@@ -31,7 +31,7 @@
 
 | Tools | Fungsi | Terhubung ke GDD/Teori |
 |---|---|---|
-| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen, Syal Aina, dan aset dungeon. | Material PBR Stylized (Teori Bab 11.A, [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)). |
+| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen, Syal Aina, dan aset dungeon. | Material PBR Stylized (Teori Bab 11.A, [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md)). |
 | **Substance 3D Designer** | Pembuatan material prosedural: Kristal Es Transmissive (SSS) & batuan reruntuhan. | Teori Subsurface Scattering kristal es (Teori Bab 11.B). |
 | **Quixel Megascans + Bridge** | Pustaka aset scan batuan reruntuhan kuno terintegrasi native dengan UE5. | Estetika reruntuhan organik-kuno (GDD Bab I). |
 | **Poly Haven (Library Gratis)** | Sumber HDRI, tekstur PBR, dan model lingkungan gratis berkualitas tinggi. | Pelengkap Megascans untuk variasi material tanpa biaya lisensi. |
@@ -45,7 +45,7 @@
 
 | Tools | Fungsi | Terhubung ke GDD/Teori |
 |---|---|---|
-| **Blender Rigify / Custom Rig** | Hierarki armature biomekanik lengkap humanoid Kaelen (`Root` ➔ `Pelvis` ➔ `Spine` ➔ `Limb`). | Fondasi Skeleton Hierarchy & Bony Landmarks (Teori Bab 10.A & [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md)). |
+| **Blender Rigify / Custom Rig** | Hierarki armature biomekanik lengkap humanoid Kaelen (`Root` ➔ `Pelvis` ➔ `Spine` ➔ `Limb`). | Fondasi Skeleton Hierarchy & Bony Landmarks (Teori Bab 10.A & [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md)). |
 | **Auto-Rig Pro (Pelengkap Rigify)** | Rigging tingkat lanjut dengan kontrol facial blend shapes dan rantai tulang sekunder. | Mematangkan ekspresi close-up ala Hellblade II di Altar Duka. |
 | **UE5 Control Rig** | Rig lanjutan di dalam Unreal Engine untuk penyesuaian animasi & IK kaki real-time. | Teori IK sebagai constraint solving (Teori Bab 13.F). |
 | **UE5 Chaos Cloth / Blender Cloth Sim** | Simulasi fisika kain dinamis untuk Syal Aina (Dual-Mode: Sim vs Hand-Keyed). | Teori Soft Body & Cloth Physics (Teori Bab 13.B). |

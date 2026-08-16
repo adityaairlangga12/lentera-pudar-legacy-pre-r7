@@ -5,7 +5,7 @@ description: Panduan psikologi pemain untuk Psychology Agent (Consultant). Digun
 
 # Player Psychology & Emotional Engagement (Psychology Agent)
 
-Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md).
+Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md).
 
 ---
 
@@ -76,12 +76,12 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 ---
 
 ## 5. Referensi Dokumen
-- [references/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
-- [references/emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md) — Master Playtesting & Validasi Emosional Duka.
-- [references/vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
-- [references/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md) — Master Arahan Sinematik & Bahasa Kamera Duka.
-- [references/human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md) — Master Anatomi Wajah, FACS Action Units & Bahasa Emosi Gaze.
-- [references/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
-- [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
-- [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).
-- [references/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) — Pedoman diksi dialog & nada narasi.
+- [references/05-foundations/expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
+- [references/06-pipeline-qc/emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md) — Master Playtesting & Validasi Emosional Duka.
+- [references/03-narrative/vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
+- [references/03-narrative/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md) — Master Arahan Sinematik & Bahasa Kamera Duka.
+- [references/04-art-3d/human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md) — Master Anatomi Wajah, FACS Action Units & Bahasa Emosi Gaze.
+- [references/04-art-3d/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
+- [references/01-core/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
+- [references/04-art-3d/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).
+- [references/01-core/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md) — Pedoman diksi dialog & nada narasi.

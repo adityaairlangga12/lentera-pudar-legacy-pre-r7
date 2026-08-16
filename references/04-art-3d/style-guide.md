@@ -54,7 +54,7 @@
   - Sektor 5 (*The Dawning Altar*): Rebound bertahap ke **100%** saat fajar terbit (`LUT_Sector05_Acceptance`).
 
 ### D. Implementasi Color Grading & Post-Process LUT
-Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara global melalui **Look-Up Table (LUT) 3D** di dalam UE5 `PostProcessVolume`, bukan dengan mengubah nilai albedo material satu per satu (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
+Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara global melalui **Look-Up Table (LUT) 3D** di dalam UE5 `PostProcessVolume`, bukan dengan mengubah nilai albedo material satu per satu (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md)).
 
 ---
 
@@ -163,7 +163,7 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 ### Standar Texel Density
 - **Hero & Boss Karakter**: **$512\text{ px/m}$** (resolusi tinggi tajam untuk framing close-up kamera naratif).
 - **Environment Props & Modular Kit**: **$256\text{ px/m}$** (optimalisasi efisiensi memori tekstur VRAM).
-- **Teknik Produksi**: Mengadopsi *Trim Sheets & Texture Atlasing* untuk prop reruntuhan dungeon guna menekan draw call (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
+- **Teknik Produksi**: Mengadopsi *Trim Sheets & Texture Atlasing* untuk prop reruntuhan dungeon guna menekan draw call (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/additional-techniques.md)).
 
 ---
 

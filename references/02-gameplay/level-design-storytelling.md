@@ -2,7 +2,7 @@
 ### Bagaimana Tata Ruang Spasial dan Penempatan Objek Bercerita Tanpa Kata
 
 > **Dokumen Sumber Kebenaran Desain Level (*Level Design & Environmental Storytelling Reference*)**  
-> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md), [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md). Menjadi pedoman arsitektur level 3D grey-box (SOP 5), penataan koridor dungeon, penempatan prop naratif, dan breadcrumbing diegetik di **Unreal Engine 5 + Blender 5.2 LTS**.
+> Melengkapi [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md). Menjadi pedoman arsitektur level 3D grey-box (SOP 5), penataan koridor dungeon, penempatan prop naratif, dan breadcrumbing diegetik di **Unreal Engine 5 + Blender 5.2 LTS**.
 
 ---
 
@@ -39,7 +39,7 @@
 ---
 
 ## 4. Penataan Prop Naratif (*Narrative Prop Placement*)
-- **Rule of Intentional Wear**: Tingkat kerusakan, retakan es, dan pola lapuk pada prop wajib mencerminkan kronologi peristiwa lore di [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md), bukan sekadar aus acak.
+- **Rule of Intentional Wear**: Tingkat kerusakan, retakan es, dan pola lapuk pada prop wajib mencerminkan kronologi peristiwa lore di [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), bukan sekadar aus acak.
 - **Repetisi Motif Spasial (Visual Leitmotif)**: Menempatkan simbol atau bentuk kristal es tertentu secara konsisten sebagai pengingat memori masa lalu Kaelen dan Aina.
 - **The Power of Absence (Bercerita Lewat Kekosongan)**: Memanfaatkan ruang kosong atau objek yang hilang (misal altar kosong dengan bekas tapak persembahan) untuk menyiratkan kehilangan mendalam tanpa butuh narasi verbal.
 

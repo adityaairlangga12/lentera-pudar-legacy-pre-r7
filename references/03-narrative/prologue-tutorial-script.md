@@ -2,7 +2,7 @@
 ### Alur Pembelajaran Mekanik Diegetik Non-Verbal (Teaching Through Geometry & Organic Onboarding)
 
 > **Dokumen Sumber Kebenaran Skenario Tutorial Prolog (*Prologue Tutorial Script Reference*)**  
-> Melengkapi [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md) (Bab 2.A), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md) (Bab 3), [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md) (Bab 2), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) (Bab IV & V), dan [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md). Menetapkan alur langkah-demi-langkah pengenalan seluruh kontrol dan mekanik dasar dari detik pertama Kaelen membuka mata hingga memasuki gerbang Sektor 1 (*The Silent Crypts*).
+> Melengkapi [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md) (Bab 2.A), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md) (Bab 3), [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md) (Bab 2), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) (Bab IV & V), dan [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md). Menetapkan alur langkah-demi-langkah pengenalan seluruh kontrol dan mekanik dasar dari detik pertama Kaelen membuka mata hingga memasuki gerbang Sektor 1 (*The Silent Crypts*).
 
 ---
 

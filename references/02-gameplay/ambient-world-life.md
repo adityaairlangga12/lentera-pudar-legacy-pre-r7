@@ -2,7 +2,7 @@
 ### Perilaku NPC Latar, Ekosistem Satwa Spasial, Reaktivitas Lingkungan (*World Awareness*), & Karakter Sampingan
 
 > **Dokumen Sumber Kebenaran Kehidupan Lingkungan (*Ambient World Life Reference*)**  
-> Melengkapi [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md). Menetapkan lapisan keempat dunia *Lentera Pudar*: **"Kehidupan yang terus berjalan tanpa menunggu pemain."**
+> Melengkapi [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md). Menetapkan lapisan keempat dunia *Lentera Pudar*: **"Kehidupan yang terus berjalan tanpa menunggu pemain."**
 
 ---
 

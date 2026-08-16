@@ -2,7 +2,7 @@
 ### Anatomi Otot Wajah, Facial Action Coding System (FACS), Duchenne Marker, & Bahasa Emosi Gaze
 
 > **Dokumen Sumber Kebenaran Ekspresi Wajah Karakter (*Facial Anatomy & FACS Reference*)**  
-> Melengkapi biomekanika tubuh [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) dan psikologi pemain [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md). Menjadi pedoman teknis rigging blend shape, ekspresi mikro, dan tatapan mata (*eye gaze*) untuk karakter Kaelen dan Aina di **Blender 5.2 LTS + Unreal Engine 5**.
+> Melengkapi biomekanika tubuh [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) dan psikologi pemain [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/expert-psychology.md). Menjadi pedoman teknis rigging blend shape, ekspresi mikro, dan tatapan mata (*eye gaze*) untuk karakter Kaelen dan Aina di **Blender 5.2 LTS + Unreal Engine 5**.
 
 ---
 
@@ -85,7 +85,7 @@ Otot wajah menempel langsung pada lapisan kulit subkutan (*dermis*) tanpa perant
 
 ---
 
-## 8. Sinkronisasi Audio-Visual Vokal & FACS (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md))
+## 8. Sinkronisasi Audio-Visual Vokal & FACS (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md))
 - **Micro-Pause & Micro-Expression Sync**: Jeda mikro intonasi vokal dipadukan tepat dengan kedutan mikro `AU1+AU4` (1/25–1/5 detik).
 - **Suara Tercekat saat `AU17` (Chin Raiser)**: Penurunan volume vokal dan getaran suara tertahan saat otot dagu mengencang menahan tangis.
 - **Gaze Aversion & Proyeksi Suara**: Proyeksi vokal mengecil secara proporsional saat tatapan mata mengelak karena rasa bersalah.

@@ -5,13 +5,13 @@ description: "Pemahaman mendalam mengenai arsitektur Blender 5.2 LTS MCP dan Unr
 
 # Lentera Pudar — 3D MCP Mastery (Blender 5.2 LTS + Unreal Engine 5)
 
-Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, protokol anti-halusinasi sintaks API, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP** merujuk pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md) dan [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/tools-mcp-stack.md).
+Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, protokol anti-halusinasi sintaks API, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP** merujuk pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md) dan [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md).
 
 ---
 
 ## 1. Protokol Integritas API & Anti-Halusinasi (Inspect-Before-Execute)
 1. **Introspeksi Wajib**: Sebelum mengeksekusi operasi penting, jalankan introspeksi `dir()` atau `help()` untuk memastikan fungsi/properti tersedia pada versi engine yang aktif.
-2. **Dilarang Menebak Nama Alternatif**: Jika fungsi tidak ditemukan, tandai sebagai **GAP**, buka dokumentasi resmi (`docs.blender.org/api` / `dev.epicgames.com/documentation`), dan sesuaikan dengan [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md).
+2. **Dilarang Menebak Nama Alternatif**: Jika fungsi tidak ditemukan, tandai sebagai **GAP**, buka dokumentasi resmi (`docs.blender.org/api` / `dev.epicgames.com/documentation`), dan sesuaikan dengan [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md).
 
 ---
 
