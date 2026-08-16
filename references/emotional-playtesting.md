@@ -49,6 +49,20 @@ Untuk setiap momen kunci dan cutscene transisi sektor duka, tim menyusun matriks
 | **Sektor 4: Depression** | Terjadi hening kontemplatif yang natural; playtester merasakan beban langkah kaki Kaelen yang berat. |
 | **Sektor 5: Acceptance** | Relaksasi postur tubuh, nada bicara tenang saat wawancara, dan rasa keikhlasan melepaskan. |
 
+### 4.1 Protokol Khusus Stage-Gate 5: Audit Pacing Sektor 4 (*Abyss of Stillness*)
+Sektor 4 (*Depression*) membawa risiko desain tertinggi terkait potensi misinterpretasi antara **"Keheningan Berbobot (*Solemn Engagement*)"** vs **"Monoton & Membosankan (*Disengaged Fatigue*)"**. Oleh karena itu, Sektor 4 WAJIB menjadi fokus prioritas nomor satu saat Stage-Gate 5 Human Playtesting:
+
+1. **Indikator Observasi Non-Verbal Lolos vs Gagal**:
+   - **Solemn Engagement (Lolos / Intended Emotion Tercapai)**:
+     - Tubuh tetap condong ke depan (*forward lean*), tatapan mata terkunci pada langkah kaki Kaelen atau partikel es yang melayang.
+     - Laju respirasi playtester melambat secara tenang; tidak ada gestur gelisah atau upaya tergesa-gesa melewati koridor.
+   - **Disengaged Fatigue (Gagal / Perlu Revisi Desain Segera)**:
+     - Playtester menyandarkan punggung ke kursi (*slouching back*), pandangan beralih dari layar monitor, atau berulang kali menekan tombol dash/sprint secara agresif tanpa tujuan.
+2. **Tindakan Korektif (Jika Disengaged Fatigue Terdeteksi)**:
+   - Naikkan frekuensi partikel uap beku dinamis Niagara pada langkah kaki Kaelen (+30%).
+   - Sesuaikan interval bisikan spasial 3D binaural Aina agar berdesir lembut setiap 45–60 detik sebagai jangkar fokus batin.
+   - Pangkas jarak linear lorong hampa sebesar 15–20% tanpa merusak kesan monumental danau es.
+
 ---
 
 ## 5. Batasan Eksplisit AI Agent & Eliminasi Bias

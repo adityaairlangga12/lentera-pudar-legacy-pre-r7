@@ -449,6 +449,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   3. **Contextual Glyphs & Seamless Transition**: Petunjuk tombol hanya muncul lembut pada radius < 2m dan memudar seketika setelah interaksi berhasil.
 - **Dampak**: Memastikan onboarding pemain berjalan mulus, imersif, dan terintegrasi penuh ke dalam sistem gameplay dan cerita sejak detik pertama.
 
+---
+
+### ADR-037: Mitigasi Risiko Desain, Penegakan SSoT & Standarisasi Pemulihan Breather Room (Landing Auto-Stop, Sector 4 Audit, Anti-RPG Guardrails, & Breather Thaw)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Risk Mitigation & Breather Recovery Standard)
+- **Konteks**: Menindaklanjuti audit cross-check untuk memitigasi 3 risiko teridentifikasi (death spiral kutukan, risiko kebosanan Sektor 4, miskonsepsi RPG generik) serta menutup gap teknis pemulihan kutukan di Breather Room.
+- **Keputusan Terpilih**: 
+  1. **Landing Auto-Stop Trigger**: Laju kutukan $+3\text{ poin/detik}$ dari Sealed Eyepatch berhenti otomatis saat kaki Kaelen memasuki volume pendaratan platform (`BP_SafeLandingZone: OnComponentBeginOverlap`), memicu animasi penutupan penutup mata otomatis.
+  2. **Protokol Stage-Gate 5 Sektor 4**: Menetapkan distingsi observasi non-verbal antara *Solemn Engagement* (lolos: tubuh condong ke depan, respirasi tenang) vs *Disengaged Fatigue* (gagal: bersandar, gelisah, spam sprint) di `emotional-playtesting.md`.
+  3. **Mandat Anti-RPG Konvensional**: Melarang keras skill tree bebas, stat STR/DEX/INT/leveling, dan loot table acak di `AGENTS.md` Bab 1.5 dan `theory-reference.md` Bab 1.E.
+  4. **Pemulihan Curse Meter di Breather Room**: Ditetapkan laju pemulihan $-2\text{ poin/detik}$ dengan batas ambang dasar $25\%$ dan isyarat diegetik pendaran es meredup serta uap beku mencair menjadi bara emas Aina.
+  5. **Konsolidasi Single Source of Truth (SSoT)**: Mengubah seluruh 29 file draf di root workspace menjadi tautan redirect bersih menuju folder `references/*.md`.
+- **Dampak**: Memastikan seluruh sistem aman dari celah logika teknis dan kebingungan arsitektural, menjaga integritas puitis duka semesta Lentera Pudar.
+
+
 
 
 

@@ -58,6 +58,13 @@ Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
   - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 3 frame.
   - Dynamic XPBD Chaos Cloth Simulation pada Syal Aina dan jubah.
 
+### 1.5 Mandat Anti-RPG Konvensional (Batasan Desain Progresi & Larangan Mekanik)
+Seluruh AI Agent DILARANG KERAS mengusulkan, merancang, atau mengimplementasikan mekanik RPG konvensional berikut:
+- ❌ **DILARANG Free-Form Skill Tree / Belanja Poin Bebas**: Progresi Kaelen wajib 100% naratif-sekuensial (Model GRIS) terikat pengorbanan Altar Duka 1–5 (merujuk pada [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/sector-ability-progression.md)).
+- ❌ **DILARANG Stat Leveling Numerik (STR, DEX, INT, HP Pool, Level 1..99)**: Kaelen adalah pengelana *class-less* bertubuh atletis dengan bobot kinetik nyata, bukan tumpukan angka stat.
+- ❌ **DILARANG Loot Table Acak, Gacha, & Grinding Koin Emas**: Musuh yang dikalahkan tidak menjatuhkan uang/item loot acak; reward murni berupa katarsis naratif, resonansi ingatan, dan penyucian jiwa beku.
+- **Alasan Filosofis**: Mekanik RPG generik merusak tensi psikologis duka, menghancurkan immersion deliberate combat ala Hellblade, dan mengubah duka puitis menjadi kalkulasi angka dangkal.
+
 ---
 
 ## BAB II: PRINSIP DASAR & INTEGRITAS TEKNIS (ANTI-THEATER & PRODUCTION PROTOCOL)

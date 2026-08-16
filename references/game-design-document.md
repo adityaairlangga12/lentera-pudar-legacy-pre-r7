@@ -170,12 +170,16 @@ Dirancang khusus untuk kegagalan saat melawan musuh koridor/kroco biasa tanpa me
    - Layar memudar kembali (*fade in*) memperlihatkan Kaelen bertumpu pada satu lutut di ambang pintu aman.
    - **Isyarat Diegetik**: Lapisan kristal es di dada dan pipi Kaelen merekah retak dan mencair kembali (*dynamic vertex thawing*), Syal Aina (`#F4B860` 2700K) berkedip hangat dua kali dengan pendaran Lumen lembut, disertai efek audio hembusan napas lega Kaelen (*soft exhalation*). Kaelen bangkit berdiri dan kontrol langsung aktif tanpa jeda.
 4. **Penalti & Konsekuensi (*Trade-Off & Retensi Persistensi*)**:
-   - *Curse Meter Stabilization*: Curse Meter diatur ulang ke batas ambang dasar sektor (misal: 25%), bukan 0% — mencerminkan bahwa duka dan kutukan tidak pernah hilang total secara magis.
+   - *Curse Meter Stabilization*: Curse Meter diatur ulang ke batas ambang dasar sektor (25%), bukan 0% — mencerminkan bahwa duka dan kutukan tidak pernah hilang total secara magis.
    - *Encounter Reset vs World Persistence*: Formasi musuh di ruangan terkait me-reset posisi, namun reruntuhan pilar dan objek yang telah dihancurkan Kaelen tetap hancur (*Local World Awareness persistensi*).
    - *Zero Artificial Punishment*: Tidak ada pengurangan panjang Syal Aina atau kehilangan resource (panjang syal murni memendek hanya di Altar Duka secara naratif).
 5. **Frekuensi Checkpoint Minor per Sektor**:
    - Setiap sektor memiliki **1 Major Checkpoint (Altar Duka)** di awal/akhir sektor dan **2–3 Minor Checkpoints (Breather Rooms / Safe Archways)** di sepanjang koridor.
    - Interval penempatan: Rata-rata 1 checkpoint minor setiap 2–3 ruang encounter combat (waktu tempuh 4–6 menit eksplorasi), menjaga ritme ketegangan tanpa memanjakan atau menghukum berlebihan.
+6. **Dinamika Pemulihan Curse Meter di Breather Room**:
+   - **Laju Penurunan**: Saat Kaelen berdiam/duduk di dalam radius *Breather Room* (`BP_BreatherZone`), *Curse Meter* berkurang secara pasif dengan laju **$-2\text{ poin/detik}$**.
+   - **Batas Ambang Minimum (*Sector Baseline Floor*)**: Pemulihan di Breather Room berhenti pada batas ambang **$25\%$** (tidak bisa turun hingga 0%). Hanya penyalaan Altar Duka resmi yang dapat menyucikan kutukan hingga $0\%$.
+   - **Isyarat Visual & Audio Diegetik**: Pendaran biru dingin pada kristal siku Kaelen perlahan meredup, uap beku di dada menguap menjadi percikan partikel bara emas hangat Aina (`#F4B860` 2700K), diiringi efek audio desis es yang mencair lembut (*gentle thaw hum*) dan detak denyut syal yang melambat tenang.
 
 ### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md))
 - **Antarmuka Diegetik Utama**: Indikator status tersemat langsung pada tubuh Kaelen (es lengan kiri & panjang syal emas). HUD non-diegetik memudar otomatis saat eksplorasi.

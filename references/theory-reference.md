@@ -40,7 +40,13 @@ Setiap game punya loop inti yang berulang (eksplorasi → pertarungan → hadiah
 Pemain tetap terlibat saat tantangan seimbang dengan skill mereka — tidak terlalu mudah (bosan) atau terlalu sulit (frustrasi/cemas). Kurva kesulitan tiap sektor (Denial → Acceptance) sebaiknya naik bertahap, dengan boss sebagai puncak lokal, lalu sedikit penurunan tensi di awal sektor berikutnya sebagai jeda napas sebelum naik lagi.
 
 ### D. Reward Schedule & Player Motivation
-Ada reward *intrinsik* (kepuasan menuntaskan mekanik parry sulit) dan *ekstrinsik* (item, kemampuan baru). Untuk game bertema grief seperti ini, reward sebaiknya condong ke intrinsik/naratif (potongan memori, dialog, perubahan visual dunia) dibanding sekadar loot — supaya tetap konsisten dengan nuansa "poetic dark fantasy", bukan grinding RPG biasa.
+Ada reward *intrinsik* (kepuasan menuntaskan mekanik parry sulit) dan *ekstrinsik* (kemampuan baru sekuensial). Untuk game bertema grief seperti ini, reward condong ke intrinsik/naratif (potongan memori, dialog, perubahan visual dunia) dibanding sekadar loot — supaya tetap konsisten dengan nuansa "poetic dark fantasy", bukan grinding RPG biasa.
+
+### E. Batasan Eksplisit: Larangan Mekanik RPG Konvensional
+Untuk menjaga integritas emosional semesta Lentera Pudar, sistem progresi secara tegas MELARANG:
+1. **Free-Form Skill Tree**: Kemampuan baru murni terbuka sekuensial via Model GRIS di 5 Altar Duka.
+2. **Stat Leveling Numerik (STR, DEX, INT, Level 1..99)**: Kaelen mengandalkan pembacaan telegraf kinetik dan penguasaan timing pemain, bukan akumulasi angka statistik.
+3. **Loot Drop Acak & Grinding Koin**: Tidak ada mata uang emas, grinding monster berulang, atau gacha item.
 
 ---
 

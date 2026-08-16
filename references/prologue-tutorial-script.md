@@ -110,10 +110,11 @@ Tutorial semesta *Lentera Pudar* dirancang dengan 3 pilar utama:
 - **Aksi Pemain**:
   - Menahan tombol **Sealed Eye / Perception** (`R3` / `Hold E` / Tombol Khusus).
   - Kaelen melepaskan ikatan penutup mata kulit hitamnya sesaat.
-  - **Efek Dunia Spektral**:
+  - **Efek Dunia Spektral & Kondisi Henti Otomatis (*Auto-Stop Trigger*)**:
     - Layar berubah menjadi gradien desaturasi dingin bertepi kristal es.
     - Di atas jurang, jembatan memori kristal es biru transparan berpendar memperlihatkan jalur yang kokoh untuk dilalui.
-    - *Curse Meter* bertambah $+3\text{ poin/detik}$ seiring mata terbuka, memicu urgensi pemain untuk segera menyeberangi jembatan dan menutup kembali penutup matanya.
+    - *Curse Meter* bertambah $+3\text{ poin/detik}$ seiring mata terbuka, memicu urgensi pemain untuk segera menyeberangi jembatan.
+    - **Trigger Henti Kutukan Pasti (*Anti-Death-Spiral Rule*)**: Laju penambahan kutukan $+3\text{ poin/detik}$ **BERHENTI OTOMATIS** tepat saat kapsul Kaelen memasuki volume pendaratan platform seberang (`BP_SpectralLandingZone: OnComponentBeginOverlap`). Sistem secara otomatis memicu animasi pelepasan/penguncian kembali penutup mata kulit hitam dan mengembalikan grading kamera ke normal tanpa menuntut input manual pemain, mencegah akumulasi kutukan berlebih.
 - **Fail-Safe**:
   - Jika pemain diam di tepi jurang tanpa menahan tombol mata selama 6 detik, bekas luka mata kanan Kaelen berdenyut dengan pendaran biru dingin menembus penutup mata kulitnya, disertai getaran haptik berdenyut lembut pada kontroler.
 

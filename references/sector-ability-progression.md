@@ -25,7 +25,7 @@ Sebelum menyalakan Altar Duka pertama, Kaelen mengandalkan perlengkapan dasar:
 - **Heavy Cursed Strike (Ice Palm)**: Hantaman cakar es tangan kiri yang memicu ledakan kristal es (`#4A6FA5`, $+10\text{ Curse Meter}$).
 - **12-Frame Tight Parry & Deflect**: Tangkisan presisi dengan jeda *hit-stop 3 frame* dan partikel bunga api emas Aina.
 - **Evade Dash**: Meluncur cepat meninggalkan percikan bara syal (`#F4B860`) dengan *i-frames* singkat.
-- **The Sealed Eye (Eyepatch Perception)**: Membuka segel mata kanan sesaat untuk melihat jejak spektral ($+3\text{ Curse/s}$).
+- **The Sealed Eye (Eyepatch Perception)**: Membuka segel mata kanan sesaat untuk melihat jejak spektral ($+3\text{ Curse/s}$, laju kutukan berhenti otomatis saat memasuki volume pendaratan platform `BP_SafeLandingZone`).
 - **Syal Aina (Panjang Penuh)**: Sumber cahaya dinamis Lumen 2700K dan kompas arah kibasan kain.
 
 ---

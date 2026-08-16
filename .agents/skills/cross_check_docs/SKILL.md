@@ -1,59 +1,80 @@
 ---
 name: cross_check_docs
-description: "Skill audit konsistensi silang yang dipicu via /cross-check-docs. Memeriksa konsistensi antara lore Lentera Pudar, GDD, AGENTS.md, SOP Workflow, Few-Shot Calibration, Kena Art Research, Reference Board, Anatomi & Kinesiologi, Ekspresi Wajah & FACS, Level Design & Environmental Storytelling, Playtesting & Validasi Emosional, Desain Musuh & Balancing Kombat, Arahan Sinematik & Cutscene, Arahan Vokal & Delivery Dialog, UI/UX & Aksesibilitas, NPC Ambient & Kehidupan Lingkungan, Progresi Kemampuan Kaelen, Skenario Tutorial Prolog, Tools Stack, API Cheat Sheet, Teknik Tambahan, Expert Suite (Matematika, Fisika, Psikologi, Seni & Kreativitas, Metodologi AI, Fondasi 3D), Master Index, dan seluruh master references 3D Blender 5.2 LTS / Unreal Engine 5."
+description: "Skill audit konsistensi silang yang dipicu via /cross-check-docs. Memeriksa konsistensi seluruh dokumen Lentera Pudar berbasis bukti fisik kutipan langsung, deteksi open gaps, deteksi duplikasi file, penilaian risiko/titik lemah, dan kepatuhan 8 aturan audit tanpa asumsi."
 ---
 
 # Cross-Check Documentation Protocol (/cross-check-docs)
 
-Skill ini memastikan seluruh dokumen master di `references/`, aturan sistem `AGENTS.md`, dan pustaka keahlian di `.agents/skills/` berada dalam kondisi 100% selaras tanpa adanya kontradiksi internal untuk **3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS)**.
+> **Dokumen Protokol Audit Konsistensi Silang (Master Cross-Check Standard)**  
+> Menegakkan standar audit berbasis bukti fisik (*evidence-driven*), anti-halusinasi, pelaporan gap jujur, deteksi duplikasi, dan mitigasi risiko teknis/naratif di seluruh semesta *Lentera Pudar — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS)*.
 
 ---
 
-## 1. Titik Kritis Audit Konsistensi (Sync Checklist)
+## 1. Delapan Aturan Baku Protokol Audit (The 8 Mandatory Audit Rules)
 
-1. **Arsitektur Dual-Layer 3D Action RPG & Rantai Tools Lengkap**:
-   - Memastikan `AGENTS.md`, [design-decisions.md](file:///d:/GodotProjects/Lentera-Pudar/references/design-decisions.md) (ADR-013 s.d. **ADR-036**), [master-index.md](file:///d:/GodotProjects/Lentera-Pudar/references/master-index.md), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/level-design-storytelling.md), [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/emotional-playtesting.md), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/enemy-design-balancing.md), [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/cinematics-cutscenes.md), [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/vocal-direction-dialogue.md), [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/ui-ux-accessibility.md), [ambient-world-life.md](file:///d:/GodotProjects/Lentera-Pudar/references/ambient-world-life.md), [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/sector-ability-progression.md), [prologue-tutorial-script.md](file:///d:/GodotProjects/Lentera-Pudar/references/prologue-tutorial-script.md), [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/theory-reference.md), [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/tools-mcp-stack.md), [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md), [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md), [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md), [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md), [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/human-facial-expressions.md), [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md), [expert-mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-mathematics.md), [expert-physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-physics.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-psychology.md), [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-art-creativity.md), [expert-ai-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-ai-methodology.md), dan [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-3d-foundations.md) mengadopsi model **Dual-Layer Benchmark (Kena Visual + Hellblade Psikologi)** dan **Pipeline 3D (Blender 5.2 LTS + Unreal Engine 5)**.
-2. **Kepatuhan Palet The Triad 3D & Dominasi Warna 60-30-10**:
-   - Nilai hex `#F4B860` (Kuning Jiwa Aina 2700K Warm Emissive), `#4A6FA5` & `#7EE8FA` (Biru Kutukan Pudar 6500K Cold Shard), `#2A211C` / `#141013` (Netral Gelap Batu/Jubah/Eyepatch) tercantum seragam dengan proporsi 60-30-10 dan uji Grayscale Value-First.
-3. **Mekanik Khusus Lentera Pudar 3D**:
-   - *The Fading Scarf* (Chaos Cloth & Spring Bones 4-stage sacrifice & Dual-Mode cutscene), *Progresi Model GRIS 5 Kemampuan*, *Skenario 6-Langkah Tutorial Prolog*, *Respawn Diegetik & Thawing*, *Cursed Ice Talons* (shader emissive live-driven MPC), *The Sealed Eyepatch* (Perception mechanic Risk-Reward +3 pts/s), *Render Target Mask Dynamic Thawing*, *Live Mental Morphing Environment*, *Binaural Spatial Whispers*, dan *The Hollow Reflection* terdokumentasi konsisten di seluruh dokumen.
-4. **Standar QA/QC 6-DoD, Aksesibilitas & Validasi Emosional**:
-   - Menegakkan verifikasi 6 pilar Definition of Done (DoD), Stage-Gate 0 s.d. 7, klasifikasi bug 4-tier (Blocking, Critical, Major, Minor), *Tier 3 UI/UX Accessibility Compliance*, dan *Intended vs Perceived Emotional Gate* (`[Needs Human Playtest Validation]`).
-5. **Kepatuhan Prosedural SOP 7-Tahap**:
-   - Menegakkan kepatuhan terhadap 7 SOP baku di `sop-workflow.md` (SOP 1: Prop, SOP 2: Material, SOP 3: Rigging, SOP 4: Cloth, SOP 5: Level Grey-Box, SOP 6: Gameplay GAS, SOP 7: Audio).
-6. **Standar Biomekanika, Onboarding, Progresi GAS, Ambient Life, UI/UX Diegetik, Sinematografi, Arahan Vokal & Kena-Grade Art**:
-   - Verifikasi konsistensi parameter:
-     - **Prologue Onboarding Script**: 6 langkah non-verbal (Lokomosi Syal ➔ Light Punch ➔ Heavy Cursed Strike ➔ 12f Parry 1v1 ➔ Sealed Eye ➔ Altar 1 Sacrifice), fail-safe diegetik, dan contextual glyphs.
-     - **Sector Ability Progression (GRIS Model)**: 5 kemampuan sekuensial Altar Duka (S1 Retakan Penyangkalan guard-break, S2 Pusaran Amarah surge thrust, S3 Kilasan Cermin reflect deflect, S4 Jangkar Keheningan shockwave anti-stagger, S5 Percikan Fajar frost-fire purge) dengan retensi utilitas kumulatif.
-     - **Respawn Diegetik & Failure Loop**: Ambang pintu aman / Breather Room, frost glaze visual, dynamic vertex thawing, dan stabilisasi Curse Meter 25%.
-     - **Ambient World Life**: Kontras dunia netral vs beban batin, 2–3 rutinitas idle NPC asinkron, aware state halus (kontak mata singkat), satwa spasial terpetakan ke duka, local world awareness (reruntuhan & jejak salju bertahan).
-     - **UI/UX & Accessibility**: Prioritas UI diegetik (es lengan & panjang syal), HUD non-diegetik memudar otomatis, filter buta warna berbasis bentuk simbol, closed captions vokal emosional, remapping kontrol, text container adaptif (+40%), zero baked text.
-     - **Vocal Direction & Dialogue**: Subteks batin mendahului teks literal, distingsi vokal *Denial* (menahan) vs *Acceptance* (melepaskan), sinkronisasi micro-pause vokal ke FACS AU (`AU1`, `AU4`, `AU17`), dan *meaningful silence*.
-     - **Cinematics & Cutscenes**: Bahasa kamera per sektor duka (S1 kaku, S2 shake, S3 Dutch angle, S4 long take kerdil, S5 stabil fajar), transisi seamless tanpa hard cut hitam, cakupan 3-shot, sinkronisasi presisi cut ke FACS AU, dan emotional DoF.
-     - **Enemy Archetypes & Fun Guardrails**: Arketipe duka (*The Echo, Berserker, Deceiver, Weight, Mirror*), telegraf serangan (12–18f windup, siluet, audio 3D), dan retensi kepuasan mekanik (*hit-stop 3-frame*, kontrol responsif).
-     - **Emotional Playtesting**: Kerangka *Intended vs Perceived*, observasi non-intrusif (jeda hening, bahasa tubuh), wawancara reflektif terbuka pasca-sesi, dan uji retensi memori 1 minggu.
-     - **Level Design & Environmental Storytelling**: Karakteristik spasial 5 sektor duka (S1 simetris looping, S2 asimetris friksi, S3 labirin cermin, S4 hampa descending, S5 lapang terbuka), breadcrumbing diegetik (zero UI markers), breathing rooms anti-burnout, simbiosis arena combat vs FSM musuh.
-     - **Facial Action Units & Gaze**: FACS shape keys berbasis AU (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU23`, `AU43`), Duchenne marker vs senyum topeng, asimetri 5–15%, ekspresi mikro 1/25–1/5s, dinamika tatapan (gaze aversion, lock, downward, drift).
-     - **Master Index & Navigation**: Kepatuhan urutan baca AI agent baru dan zero broken links pada seluruh peta navigasi.
-     - **Expert 3D Foundations**: Topologi berorientasi deformasi (edge flow otot/sendi), alokasi pole strategis, UV seam tersembunyi, PBR albedo murni (metallic 0/1), skinning weight sum $=1.0$ (maks 4 bone influence), tangent normal baking dengan cage mesh, retensi siluet LOD.
-     - **Expert AI Methodology**: Anti-Roleplay mode (alat produksi fungsional), Grounding 3-sumber, Problem Decomposition, Self-Verification loop, Isolasi variabel debugging, dan Pelaporan jujur.
-     - **Expert Art & Creativity**: Uji Grayscale Value-First, Dominasi 60-30-10, Triad Kritik Seni (Unity, Tension, Resolution), Semiotika Visual Kumulatif.
-     - **Expert Math & Physics**: Quaternion SLERP, Arc-Length Spline C2, XPBD Cloth, Lattice-Biased Voronoi, Cook-Torrance GGX, FABRIK IK.
-     - **Expert Psychology**: SDT 3-Needs, Loss Aversion 2.5x, Emotional Bandwidth Pacing, Non-linear Grief Echoes.
-     - **Bony Landmarks & Corrective Morphs**: Validasi siku 140° bisep bulge, bahu, lutut, dan batasan rotasi sendi wajar.
-     - **Kinetic Chain Combat**: Rantai transfer momentum penuh pada pukulan tangan & cakar es.
-     - **8-Fase Lokomosi**: Heel Strike s.d. Terminal Swing + Pelvic Tilt + Counter-Rotation.
-     - **Poly Budget & Texel Density**: 40k–60k tris LOD0, $512\text{ px/m}$ (Hero/Boss), $256\text{ px/m}$ (Props).
-     - **Hybrid Hair System**: Solid Geometry (Volume) + Alpha Strip Cards (Flyaways).
-     - **Scarf Stiffness**: 0.4–0.6 (Syal Aina) vs 0.6–0.8 (Jubah Kaelen).
-     - **Parry Window**: 4–6 frame @30fps / 8–12 frame @60fps (12 frame total = 0.2 detik).
-     - **Curse Meter +Eyepatch**: +3 poin/detik.
-     - **Audio Target**: -16 LUFS combat BGM / -18 LUFS dialog / Ducking -6dB (attack 150ms, release 400ms).
+Setiap agen yang menjalankan tugas audit `/cross-check-docs` WAJIB mematuhi 8 aturan tanpa pengecualian:
+
+### 1. Sumber Kebenaran Wajib dari Isi File Aktual (No-Session-Memory Mandate)
+- Audit HARUS membaca ulang isi file yang relevan secara langsung menggunakan tool pembaca file (`view_file`, `grep_search`), bukan mengandalkan ringkasan percakapan sebelumnya atau asumsi judul file semata.
+- Klaim yang tidak dapat ditelusuri ke isi file yang dibaca saat sesi berlangsung dilarang diberi status sinkron.
+
+### 2. Wajib Bukti Kutipan Konkret untuk Setiap Klaim "Sinkron / Ada"
+- Setiap baris verifikasi wajib mencantumkan bukti fisik dengan format minimal:
+  - **Tautan File Markdown**: `[nama-file.md](file:///d:/GodotProjects/Lentera-Pudar/references/nama-file.md)`
+  - **Nomor Bab / Seksi / Baris** yang tepat.
+  - **Cuplikan Teks Kutipan Singkat** yang membuktikan klaim tersebut.
+- Klaim tanpa kutipan teks dianggap **TIDAK VALID** dan harus diberi label `[Perlu Verifikasi]`.
+
+### 3. Eksplisit Menyatakan Gap (Anti-Smoothing & No-Assumption Mandate)
+- Dilarang keras menyimpulkan suatu topik "sudah cukup relevan / tercakup" hanya karena bersinggungan dengan sistem lain (misalnya: menganggap respawn otomatis ada karena combat feel sudah ada).
+- Jika belum ada pembahasan langsung dan spesifik, topik tersebut WAJIB dicatat sebagai **OPEN GAP** tanpa dihalus-haluskan.
+
+### 4. Larangan Klaim Ringkasan "100% Zero Gaps" Tanpa Bukti Rinci per Item
+- Laporan audit yang hanya menampilkan kesimpulan optimis atau tabel checklist centang tanpa rincian kutipan per baris adalah **OUTPUT TIDAK VALID**.
+- Status selesai hanya sah jika setiap parameter pendukung diverifikasi dengan kutipan aktual.
+
+### 5. Penempatan "Open Gaps" di Bagian Awal Laporan
+- Laporan audit wajib memisahkan secara tegas antara daftar **Open Gaps** dan daftar **Telah Terverifikasi Sinkron**.
+- Bagian **Open Gaps** WAJIB diletakkan di bagian atas/awal laporan agar menjadi perhatian utama pembaca, bukan disembunyikan di akhir dokumen.
+
+### 6. Siklus Audit Ulang Mandiri per Gap (Incremental Verification Cycle)
+- Menutup satu gap di suatu modul TIDAK PERNAH mengasumsikan gap di modul lain otomatis selesai.
+- Setiap gap memiliki siklus verifikasi mandiri: `Rancang ➔ Integrasikan ➔ Audit Ulang dengan Bukti Kutipan Baru`.
+
+### 7. Deteksi Duplikasi File & Penegakan Single Source of Truth
+- Audit wajib memindai file di root workspace (misal: `32_Daftar_Kemampuan...`, `33_Skenario_Tutorial...`) vs file di folder `references/`.
+- Jika ditemukan duplikasi isi atau potensi tumpang tindih sumber kebenaran, audit wajib melaporkannya sebagai **Anomali Duplikasi** dan menetapkan file master di `references/` sebagai *Single Source of Truth (SSoT)* utama.
+
+### 8. Bagian Wajib "Titik Lemah & Risiko" (Fragility & Assumptions Assessment)
+- Setiap laporan audit wajib menyertakan analisis kritis:
+  1. Bagian sistem mana yang paling rapuh (*fragile*).
+  2. Bagian mana yang paling berpotensi disalahpahami oleh sub-agent AI lain.
+  3. Bagian mana yang paling bergantung pada asumsi desain yang belum divalidasi oleh playtest manusia nyata (`[Needs Human Playtest Validation]`).
 
 ---
 
-## 2. Output Audit
-Laporan audit wajib menyajikan:
-- Status sinkronisasi antar dokumen (✅ 100% In-Sync atau ⚠️ Divergence Detected).
-- Daftar file yang telah diaudit beserta tautan markdown yang dapat diklik.
-- Daftar gap yang ditemukan beserta klasifikasi severity (Kritis / Major / Minor) dan tindakan perbaikan yang dilakukan.
+## 2. Struktur Format Laporan Audit Standar
+
+Setiap laporan `/cross-check-docs` wajib mengikuti struktur berikut:
+
+```markdown
+# Laporan Audit Konsistensi Dokumentasi (/cross-check-docs)
+*Tanggal Audit: YYYY-MM-DD | Auditor: [Nama Agent/Role]*
+
+## 1. Daftar Open Gaps & Kebutuhan Desain Terbuka (Diletakkan di Awal)
+(Tabel/Daftar gap terbuka, topik yang belum dibahas langsung, dan tingkat keparahan)
+
+## 2. Deteksi Duplikasi File & Status Single Source of Truth (SSoT)
+(Daftar file di root workspace vs references/, status sinkronisasi teks, dan penegakan SSoT)
+
+## 3. Matriks Verifikasi Lintas-Sistem (Wajib Disertai Kutipan File & Bab)
+| Parameter / Topik | Status | Tautan File & Bab/Baris | Bukti Kutipan Teks Aktual |
+|---|---|---|---|
+
+## 4. Evaluasi Titik Lemah, Asumsi Kritis & Risiko Implementasi
+- Titik Rapuh Teknis / Logika
+- Risiko Miskonsepsi AI Sub-Agent
+- Asumsi Emosional yang Membutuhkan Validasi Playtest Manusia
+
+## 5. Rekomendasi Tindakan Selanjutnya (Action Items)
+```
