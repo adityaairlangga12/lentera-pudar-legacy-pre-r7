@@ -169,14 +169,32 @@ Protokol:
 
 ## 9. Feedback Loop (Sumber Data Nyata)
 
-Setiap kali rekonstruksi saya **salah dan user mengoreksi**, saya wajib mencatat ke Knowledge Item sesi:
+Setiap kali rekonstruksi saya **salah dan user mengoreksi**, saya wajib mencatat ke Knowledge Item sesi dalam format berikut:
 
 ```
 KOREKSI TERCATAT:
-  Input user    : "[pesan asli user]"
-  Rekonstruksi  : "[interpretasi saya yang salah]"
-  Koreksi benar : "[apa yang sebenarnya dimaksud user]"
-  Pola          : [kata/konteks pemicu kesalahan]
+  Input user      : "[pesan asli user]"
+  Rekonstruksi    : "[interpretasi saya yang salah]"
+  Koreksi benar   : "[apa yang sebenarnya dimaksud user]"
+  Pola error      : [kata/konteks yang memicu kesalahan interpretasi]
+  Dokumen Rujukan : [nama dokumen master yang relevan, misal: design-decisions.md ADR-040]
+                    → "[kutipan langsung bagian yang relevan dari dokumen tersebut]"
+```
+
+> **Jika tidak ada dokumen yang membahas topik koreksi ini:**
+> Wajib dinyatakan secara eksplisit:
+> `⚠️ Belum pernah dibahas/didokumentasikan — kandidat GAP baru. Perlu ditambahkan ke design-decisions.md atau referensi terkait.`
+
+**Contoh konkret:**
+```
+KOREKSI TERCATAT:
+  Input user      : "saya mau buat efek es di lengan kaelen"
+  Rekonstruksi    : "Membuat shader es baru dari awal"
+  Koreksi benar   : "Mengembangkan FX_CrystalJointFriction yang sudah ada (ADR-041)"
+  Pola error      : Kata "buat" → saya asumsikan CREATE, padahal maksudnya EXTEND
+  Dokumen Rujukan : design-decisions.md (ADR-041)
+                    → "Layer 3 (Olecranon Shingle System): memancarkan serpihan uap es beku
+                       FX_CrystalJointFriction saat fleksi siku ≥ 90°"
 ```
 
 Akumulasi catatan ini adalah **satu-satunya sumber data nyata** yang membuat sistem semakin akurat dari waktu ke waktu.

@@ -55,7 +55,7 @@ Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
 - **Unreal Engine 5 (Game Engine & Systems)**:
   - Rendering 3D modern (Lumen Lighting GI, Nanite, Niagara Particles untuk uap es & percikan hangat lentera, Lightmass hybrid).
   - Character Controller 3D dengan *Adaptive Dynamic Camera* (Eksplorasi FOV 78° vs Duel Lock-On FOV 70° berbasis Quaternion SLERP).
-  - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 3 frame.
+  - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 50ms (GAS `UAbilityTask_HitStop` Delta-Time Accumulator — ADR-040).
   - Dynamic XPBD Chaos Cloth Simulation pada Syal Aina dan jubah.
 
 ### 1.5 Mandat Anti-RPG Konvensional (Batasan Desain Progresi & Larangan Mekanik)
@@ -100,6 +100,7 @@ Seluruh AI Agent DILARANG KERAS mengusulkan, merancang, atau mengimplementasikan
 | material PBR, crystal ice shader, 2700K lighting | Art Director | — | Blender / Shaders | Shader material & render pass |
 | combat 3D, FSM, third-person controller, camera | Game Engineer | — | Unreal Engine 5 | Blueprint / C++ Character Class & FSM |
 | verifikasi komersial, 3D visual QC, runtime 60 FPS | QC Agent | — | Test Runners | Laporan QC 4-Tier + Render Bukti |
+| prompt ambigu, intent unclear, rekonstruksi intent, cek dokumen | ITS Protocol | — | `prompt_refinement/SKILL.md` | Header ITS + Rencana Perubahan + Konfirmasi |
 
 ---
 
