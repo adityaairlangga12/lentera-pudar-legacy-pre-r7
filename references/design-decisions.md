@@ -431,6 +431,25 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Frekuensi Checkpoint**: 1 Major Checkpoint (Altar Duka) + 2–3 Minor Checkpoints (Breather Rooms) per sektor (interval 4–6 menit eksplorasi).
 - **Dampak**: Menjaga imersi emosional dan integritas artistik dunia tanpa menghukum pemain secara frustratif atau merusak atmosfer melankolis game.
 
+---
+
+### ADR-036: Standardisasi Skenario & Naskah Step-by-Step Tutorial Prolog Onboarding (Diegetic Walkthrough, Contextual Glyphs, & Fail-Safe Feedback)
+- **Tanggal**: 2026-08-17
+- **Status**: Accepted (Master Prologue Tutorial Standard)
+- **Konteks**: Menetapkan naskah walkthrough terperinci langkah-demi-langkah pengenalan seluruh kontrol dan mekanik dasar dari detik pertama Kaelen membuka mata hingga memasuki gerbang Sektor 1, mematuhi prinsip Level as Tutorial tanpa teks instruksi panjang.
+- **Keputusan Terpilih**: 
+  1. **6 Langkah Onboarding Sekuensial**:
+     - Step 1: Gerak Dasar & Cahaya Syal ➔ Ceruk Makam Gelap Gulita.
+     - Step 2: Light Punch ➔ Stalagmit kristal es rapuh destructible.
+     - Step 3: Heavy Cursed Ice Strike ➔ Lempengan es tebal (+10 Curse Meter feedback).
+     - Step 4: 12-Frame Tight Parry ➔ Arena 1v1 terkontrol The Echo (windup 18f, hit-stop 3f, stagger 3s).
+     - Step 5: Sealed Eye Perception ➔ Jurang buntu, jembatan memori es (+3 Curse/s).
+     - Step 6: Altar Duka 1 Sacrifice ➔ Pemendekan Syal Tahap 1, unlock *Fracture of Denial*, gerbang S1 terbuka.
+  2. **Tiga Komponen per Langkah**: Menyertakan Ruang/Setting, Trigger alami, dan Fail-Safe diegetik tanpa pesan kegagalan buatan.
+  3. **Contextual Glyphs & Seamless Transition**: Petunjuk tombol hanya muncul lembut pada radius < 2m dan memudar seketika setelah interaksi berhasil.
+- **Dampak**: Memastikan onboarding pemain berjalan mulus, imersif, dan terintegrasi penuh ke dalam sistem gameplay dan cerita sejak detik pertama.
+
+
 
 
 
