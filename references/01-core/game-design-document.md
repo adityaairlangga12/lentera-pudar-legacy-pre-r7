@@ -288,7 +288,7 @@ stateDiagram-v2
 2. **Heavy Cursed Strike / Ice Palm Strike**:
    Hantaman cakar kristal es tangan kiri yang memicu ledakan kristal es area (`#4A6FA5`). Menghasilkan *stagger* besar pada musuh, namun menaikkan *Curse Meter* Kaelen sebesar +10%.
 3. **Tight Parry Window & Deflect**:
-   Jendela tangkisan presisi (12 frame / 0.2 detik). Tangkisan sukses memicu efek *hit-stop* 3-frame, pecahan bunga api emas Aina, dan membuka ruang untuk *Parry Counter* mematikan.
+   Jendela tangkisan presisi (12 frame / 0.2 detik). Tangkisan sukses memicu efek *hit-stop* 50ms (GAS `UAbilityTask_HitStop` Delta-Time Accumulator), pecahan bunga api emas Aina, dan membuka ruang untuk *Parry Counter* mematikan.
 4. **Evade Dash**:
    Gerakan meluncur cepat ke samping/belakang meninggalkan jejak percikan api emas syal Aina (`#F4B860`), memiliki *invulnerability frames* (i-frames) singkat.
 

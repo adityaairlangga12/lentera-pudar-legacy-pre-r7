@@ -57,13 +57,15 @@
 1. **Import Base Mesh & Validasi Bony Landmarks**: Masukkan base mesh ke Blender 5.2 LTS, verifikasi *Bony Landmarks* (Acromion, Clavicle, Olecranon, Iliac Crest, Patella, Malleolus) terbaca jelas sebagai titik tumpu rig.
 2. **Penyusunan Armature Standar**: Gunakan Rigify / custom rig yang kompatibel dengan hierarki UE5 Humanoid (`Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`).
 3. **Rigging Asimetris & Dual-Mode Scarf**: Buat rantai tulang jari tangan kanan, 5 cakar kristal es tangan kiri (`Talon_01..05`), dan rantai 5-bone syal (`Scarf_01..05`).
-4. **Weight Painting Presisi**: Lakukan skinning manual pada sendi rawan pinching (ketiak, siku, lutut, pangkal paha).
+4. **Weight Painting Presisi & Tri-Layer Biomechanical Shingling**:
+   - Lakukan skinning manual pada sendi rawan pinching (ketiak, siku, lutut, pangkal paha).
+   - **Lengan Es Kiri (ADR-041)**: Layer 1 daging subsurface diberi *smooth skinning*, Layer 2 kluster prisma utama diberi bobot $100\%$ kaku (*rigid*) ke tulang humerus dan radius/ulna tanpa gradient falloff, dan Layer 3 (engsel siku Olecranon) disusun sebagai lempeng prisma bertingkat (*interlocking shingles*) yang meluncur tumpang-tindih saat fleksi $\ge 90^\circ$ untuk mencegah distorsi elastis/karet.
 5. **Setup Corrective Shape Keys (Pose-Driven Morphs)**:
    - Buat shape key koreksi volume pada fleksi siku 140° (+ Muscle Bulge bisep).
    - Buat shape key koreksi pada elevasi bahu dan fleksi lutut 140°.
    - Hubungkan shape keys ke rotation driver tulang terkait.
 6. **Set Batas Rotasi Sendi (Joint Constraint Limits)**: Kunci limit rotasi anatomis (Siku 0°–145°, Lutut 0°–140°, Tulang Belakang $\pm 35^\circ–45^\circ$) agar terhindar dari deformasi patah saat blend tree.
-7. **Uji Deformasi Ekstrem & Kinetic Chain**: Uji pose jongkok penuh, pukulan cakar es dengan rotasi panggul-tulang belakang, dan kuda-kuda dash.
+7. **Uji Deformasi Ekstrem & Kinetic Chain**: Uji pose jongkok penuh, pukulan cakar es dengan rotasi panggul-tulang belakang, fleksi siku 145° (uji zero rubbery artifact), dan kuda-kuda dash.
 8. **Ekspor & Setup Control Rig di UE5**: Ekspor FBX Skeletal Mesh, konfigurasi Control Rig & IK Foot Placement pada kontur lantai dungeon.
 9. **Jalankan DoD Rigging & Animasi**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.C).
 10. **Commit Version Control**.
@@ -76,14 +78,17 @@
 2. **Pembuatan Pola Drapery**: Buat pola kain di Marvelous Designer / Blender cloth sculpting sebelum disimulasikan.
 3. **Konfigurasi Pinning Points**: Kunci titik leher melingkar penuh untuk syal Aina; kunci 2 titik bahu untuk jubah.
 4. **Input Parameter Solver UE5 Chaos Cloth**: Masukkan Stiffness, Damping, Solver Iterations (8–12 iterasi), dan Wind Response Multiplier (1.2x untuk syal Aina).
-5. **Uji 4 Skenario Gerak Wajib**:
+5. **Handoff Transisi Halus & Pre-Roll (ADR-038 & ADR-040)**:
+   - Konfigurasi *Cloth Physical Blend Weight Curve* (0.0 ➔ 1.0) berdurasi 0.5 detik (15 frame @30fps) saat cutscene menyerahkan kontrol ke gameplay.
+   - Pada pertukaran mesh syal modular (`SK_Scarf_Stage1..Stage4`), aktifkan simulasi *5-Frame Physics Pre-Roll Warm-Up* tersembunyi off-screen selama blackout cutscene Altar Duka sebelum fade-in.
+6. **Uji 4 Skenario Gerak Wajib**:
    - Diam (*Idle $0\text{ cm/s}$*)
    - Berjalan (*Walk $150\text{ cm/s}$*)
    - Berlari (*Sprint $400\text{ cm/s}$*)
    - Melesat (*Evade Dash*)
-6. **Inspeksi Clipping**: Periksa apakah kain menembus geometri tubuh; sesuaikan collision capsule jika ditemukan overlap.
-7. **Jalankan DoD Cloth**: Verifikasi checklist fisik kain ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.C).
-8. **Commit Version Control**.
+7. **Inspeksi Clipping**: Periksa apakah kain menembus geometri tubuh; sesuaikan collision capsule jika ditemukan overlap.
+8. **Jalankan DoD Cloth**: Verifikasi checklist fisik kain ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.C).
+9. **Commit Version Control**.
 
 ---
 

@@ -25,7 +25,7 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - [ ] Nama aset mengikuti standar konvensi baku (`SK_Kaelen_Body`, `SM_Crypt_Pillar_01`).
 - [ ] Topologi bersih: Nol non-manifold geometry, tidak ada n-gon bermasalah pada area deformasi.
 - [ ] UV Unwrap bersih tanpa overlap tidak disengaja; seam ditempatkan tersembunyi.
-- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)).
+- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)).
 - [ ] Skala dan orientasi benar saat diimpor ke UE5 ($1\text{ unit} = 1\text{ cm}$, $+Z$ Up, $+Y$ Forward).
 - [ ] LOD tersedia untuk aset berulang (prop lingkungan dan musuh umum).
 - [ ] Custom collision mesh sudah dikonfigurasi (bukan auto-convex kasar untuk geometri kompleks).
@@ -38,10 +38,13 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - [ ] Kontras suhu warna Kelvin (2700K vs 6500K) diverifikasi secara visual pada scene UE5.
 - [ ] Lolos uji simulasi filter buta warna (*Colorblind Accessibility Check*).
 
-### C. DoD — Rigging & Animasi
+### C. DoD — Rigging, Biomekanika & Animasi
 - [ ] Hierarki Skeleton humanoid kompatibel dengan UE5 Control Rig dan Animation Retargeting.
+- [ ] **Tri-Layer Biomechanical Shingling (ADR-041)**: Uji fleksi siku $145^\circ$ pada lengan es Kaelen terbukti bebas dari distorsi elastis/karet (*zero rubbery deformation*).
 - [ ] Rantai tulang syal (*5-Bone Spring Chain*) diuji pada 3 skenario gerakan (Idle, Jog, Evade Dash) tanpa clipping parah ke tubuh.
+- [ ] **Handoff Kain Syal & Pre-Roll (ADR-040)**: Transisi cutscene ke gameplay terbukti mulus via *Cloth Physical Blend Weight Curve* 0.5s dan *5-Frame Physics Pre-Roll Warm-Up*.
 - [ ] Animasi combat memiliki frame *anticipation*, *impact*, dan *follow-through* (12 Prinsip Animasi Disney).
+- [ ] **Hit-Stop GAS Presisi 50ms**: Durasi hentakan benturan `UAbilityTask_HitStop` terverifikasi konstan 50ms di 30 FPS, 60 FPS, maupun 120 FPS.
 - [ ] Locomotion Blend Tree berjalan mulus tanpa fenomena *foot sliding*.
 - [ ] Inverse Kinematics (IK) kaki aktif menyesuaikan kontur lantai dungeon yang tidak rata.
 
