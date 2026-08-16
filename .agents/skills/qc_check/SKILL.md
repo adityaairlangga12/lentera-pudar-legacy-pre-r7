@@ -126,9 +126,26 @@ Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi da
 - **Cloth / XPBD Physics** ➔ Verifikasi Syal Aina (Chaos Cloth), jubah kelana Kaelen, dan *Hybrid Hair System*.
 - **Level & Collision Layout** ➔ Verifikasi *Safe Archway Checkpoints*, *World Partition Streaming*, dan *BP_SpectralLandingZone*.
 
+## 5. Protokol Anti-False-Negative (Adversarial QC Mandate)
+
+QC yang hanya memverifikasi checklist DoD TIDAK CUKUP untuk menemukan bug — checklist hanya mengonfirmasi kesesuaian spesifikasi, bukan ketahanan terhadap *edge case*. Setiap sesi QC wajib menyertakan usaha aktif mencari kegagalan sistem:
+
+1. **Wajib Minimal 3 Skenario Adversarial per Modul/Sistem**:
+   - Skenario dirancang sengaja untuk memicu anomali, *race condition*, tumpang tindih state mesin, atau kegagalan logika.
+2. **Dokumentasi Hasil Skenario Wajib**:
+   - Format pencatatan: `"Dicoba: [deskripsi skenario adversarial] ➔ Hasil: [tidak ada anomali / ditemukan bug]"`
+   - Laporan "Nol Bug" tanpa rincian skenario adversarial dianggap **TIDAK VALID**.
+3. **Penandaan First-Pass Clean**:
+   - Sesi QC perdana untuk sistem yang belum pernah diuji sebelumnya jika tidak menemukan bug **WAJIB** berstatus:  
+     `⚠️ First-Pass Clean — Perlu Verifikasi Independen`  
+     (Bukan langsung `Verified & Approved`).
+   - Status `Verified & Approved` penuh hanya sah setelah $\ge 2$ sesi QC terpisah dengan variasi skenario adversarial berbeda.
+4. **Pemicu Audit Meta**:
+   - Jika 3 laporan QC berturut-turut untuk sistem berbeda semuanya mengklaim "Nol Bug", audit meta terhadap standar keketatan pengujian wajib dipicu.
+
 ---
 
-## 5. Format Laporan QC Wajib (Standardized Template)
+## 6. Format Laporan QC Wajib (Standardized Template)
 
 ```markdown
 # 🛡️ 3D Quality Control Inspection Report
@@ -138,6 +155,7 @@ Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi da
 - **Commit / Versi Target**: [Hash commit git & path file aktual]
 - **Status Pra-QC (Dari Pembuat)**: `Ready for QC / Menunggu Verifikasi`
 - **Waktu Eksekusi QC**: [Timestamp]
+- **QC Pass Number**: [Pass 1 (First-Pass) / Pass 2 (Independent Re-verification)]
 
 ### 📋 Checklist Evaluation (6-DoD & 4-Tier):
 - [x] Tier 1: 3D Visual & Material Fidelity (The Triad & Texel Density) — PASS
@@ -145,6 +163,20 @@ Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi da
 - [x] Tier 3: Input, Save & Platform Compliance — PASS
 - [x] Tier 4: Rigging & Export Integrity — PASS
 - [x] Emotional Gate: Intended vs Perceived Framework — PASS / [Needs Human Playtest Validation]
+
+### 🥊 Pengujian Skenario Adversarial (Anti-False-Negative):
+1. **Skenario Adversarial 1**:
+   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
+   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
+   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
+2. **Skenario Adversarial 2**:
+   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
+   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
+   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
+3. **Skenario Adversarial 3**:
+   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
+   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
+   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
 
 ### 🔄 Sistem Terdampak & Hasil Regression Check:
 | Sistem Dependen Terdampak | Potensi Risiko Dampak | Hasil Uji Regresi |
@@ -158,8 +190,9 @@ Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi da
 | `BUG-XXX-001` | 1. ... 2. ... | Sektor X, Commit Y | Open / Fixed / Verified |
 
 ### 🎯 Keputusan Akhir QC Gate:
-**STATUS AKHIR QC: [VERIFIED & APPROVED / REJECTED]**
+**STATUS AKHIR QC: [⚠️ First-Pass Clean — Perlu Verifikasi Independen / VERIFIED & APPROVED / REJECTED]**
 - **Severity (Jika Reject)**: [Blocking / Critical / Major / Minor]
-- **Catatan & Rekomendasi**: [Langkah teknis perbaikan lanjutan]
+- **Catatan & Tindakan Lanjutan**: [Langkah verifikasi atau perbaikan teknis]
 ```
+
 

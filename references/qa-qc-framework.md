@@ -133,3 +133,24 @@ Sebelum suatu perubahan pada sistem inti dinyatakan selesai, wajib dilakukan pen
 - **Ubah skema level / transisi arena** ➔ Cek ulang checkpoint respawn, *World Partition streaming*, dan rute *Local World Awareness*.
 
 Setiap laporan QC untuk perubahan sistem inti wajib menyertakan bagian **"Sistem Terdampak & Hasil Regression Check"**, terpisah dari checklist DoD utama.
+
+---
+
+## 8. Protokol Anti-False-Negative (Adversarial QC Mandate)
+
+QC yang hanya memverifikasi checklist DoD (kepatuhan terhadap spesifikasi) TIDAK CUKUP untuk menemukan bug — checklist memverifikasi "apakah sudah sesuai rancangan", bukan "apakah bisa dijebol". Setiap sesi QC wajib menyertakan usaha aktif mencari kegagalan, dengan aturan berikut:
+
+1. **Wajib Coba Minimal 3 Skenario Adversarial per Sistem yang Diuji**:
+   - Skenario yang sengaja dirancang untuk memicu *edge case*, tabrakan state logic, atau input ekstrem — bukan jalur pemakaian normal.
+   - *Contoh untuk sistem respawn*: Apa yang terjadi kalau Kaelen mati persis saat animasi interaksi Altar Duka sedang berjalan? Kalau kalah 2 kali berturut-turut dalam durasi $<1\text{ detik}$? Kalau respawn terjadi saat kamera cutscene sedang aktif?
+2. **Kewajiban Dokumentasi Skenario Adversarial**:
+   - Seluruh skenario adversarial yang diuji wajib dicantumkan di laporan QC, baik yang memicu kegagalan maupun yang tidak.
+   - Format wajib: `"Dicoba: [deskripsi skenario adversarial] ➔ Hasil: [tidak ada anomali / ditemukan bug]"`
+   - Laporan "Nol Bug" tanpa rincian skenario adversarial yang dicoba dianggap **TIDAK VALID**.
+3. **Penandaan First-Pass Clean**:
+   - Jika laporan QC melaporkan "Nol Bug" pada percobaan pertama suatu sistem yang baru dibuat/diubah, statusnya **WAJIB** ditandai sebagai:  
+     `⚠️ First-Pass Clean — Perlu Verifikasi Independen`  
+     (DILARANG langsung memberi status `Verified / Approved`).
+   - Status **`Verified`** penuh baru sah diberikan setelah minimal 2 sesi QC terpisah (dengan skenario adversarial berbeda) sama-sama tidak menemukan masalah.
+4. **Pelacakan Pola Mencurigakan (Meta-Audit Trigger)**:
+   - Jika 3 laporan QC berturut-turut (untuk sistem berbeda) semuanya melaporkan "Nol Bug", ini **WAJIB memicu audit meta** terhadap kriteria QC — mengevaluasi apakah penguji/AI terlalu pasif atau bias meloloskan tanpa pengujian mendalam.
