@@ -290,19 +290,23 @@ flowchart TD
 
 ### 9.1 Standardisasi Pemodelan & Rigging di Blender 5.2 LTS
 - **Proporsi Mesh**: Karakter 1:6.8 high-detail stylized-realistic (**40.000–60.000 tris untuk Hero Character LOD0**; deform base mesh pra-subdivisi berkisar 15.000–30.000 tris sebelum high-frequency surface detail di-bake ke normal map).
+- **Hybrid Hair System**: Rambut perak Kaelen (`#C9CDD1`) dimodelkan dengan *Solid Geometry Base Mesh* (massa volume utama) dipadu *Alpha Strip Cards* (helai acak alami/flyaways) — mengadopsi standar teknis Kena.
 - **Hierarki Armature Biomekanik**:
   - `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
-  - **Rantai Syal Dinamis**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 4.
+  - **Rantai Syal Dinamis (Dual-Mode)**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif Altar Duka) — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) Bab 4.
 - **Konsistensi Bone Roll**: Bone Roll terkunci rapi ($+Y$ along bone, $+Z$ normal forward).
 - **Format Ekspor**: glTF 2.0 / FBX deterministik ($+Z$ Up, $+Y$ Forward) ke Unreal Engine 5.
 
-### 9.2 Sistem Shading & Rendering di Unreal Engine 5
-1. **Crystal Ice Shader (M_Cursed_Crystal)**:
-   - Transmissive Surface, Refraction index 1.31 (Es), Subsurface Scattering, dan Emissive Fresnel (`#4A6FA5` & `#7EE8FA`).
-   - Parameter dinamis `Curse_Spread` mengontrol perambatan material kristal es ke seluruh tubuh mesh.
-2. **Warm Fabric Shader (M_Aina_Scarf)**:
+### 9.2 Sistem Shading, Rendering & Restorasi Lingkungan di Unreal Engine 5
+1. **Stylized-Realistic PBR (Zero Black Outline)**: Shading PBR murni tanpa post-process cel-shading outline hitam.
+2. **Crystal Ice Shader (M_Cursed_Crystal)**:
+   - Transmissive Surface, Refraction index 1.31 (Es), Subsurface Scattering (Radius 0.5–1.2cm `#7EE8FA`), dan Emissive Fresnel (`#4A6FA5` & `#7EE8FA`).
+   - Parameter dinamis `Curse_Spread` mengontrol perambatan material kristal es ke seluruh tubuh mesh via MPC.
+3. **Warm Fabric Shader (M_Aina_Scarf)**:
    - Velvet / Cloth shading model, Two-Sided, Emissive 2700K (`#F4B860`), terintegrasi dengan *Chaos Cloth Solver* di UE5.
-3. **Niagara FX Systems**:
+4. **Render Target Mask Dynamic Thawing (Pencairan Es Altar Duka)**:
+   - Pengaktifan Altar Duka menulis mask pemuaian radius melingkar ke Render Target lantai dungeon, mentransisikan es retak menjadi batu hangat (`#5C5A55`) secara live.
+5. **Niagara FX Systems**:
    - `FX_Warmth_Embers`: Partikel percikan api emas syal Aina yang menyebar di area dungeon yang telah disucikan.
    - `FX_Frost_Mist`: Uap beku dingin di sekitar cakar es Kaelen.
    - `FX_Hit_Sparks`: Percikan benturan saat eksekusi parry sukses.

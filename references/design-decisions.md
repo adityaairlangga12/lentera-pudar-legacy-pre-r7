@@ -178,6 +178,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   4. **Protokol Gap-Handling Eksplisit**: Mengunci aturan bahwa kebutuhan di luar dokumen wajib ditandai sebagai GAP terukur dan dilarang diimprovisasi secara diam-diam.
 - **Dampak**: Eksekusi multi-agent dan developer memiliki resep operasional baku yang deterministik, menutup celah halusinasi, dan menjamin hasil kerja selalu lolos 6 Pilar DoD.
 
+---
+
+### ADR-018: Standardisasi Pipeline 3D Art Kena-Grade (Hybrid Hair, Dual-Mode Scarf, & Render Target Thawing)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Technical Art Decision)
+- **Konteks**: Mematangkan fidelity visual 3D dan efisiensi produksi dengan mengadopsi cetak biru industri dari studio Ember Lab (*Kena: Bridge of Spirits*).
+- **Keputusan Terpilih**: 
+  1. **Stylized-Realistic PBR Tanpa Outline**: Menetapkan visual bebas garis hitam (*zero black outline / non-cel-shaded*), memisahkan siluet melalui kontras temperatur Kelvin (2700K vs 6500K) dan micro-surface texturing.
+  2. **Hybrid Hair System**: Rambut perak Kaelen (`#C9CDD1`) dimodelkan dengan perpaduan *Solid Geometry* (massa volume utama) + *Alpha Strip Cards* (helai acak alami) untuk visual tajam dan hemat komputasi.
+  3. **Dual-Mode Scarf Animation**: Mengadopsi kombinasi *UE5 Chaos Cloth Simulation* untuk gameplay aksi 60 FPS dan *Hand-Keyframed Control Rig* untuk cutscene naratif Altar Duka.
+  4. **Render Target Mask Dynamic Thawing**: Mengadopsi mekanisme *Deadzone Regrowth* Kena untuk pencairan lapisan es secara live di Altar Duka via Render Target projection.
+  5. **Subsurface Scattering Ganda**: Menerapkan SSS pada kristal es (`#7EE8FA` radius 0.5–1.2cm) dan profil SSS kulit manusia (`#D8B79A`) untuk mencegah *uncanny valley*.
+- **Dampak**: Kualitas visual 3D setara standar komersial papan atas (*Pixar-like interactive fantasy*), kinerja runtime stabil di 60 FPS, dan adegan Altar Duka memiliki dampak emosional sinematik maksimal.
+
+
 
 
 

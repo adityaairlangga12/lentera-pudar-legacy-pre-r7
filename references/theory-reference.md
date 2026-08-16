@@ -160,10 +160,12 @@ Transisi mulus antar animasi (diam → jalan → lari → serangan) diatur lewat
 
 ---
 
-## 10. Teori Rigging & Simulasi Kain
+## 10. Teori Rigging, Simulasi Kain & Rambut (Kena Benchmark)
 
-### A. Skeleton Hierarchy & Spring Bones
-Syal Aina memerlukan *spring bone chain* terpisah dari skeleton utama Kaelen — tulang tambahan yang bereaksi ke gravitasi/gerakan tapi tidak dikontrol animator secara manual, prinsip umum di karakter dengan aksesori kain/rambut panjang.
+### A. Skeleton Hierarchy, Spring Bones & Dual-Mode Strategy
+Syal Aina memerlukan *spring bone chain* 5-tulang terpisah dari skeleton utama Kaelen. Mengadopsi strategi **Dual-Mode Animation** (belajar dari *Ember Lab*):
+- **Mode Gameplay**: Digerakkan oleh simulasi fisika *UE5 Chaos Cloth Solver* untuk efisiensi komputasi runtime 60 FPS.
+- **Mode Sinematik**: Digerakkan oleh *Hand-Keyframed Control Rig* agar sutradara/animator memiliki kontrol ekspresi puitis mutlak pada cutscene emosional (Altar Duka & Boss Death).
 
 ### B. Cloth Simulation Constraints
 Simulasi kain butuh *pinning point* (titik tetap, misal syal yang melingkar di leher) dan parameter *stiffness/damping* supaya tidak terlihat terlalu kaku atau terlalu lembek seperti agar-agar — penting untuk kredibilitas visual syal Aina di UE5.
@@ -171,21 +173,27 @@ Simulasi kain butuh *pinning point* (titik tetap, misal syal yang melingkar di l
 ### C. Facial Rigging: Blend Shapes vs Bone-based
 Untuk ekspresi close-up ala Hellblade II, blend shapes (morph target) biasanya lebih presisi untuk mikro-ekspresi wajah dibanding rig tulang murni — relevan untuk momen kamera dekat di Altar Duka.
 
+### D. Hybrid Hair Geometry (Solid Mesh + Alpha Cards)
+Mengadopsi teknik rambut Kena: memadukan **Solid Geometry** (untuk bentuk massa volume utama dan respons highlight pencahayaan tegas) dengan **Alpha Cards** (strip helai transparan di permukaan luar untuk memberikan ketidakteraturan alami/flyaways) — menjaga siluet anime bersih tanpa beban strand groom berlebih.
+
 ---
 
 ## 11. Teori Shader & Material (Technical Art)
 
-### A. PBR (Physically Based Rendering)
-Material di UE5 dibangun dari kombinasi *Base Color*, *Roughness*, *Metallic*, dan *Normal Map* untuk mendekati perilaku cahaya di dunia nyata. Agent perlu paham ini sebagai kerangka umum saat membuat material, bukan angka acak.
+### A. PBR (Physically Based Rendering) & Zero Black Outline
+Material di UE5 dibangun dari kombinasi *Base Color*, *Roughness*, *Metallic*, dan *Normal Map* untuk mendekati perilaku cahaya di dunia nyata. Visual game adalah *Stylized-Realistic non-outline* (bukan cel-shading bergaris hitam).
 
-### B. Subsurface Scattering (SSS) untuk Kristal Es
-Es tampak "hidup" karena cahaya menembus sedikit ke dalam material sebelum keluar lagi (bukan solid opaque) — parameter SSS penting untuk kristal es Kaelen supaya terasa organik, bukan seperti kaca/plastik biasa.
+### B. Subsurface Scattering (SSS) untuk Kulit & Kristal Es
+Es tampak "hidup" karena cahaya menembus sedikit ke dalam material sebelum keluar lagi (bukan solid opaque) — parameter SSS radius 0.5–1.2cm penting untuk kristal es Kaelen (`#7EE8FA`) dan SSS Human Skin pada kulit (`#D8B79A`) agar terhindar dari kesan plastik *uncanny valley*.
 
 ### C. Emissive Material untuk Sumber Cahaya Bergaya
-Syal Aina dan kristal kutukan sebaiknya pakai *emissive* yang terhubung ke parameter Curse Meter secara real-time (material parameter collection di UE5), bukan warna emissive statis — supaya perubahan intensitas terlihat halus, bukan on/off kasar.
+Syal Aina dan kristal kutukan memakai *emissive* yang terhubung ke parameter Curse Meter secara real-time via *Material Parameter Collection (MPC)* di UE5, bukan warna emissive statis — supaya perubahan intensitas terlihat halus, bukan on/off kasar.
 
 ### D. Niagara Particle System sebagai Bahasa Visual
-Partikel bukan cuma dekorasi — di Lentera Pudar, partikel (kunang-kunang cahaya syal, serpihan es pecah) berfungsi sebagai *indikator status* juga, selaras prinsip "makhluk kecil pendukung" dari artstyle Kena yang sudah dibahas di moodboard.
+Partikel bukan cuma dekorasi — di Lentera Pudar, partikel (bara api emas `FX_Warmth_Embers`, uap beku `FX_Frost_Mist`, dan percikan parry) berfungsi sebagai indikator status diegetik.
+
+### E. Render Target Masking untuk Dynamic Environmental Restoration
+Mengadopsi sistem *Deadzone Regrowth* Kena: transisi pencairan es saat Altar Duka dinyalakan dilakukan dengan menulis pemuaian mask ke **Render Target** secara live. Shader lantai mendeteksi mask ini untuk mentransisikan es retak menjadi batu kuno hangat secara organik, memicu interaksi partikel dan sistem angin (*Wind System*) secara sinematik.
 
 ---
 

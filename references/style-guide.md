@@ -55,14 +55,17 @@
 
 ---
 
-## 2. Parameter Material PBR & Subsurface Scattering (SSS)
+## 2. Parameter Material PBR, Subsurface Scattering (SSS) & Artstyle Stylized-Realistic
+
+> **Prinsip Dasar Artstyle**: *Stylized-Realistic PBR murni tanpa garis outline hitam (Zero Black Outline/Cel-Shading)*. Pemisahan bentuk dibangun melalui kontras pencahayaan Kelvin (2700K vs 6500K) dan micro-surface texturing yang tajam (kain tenun lusuh, batu berpori, lumpur).
 
 | Material | Base Color | Roughness | Metallic | SSS Radius / Scattering Color |
 |---|---|---|---|---|
 | **Kristal Es Kaelen (`M_Cursed_Crystal`)** | `#4A6FA5` | 0.15–0.30 | 0.0 | Radius: 0.5–1.2 cm, Scatter Color: `#7EE8FA` |
 | **Es Dekoratif Dungeon** | `#4A6FA5` | 0.25–0.40 | 0.0 | Roughness lebih tinggi agar tidak mencuri fokus hero |
-| **Kain Jubah Kaelen (`M_Tunic`)** | `#2A211C` | 0.55–0.70 | 0.0 | — (Kain kasar tebal) |
+| **Kain Jubah Kaelen (`M_Tunic`)** | `#2A211C` | 0.55–0.70 | 0.0 | — (Kain kasar tebal dengan micro-weathering) |
 | **Kain Syal Aina (`M_Aina_Scarf`)** | `#F4B860` | 0.35–0.50 | 0.0 | Subsurface Cloth Shading aktif |
+| **Kulit Kaelen (`M_Skin_Hero`)** | `#D8B79A` | 0.40–0.60 | 0.0 | SSS Profile Human Skin (Mencegah *uncanny valley*) |
 | **Kulit Eyepatch (`M_Leather_Dark`)** | `#141013` | 0.60–0.75 | 0.0 | Kulit doff tersamak |
 | **Batu Reruntuhan (`M_Stone_Ruins`)** | `#5C5A55` | 0.70–0.85 | 0.0 | Tekstur batu kuno berpori |
 | **Logam Zirah Boss (Lord Alden dkk)** | Variatif | 0.25–0.45 | 0.7–0.9 | Baja berkarat/es menempel |
@@ -70,8 +73,9 @@
 
 ---
 
-## 3. Parameter Emissive Real-Time (Material Parameter Collection)
+## 3. Parameter Emissive Real-Time & Render Target Thawing System
 
+### A. Parameter Emissive Kristal Es (Material Parameter Collection)
 Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Material Parameter Collection* (MPC):
 
 | Rentang Curse Meter | Status Karakter | Intensitas Emissive | Karakteristik Visual |
@@ -81,10 +85,19 @@ Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Mat
 | **61–90%** | Bahaya | 4.0–6.0 | Es merambat ke bahu, berdenyut pelan (**Pulse: 0.8–1.2 Hz**). |
 | **91–100% (Surge)** | Kritis / Ledakan Es | 8.0–12.0 | Campuran pendaran putih 10–15%, berdenyut cepat (**Pulse: 2.0–3.0 Hz**). |
 
+### B. Render Target Mask Dynamic Thawing (Pencairan Es Altar Duka)
+- **Mekanisme**: Saat Altar Duka diaktifkan, Blueprint memproyeksikan mask pemuaian radius melingkar ke *Render Target* lantai arena.
+- **Transisi Shader**: Lapisan es retak (`#4A6FA5`, Roughness 0.22) bertransisi mulus menjadi batu kuno hangat (`#5C5A55`, Roughness 0.75) dengan partikel `FX_Warmth_Embers` menyebar organik.
+
 ---
 
-## 4. Parameter Simulasi Kain (Chaos Cloth & Spring Bones)
+## 4. Parameter Simulasi Kain & Dual-Mode Animation (Syal Aina & Jubah)
 
+### A. Dual-Mode Animation Pipeline
+1. **Mode Gameplay Runtime (Locomotion & Combat 60 FPS)**: Menerapkan **UE5 Chaos Cloth Solver** dan 5-bone spring chain untuk efisiensi performa dan respons inersia dinamis.
+2. **Mode Sinematik Naratif (Altar Duka & Boss Intro)**: Menerapkan **Hand-Keyframed Control Rig** pada rantai 5-bone syal untuk kontrol emosi puitis sutradara (syal memeluk leher, meredup, atau melambai terarah).
+
+### B. Parameter Solver Chaos Cloth
 | Parameter Fisika | Syal Aina (`M_Aina_Scarf`) | Jubah Kaelen (`M_Tunic`) |
 |---|---|---|
 | **Stiffness (Kekakuan)** | 0.4–0.6 (Lentur & meliuk ringan) | 0.6–0.8 (Tebal & berbobot inersia) |
@@ -181,11 +194,14 @@ Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Mat
 
 ---
 
-## 11. Anatomi Kaelen & Rigging Biomekanik
+## 11. Anatomi Kaelen, Rigging Biomekanik & Hybrid Hair System
 
-- **Tinggi & Proporsi**: Tinggi 1.78m, proporsi 1:6.8 atletis bergaya *FF7 Remake / Kena*.
+- **Tinggi & Proporsi**: Tinggi 1.78m, proporsi 1:6.8 atletis bergaya *FF7 Remake / Kena Grade*.
+- **Teknik Rambut Hibrida (Hybrid Hair Pipeline)**:
+  - **Solid Geometry Mesh**: Membentuk gumpalan massa utama rambut perak Kaelen (`#C9CDD1`) untuk siluet anime tegas dan respons cahaya specular yang kokoh.
+  - **Alpha Cards (Flyaways)**: Strip helai transparan di permukaan luar untuk memberikan ketidakteraturan alami (*organic imperfections*) tanpa beban komputasi strand groom.
 - **Hierarki Armature Utama**:
   - `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
   - **Lengan Kiri**: `Clavicle_L` ➔ `UpperArm_L` ➔ `Forearm_L` ➔ `Hand_L` ➔ `Talon_01..05` (Rig cakar es).
   - **Lengan Kanan**: `Clavicle_R` ➔ `UpperArm_R` ➔ `Forearm_R` ➔ `Hand_R` ➔ `Fingers_R` (Rig jari berban).
-  - **Rantai Syal**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) — konsisten dengan Bab 4 Simulasi Kain.
+  - **Rantai Syal Dual-Mode**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) — siap beralih antara Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene).
