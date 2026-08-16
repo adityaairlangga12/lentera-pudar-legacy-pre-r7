@@ -263,6 +263,21 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Pelaporan Jujur & Meta-Kognisi**: Menyajikan progress aktual secara transparan termasuk asumsi dan blocker aktif tanpa membulatkan status secara semu.
 - **Dampak**: Seluruh kolaborasi AI agent dan asisten teknis berjalan dengan integritas tinggi, zero fatal errors, dan hasil produksi yang dapat diandalkan secara komersial.
 
+---
+
+### ADR-024: Standardisasi Teori Fondasi 3D Expert (Topology, UV Seam, PBR Shading, Rigging Deformation, LOD & Baking Pipeline)
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master 3D Technical & Theoretical Standard)
+- **Konteks**: Menetapkan pemahaman mendalam mengenai alasan ilmiah dan mekanika di balik topologi edge flow, penempatan UV seam, sifat fisik PBR shading, skinning weight & corrective morphs, LOD siluet, dan baking normal/AO presisi.
+- **Keputusan Terpilih**: 
+  1. **Topologi Berorientasi Deformasi**: Mengharuskan edge flow mengikuti serat otot/sendi, larangan N-gon pada area gerak, dan penempatan pole strategis di area statis.
+  2. **Penempatan UV Seam Tersembunyi**: Menempatkan potongan UV pada lipatan anatomi dalam, perbatasan material, atau kurvatur tajam demi meminimalkan distorsi.
+  3. **Integritas Shading PBR**: Albedo murni tanpa baked lighting, Metallic biner 0/1, variasi micro-roughness, dan multi-layer blending untuk dynamic thawing.
+  4. **Skinning & Corrective Morphs**: Total weight sum $=1.0$ (maksimal 4 bone influences/vertex), corrective shape keys pada siku 140° + biceps bulge, serta IK/FK switching fungsional.
+  5. **LOD Berbasis Siluet & Baking Presisi**: Retensi siluet gameplay readability pada LOD, Tangent Space Normal Baking dengan Cage Mesh, dan pembatasan AO bake mikro agar tidak konflik dengan Lumen GI.
+- **Dampak**: Seluruh aset 3D (Kaelen, Boss, Sektor Dungeon) terbebas dari artefak shading, kerutan deformasi patah, distorsi tekstur UV, dan penurunan performa komputasi.
+
+
 
 
 

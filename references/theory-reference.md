@@ -166,13 +166,13 @@ Kombinasi Two-Bone IK dan Control Rig untuk adaptasi telapak kaki pada lantai du
 
 ---
 
-## 10. Teori Rigging, Anatomi Deformasi & Simulasi Kain
+## 10. Teori Rigging, Anatomi Deformasi & Simulasi Kain (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-3d-foundations.md))
 
 ### A. Titik Rujukan Tulang Baku (*Bony Landmarks*)
 Titik tulang permukaan yang wajib terbaca pada sculpt dan menjadi pivot bone rig: *Acromion & Clavicle* (bahu), *Olecranon* (siku), *Iliac Crest & Greater Trochanter* (panggul/hip), *Patella* (lutut), *Malleolus* (mata kaki), dan *Vertebra Prominens* (pangkal leher/postur).
 
 ### B. Deformasi Sendi & Corrective Shape Keys (Pose-Driven Morphs)
-Mencegah penyusutan volume (*volume loss / collapsing joints*) saat tekukan ekstrem:
+Mencegah penyusutan volume (*volume loss / collapsing joints*) saat tekukan ekstrem dengan weight sum $=1.0$ (maks 4 bone influence):
 - **Siku (Elbow fleksi 140°)**: Corrective morph memulihkan volume lipatan dalam siku dan memicu *Muscle Bulging* pada otot bisep.
 - **Bahu, Lutut & Pinggul**: Corrective morph menjaga tempurung patella dan tonjolan deltoid tetap kokoh saat kuda-kuda rendah.
 
@@ -192,10 +192,10 @@ Memadukan **Solid Geometry** (bentuk massa volume utama) dengan **Alpha Cards** 
 
 ---
 
-## 11. Teori Shader & Material (Technical Art)
+## 11. Teori Shader & Material Pipeline (Lihat [expert-3d-foundations.md](file:///d:/GodotProjects/Lentera-Pudar/references/expert-3d-foundations.md))
 
 ### A. PBR (Physically Based Rendering) & Zero Black Outline
-Material di UE5 dibangun dari kombinasi *Base Color*, *Roughness*, *Metallic*, dan *Normal Map* untuk mendekati perilaku cahaya di dunia nyata. Visual game adalah *Stylized-Realistic non-outline* (bukan cel-shading bergaris hitam).
+Material di UE5 dibangun dari kombinasi *Base Color* (flat tanpa baked lighting), *Roughness*, *Metallic* (biner 0 atau 1), dan *Tangent Space Normal Map* dengan Cage ray-casting. Visual game adalah *Stylized-Realistic non-outline* (bukan cel-shading bergaris hitam).
 
 ### B. Subsurface Scattering (SSS) untuk Kulit & Kristal Es
 Es tampak "hidup" karena cahaya menembus sedikit ke dalam material sebelum keluar lagi (bukan solid opaque) — parameter SSS radius 0.5–1.2cm penting untuk kristal es Kaelen (`#7EE8FA`) dan SSS Human Skin pada kulit (`#D8B79A`) agar terhindar dari kesan plastik *uncanny valley*.
@@ -207,7 +207,7 @@ Syal Aina dan kristal kutukan memakai *emissive* yang terhubung ke parameter Cur
 Partikel bukan cuma dekorasi — di Lentera Pudar, partikel (bara api emas `FX_Warmth_Embers`, uap beku `FX_Frost_Mist`, dan percikan parry) berfungsi sebagai indikator status diegetik.
 
 ### E. Render Target Masking untuk Dynamic Environmental Restoration
-Mengadopsi sistem *Deadzone Regrowth* Kena: transisi pencairan es saat Altar Duka dinyalakan dilakukan dengan menulis pemuaian mask ke **Render Target** secara live. Shader lantai mendeteksi mask ini untuk mentransisikan es retak menjadi batu kuno hangat secara organik, memicu interaksi partikel dan sistem angin (*Wind System*) secara sinematik.
+Mengadopsi sistem *Deadzone Regrowth* Kena: transisi pencairan es saat Altar Duka dinyalakan dilakukan dengan menulis pemuaian mask ke **Render Target** secara live. Shader lantai mendeteksi mask ini untuk mentransisikan es retak menjadi batu kuno hangat secara organik, memicu interaksi partikel dan sistem angin (*Wind System*) secara sinematik. Micro-AO tekstur dibatasi agar tidak bertabrakan dengan Lumen GI.
 
 ---
 
