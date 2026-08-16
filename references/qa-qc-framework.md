@@ -25,6 +25,7 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - [ ] Nama aset mengikuti standar konvensi baku (`SK_Kaelen_Body`, `SM_Crypt_Pillar_01`).
 - [ ] Topologi bersih: Nol non-manifold geometry, tidak ada n-gon bermasalah pada area deformasi.
 - [ ] UV Unwrap bersih tanpa overlap tidak disengaja; seam ditempatkan tersembunyi.
+- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
 - [ ] Skala dan orientasi benar saat diimpor ke UE5 ($1\text{ unit} = 1\text{ cm}$, $+Z$ Up, $+Y$ Forward).
 - [ ] LOD tersedia untuk aset berulang (prop lingkungan dan musuh umum).
 - [ ] Custom collision mesh sudah dikonfigurasi (bukan auto-convex kasar untuk geometri kompleks).

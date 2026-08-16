@@ -47,11 +47,14 @@
 ### C. Aturan Kontras & Desaturasi Sektor
 - **Rasio Kontras Keterbacaan**: Minimal **4.5:1** antara sumber hangat (Aina/UI) dan latar gelap dungeon (standar WCAG AA).
 - **Kurva Desaturasi Global Post-Process**:
-  - Sektor 1 (*The Silent Crypts*): **100%** saturasi warna.
-  - Sektor 2 (*The Blazing Frost*): **85%** saturasi.
-  - Sektor 3 (*The Hall of Mirrors*): **70%** saturasi.
-  - Sektor 4 (*The Abyss of Stillness*): **40–50%** saturasi (puncak kepasrahan & mati rasa visual).
-  - Sektor 5 (*The Dawning Altar*): Rebound bertahap ke **100%** saat fajar terbit.
+  - Sektor 1 (*The Silent Crypts*): **100%** saturasi warna (`LUT_Sector01_Denial`).
+  - Sektor 2 (*The Blazing Frost*): **85%** saturasi (`LUT_Sector02_Anger`).
+  - Sektor 3 (*The Hall of Mirrors*): **70%** saturasi (`LUT_Sector03_Bargaining`).
+  - Sektor 4 (*The Abyss of Stillness*): **40–50%** saturasi (puncak kepasrahan & mati rasa visual via `LUT_Sector04_Depression`).
+  - Sektor 5 (*The Dawning Altar*): Rebound bertahap ke **100%** saat fajar terbit (`LUT_Sector05_Acceptance`).
+
+### D. Implementasi Color Grading & Post-Process LUT
+Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara global melalui **Look-Up Table (LUT) 3D** di dalam UE5 `PostProcessVolume`, bukan dengan mengubah nilai albedo material satu per satu (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
 
 ---
 
@@ -125,8 +128,8 @@ Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Mat
 
 ---
 
-## 6. Budget Poligon (Poly Count) & Hierarki LOD
-
+## 6. Budget Poligon (Poly Count) & Texel Density
+ 
 | Kategori Aset 3D | Target Tris (LOD0) | Jumlah Level LOD | Karakteristik Pipeline |
 |---|---|---|---|
 | **Hero Character (Kaelen)** | 40,000–60,000 tris | LOD0 s.d. LOD3 (4 level) | Deformable Skeletal Mesh |
@@ -135,6 +138,11 @@ Shader kristal es terhubung secara dinamis ke parameter `Curse_Spread` pada *Mat
 | **Musuh Umum (Jiwa Beku)** | 8,000–15,000 tris | LOD0 s.d. LOD2 (3 level) | Instanced Skeletal Mesh |
 | **Prop Besar (Reruntuhan, Altar)** | 15,000–30,000 tris | Nanite-Enabled | Nanite Auto-LOD |
 | **Prop Kecil (Puing, Kristal Es)** | 500–3,000 tris | LOD0 s.d. LOD1 | Static Mesh Instancing |
+
+### Standar Texel Density
+- **Hero & Boss Karakter**: **$512\text{ px/m}$** (resolusi tinggi tajam untuk framing close-up kamera naratif).
+- **Environment Props & Modular Kit**: **$256\text{ px/m}$** (optimalisasi efisiensi memori tekstur VRAM).
+- **Teknik Produksi**: Mengadopsi *Trim Sheets & Texture Atlasing* untuk prop reruntuhan dungeon guna menekan draw call (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md)).
 
 ---
 

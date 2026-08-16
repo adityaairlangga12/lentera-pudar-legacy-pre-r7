@@ -207,6 +207,22 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   6. **Bahasa Tubuh Emosional (Grief Archetypes)**: Mengadaptasi postur Kaelen (Contrapposto saat Idle, tegap di S1–2, bungkuk kyphotic di S4, tenang di S5).
 - **Dampak**: Karakter Kaelen terasa berbobot, bernyawa, stabil secara fisiologis, dan bebas dari cacat geometri lipatan sendi.
 
+---
+
+### ADR-020: Standardisasi Tools Lanjutan, API Cheat Sheet, & Teknik Praktis 3D
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Technical Decision)
+- **Konteks**: Memperluas ekosistem tools resmi (Blender-Unreal Pipeline Plugin, ZBrush, Auto-Rig Pro, PCG Framework, Lightmass) serta menyediakan sintaks API anti-halusinasi dan teknik produksi praktis AAA (Trim Sheets, Texel Density, Modular Kit, LUTs).
+- **Keputusan Terpilih**: 
+  1. **Blender-Unreal Pipeline Plugin**: Mengadopsi addon resmi Epic Games untuk pipeline ekspor satu-klik langsung ke Content Browser UE5.
+  2. **API Cheat Sheet Baku**: Menyediakan referensi sintaks terverifikasi untuk modul `bpy` dan `unreal` dengan protokol *Inspect-Before-Execute* (introspeksi `dir()` / `help()`).
+  3. **Standar Texel Density**: Mengunci target $512\text{ px/m}$ untuk Hero & Boss, dan $256\text{ px/m}$ untuk Environment Props pada checklist DoD Model 3D.
+  4. **Trim Sheets & Texture Atlasing**: Menggabungkan tekstur arsitektur dungeon menjadi trim sheet modular untuk menghemat VRAM dan draw call.
+  5. **Modular Level Kit-Bashing (Grid 300cm)**: Menyusun geometri dungeon menggunakan modul grid konsisten $300\text{ cm}$.
+  6. **Color Grading via Post-Process LUTs**: Mengaplikasikan desaturasi per sektor (100% di S1 ke 40–50% di S4) melalui 3D LUTs di PostProcessVolume.
+- **Dampak**: Alur kerja multi-agent bebas dari kesalahan sintaks API fiktif, aset lingkungan teroptimasi secara profesional, dan tampilan visual antar sektor terkalibrasi secara sinematik.
+
+
 
 
 

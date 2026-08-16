@@ -5,13 +5,15 @@ description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, hier
 
 # Blender 5.2 LTS 3D High-Detail Mastery & UE5 Pipeline
 
-Skill ini memuat seluruh standar teknis pemodelan 3D, rigging, material, dan ekspor aset karakter/lingkungan untuk semesta 3D Action RPG *Lentera Pudar* merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md), prosedur kerja [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md) (SOP 1, SOP 3, SOP 4), shot-list [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md), dan riset teknis [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md).
+Skill ini memuat seluruh standar teknis pemodelan 3D, rigging, material, dan ekspor aset karakter/lingkungan untuk semesta 3D Action RPG *Lentera Pudar* merujuk pada [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md), [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/additional-techniques.md), [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md), prosedur kerja [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/sop-workflow.md), dan riset teknis [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/kena-art-research.md).
 
 ---
 
 ## 1. Standar Pemodelan Karakter 3D (Hero Proportions 1:6.8 — SOP 1 & SOP 3)
 - **Kaelen**: Tinggi 1.78m, proporsi atletis 1:6.8 bergaya *Final Fantasy VII Remake / Kena Grade*.
-- **Poly Budget**: Target **40,000–60,000 tris** untuk Hero LOD0 ($15.000–30.000$ deform base mesh).
+- **Poly Budget & Texel Density**:
+  - Target **40,000–60,000 tris** untuk Hero LOD0 ($15.000–30.000$ deform base mesh).
+  - **Texel Density Baku**: $512\text{ px/m}$ untuk Kaelen & Boss, $256\text{ px/m}$ untuk Prop Lingkungan.
 - **Titik Rujukan Tulang Baku (Bony Landmarks Wajib Terbaca)**:
   - *Acromion & Clavicle* (Bahu), *Olecranon* (Siku), *Iliac Crest & Greater Trochanter* (Panggul), *Patella* (Lutut), *Malleolus* (Mata Kaki), dan *Vertebra Prominens* (Pangkal Leher).
 - **Lengan Kiri**: Kluster kristal es prisma bersudut tajam (*faceted crystal shards*) dengan taji kristal di deltoid, siku, dan cakar es (`#4A6FA5` & `#7EE8FA`).
@@ -22,7 +24,7 @@ Skill ini memuat seluruh standar teknis pemodelan 3D, rigging, material, dan eks
   - *Alpha Cards*: Strip poligon helai transparan di lapisan luar untuk ketidakteraturan alami (*flyaway imperfections*).
 - **Pakaian**: Jubah kelana usang gelap `#2A211C` dengan sabuk baldric melintang di dada dan gesper perak.
 - **Syal Jiwa Aina**: Kerah kain emas `#F4B860` di leher dengan ekor pita meliuk dinamis (*flowing S-curve ribbon*).
-- **Acuan Visual**: Mengacu pada `02_desain_karakter_siluet` di [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/reference-board-guide.md).
+- **Teknik Produksi Lanjutan**: Normal Map baking (High-Poly ➔ Low-Poly), Trim Sheets untuk prop reruntuhan, dan Geometry Nodes untuk variasi kristal es.
 
 ---
 
@@ -48,8 +50,8 @@ Skill ini memuat seluruh standar teknis pemodelan 3D, rigging, material, dan eks
 
 ---
 
-## 4. Ekspor glTF 2.0 / FBX ke Unreal Engine 5 (SOP 1 Langkah 10)
+## 4. Ekspor ke Unreal Engine 5 (Epic Games Pipeline Plugin)
 - **Sumbu**: $+Z$ Forward / $+Y$ Up. Skala $1\text{ unit} = 1\text{ cm}$.
 - **Transform**: Apply all transforms (`Location=(0,0,0)`, `Rotation=(0,0,0)`, `Scale=(1,1,1)`) sebelum ekspor.
-- **Format**: glTF 2.0 (Separate `.gltf` + `.bin`) atau FBX deterministik.
+- **Metode Ekspor**: Blender-Unreal Pipeline Plugin ("Send to Unreal") atau FBX deterministik.
 - **Self-Critique Benchmark**: Validasi hasil ekspor merujuk ke [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/few-shot-calibration.md) Contoh 1, 3, & 7.

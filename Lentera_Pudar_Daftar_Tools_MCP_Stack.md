@@ -27,6 +27,7 @@ Ini bagian paling krusial karena inilah yang membuat AI agent kamu bisa benar-be
 | **Unreal Python Plugin (Editor Scripting)** | Fondasi teknis di balik MCP UE5 kustom — akses ke `unreal` Python module bawaan UE5 untuk manipulasi aset/level secara terprogram | Wajib aktif di UE5 (Edit → Plugins → Python Editor Script Plugin) |
 | **MCP Orchestration/Router** | Kalau agent perlu berpindah konteks antara "kerja di Blender" dan "kerja di UE5" dalam satu task (misal: model di Blender → export → import & setup di UE5), perlu layer yang mengatur urutan pemanggilan tool ini | Bagian dari arsitektur MCP kustom kamu sendiri, bukan software terpisah |
 | **File Bridge / Shared Asset Folder** | Folder bersama (atau otomatisasi export/import) antara hasil kerja Blender dan aset masuk ke UE5 Content Browser | Bisa manual (FBX export/import berkala) atau otomatis lewat script MCP |
+| **Blender-Unreal Pipeline Plugin (resmi Epic Games)** | Addon Blender resmi dari Epic yang mengotomatisasi "Send to Unreal" — export mesh, rig, dan animasi langsung ke UE5 Content Browser tanpa FBX manual berulang | Sangat direkomendasikan sebagai pengganti/pelengkap File Bridge manual di atas — lebih stabil untuk workflow berulang lewat AI agent karena satu klik/perintah, bukan multi-step manual |
 
 ---
 
@@ -38,6 +39,9 @@ Ini bagian paling krusial karena inilah yang membuat AI agent kamu bisa benar-be
 | **Substance 3D Designer** | Membuat material prosedural reusable — penting untuk material kristal es (SSS custom), dinding batu reruntuhan | Terkait teori Subsurface Scattering es (bagian 11.B) |
 | **Quixel Megascans + Bridge** | Library aset scan reruntuhan/batu/permukaan alami berkualitas tinggi, terintegrasi native dengan UE5 | Cocok untuk estetika reruntuhan organik ala Kena (moodboard bagian 2) |
 | **Unreal Material Editor (native)** | Node-based shader authoring langsung di UE5 untuk material dinamis (emissive terhubung Curse Meter, dsb) | Wajib untuk teori Emissive Material Real-Time (bagian 11.C) |
+| **ZBrush (opsional)** | Sculpting detail tinggi (high-poly) untuk karakter/boss — teknik yang dipakai Kena untuk detail wajah/kostum sebelum retopology | Tidak wajib — Blender Sculpt Mode bisa jadi substitusi lewat MCP, tapi ZBrush lebih matang untuk detail setingkat karakter hero jika dibutuhkan |
+| **Poly Haven (library gratis)** | Sumber HDRI, tekstur PBR, dan model gratis berkualitas tinggi | Pelengkap Quixel Megascans untuk kebutuhan tekstur/HDRI tambahan tanpa biaya lisensi |
+| **Hard Ops/Boxcutter (Blender addon, opsional)** | Mempercepat hard-surface modeling (zirah boss, struktur arsitektur geometris) | Relevan untuk desain boss berzirah (Lord Alden dkk) dan reruntuhan berstruktur tegas |
 
 ---
 
@@ -46,6 +50,7 @@ Ini bagian paling krusial karena inilah yang membuat AI agent kamu bisa benar-be
 | Tools | Fungsi | Terhubung ke GDD/Teori |
 |---|---|---|
 | **Blender Rigify** | Auto-rigging humanoid dasar untuk Kaelen sebelum kustomisasi | Fondasi skeleton hierarchy (teori bagian 10.A) |
+| **Auto-Rig Pro (alternatif/pelengkap Rigify)** | Rigging lebih matang untuk kontrol facial detail dan spring bone kompleks | Direkomendasikan khusus untuk ekspresi wajah close-up ala Hellblade II (Teori bagian 5.B, 10.C) |
 | **UE5 Control Rig** | Rig lanjutan di dalam Unreal untuk kontrol animasi real-time, termasuk IK setup | Terkait teori IK sebagai constraint solving (bagian 3.F, 13.F) |
 | **UE5 Chaos Cloth / Blender Cloth Simulation** | Simulasi kain untuk syal Aina dan jubah Kaelen | Langsung terkait teori Cloth Physics/PBD (bagian 13.B) |
 | **Marvelous Designer (opsional tapi direkomendasikan)** | Membuat pola kain syal/jubah yang realistis secara jahitan sebelum disimulasikan, lebih presisi dari sekadar plane mesh | Meningkatkan kualitas cloth sim di atas, terutama untuk syal Aina yang jadi elemen sentral naratif |
@@ -63,6 +68,8 @@ Ini bagian paling krusial karena inilah yang membuat AI agent kamu bisa benar-be
 | **EmberGen (opsional)** | Simulasi asap/api real-time yang bisa di-bake jadi flipbook texture untuk efek uap dingin/leleh es | Terkait teori Fluid Dynamics Disederhanakan (bagian 13.D) |
 | **UE5 Chaos Destruction** | Sistem fracture/destruction untuk reruntuhan dan pecahan es besar | Terkait teori Fracture Mechanics/Voronoi (bagian 13.C) |
 | **Houdini (opsional, untuk kebutuhan prosedural lanjut)** | Kalau butuh generate pola fracture/noise yang lebih kompleks dari default UE5, atau eksperimen PCG lanjutan | Terkait teori Perlin/Simplex Noise (bagian 14.E) dan PCG opsional (bagian 16.D) |
+| **UE5 PCG Framework (native)** | Scatter foliage/reruntuhan otomatis berbasis aturan, tanpa perlu Houdini eksternal untuk kebutuhan dasar | Relevan untuk sistem foliage lebat ala Kena yang jadi salah satu pilar teknis pujian reviewer |
+| **Blender Geometry Nodes (native)** | Modeling prosedural — variasi kristal es otomatis, pola retakan, distribusi puing | Alternatif Blender-side dari PCG, berguna sebelum aset masuk ke UE5 |
 
 ---
 
@@ -106,6 +113,7 @@ Ini bagian paling krusial karena inilah yang membuat AI agent kamu bisa benar-be
 | **Unreal Insights (native)** | Profiling performa CPU/GPU real-time selama development | Langsung terkait teori Performance Budgeting (bagian 17.A) |
 | **RenderDoc** | Debug rendering frame-by-frame kalau ada masalah visual aneh (shader, lighting) | Membantu troubleshoot isu Lumen/SDF (bagian 13.E, 14.D) |
 | **UE5 Nanite & LOD tools (native)** | Otomatisasi level of detail untuk geometri kompleks | Langsung terkait teori LOD/Culling (bagian 17.A) |
+| **UE5 Lightmass (native, baked lighting)** | Pencahayaan statis di-bake untuk area yang tidak butuh perubahan real-time | Kena mengandalkan baked lighting (bukan full real-time ray tracing) — pertimbangkan hybrid: Lumen untuk elemen dinamis (syal Aina, Curse Meter), Lightmass untuk area dungeon statis supaya performa lebih ringan |
 
 ---
 

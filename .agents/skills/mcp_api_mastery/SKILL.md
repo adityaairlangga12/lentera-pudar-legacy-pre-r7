@@ -5,11 +5,17 @@ description: "Pemahaman mendalam mengenai arsitektur Blender 5.2 LTS MCP dan Unr
 
 # Lentera Pudar — 3D MCP Mastery (Blender 5.2 LTS + Unreal Engine 5)
 
-Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP**.
+Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, protokol anti-halusinasi sintaks API, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP** merujuk pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md) dan [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/tools-mcp-stack.md).
 
 ---
 
-## 1. Pembagian 3 Layer Tool yang Seragam (Berlaku di Blender & UE5)
+## 1. Protokol Integritas API & Anti-Halusinasi (Inspect-Before-Execute)
+1. **Introspeksi Wajib**: Sebelum mengeksekusi operasi penting, jalankan introspeksi `dir()` atau `help()` untuk memastikan fungsi/properti tersedia pada versi engine yang aktif.
+2. **Dilarang Menebak Nama Alternatif**: Jika fungsi tidak ditemukan, tandai sebagai **GAP**, buka dokumentasi resmi (`docs.blender.org/api` / `dev.epicgames.com/documentation`), dan sesuaikan dengan [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/api-cheat-sheet.md).
+
+---
+
+## 2. Pembagian 3 Layer Tool yang Seragam (Berlaku di Blender & UE5)
 Di seluruh ekosistem MCP proyek ini, perkakas dikelompokkan ke dalam 3 layer terstandarisasi:
 
 1. **Atomic Tools**: Aksi tunggal, kecil, deterministik, dan mudah di-rollback.
@@ -24,14 +30,14 @@ Di seluruh ekosistem MCP proyek ini, perkakas dikelompokkan ke dalam 3 layer ter
 
 ---
 
-## 2. Prinsip Observabilitas Sebelum Mutasi
+## 3. Prinsip Observabilitas Sebelum Mutasi
 Sebelum melakukan aksi modifikasi yang kompleks:
 - **Blender**: Panggil `get_scene_state` / `render_viewport_screenshot` dan periksa `get_console_output` atau `get_last_error`.
 - **UE5**: Panggil `get_editor_log` / `get_asset_list` sebelum memanipulasi Blueprint atau Level.
 
 ---
 
-## 3. Arsitektur Jaringan & Batasan Waktu (Timeouts)
+## 4. Arsitektur Jaringan & Batasan Waktu (Timeouts)
 
 | Engine/Tool | Timeout | Koneksi | Catatan |
 |---|---|---|---|
@@ -42,23 +48,16 @@ Sebelum melakukan aksi modifikasi yang kompleks:
 
 ---
 
-## 4. Arsitektur Shared Asset Bridge (Blender → UE5)
+## 5. Arsitektur Bridge & Otomasi Ekspor (Epic Pipeline Plugin)
 
 ```
 [Blender 5.2 LTS]
-    ↓ export_gltf() / export_fbx()
-[Shared Asset Folder: /Content/CharactersImport/]
-    ↓ MCP import_asset() + setup pipeline
+    ↓ "Send to Unreal" (Blender-Unreal Pipeline Plugin resmi Epic Games)
 [Unreal Engine 5 Content Browser]
-    → SK_Kaelen_Body.uasset
-    → M_Cursed_Crystal.uasset
+    → SK_Kaelen_Body.uasset (Skeletal Mesh)
+    → M_Cursed_Crystal.uasset (Master Material)
     → ABP_Kaelen.uasset (Animation Blueprint)
 ```
 
-- File bridge folder harus merupakan path absolut yang konsisten antar sesi kerja.
-- Selalu validasi poly count dan transform setelah import (`get_asset_details()`).
-
----
-
-## 5. Escape Hatch Terakhir
-Eksekusi script Python `bpy` mentah (Blender) atau `unreal.EditorAssetLibrary` (UE5) mentah hanya boleh digunakan sebagai **escape hatch tier terakhir** untuk operasi prosedural kompleks yang belum didukung oleh Macro/Workflow tools — dan wajib didokumentasikan sebagai anomali sesi.
+- Otomasi transfer aset direct-to-engine menggunakan **Blender-Unreal Pipeline Plugin**.
+- Selalu validasi poly count, texel density ($512\text{ px/m}$), dan transform setelah import.
