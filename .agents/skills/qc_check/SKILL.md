@@ -89,7 +89,7 @@ flowchart TD
 
 ---
 
-## 2. Klasifikasi Severity Bug & Aturan Penanganan
+## 2. Klasifikasi Severity Bug & Format Pencatatan Wajib
 
 | Severity | Dampak | Aturan Tindakan |
 |---|---|---|
@@ -98,16 +98,46 @@ flowchart TD
 | 🟡 **Major** | Transisi animasi kaku, ducking audio terlambat. | Wajib difix sebelum Release Candidate. |
 | 🟢 **Minor** | Masalah kosmetik minor pada area tersembunyi. | Masuk backlog pemeliharaan. |
 
+### 📝 Format Wajib Pencatatan Bug
+Setiap bug yang ditemukan wajib dicatat dengan struktur field berikut (bukan catatan naratif bebas):
+- **ID & Severity**: Format `BUG-[BLK/CRT/MAJ/MIN]-[XXX]` (contoh: `BUG-CRT-001`).
+- **Langkah Reproduksi**: Urutan langkah presisi untuk memicu bug.
+- **Kondisi**: Sektor/ruang, commit git/versi build, platform/hardware.
+- **Status Lifecycle**: `Open` ➔ `Fixed` ➔ `Verified`.
+  > [!CAUTION]
+  > Status `Fixed` tanpa proses `Verified` ulang oleh reviewer/agent terpisah **TIDAK DIANGGAP SELESAI** dan tidak boleh menutup task atau milestone Stage-Gate manapun.
+
 ---
 
-## 3. Format Laporan QC Wajib
+## 3. Protokol Anti-Theater & Larangan Self-Grading
+
+1. **Observability-First**: Tool inspeksi wajib dijalankan sebelum menyatakan aset/fitur selesai.
+2. **Larangan Self-Grading**: AI pembuat/pengedit suatu modul **DILARANG KERAS** menulis status "✅ Lolos QC", "Passed", atau "100% Terverifikasi" untuk hasil kerjanya sendiri.
+   - Status awal maksimal AI pembuat: **`Ready for QC / Menunggu Verifikasi`**.
+   - Status **`Verified / Lolos`** hanya sah setelah proses QC dijalankan sebagai langkah verifikasi terpisah yang secara eksplisit mencari potensi cacat/regresi.
+
+---
+
+## 4. Protokol Regression Check
+
+Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi dampak silang ke sistem dependen:
+- **Combat Timing (Hit-Stop / Frame Data)** ➔ Verifikasi parry window, kinetic chain animation, dan haptic feedback.
+- **Curse Meter Mechanics** ➔ Verifikasi *Freeze of Despair*, *Breather Room recovery*, *Sealed Eyepatch*, dan *Ice Palm strike*.
+- **Cloth / XPBD Physics** ➔ Verifikasi Syal Aina (Chaos Cloth), jubah kelana Kaelen, dan *Hybrid Hair System*.
+- **Level & Collision Layout** ➔ Verifikasi *Safe Archway Checkpoints*, *World Partition Streaming*, dan *BP_SpectralLandingZone*.
+
+---
+
+## 5. Format Laporan QC Wajib (Standardized Template)
 
 ```markdown
 # 🛡️ 3D Quality Control Inspection Report
 
-- **Target Inspeksi**: [Nama Asset 3D / Mesh / Scene]
+- **Target Inspeksi**: [Nama Asset 3D / Blueprint / Dokumen / Sistem]
 - **Kategori**: [3D Visual / Rigging / Combat / Audio / Level / Narrative]
-- **Waktu Eksekusi**: [Timestamp]
+- **Commit / Versi Target**: [Hash commit git & path file aktual]
+- **Status Pra-QC (Dari Pembuat)**: `Ready for QC / Menunggu Verifikasi`
+- **Waktu Eksekusi QC**: [Timestamp]
 
 ### 📋 Checklist Evaluation (6-DoD & 4-Tier):
 - [x] Tier 1: 3D Visual & Material Fidelity (The Triad & Texel Density) — PASS
@@ -116,8 +146,20 @@ flowchart TD
 - [x] Tier 4: Rigging & Export Integrity — PASS
 - [x] Emotional Gate: Intended vs Perceived Framework — PASS / [Needs Human Playtest Validation]
 
-### 🎯 Keputusan Akhir:
-**STATUS: [PASS / REJECTED]**
+### 🔄 Sistem Terdampak & Hasil Regression Check:
+| Sistem Dependen Terdampak | Potensi Risiko Dampak | Hasil Uji Regresi |
+|---|---|---|
+| [Sistem A] | [Risiko desinkronisasi/perubahan nilai] | PASS / NO REGRESSION |
+| [Sistem B] | [Risiko clipping/logic loop] | PASS / NO REGRESSION |
+
+### 🐛 Log Temuan Bug Terstruktur (Jika Ada):
+| ID & Severity | Langkah Reproduksi | Kondisi | Status Lifecycle |
+|---|---|---|---|
+| `BUG-XXX-001` | 1. ... 2. ... | Sektor X, Commit Y | Open / Fixed / Verified |
+
+### 🎯 Keputusan Akhir QC Gate:
+**STATUS AKHIR QC: [VERIFIED & APPROVED / REJECTED]**
 - **Severity (Jika Reject)**: [Blocking / Critical / Major / Minor]
-- **Tindakan Perbaikan**: [Langkah teknis perbaikan]
+- **Catatan & Rekomendasi**: [Langkah teknis perbaikan lanjutan]
 ```
+

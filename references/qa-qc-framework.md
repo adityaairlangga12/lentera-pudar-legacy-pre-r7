@@ -97,6 +97,13 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 | 🟡 **Major** | Mengganggu kenyamanan visual/audio tapi tidak merusak fungsi. | Transisi animasi kaku, ducking audio terlambat 1 detik. | Wajib difix sebelum Release Candidate. |
 | 🟢 **Minor** | Isu kosmetik ringan di area tersembunyi. | Tekstur resolusi rendah di sudut dinding terpencil. | Masuk backlog perbaikan berkala. |
 
+### Format Wajib Pencatatan Bug
+Setiap bug yang ditemukan (di severity manapun) wajib dicatat dengan field terstruktur berikut, bukan sebagai catatan naratif bebas:
+- **ID & Severity**: Sesuai klasifikasi tabel di atas (contoh: `BUG-BLK-001`, `BUG-CRT-002`, `BUG-MAJ-003`, `BUG-MIN-004`).
+- **Langkah Reproduksi**: Urutan aksi persis untuk memicu bug (Langkah 1 ➔ Langkah 2 ➔ Langkah 3).
+- **Kondisi**: Sektor/area, versi build/commit git, platform/hardware (jika relevan).
+- **Status Lifecycle**: `Open` ➔ `Fixed` ➔ `Verified` (status `Fixed` tanpa `Verified` ulang oleh proses/agent penguji terpisah TIDAK dianggap selesai dan tidak boleh menutup item di Stage-Gate manapun).
+
 ---
 
 ## 5. Protokol Verifikasi AI Agent & Anti-Theater
@@ -104,6 +111,7 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 1. **Observability-First Mandate**: AI Agent wajib memanggil tool inspeksi sebelum melakukan modifikasi file atau ekspor 3D.
 2. **No Auto-Merge**: Seluruh kode, mesh, dan blueprint dari AI Agent harus melalui review dan verifikasi fisik di editor.
 3. **Wajib Bukti Fisik Konkret**: Setiap laporan selesai wajib menyertakan path file aktual, data parameter numerik, atau screenshot visual.
+4. **Larangan Self-Grading**: AI Agent yang membuat/mengedit suatu aset, sistem, atau dokumen **DILARANG** menulis status "✅ Lolos QC", "Passed", atau "100% Terverifikasi" pada laporan yang ia buat sendiri untuk hasil kerjanya sendiri. Status maksimal yang boleh ditulis AI pembuat adalah **"Ready for QC / Menunggu Verifikasi"**. Status "Verified/Lolos" hanya boleh dicantumkan setelah proses QC dijalankan sebagai langkah terpisah (baik oleh reviewer manusia, atau oleh instruksi AI yang eksplisit diminta mencari masalah, bukan mengonfirmasi kelengkapan).
 
 ---
 
@@ -111,3 +119,17 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - **Fungsional vs Emosional**: Pengujian teknis 6-DoD memastikan game bebas bug, sedangkan validasi emosional memastikan tema 5 Tahap Berduka dirasakan secara otentik oleh pemain.
 - **Kerangka Intended vs Perceived Emotion**: Menganalisis kesenjangan (*gap analysis*) antara emosi yang dirancang dengan respon alami playtester.
 - **Mandat Batasan AI Agent**: Kepatuhan teknis AI terhadap parameter desain **TIDAK MENGGANTIKAN** validasi emosional playtester manusia. Setiap beat naratif kunci wajib ditandai status `[Needs Human Playtest Validation]`.
+
+---
+
+## 7. Protokol Regression Check
+
+Sebelum suatu perubahan pada sistem inti dinyatakan selesai, wajib dilakukan pengecekan ulang terhadap seluruh sistem lain yang bergantung padanya. Sistem inti yang wajib memicu regression check meliputi: timing combat (hit-stop, parry window), nilai numerik Curse Meter, physics solver (cloth/XPBD), dan parameter Style Guide (poly budget, texel density, palet warna).
+
+**Matriks Pemicu Wajib Regression Check**:
+- **Ubah nilai hit-stop / frame timing** ➔ Cek ulang sinkronisasi parry window, animasi combat kinetic chain, dan haptic feedback.
+- **Ubah laju / batas Curse Meter** ➔ Cek ulang seluruh sistem yang mereferensikannya (*Freeze of Despair*, *Breather Room recovery*, *Sealed Eyepatch*, *Ice Talons strike*).
+- **Ubah parameter cloth / XPBD physics** ➔ Cek ulang deformasi Syal Aina, jubah kelana Kaelen, dan *Hybrid Hair System*.
+- **Ubah skema level / transisi arena** ➔ Cek ulang checkpoint respawn, *World Partition streaming*, dan rute *Local World Awareness*.
+
+Setiap laporan QC untuk perubahan sistem inti wajib menyertakan bagian **"Sistem Terdampak & Hasil Regression Check"**, terpisah dari checklist DoD utama.
