@@ -52,16 +52,19 @@
 
 ---
 
-## SOP 3: Rigging Karakter & Musuh Baru
+## SOP 3: Rigging Karakter & Musuh Baru (Biomekanik & Corrective Morphs)
 
-1. **Import Base Mesh**: Masukkan skeletal base mesh yang telah lolos DoD Model 3D ke Blender 5.2 LTS.
+1. **Import Base Mesh & Validasi Bony Landmarks**: Masukkan base mesh ke Blender 5.2 LTS, verifikasi *Bony Landmarks* (Acromion, Clavicle, Olecranon, Iliac Crest, Patella, Malleolus) terbaca jelas sebagai titik tumpu rig.
 2. **Penyusunan Armature Standar**: Gunakan Rigify / custom rig yang kompatibel dengan hierarki UE5 Humanoid (`Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`).
-3. **Rigging Asimetris**: Buat rantai tulang jari tangan kanan dan 5 cakar kristal es tangan kiri (`Talon_01..05`).
+3. **Rigging Asimetris & Dual-Mode Scarf**: Buat rantai tulang jari tangan kanan, 5 cakar kristal es tangan kiri (`Talon_01..05`), dan rantai 5-bone syal (`Scarf_01..05`).
 4. **Weight Painting Presisi**: Lakukan skinning manual pada sendi rawan pinching (ketiak, siku, lutut, pangkal paha).
-5. **Uji Deformasi Ekstrem**: Gerakkan rig ke pose jongkok penuh, rentangan tangan maksimal, dan pukulan ekstrim.
-6. **Setup Spring Bone Chain Syal**: Siapkan rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) untuk simulasi kain sekunder.
-7. **Ekspor & Setup Control Rig di UE5**: Ekspor FBX Skeletal Mesh, buat Control Rig untuk koreksi animasi real-time.
-8. **IK Foot Placement**: Uji penyesuaian telapak kaki pada minimal 2 kontur lantai dungeon tidak rata.
+5. **Setup Corrective Shape Keys (Pose-Driven Morphs)**:
+   - Buat shape key koreksi volume pada fleksi siku 140° (+ Muscle Bulge bisep).
+   - Buat shape key koreksi pada elevasi bahu dan fleksi lutut 140°.
+   - Hubungkan shape keys ke rotation driver tulang terkait.
+6. **Set Batas Rotasi Sendi (Joint Constraint Limits)**: Kunci limit rotasi anatomis (Siku 0°–145°, Lutut 0°–140°, Tulang Belakang $\pm 35^\circ–45^\circ$) agar terhindar dari deformasi patah saat blend tree.
+7. **Uji Deformasi Ekstrem & Kinetic Chain**: Uji pose jongkok penuh, pukulan cakar es dengan rotasi panggul-tulang belakang, dan kuda-kuda dash.
+8. **Ekspor & Setup Control Rig di UE5**: Ekspor FBX Skeletal Mesh, konfigurasi Control Rig & IK Foot Placement pada kontur lantai dungeon.
 9. **Jalankan DoD Rigging & Animasi**: Verifikasi checklist ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/qa-qc-framework.md) Bab 2.C).
 10. **Commit Version Control**.
 

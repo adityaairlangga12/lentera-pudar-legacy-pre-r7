@@ -144,37 +144,51 @@ Setiap input pemain (serangan, dash, buka eyepatch) perlu respons visual/audio d
 
 ---
 
-## 9. Teori Animasi
+## 9. Teori Animasi & Kinesiologi Gerak Manusia
 
-### A. 12 Prinsip Animasi Disney (yang relevan untuk 3D real-time)
-- **Anticipation**: gerakan kecil sebelum aksi utama (Kaelen menekuk lutut sebelum dash) — membantu readability combat.
-- **Follow Through & Overlapping Action**: syal Aina dan jubah Kaelen tidak berhenti bersamaan dengan tubuh — inilah kenapa cloth simulation/spring bones penting secara animasi, bukan cuma fisik.
-- **Squash & Stretch** (versi halus untuk gaya semi-realistis): dipakai halus di ekspresi wajah/impact combat, bukan cartoonish.
-- **Secondary Action**: gerakan pendukung yang memperkaya aksi utama (rambut Kaelen bergoyang saat mendarat) tanpa mengalihkan fokus dari aksi utama.
+### A. 12 Prinsip Animasi Disney (Terapan 3D Real-Time)
+- **Anticipation**: Gerakan persiapan sebelum aksi utama (Kaelen merendahkan panggul sebelum dash) — kunci readability combat.
+- **Follow Through & Overlapping Action**: Syal Aina dan jubah Kaelen tidak berhenti bersamaan dengan tubuh (simulasi inersia kain).
+- **Squash & Stretch**: Versi halus semi-realistis pada kompresi otot dan impact tumbukan cakar es.
+- **Secondary Action**: Kibaran rambut perak dan percikan bara syal Aina memperkaya aksi utama.
 
-### B. IK (Inverse Kinematics) vs FK (Forward Kinematics)
-FK dipakai untuk animasi terprogram/mocap dasar (gerakan tubuh umum), IK dipakai real-time untuk penyesuaian dinamis (kaki menyesuaikan permukaan tanah tidak rata, tangan menyentuh dinding saat merambat). Agent perlu tahu kombinasi keduanya diperlukan untuk gerakan Kaelen di dungeon yang tidak rata.
+### B. Rantai Kinetik Kombat (*Kinetic Chain & Momentum Transfer*)
+Tenaga pukulan Kaelen mengalir dari tanah: `Ground Reaction Force kaki belakang ➔ Rotasi Panggul ➔ Torsi Tulang Belakang ➔ Scapula Protraction ➔ Ekstensi Siku ➔ Wrist Lock pada Impact Frame`. Memahami rantai kinetik ini menjelaskan mengapa *Heavy Cursed Strike* butuh startup 12–18 frame (waktu transfer momentum penuh) agar pukulan terasa berbobot (*weighty*).
 
-### C. Blend Trees & Locomotion State Machine
-Transisi mulus antar animasi (diam → jalan → lari → serangan) diatur lewat *blend tree* berbasis parameter kecepatan, bukan cut animasi kaku — standar di UE5 Animation Blueprint.
+### C. Kinesiologi 8-Fase Lokomosi (*Human Gait Cycle*)
+Siklus jalan/lari Kaelen dibangun di atas 8 fase biomekanik: *Initial Contact (Heel Strike) ➔ Loading Response ➔ Midstance ➔ Terminal Stance ➔ Pre-Swing (Toe-off) ➔ Initial Swing ➔ Midswing ➔ Terminal Swing*.
+- **Pelvic Tilt**: Panggul miring dinamis naik-turun mengikuti kaki tumpu vs melayang.
+- **Counter-Rotation**: Torsi silang bahu berputar berlawanan panggul untuk keseimbangan alami.
+- **Flight Phase**: Pembeda fundamental di mana lari/dash memiliki momen kedua kaki melayang di udara.
+
+### D. IK (Inverse Kinematics) & Blend Trees
+Kombinasi Two-Bone IK dan Control Rig untuk adaptasi telapak kaki pada lantai dungeon miring, dipadu *Blend Trees* berbasis kecepatan untuk transisi lokomosi halus tanpa snap.
 
 ---
 
-## 10. Teori Rigging, Simulasi Kain & Rambut (Kena Benchmark)
+## 10. Teori Rigging, Anatomi Deformasi & Simulasi Kain
 
-### A. Skeleton Hierarchy, Spring Bones & Dual-Mode Strategy
-Syal Aina memerlukan *spring bone chain* 5-tulang terpisah dari skeleton utama Kaelen. Mengadopsi strategi **Dual-Mode Animation** (belajar dari *Ember Lab*):
+### A. Titik Rujukan Tulang Baku (*Bony Landmarks*)
+Titik tulang permukaan yang wajib terbaca pada sculpt dan menjadi pivot bone rig: *Acromion & Clavicle* (bahu), *Olecranon* (siku), *Iliac Crest & Greater Trochanter* (panggul/hip), *Patella* (lutut), *Malleolus* (mata kaki), dan *Vertebra Prominens* (pangkal leher/postur).
+
+### B. Deformasi Sendi & Corrective Shape Keys (Pose-Driven Morphs)
+Mencegah penyusutan volume (*volume loss / collapsing joints*) saat tekukan ekstrem:
+- **Siku (Elbow fleksi 140°)**: Corrective morph memulihkan volume lipatan dalam siku dan memicu *Muscle Bulging* pada otot bisep.
+- **Bahu, Lutut & Pinggul**: Corrective morph menjaga tempurung patella dan tonjolan deltoid tetap kokoh saat kuda-kuda rendah.
+
+### C. Batasan Rotasi Sendi Realistis (*Joint Constraint Limits*)
+Kunci batasan rotasi anatomis di UE5 Control Rig: Siku (0°–145° anti-hyperextension), Lutut (0°–140° fleksi belakang), Tulang Belakang ($\pm 35^\circ–45^\circ$ per segmen), Leher ($\pm 80^\circ$ yaw).
+
+### D. Skeleton Hierarchy, Spring Bones & Dual-Mode Strategy
+Syal Aina memerlukan *spring bone chain* 5-tulang terpisah:
 - **Mode Gameplay**: Digerakkan oleh simulasi fisika *UE5 Chaos Cloth Solver* untuk efisiensi komputasi runtime 60 FPS.
-- **Mode Sinematik**: Digerakkan oleh *Hand-Keyframed Control Rig* agar sutradara/animator memiliki kontrol ekspresi puitis mutlak pada cutscene emosional (Altar Duka & Boss Death).
+- **Mode Sinematik**: Digerakkan oleh *Hand-Keyframed Control Rig* agar animator memiliki kontrol ekspresi puitis mutlak pada cutscene emosional (Altar Duka & Boss Death).
 
-### B. Cloth Simulation Constraints
-Simulasi kain butuh *pinning point* (titik tetap, misal syal yang melingkar di leher) dan parameter *stiffness/damping* supaya tidak terlihat terlalu kaku atau terlalu lembek seperti agar-agar — penting untuk kredibilitas visual syal Aina di UE5.
+### E. Cloth Simulation Constraints & Pinning
+Simulasi kain butuh *pinning point* leher tetap dan parameter *stiffness/damping* (0.4–0.6 / 0.3–0.5) untuk inersia lentur alami.
 
-### C. Facial Rigging: Blend Shapes vs Bone-based
-Untuk ekspresi close-up ala Hellblade II, blend shapes (morph target) biasanya lebih presisi untuk mikro-ekspresi wajah dibanding rig tulang murni — relevan untuk momen kamera dekat di Altar Duka.
-
-### D. Hybrid Hair Geometry (Solid Mesh + Alpha Cards)
-Mengadopsi teknik rambut Kena: memadukan **Solid Geometry** (untuk bentuk massa volume utama dan respons highlight pencahayaan tegas) dengan **Alpha Cards** (strip helai transparan di permukaan luar untuk memberikan ketidakteraturan alami/flyaways) — menjaga siluet anime bersih tanpa beban strand groom berlebih.
+### F. Hybrid Hair Geometry (Solid Mesh + Alpha Cards)
+Memadukan **Solid Geometry** (bentuk massa volume utama) dengan **Alpha Cards** (strip helai transparan flyaways) untuk siluet anime bersih tanpa beban strand groom berlebih.
 
 ---
 

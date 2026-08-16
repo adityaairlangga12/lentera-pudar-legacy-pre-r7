@@ -192,6 +192,22 @@ Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan p
   5. **Subsurface Scattering Ganda**: Menerapkan SSS pada kristal es (`#7EE8FA` radius 0.5–1.2cm) dan profil SSS kulit manusia (`#D8B79A`) untuk mencegah *uncanny valley*.
 - **Dampak**: Kualitas visual 3D setara standar komersial papan atas (*Pixar-like interactive fantasy*), kinerja runtime stabil di 60 FPS, dan adegan Altar Duka memiliki dampak emosional sinematik maksimal.
 
+---
+
+### ADR-019: Standardisasi Biomekanika, Kinesiologi Gerak, Bony Landmarks & Corrective Morphing
+- **Tanggal**: 2026-08-16
+- **Status**: Accepted (Master Biomechanical Standard)
+- **Konteks**: Menghindari kelemahan visual animasi 3D umum seperti pukulan tanpa bobot (*weightless punch*), hilangnya volume sendi saat tekukan ekstrem (*volume collapse*), dan lokomosi kaku tanpa dinamika tubuh alami.
+- **Keputusan Terpilih**: 
+  1. **Titik Rujukan Tulang Baku (Bony Landmarks)**: Mengunci posisi Acromion, Clavicle, Olecranon, Iliac Crest, Greater Trochanter, Patella, dan Malleolus sebagai patokan anatomi permanen pada sculpting dan rigging.
+  2. **Rantai Kinetik Kombat (Kinetic Chain)**: Seluruh serangan (Light/Heavy) wajib mengalirkan momentum dari kaki belakang ➔ panggul ➔ torsi tulang belakang ➔ scapula ➔ pergelangan tangan mengunci saat impact (hit-stop 3 frame).
+  3. **Kinesiologi Lokomosi 8-Fase**: Mengadopsi 8 fase gait cycle manusia dengan kemiringan panggul (*Pelvic Tilt*), rotasi silang bahu-pinggul (*Counter-Rotation*), dan *Vertical Bobbing* alami.
+  4. **Corrective Shape Keys (Pose-Driven Morphs)**: Menerapkan shape key pengoreksi volume pada siku 140° (+ Biceps Muscle Bulge), bahu, lutut, dan panggul untuk menjaga bentuk organik saat pose ekstrem.
+  5. **Batas Rotasi Sendi (Joint Limits)**: Mengunci batasan anatomis (Siku 0°–145°, Lutut 0°–140°, Tulang Belakang $\pm 35^\circ–45^\circ$) di Control Rig UE5.
+  6. **Bahasa Tubuh Emosional (Grief Archetypes)**: Mengadaptasi postur Kaelen (Contrapposto saat Idle, tegap di S1–2, bungkuk kyphotic di S4, tenang di S5).
+- **Dampak**: Karakter Kaelen terasa berbobot, bernyawa, stabil secara fisiologis, dan bebas dari cacat geometri lipatan sendi.
+
+
 
 
 

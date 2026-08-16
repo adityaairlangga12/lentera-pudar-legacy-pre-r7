@@ -37,11 +37,14 @@ Saat mereview rancangan bos dan narasi per sektor dungeon, pastikan motivasi mer
 
 ---
 
-## 3. Evaluasi Bahasa Tubuh & Ekspresi 3D (Hellblade-Grade Cinematics)
+## 3. Evaluasi Bahasa Tubuh & Ekspresi 3D (Hellblade-Grade Cinematics & Kinesiologi)
 
 Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomekanik, kamera intim, dan audio spasial:
-- **Keputusasaan**: Bahu merosot, kepala tertunduk, postur bungkuk progresif saat Curse Meter mendekati 90%.
-- **Keteguhan Kaelen**: Kepala tegak, siluet syal kuning berkibar dinamis — panjang syal adalah indikator visual hope yang tersisa.
+- **Postur Tubuh per Sektor Duka (Grief Body Language Archetypes)**:
+  - *Sektor 1 & 2 (Denial & Anger)*: Postur tegap, bahu terbuka defensif, langkah kaki tegas, kuda-kuda kokoh.
+  - *Sektor 4 (Depression — Abyss of Stillness)*: Postur menunduk, bahu merosot ke depan (*kyphotic posture*), langkah melambat, kepala tertunduk lesu (mengurangi vertikal bobbing).
+  - *Sektor 5 (Acceptance — Dawning Altar)*: Postur tegap rileks, bahu terbuka damai, tatapan mata stabil menyongsong fajar.
+  - *Pose Idle Alami*: Mengadopsi *Contrapposto* (berat badan bertumpu lebih besar pada satu kaki) agar tidak kaku seperti manekin.
 - **Kutukan Mengambil Alih**: Lengan kiri es merambat dari siku ke bahu ke dada, emissive kristal berdenyut 0.8–1.2 Hz saat Curse Meter 61–90%, intensitas meningkat ke 2.0–3.0 Hz saat Surge.
 - **Penutup Mata Kanan (*Eyepatch*)**: Simbol *grieving blindspot* (mata trauma yang disegel). Saat dibuka sesaat, post-process filter dingin mengubah persepsi visual dunia. Binaural whispers meningkat intensitasnya (+3 pts/detik pada Curse Meter).
 - **Momen Kamera Intim (Hellblade II Style)**: Saat Altar Duka menyala dan syal Aina memendek, kamera otomatis blur ke close-up wajah Kaelen (FOV 35°–50°, jarak 1.2–1.8m) — rekam ekspresi grief non-verbal untuk dampak emosional maksimal.
@@ -49,6 +52,7 @@ Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomeka
 ---
 
 ## 4. Referensi Dokumen
+- [references/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
 - [references/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
 - [references/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).
 - [references/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/creative-vision.md) — Pedoman diksi dialog & nada narasi.

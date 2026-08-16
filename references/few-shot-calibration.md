@@ -98,3 +98,21 @@ SK_Kaelen_Body.blend
 > *"Boss Sektor 2 (Ignis Vulkan) dirancang sebagai manifestasi kemarahan dingin (*Anger*) yang menutupi keputusasaan. Api yang meledak dari tubuhnya adalah api hampa yang retak menampakkan kristal es biru (`#4A6FA5`) di baliknya saat terkena hit — membuktikan kemarahannya adalah bentuk pertahanan diri yang rapuh. Palet warna tetap tunduk pada The Triad Kelvin (2700K vs 6500K)."*
 
 > *Keunggulan*: Memiliki jiwa narasi, merefleksikan lore psikologis duka, dan patuh pada teori seni semesta Lentera Pudar.
+
+---
+
+## 7. Kalibrasi Animasi Kombat & Kinesiologi (Kinetic Chain & Lokomosi)
+
+❌ **SALAH (Animasi Lengan Terisolasi & Tanpa Bobot)**:
+> *"Saya membuat animasi pukulan Heavy Strike dengan memutar bone bahu dan tangan maju ke depan secara cepat. Karakter sudah memukul musuh."*
+
+> *Akar Kesalahan*: Mengabaikan rantai kinetik (kaki, panggul, tulang belakang diam), mengabaikan weight transfer, menghasilkan pukulan "mengambang" tanpa bobot (*weightless*), tidak ada pelvic counter-rotation.
+
+✅ **BENAR (Rantai Kinetik Penuh & Transfer Momentum Nyata)**:
+> *"Animasi Heavy Cursed Strike dirancang dengan prinsip Kinetic Chain lengkap (Startup 14 frame @30fps):*
+> - *Frame 1–6 (Anticipation)*: Kaki belakang menjejak dalam, panggul merendah dan berputar $-25^\circ$, bahu counter-rotate, syal Aina melambai tertinggal (follow-through).
+> - *Frame 7–10 (Momentum Transfer)*: Panggul berputar cepat $+45^\circ$, torsi thoracolumbar mengalirkan tenaga ke scapula protraction dan ekstensi siku.
+> - *Frame 11–13 (Impact & Wrist Lock)*: Pergelangan cakar es mengunci tepat pada frame 11, memicu Hit-Stop 3-frame (0.05s freeze) dan partikel `FX_Hit_Sparks`.
+> - *Frame 14–22 (Recovery)*: Transfer berat badan selesai di kaki depan, panggul kembali ke posisi stabil. Siku menggunakan corrective morph key untuk mencegah kerutan volume."*
+
+> *Keunggulan*: Animasi berbobot, meyakinkan secara biomekanik, patuh pada timing Style Guide dan Teori Kinesiologi.
