@@ -6,14 +6,14 @@ description: "Pemahaman arsitektur Blender 5.2 LTS MCP dan tata kelola integrasi
 # Lentera Pudar — 3D MCP Tools Pipeline
 
 ## Purpose
-Skill ini mengatur **protokol orkestrasi perkakas 3D MCP, pembagian layer API, batasan waktu (timeout), prinsip observabilitas sebelum mutasi, dan tata kelola kebenaran kapabilitas perkakas** di semesta *Lentera Pudar*.
+Skill ini mengatur **protokol orkestrasi perkakas 3D MCP, pembagian layer API, targeting file fisik persisten (`blend_file`), prinsip observabilitas sebelum mutasi, dan tata kelola kebenaran kapabilitas perkakas** di semesta *Lentera Pudar*.
 
-Seluruh spesifikasi antarmuka API, kontrak perkakas, dan arsitektur MCP diatur secara kanonikal di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
+Seluruh spesifikasi antarmuka API, kontrak 23 Tool Publik, dan arsitektur MCP diatur secara kanonikal di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
 
 ---
 
 ## Activate When
-- Menjalankan operasi pemodelan, rigging, shading, atau ekspor melalui server MCP Blender 5.2 LTS.
+- Menjalankan operasi pemodelan, rigging, shading, atau ekspor melalui server MCP Blender 5.2 LTS (`lentera-blender-mcp`).
 - Melakukan inspeksi scene state dan penanganan error/timeout pada eksekusi perkakas.
 - Mengorkestrasi pipeline multi-langkah (*workflow tools*) yang melibatkan interaksi DCC.
 
@@ -21,13 +21,13 @@ Seluruh spesifikasi antarmuka API, kontrak perkakas, dan arsitektur MCP diatur s
 
 ## Do Not Use When
 - Pengeditan dokumentasi konseptual murni yang tidak memerlukan pemanggilan tool MCP.
-- Mengasumsikan eksekusi pada server perkakas yang belum diimplementasikan atau belum tersedia.
+- Mengasumsikan eksekusi pada server perkakas yang belum diimplementasikan atau berstatus deferred.
 
 ---
 
 ## Canonical Dependencies
-- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Rantai Perkakas MCP, Kontrak API & Status Implementasi.
-- [references/06-pipeline-qc/api-cheat-sheet.md](references/06-pipeline-qc/api-cheat-sheet.md) — API Cheat Sheet & Tata Nama Fungsi.
+- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Rantai Perkakas MCP, Kontrak 23 Tool Publik & Status Implementasi.
+- [references/06-pipeline-qc/api-cheat-sheet.md](references/06-pipeline-qc/api-cheat-sheet.md) — API Cheat Sheet & Contoh Pemanggilan MCP.
 - [references/01-core/master-index.md](references/01-core/master-index.md) — Arsitektur Kapabilitas 5-Dimensi & Tingkatan Kebenaran Kapabilitas.
 
 ---
@@ -41,32 +41,51 @@ $$\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availabi
 - Server MCP Unreal Engine 5 berstatus **`PLANNED`** (penanda sengaja `_TODO_lentera-ue5` di `mcp_config.json`, dijadwalkan pada Fase 4 Roadmap).
 - AI Agent **DILARANG MENGKLAIM** bahwa UE5 MCP saat ini aktif, tersedia, atau dapat dieksekusi secara otomatis.
 
-### 2. Status Blender 5.2 LTS MCP
-- Implementasi perkakas Blender MCP berstatus perkakas eksekusi parsial saat ini.
-- Ketersediaan proses server runtime wajib diverifikasi di lingkungan kerja aktif sebelum eksekusi dan tidak boleh diasumsikan otomatis tersedia.
+### 2. Status Blender 5.2 LTS MCP (Hardened v1)
+- Model eksekusi aktif adalah **`HEADLESS_FILE_BACKED`** via stdio MCP server.
+- Tepat **23 Tool Publik Aktif** dan **17 Tool Deferred** (merujuk ke [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) Bab 3).
 - Status pendaftaran skema perkakas (*Tool Registration*) tidak sama dengan keberadaan kode eksekusi nyata (*Implemented Handler*).
-- Gunakan jalur transport/eksekusi yang terkonfigurasi pada kontrak aktif di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan lingkungan runtime saat ini.
-- Sebelum mengeksekusi operasi mutasi, verifikasi apakah fungsi handler terkait berstatus `IMPLEMENTED` atau masih berupa `STUB` merujuk ke [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) Bab 3.
-- Respons `{status: "ok"}` dari stub mock HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai mutasi selesai.
+- Sebelum mengeksekusi operasi mutasi, pastikan tool yang dipanggil termasuk dalam 23 tool publik aktif.
+- Respons `{status: "ok"}` atau payload hasil eksekusi HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai tugas selesai sebelum diverifikasi secara independen.
+
+---
+
+## Kontrak Targeting File Fisik
+
+1. **Targeting File Eksis (`blend_file`)**:
+   - Seluruh mutasi pada scene yang sudah ada wajib menyertakan path `blend_file` yang valid.
+   - Jangan pernah mengasumsikan state memori dari pemanggilan sebelumnya bertahan (*no cross-call in-memory session*).
+2. **Targeting File Baru (`output_blend_file`)**:
+   - Digunakan saat menginisialisasi scene/mesh baru (misal: `create_mesh_primitive`, `create_armature`).
 
 ---
 
 ## Pembagian 3 Layer API Terstandarisasi
 
-Perkakas diorganisasikan ke dalam 3 layer:
+Perkakas publik diorganisasikan ke dalam 3 layer:
 1. **Atomic Tools**: Aksi tunggal deterministik dengan batas lingkup kecil (misal: `set_bone_roll`, `set_shading_mode`, `create_mesh_primitive`).
-2. **Macro Tools**: Penggabungan beberapa aksi atomic menjadi satu tugas bermakna (misal: `create_armature`, `auto_weight_paint`, `unwrap_uv`, `apply_modifier`).
-3. **Workflow Tools**: Eksekusi alur sekuensial multi-tahap dengan pelaporan status per langkah (misal: `export_gltf`, `validate_export`, `render_viewport_screenshot`).
+2. **Macro Tools**: Penggabungan beberapa aksi atomic menjadi satu tugas terarah (misal: alur `create_armature` $
+ightarrow$ `add_bone` $
+ightarrow$ `set_bone_roll`, atau `apply_modifier` $
+ightarrow$ `merge_by_distance` $
+ightarrow$ `unwrap_uv`).
+3. **Workflow Tools**: Eksekusi alur sekuensial multi-tahap dengan pelaporan status per langkah (misal: `export_gltf` $
+ightarrow$ `validate_export` $
+ightarrow$ `render_viewport_screenshot`).
 
 ---
 
 ## Prinsip Observabilitas Sebelum Mutasi (*Inspect-Before-Mutate*)
 
-Sebelum mengeksekusi operasi mutasi yang kompleks pada scene 3D:
-1. **Inspeksi Awal**: Panggil tool observasi seperti `get_scene_state` atau `render_viewport_screenshot` untuk memeriksa kondisi objek aktif.
-2. **Eksekusi dengan Guard Batas Waktu**: Operasi perkakas dibatasi oleh batas waktu (*timeout*) aktif yang didefinisikan secara kanonikal pada kontrak MCP di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md).
-3. **Inspeksi Error Pasca-Eksekusi**: Jika terjadi anomali atau kegagalan, segera periksa output log via `get_console_output` atau `get_last_error`.
-4. **Verifikasi Hasil Fisik**: Validasi target geometri aktual sebelum menyatakan task selesai.
+Sebelum dan sesudah mengeksekusi operasi mutasi pada scene 3D:
+1. **Inspeksi Awal**: Panggil tool observasi seperti `get_scene_state`, `list_objects`, atau `get_mesh_stats` dengan menyertakan `blend_file`.
+2. **Eksekusi Terisolasi**: Jalankan mutasi dengan parameter terikat ketat.
+3. **Inspeksi Diagnostik Pasca-Eksekusi**: Jika terjadi anomali, periksa log via `get_console_output` atau `get_last_error`.
+4. **Verifikasi Independen**:
+   $$\mathbf{VERIFIED} = \text{Task Acceptance Criteria} + \text{Observed Target State} + \text{Independent Evidence}$$
+   - Modeling: `get_mesh_stats` / `get_object_state`
+   - Rigging: `get_armature_state`
+   - Ekspor: `validate_export`
 
 ---
 

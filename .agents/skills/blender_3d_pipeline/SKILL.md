@@ -1,6 +1,6 @@
 ---
 name: blender_3d_pipeline
-description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, topologi berorientasi deformasi, UV seam, hierarki armature rigging biomekanik, konsistensi bone roll, PBR materials, cloth physics syal, ekspor glTF/FBX deterministik, dan kepatuhan SOP 1/3/4."
+description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, topologi berorientasi deformasi, UV seam, hierarki armature rigging biomekanik, konsistensi bone roll, PBR materials, cloth physics syal, ekspor glTF deterministik, dan kepatuhan SOP 1/3/4."
 ---
 
 # Blender 5.2 LTS 3D High-Detail & Asset Pipeline
@@ -17,7 +17,7 @@ Seluruh konstanta numerik, batas poligon, palet warna baku, dan proporsi anatomi
 - Penataan topologi quad dominance pada area lipatan sendi dan otot aktif.
 - Unwrapping UV, normal map cage baking, dan penataan material PBR.
 - Pembangunan armature, skinning weight painting, FACS blend shapes, dan dual-mode cloth bones.
-- Validasi ekspor glTF / FBX ke pipeline engine.
+- Validasi ekspor glTF ke pipeline engine.
 
 ---
 
@@ -34,7 +34,7 @@ Seluruh konstanta numerik, batas poligon, palet warna baku, dan proporsi anatomi
 - [references/04-art-3d/3d-asset-pipeline.md](references/04-art-3d/3d-asset-pipeline.md) — Teori Fondasi 3D, Baking & LOD Architecture.
 - [references/04-art-3d/environment-modular-techniques.md](references/04-art-3d/environment-modular-techniques.md) — Grid Modular & Kit-Bashing.
 - [references/06-pipeline-qc/sop-workflow.md](references/06-pipeline-qc/sop-workflow.md) — SOP 1 (Prop), SOP 2 (Mat), SOP 3 (Rig), SOP 4 (Cloth).
-- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Tool MCP Blender.
+- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Tool MCP Blender (23 Public Tools).
 
 ---
 
@@ -56,31 +56,37 @@ Seluruh konstanta numerik, batas poligon, palet warna baku, dan proporsi anatomi
 - **Baking AO Mikro**: Batasi baking Ambient Occlusion pada celah mikro; hindari AO makro yang bentrok dengan dynamic GI engine.
 
 ### 3. SOP 3: Skeletal Rigging, FACS & Biomekanika
-- **Hierarki Armature**: Susun hierarki skeletal standar (`Root` $\rightarrow$ `Pelvis` $\rightarrow$ `Spine` $\rightarrow$ `Chest` $\rightarrow$ `Neck` $\rightarrow$ `Head`).
+- **Hierarki Armature Bersih**: Buat armature kosong (`create_armature` menghasilkan 0 tulang), lalu susun hierarki eksplisit via `add_bone` (`Bone_Root` $
+ightarrow$ `Bone_Pelvis` $
+ightarrow$ `Bone_Spine` $
+ightarrow$ `Bone_Chest` $
+ightarrow$ `Bone_Neck` $
+ightarrow$ `Bone_Head`).
+- **Sudut Roll Presisi**: Atur roll tulang dalam radian via `set_bone_roll`.
 - **Integritas Skinning**: Total bobot per vertex $= 1.0$ ($100\%$) dengan maksimal 4 bone influences.
-- **FACS Blend Shapes**: Siapkan shape keys berbasis Facial Action Units merujuk ke [human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md) dengan pemisahan area mata dan mulut.
+- **FACS Blend Shapes**: Siapkan shape keys berbasis Facial Action Units merujuk ke [human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md).
 - **Corrective Pose-Driven Morphs**: Tambahkan corrective shape keys untuk menjaga volume lipatan siku, bahu, dan lutut merujuk ke limit rotasi sendi di [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) Bab 4.
 
 ### 4. SOP 4: Cloth & Secondary Dynamics
 - **Dual-Mode Scarf Rigging**: Pasang rantai 5-bone spring bones pada syal lentera untuk mendukung peralihan antara simulasi fisika kain dan keyframe animasi sinematik.
 
 ### 5. Ekspor Deterministik
-- Wajib apply all transforms (`Location=(0,0,0)`, `Rotation=(0,0,0)`, `Scale=(1,1,1)`).
-- Orientasi rest pose baku $+Z$ forward / $+Y$ up.
+- Wajib apply all transforms via `apply_all_transforms`.
+- Ekspor glTF 2.0 via `export_gltf` dan validasi integritas struktur biner via `validate_export`.
 
 ---
 
 ## Tool Execution & Safety Guidance
 
 > [!IMPORTANT]
-> **Prinsip Keamanan Kapabilitas Tool**:  
-> Status pendaftaran tool (*Tool Registration*) tidak sama dengan ketersediaan implementasi nyata (*Effective Capability*). Sebelum mengeksekusi aksi mutasi:
-> 1. Verifikasi bahwa tool MCP yang dipanggil berstatus `AVAILABLE` dan memiliki handler backend nyata.
-> 2. Dilarang mengasumsikan respons mock/stub sebagai mutasi geometri yang berhasil.
-> 3. Jalankan observabilitas sebelum mutasi (`get_scene_state`, `get_console_output`, `get_last_error`).
+> **Prinsip Eksekusi Headless File-Backed**:  
+> Seluruh eksekusi Blender MCP berjalan dalam mode `HEADLESS_FILE_BACKED`. Sebelum mengeksekusi mutasi:
+> 1. Tentukan target file fisik eksplisit (`blend_file` untuk file eksis, `output_blend_file` untuk file baru).
+> 2. Dilarang mengasumsikan state memori aktif dari pemanggilan sebelumnya atau bergantung pada UI selection state.
+> 3. Jalankan observabilitas sebelum mutasi (`get_scene_state`, `list_objects`, `get_mesh_stats`, `get_armature_state`).
 
 ### Penanganan Kegagalan:
-- Jika terjadi error pada eksekusi tool MCP: panggil `get_last_error`, lakukan `undo` jika diperlukan, dan isolasi parameter penyebab masalah satu per satu.
+- Jika terjadi error pada eksekusi tool MCP: panggil `get_last_error`, periksa log via `get_console_output`, buka kembali state file target yang tersimpan, perbaiki parameter penyebab kegagalan, dan lakukan percobaan ulang sesuai semantik retry operasi.
 
 ---
 
@@ -90,3 +96,4 @@ Seluruh konstanta numerik, batas poligon, palet warna baku, dan proporsi anatomi
 - [ ] Total bobot vertex pada skinning tepat 1.0 (maksimal 4 bone influences).
 - [ ] Poly count dan texel density memenuhi batas spesifikasi [style-guide.md](references/04-art-3d/style-guide.md).
 - [ ] Visual Shading konsisten dengan palet The Triad non-outline.
+- [ ] Artefak ekspor tervalidasi via `validate_export`.

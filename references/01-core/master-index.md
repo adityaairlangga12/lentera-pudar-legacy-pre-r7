@@ -239,7 +239,7 @@ flowchart TD
 | Dokumen Master | Isi & Fokus Utama | Kapan Harus Dirujuk |
 |---|---|---|
 | [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md) | 7 SOP Prosedural: Prop, Material, Rigging, Cloth, Level Grey-Box, Gameplay GAS, Audio | Mengerjakan tugas produksi operasional berulang secara konsisten. |
-| [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md) | Rantai Tools Terkini: Epic Pipeline Plugin, Blender (Port 8097), UE5 Python MCP, ZBrush, Auto-Rig Pro, PCG | Setup environment produksi atau integrasi software baru. |
+| [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md) | Rantai Tools Terkini: Blender MCP (23 Public Tools, HEADLESS_FILE_BACKED), UE5 Python MCP, Epic Pipeline Plugin, ZBrush, PCG | Setup environment produksi atau integrasi software baru. |
 | [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md) | Referensi sintaks stabil modul `bpy` dan `unreal` Python dengan protokol *Inspect-Before-Execute* | Menjalankan otomasi skrip di Blender 5.2 LTS atau Unreal Engine 5. |
 | [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) | 6 Pilar Definition of Done (DoD), Stage-Gate 0 s.d. 7, 4-Tier Bug Classification, dan Gatekeeper Mandate | Melakukan pengujian kualitas sebelum menyatakan tugas selesai. |
 | [qc-patterns.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qc-patterns.md) | Knowledge base pola anomali visual 3D, rigging, audio, dan tindakan korektif | Menangani bug atau anomali spesifik saat inspeksi QC. |

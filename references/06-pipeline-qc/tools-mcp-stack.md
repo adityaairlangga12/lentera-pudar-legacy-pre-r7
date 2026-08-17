@@ -2,7 +2,7 @@
 status: ACTIVE
 type: TOOL_CONTRACT
 authority_scope: pipeline.tools_stack
-canonical: false
+canonical: true
 introduced_by: ADR-015
 ---
 
@@ -10,8 +10,8 @@ introduced_by: ADR-015
 # Rantai Tools, MCP Ecosystem & Pipeline Stack — Lentera Pudar
 ### Standardisasi Rantai Tools 3D Action RPG (Blender 5.2 LTS + Unreal Engine 5)
 
-> **Dokumen Sumber Kebenaran Rantai Tools (*Toolchain & MCP Reference*)**  
-> Menetapkan seluruh perangkat lunak, plugin, addon Blender, arsitektur Model Context Protocol (MCP), dan pipeline otomasi aset 3D untuk semesta *Lentera Pudar*.
+> **Dokumen Sumber Kebenaran Kanonikal Rantai Tools (*Toolchain & MCP Reference*)**  
+> Menetapkan seluruh perangkat lunak, plugin, arsitektur Model Context Protocol (MCP), kontrak kapabilitas 23 Tool Publik Blender 5.2 LTS, model eksekusi normatif `HEADLESS_FILE_BACKED`, dan pipeline otomasi aset 3D untuk semesta *Lentera Pudar*.
 
 ---
 
@@ -19,100 +19,121 @@ introduced_by: ADR-015
 
 | Software | Versi / Tipe | Peran Utama | Catatan Kunci |
 |---|---|---|---|
-| **Unreal Engine 5** | 5.8 / Modern 5.x | Game Engine Utama (Rendering Lumen, Nanite, Niagara, Chaos Cloth, World Partition). | Target performa solid 60 FPS ($<16.6\text{ ms}$). |
-| **Blender** | 5.2 LTS | DCC Primer untuk Pemodelan 3D, Sculpting, Biomechanical Rigging, Retopology, dan glTF/FBX export. | Berjalan bersama Blender MCP Addon (Port 8097). |
+| **Unreal Engine 5** | 5.8 / Modern 5.x | Game Engine Utama (Rendering Lumen, Nanite, Niagara, Chaos Cloth, World Partition). | Target performa solid 60 FPS ($<16.6	ext{ ms}$). |
+| **Blender** | 5.2 LTS | DCC Primer untuk Pemodelan 3D, Sculpting, Biomechanical Rigging, Retopology, dan glTF export. | Dieksekusi via `lentera-blender-mcp` (Model `HEADLESS_FILE_BACKED`). |
 | **Python** | 3.10+ | Bahasa Scripting Otomasi MCP (Blender `bpy` & UE5 `unreal` module). | Jembatan perintah AI Agent ke engine. |
 
 ---
 
-## 2. Arsitektur Model Context Protocol (MCP) & Bridge
+## 2. Arsitektur Model Context Protocol (MCP) & Model Eksekusi
 
-| Komponen MCP | Fungsi | Catatan Arsitektur |
-|---|---|---|
-| **Blender MCP Server/Addon** | Memberi AI Agent akses perintah ke Blender: manipulasi mesh, material, UV, modifier, armature via `bpy` API. | Socket server lokal (port `8097`). Sintaks mengacu pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md). |
-| **Unreal Engine MCP Plugin** | Memberi AI Agent akses ke Unreal Editor API: spawn actor, Blueprint, material instance, World Partition, Niagara. | Wrapper di atas `unreal` Python Editor Scripting. |
-| **Blender-Unreal Pipeline Plugin (Epic Games)** | Addon resmi Epic Games untuk otomasi "Send to Unreal" — ekspor mesh, rig, dan animasi langsung ke Content Browser UE5. | Menjamin transfer aset satu-klik yang deterministik dan stabil. |
-| **Shared Asset Bridge Folder** | Folder sinkronisasi ekspor FBX/glTF 2.0 deterministik dari Blender ke Content Browser UE5. | Alternatif jembatan aset lokal deterministik. |
+### A. Model Eksekusi Normatif Hardened v1 (`HEADLESS_FILE_BACKED`)
+- **Transport Komunikasi**: MCP Stdio Client $\leftrightarrow$ Node.js Server (`lentera-blender-mcp`).
+- **Engine Eksekusi**: Subprocess Blender 5.2 LTS headless terisolasi (`blender.exe --background -noaudio`) dipanggil segar (*fresh cold-process*) per pemanggilan perintah.
+- **Otoritas Status Kerja (*Working State Authority*)**: File fisik `.blend` di filesystem disk adalah satu-satunya otoritas status kerja persisten yang sah. Tidak ada dependensi session memori antar-pemanggilan.
+- **Isolasi Proses**: Setiap kegagalan mutasi atau crash script tertahan di dalam subprocess tanpa mencemari pemanggilan berikutnya.
+- **Status WebSocket GUI Bridge**: Berstatus **`DEFERRED / NOT AVAILABLE`** (prototipe sekunder yang ditangguhkan dan tidak menjadi bagian dari rilis Hardened v1 aktif).
 
----
-
-## 3. Sculpting, Modeling & Texturing Ecosystem
-
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen, Syal Aina, dan aset dungeon. | Material PBR Stylized (Teori Bab 11.A, [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)). |
-| **Substance 3D Designer** | Pembuatan material prosedural: Kristal Es Transmissive (SSS) & batuan reruntuhan. | Teori Subsurface Scattering kristal es (Teori Bab 11.B). |
-| **Quixel Megascans + Bridge** | Pustaka aset scan batuan reruntuhan kuno terintegrasi native dengan UE5. | Estetika reruntuhan organik-kuno (GDD Bab I). |
-| **Poly Haven (Library Gratis)** | Sumber HDRI, tekstur PBR, dan model lingkungan gratis berkualitas tinggi. | Pelengkap Megascans untuk variasi material tanpa biaya lisensi. |
-| **ZBrush (Opsional)** | Sculpting high-poly detail ekstrem untuk karakter hero Kaelen dan boss. | Sub-divisi tinggi sebelum retopology ke 40k–60k tris. |
-| **Hard Ops / Boxcutter (Blender Addon)** | Mempercepat hard-surface modeling untuk zirah boss (Lord Alden dkk) dan altar batu. | Presisi arsitektur dungeon geometris. |
-| **Unreal Material Editor (Native)** | Node-based shader untuk material live-driven (`Curse_Spread` parameter). | Teori Emissive Material Real-Time (Teori Bab 11.C). |
+### B. Kebenaran Kapabilitas (*Capability Truth*)
+Setiap agen wajib mematuhi alur verifikasi kapabilitas:
+$$\text{DOCUMENTED} \longrightarrow \text{IMPLEMENTED} \longrightarrow \text{AVAILABLE} \longrightarrow \text{EXECUTED} \longrightarrow \text{VERIFIED}$$
+- $	ext{Tool Registration} 
+eq 	ext{Implementation} 
+eq 	ext{Server Availability} 
+eq 	ext{Execution} 
+eq 	ext{Verification}$.
+- Klaim bahwa tugas selesai HANYA sah jika berstatus **`VERIFIED`** melalui observasi independen terhadap file target fisik.
 
 ---
 
-## 4. Rigging, Biomekanika, Animasi & Cloth
+## 3. Matriks Kapabilitas Perkakas Blender MCP (Hardened v1)
 
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **Blender Rigify / Custom Rig** | Hierarki armature biomekanik lengkap humanoid Kaelen (`Root` ➔ `Pelvis` ➔ `Spine` ➔ `Limb`). | Fondasi Skeleton Hierarchy & Bony Landmarks (Teori Bab 10.A & [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md)). |
-| **Auto-Rig Pro (Pelengkap Rigify)** | Rigging tingkat lanjut dengan kontrol facial blend shapes dan rantai tulang sekunder. | Mematangkan ekspresi close-up ala Hellblade II di Altar Duka. |
-| **UE5 Control Rig** | Rig lanjutan di dalam Unreal Engine untuk penyesuaian animasi & IK kaki real-time. | Teori IK sebagai constraint solving (Teori Bab 13.F). |
-| **UE5 Chaos Cloth / Blender Cloth Sim** | Simulasi fisika kain dinamis untuk Syal Aina (Dual-Mode: Sim vs Hand-Keyed). | Teori Soft Body & Cloth Physics (Teori Bab 13.B). |
-| **Marvelous Designer (Opsional)** | Pola jahitan kain realistis untuk Syal Aina sebelum disimulasikan. | Meningkatkan kualitas drapery kain syal emas. |
-| **Cascadeur (Opsional)** | Animasi keyframe berbasis fisika AI untuk timing combat dan parry presisi. | 12 Prinsip Animasi & Rantai Kinetik Kombat. |
+Baseline perkakas aktif: **Tepat 23 Tool Publik Terverifikasi** dan **17 Tool Deferred**.
 
----
+### A. 23 Tool Publik Aktif (Normative Headless Path)
 
-## 5. VFX, Prosedural & Simulasi Fisika
-
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **Niagara (UE5 Native)** | Partikel percikan lentera (`FX_Warmth_Embers`), uap es (`FX_Frost_Mist`), dan hit sparks. | Niagara sebagai indikator status visual (Teori Bab 11.D). |
-| **UE5 PCG Framework (Native)** | Distribusi reruntuhan, puing, dan vegetasi es otomatis berbasis aturan algoritmik. | Efisiensi world-building dungeon skala besar. |
-| **Blender Geometry Nodes (Native)** | Modeling prosedural Blender-side untuk variasi kristal es, retakan, dan puing sebelum ekspor. | Menghasilkan variasi prop modular secara cepat. |
-| **UE5 Chaos Destruction** | Sistem retakan dan pecahan kristal es (*Voronoi Fracture*) saat serangan cakar es. | Teori Fracture Mechanics (Teori Bab 13.C). |
-| **EmberGen (Opsional)** | Simulasi api/uap real-time yang di-bake menjadi flipbook texture. | Teori Fluid Dynamics Disederhanakan (Teori Bab 13.D). |
-| **Houdini (Opsional)** | Pola retakan prosedural kompleks jika dibutuhkan ekspansi dungeon. | Teori Noise & PCG (Teori Bab 14.E & 16.D). |
-
----
-
-## 6. Audio System (3D Spasial & Adaptive Music)
-
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **Wwise (Audiokinetic)** | Middleware audio adaptif: vertical layering musik, ducking otomatis, dan 3D binaural spatialization. | Teori Audio Adaptif & Binaural Whispers (Teori Bab 7.B & 7.C). |
-| **UE5 MetaSounds (Native)** | Alternatif audio native UE5 untuk procedural sound design dan dynamic ducking. | Alternatif ringan tanpa middleware eksternal. |
-| **DAW (Reaper / Audacity)** | Perekaman dan editing audio mentah (bisikan, foley es retak, piano berdebu). | Fondasi aset audio mentah. |
-| **iZotope RX (Opsional)** | Pembersihan noise dan mastering bisikan jiwa beku (-16 LUFS / -18 LUFS). | Teori Sound Mixing & Mastering (Teori Bab 18.C). |
+| No | Nama Tool | Kategori | Persyaratan Targeting File | Tujuan Utama | Jalur Verifikasi Independen |
+|---|---|---|---|---|---|
+| 1 | `open_blend_file` | Scene / File | `path` (file eksis) | Membuka & memeriksa metadata scene `.blend`. | `get_scene_state` |
+| 2 | `save_blend_file` | Scene / File | `filepath` | Menyimpan scene ke file `.blend` target. | File inspection di disk |
+| 3 | `get_scene_state` | Observasi | `blend_file` (opsional) | Ringkasan objek, mesh, dan material scene. | Read-only observation |
+| 4 | `list_objects` | Observasi | `blend_file` (opsional) | Daftar objek + `viewport_visible` & `render_enabled`. | Read-only observation |
+| 5 | `get_object_state` | Observasi | `blend_file` + `object` (wajib) | Detail transform, dimensi, hirarki, material slots. | Read-only observation |
+| 6 | `get_mesh_stats` | Observasi | `blend_file` + `object` (wajib) | Statistik vertex, face, tris, UV layers, shading. | Read-only observation |
+| 7 | `get_armature_state` | Observasi | `blend_file` + `armature` (wajib) | Hirarki tulang, jumlah bone, joint coords, roll (rad). | Read-only observation |
+| 8 | `render_viewport_screenshot` | Visual | `blend_file` (opsional) + `output_path` | Render tangkapan visual viewport ke file PNG. | Inspeksi visual PNG di disk |
+| 9 | `get_console_output` | Diagnostik | Tanpa target file | Mengambil buffer string log konsol server. | String log inspect |
+| 10 | `get_last_error` | Diagnostik | Tanpa target file | Mengambil teks error terakhir yang tertangkap. | Error text inspect |
+| 11 | `create_mesh_primitive` | Modeling | `blend_file` / `output_blend_file` | Membuat primitive mesh (`cube`, `cylinder`, `uv_sphere`). | `get_mesh_stats` / `get_object_state` |
+| 12 | `apply_modifier` | Modeling | `blend_file` + `object` (wajib) | Menambah & menerapkan modifier (`MIRROR`, `BEVEL`, `DECIMATE`). | `get_mesh_stats` |
+| 13 | `set_shading_mode` | Shading | `blend_file` / `output_blend_file` | Mengatur mode shading (`flat` / `smooth`). | `get_mesh_stats` (`smooth_faces`) |
+| 14 | `merge_by_distance` | Modeling | `blend_file` + `object` (wajib) | Menggabungkan vertex duplikat dalam threshold. | `get_mesh_stats` (`vertex_count`) |
+| 15 | `validate_poly_count` | QC Modeling | `object` + `blend_file` (opsional) | Validasi jumlah triangle terhadap budget `max_tris`. | `get_mesh_stats` |
+| 16 | `create_armature` | Rigging | `blend_file` / `output_blend_file` | Membuat objek armature bersih (**0 tulang / zero bones**). | `get_armature_state` (`bone_count: 0`) |
+| 17 | `add_bone` | Rigging | `blend_file` + `armature` (wajib) | Menambah tulang dengan head/tail & hirarki parent (`use_connect`). | `get_armature_state` |
+| 18 | `set_bone_roll` | Rigging | `blend_file` + `armature` + `bone` | Mengatur sudut roll kanonikal tulang dalam **radian**. | `get_armature_state` (`roll` rad) |
+| 19 | `apply_all_transforms` | Rigging / Mesh | `blend_file` / `output_blend_file` | Menerapkan Location, Rotation, Scale sebelum ekspor. | `get_object_state` |
+| 20 | `unwrap_uv` | UV Mapping | `blend_file` + `object` (wajib) | UV Unwrapping (`SMART_PROJECT` / `CUBE_PROJECT`). | `get_mesh_stats` / Python inspection |
+| 21 | `create_flat_material` | Material | `blend_file` / `output_blend_file` | Membuat material warna dasar Principled BSDF. | `get_object_state` (`material_slots`) |
+| 22 | `export_gltf` | Ekspor | `blend_file` + `path` (wajib) | Ekspor scene ke glTF 2.0 (`.glb` / `.gltf`). | `validate_export` + File di disk |
+| 23 | `validate_export` | Validasi | `path` (wajib) | Validasi struktural biner header GLB / manifest JSON glTF. | Independent binary validator |
 
 ---
 
-## 7. Level Design & Pencahayaan (Lighting)
+### B. 17 Tool Deferred (Tidak Tersedia di Hardened v1)
 
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **UE5 World Partition (Native)** | Level streaming otomatis 5 Sektor Dungeon tanpa layar loading. | Teori World Partition & Level Streaming (Teori Bab 17.B). |
-| **UE5 Lumen (Real-Time GI)** | Pencahayaan dinamis real-time untuk pendaran lentera Aina dan kristal es. | Teori Kontras Suhu Kelvin (2700K vs 6500K). |
-| **UE5 Lightmass (Baked Lighting)** | Pencahayaan statis yang di-bake untuk area dungeon statis guna meringankan beban GPU. | Kena Lighting Benchmark (Hybrid Lumen + Lightmass). |
-| **UE5 Spline Tools (Native)** | Pembentukan lorong berkelok organik (*Hall of Mirrors*) dan jalur patroli. | Teori Spline & Bezier Curves (Teori Bab 14.C). |
-| **UE5 Level Sequencer (Native)** | Pembuatan cutscene Altar Duka dengan kamera dekat over-the-shoulder. | Teori Kamera sebagai Alat Naratif (Teori Bab 5.B). |
+Seluruh perkakas berikut **DITANGGUHKAN (`DEFERRED`)** dan dilarang dipanggil sebagai perkakas publik:
+1. `undo` — *Tidak bermakna pada model headless single-shot.*
+2. `redo` — *Tidak bermakna pada model headless single-shot.*
+3. `separate_mesh_by_material` — *Ditangguhkan.*
+4. `validate_bone_roll_consistency` — *Ditangguhkan.*
+5. `auto_weight_paint` — *Ditangguhkan (Fase 4).*
+6. `adjust_vertex_weights` — *Ditangguhkan (Fase 4).*
+7. `validate_rig_symmetry` — *Ditangguhkan.*
+8. `apply_vertex_color` — *Ditangguhkan.*
+9. `bake_reference_texture` — *Ditangguhkan.*
+10. `set_pose` — *Ditangguhkan (Fase 4).*
+11. `insert_keyframe` — *Ditangguhkan (Fase 4).*
+12. `apply_easing_to_action` — *Ditangguhkan (Fase 4).*
+13. `export_rig_metadata` — *Ditangguhkan.*
+14. `setup_fluid_simulation` — *Ditangguhkan.*
+15. `setup_cloth_physics` — *Ditangguhkan (Fase 4).*
+16. `bake_simulation` — *Ditangguhkan.*
+17. `render_simulation_to_flipbook` — *Ditangguhkan.*
 
 ---
 
-## 8. Profiling, Build & Platform
+## 4. Kontrak Status File & Targeting
 
-| Tools | Fungsi | Terhubung ke GDD/Teori |
-|---|---|---|
-| **Unreal Insights & RenderDoc** | Profiling performa frame time ($<16.6\text{ ms}$) dan debugging draw calls/Lumen. | Teori Performance Budgeting 60 FPS (Teori Bab 17.A). |
-| **Git + Git LFS / Perforce** | Version control file biner besar (`.blend`, `.uasset`, `.fbx`, `.wav`). | Teori Version Control Aset 3D (Teori Bab 17.D). |
-| **Steamworks SDK** | Integrasi Cloud Save, Achievements, dan Controller Support. | Target Platform PC Windows / Steam (GDD Bab I). |
+1. **Operasi File Eksis (`blend_file`)**:
+   - Wajib digunakan pada seluruh mutasi yang memodifikasi scene eksis (`apply_modifier`, `merge_by_distance`, `unwrap_uv`, `add_bone`, `set_bone_roll`).
+   - Wajib digunakan sebagai sumber pada `export_gltf`.
+2. **Operasi Pembuatan File Baru (`output_blend_file`)**:
+   - Digunakan saat menginisialisasi file `.blend` baru via `create_mesh_primitive`, `create_armature`, `create_flat_material`, atau `set_shading_mode`.
+   - Dilarang mencampurkan `blend_file` dan `output_blend_file` dalam satu pemanggilan.
+3. **Larangan Mutasi Tanpa Target**:
+   - Pemanggilan mutasi tanpa `blend_file` atau `output_blend_file` ditolak seketika dengan `INVALID_TARGET_STATE`.
 
 ---
 
-## 9. Prioritas Eksekusi Pipeline (Tahap Demi Tahap)
+## 5. Kontrak Ekspor & Validasi Artefak
 
-1. **Prioritas 1 (Fondasi Wajib)**: Unreal Engine 5 + Blender 5.2 LTS + Python + Blender-Unreal Pipeline Plugin + Unreal Python Scripting.
-2. **Prioritas 2 (Aset Utama Kaelen & Aina)**: Modeling/Rigging Kaelen di Blender + Texturing PBR Substance + Chaos Cloth Syal Aina.
-3. **Prioritas 3 (Core Combat & Diegetic Gameplay)**: Animation Blueprint (Combo, Parry, Hitstop) + Curse Meter MPC + Adaptive Camera.
-4. **Prioritas 4 (Level & Audio)**: Modular Kit-Bashing (Grid 300cm) + World Partition Sektor 1 + MetaSounds Binaural Whispers + Niagara Particles.
-5. **Prioritas 5 (Polish & QC)**: Profiling Unreal Insights solid 60 FPS + Steamworks SDK build packaging.
+- **Format yang Didukung**: Hanya `.glb` dan `.gltf` (glTF 2.0). Format lain (`.fbx`, `.obj`) ditolak dengan `INVALID_INPUT`.
+- **Proteksi Overwrite**: Default `overwrite: false`. Menolak ekspor jika file output atau file pendamping `.bin` sudah ada di disk, kecuali `overwrite: true`.
+- **Proteksi Tabrakan Path**: Menolak jika `path === blend_file`.
+- **Validasi Struktural Biner (`validate_export`)**:
+  - Memverifikasi magic `glTF` (`0x46546C67`), version 2, kesesuaian declared length vs physical length, JSON chunk type, asset version, dan keberadaan node sentinel.
+  - Memvalidasi keberadaan fisik buffer biner lokal (`.bin`) pada manifest `.gltf`.
+  - Membedakan validator execution error (`isError: true`) vs artifact validation failure (`isError: false, valid: false`).
+  - `require_armature: true` mensyaratkan keberadaan struktur skin/joint glTF yang valid (tidak mengklaim kompatibilitas engine pihak ketiga).
+
+---
+
+## 6. Ekosistem DCC, Sculpting, Rigging & Pipeline Lanjutan
+
+| Tools | Fungsi | Catatan Pipeline |
+|---|---|---|
+| **Substance 3D Painter** | Texturing detail PBR non-outline untuk Kaelen & dungeon. | Material PBR Stylized (Teori Bab 11.A). |
+| **Unreal Engine 5 Control Rig & Chaos** | Rigging lanjutan di UE5 & simulasi fisika kain Syal Aina. | Dual-Mode: Chaos Cloth vs Keyframe (Teori Bab 13.B). |
+| **Niagara VFX (UE5 Native)** | Partikel percikan lentera & uap es kutukan. | Indikator status visual diegetik. |
+| **Unreal Insights & RenderDoc** | Profiling performa frame time ($<16.6\text{ ms}$). | Target 60 FPS Steam-Ready. |
