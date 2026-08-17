@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: art.facial_rig
+canonical: true
+introduced_by: ADR-026
+---
+
+
 # Ekspresi Wajah Manusia & FACS — Lentera Pudar Master Reference
 ### Anatomi Otot Wajah, Facial Action Coding System (FACS), Duchenne Marker, & Bahasa Emosi Gaze
 

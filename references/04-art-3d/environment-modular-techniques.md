@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: art.environment_modular
+canonical: true
+introduced_by: ADR-020
+---
+
+
 # Teknik Tambahan — Lentera Pudar: 3D Action RPG Edition
 ### Pelengkap Praktis 3D Production Pipeline: Trim Sheets, Texel Density, Modular Kit & Color Grading
 

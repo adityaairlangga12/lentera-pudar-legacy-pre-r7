@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: CALIBRATION
+authority_scope: pipeline.calibration
+canonical: false
+---
+
+
 # Few-Shot Quality Calibration — Lentera Pudar: 3D Action RPG Edition
 ### Standar Mutu Konkret & Kalibrasi Diri AI Agent (Benchmark Benar vs Salah)
 

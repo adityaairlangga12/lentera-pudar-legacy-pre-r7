@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: TOOL_CONTRACT
+authority_scope: pipeline.api_contract
+canonical: false
+---
+
+
 # API Cheat Sheet — bpy (Blender 5.2 LTS) & unreal (UE5.8 Python MCP)
 ### Panduan Eksekusi API Konkret & Protokol Anti-Halusinasi Pemanggilan Fungsi
 

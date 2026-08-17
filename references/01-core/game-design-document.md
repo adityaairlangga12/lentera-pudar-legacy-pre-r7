@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: project.identity
+canonical: true
+governed_by: ADR-013
+---
+
+
 # Game Design Document (GDD) — Lentera Pudar: 3D Action RPG Master Bible
 
 > **Dokumen Sumber Kebenaran Mutlak (*Game Design Source of Truth*)**  

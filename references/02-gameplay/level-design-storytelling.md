@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: gameplay.level_design
+canonical: true
+introduced_by: ADR-027
+---
+
+
 # Level Design & Environmental Storytelling — Lentera Pudar Master Reference
 ### Bagaimana Tata Ruang Spasial dan Penempatan Objek Bercerita Tanpa Kata
 

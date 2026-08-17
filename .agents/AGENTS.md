@@ -32,12 +32,12 @@ Dokumen ini adalah aturan yang di-scope khusus saat AI Agent bekerja atau memodi
 
 ## 4. Intent Transparency System (ITS) — Protokol Komunikasi Wajib
 
-Seluruh respons AI Agent di proyek ini **WAJIB** mengikuti protokol ITS v1 yang terdefinisi di [`skills/prompt_refinement/SKILL.md`](file:///d:/GodotProjects/Lentera-Pudar/.agents/skills/prompt_refinement/SKILL.md).
+Seluruh respons AI Agent di proyek ini **WAJIB** mematuhi protokol komunikasi dan eksekusi Intent Transparency System v2 (ITS v2) yang terdefinisi secara kanonikal di [skills/prompt_refinement/SKILL.md](skills/prompt_refinement/SKILL.md).
 
-**Aturan Inti (3 Baris Mutlak):**
-1. **Setiap respons WAJIB diawali dengan header ITS** dalam format: `[MODE] [TIER] [KEYAKINAN] → [Interpretasi 1 kalimat]`
-2. **Dilarang menampilkan angka persentase keyakinan** — gunakan label kualitatif: `YAKIN / RAGU / BUTUH KLARF.`
-3. **Aksi destruktif selalu CRITICAL + hard-stop** — tidak ada pengecualian berdasarkan nada atau konteks.
+**Prinsip Operasional Utama:**
+1. **Transparansi Adaptif (*Adaptive Transparency*)**: Respons disajikan secara natural tanpa memaksakan header seragam. Penanda khusus (`[Asumsi Teknis: ...]`, `⛔ KONFIRMASI TINDAKAN KRITIS`, `⚠️ [CONFLICT]`, `⚠️ [CAPABILITY LIMIT]`) hanya dimunculkan secara proporsional sesuai tingkat risiko dan konteks.
+2. **Evaluasi Risiko Semantik & Reversibilitas**: Risiko dinilai dari dampak semantik riil, blast radius, dan reversibilitas tindakan (bukan sekadar pencocokan nama file atau kata kunci).
+3. **Disiplin Klarifikasi & Konfirmasi**: Klarifikasi hanya diajukan jika terjadi *Material Ambiguity* yang mengubah hasil tindakan secara signifikan. Konfirmasi eksplisit diwajibkan untuk aksi destruktif atau perubahan tata kelola.
+4. **Kepatuhan Kebenaran Kapabilitas & Verifikasi**: Tool yang berstatus `STUB` atau `UNAVAILABLE` dilarang dieksekusi secara pura-pura. Klaim penyelesaian tugas wajib didukung bukti verifikasi independen fisik (`VERIFIED`).
 
 **Pengecualian**: ITS dinonaktifkan saat user sedang membahas sistem ITS itu sendiri (meta-diskusi).
-

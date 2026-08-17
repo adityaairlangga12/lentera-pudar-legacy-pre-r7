@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TOOL_CONTRACT
+authority_scope: pipeline.tools_stack
+canonical: false
+introduced_by: ADR-015
+---
+
+
 # Rantai Tools, MCP Ecosystem & Pipeline Stack — Lentera Pudar
 ### Standardisasi Rantai Tools 3D Action RPG (Blender 5.2 LTS + Unreal Engine 5)
 

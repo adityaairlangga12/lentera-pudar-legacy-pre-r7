@@ -1,137 +1,92 @@
-# Lentera Pudar — Project Rules & System Prompt (3D Action RPG Edition)
+# Lentera Pudar — Core Agent Policy & Project Invariants
 
-> **Dokumen ini adalah sumber kebenaran (Source of Truth) utama untuk AI Asisten Teknis dan Seluruh Sub-Agent.** Wajib dibaca dan dipatuhi secara otomatis di setiap sesi untuk memastikan konsistensi kode, desain, kontrol kualitas (QC), narasi psikologis, biomekanika, dan arsitektur 3D Lentera Pudar.
+> **Dokumen Tata Kelola Inti Agen AI (*Global Minimum Context & Core Policy*)**  
+> Dokumen ini adalah acuan tata kelola global yang dimuat di setiap sesi kerja AI Asisten Teknis dan Sub-Agent. Dokumen ini menetapkan identitas inti proyek, batasan invarian mutlak, kebijakan integritas teknis, dan pointer rujukan ke dokumen spesifikasi kanonikal. Seluruh detail pengetahuan naratif, numerik, dan prosedural diakses secara dinamis (*on-demand*) merujuk pada [master-index.md](references/01-core/master-index.md).
 
 ---
 
-## BAB I: IDENTITAS, LORE, FILOSOFI DUNIA & ARSITEKTUR 3D
-
-### 1.1 Identitas Proyek & Arsitektur Dual-Layer
+## 1. Identitas Inti Proyek (*Project Identity — Minimal*)
 - **Judul Resmi**: *Lentera Pudar — The First Spark* (Seri Pembuka Semesta Lentera Pudar).
-- **Genre**: 3D Third-Person Action-Adventure RPG (Stylized-Realistic / Poetic Dark Fantasy).
+- **Genre & Format**: 3D Third-Person Action-Adventure RPG (Stylized-Realistic / Poetic Dark Fantasy).
+- **Target Engine & DCC**: Unreal Engine 5 + Blender 5.2 LTS.
 - **Target Platform**: PC Windows (Steam-Ready), Steam Deck, dan Controller Support penuh.
-- **Engine & Pipeline**: Unreal Engine 5 (UE5) / Blender 5.2 LTS Pipeline.
-- **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K ($99^{th}\text{ percentile} < 16.6\text{ ms}$).
-- **Dual-Layer Architecture Benchmark**:
-  - **Layer Visual (Kena: Bridge of Spirits)**: Menentukan estetika stylized-realistic PBR non-outline, rasio 1:6.8, pencahayaan Kelvin kontras tinggi (2700K vs 6500K Lumen GI), hybrid hair (solid + alpha cards), reruntuhan organik, dan restorasi jejak hangat (*Niagara Warmth Embers* & Render Target Thawing) — merujuk pada [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/kena-art-research.md).
-  - **Layer Gameplay & Psikologi (Hellblade I & II)**: Menentukan sistem diegetik (es merambat di tubuh menggantikan bar UI, kompas emosional syal menggantikan minimap), spatial 3D binaural whispers, live mental morphing environment, combat 1v1 deliberate parry-focused, serta bahasa kamera sinematik emosional & transisi seamless — merujuk pada [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md).
-
-### 1.2 Lore Inti, Karakter & Metafora 5 Tahapan Berduka
-- **Kutukan Pudar (The Fading Curse / Apathy Plague)**:
-  Fenomena entropi emosional di mana manusia yang mengalami duka mendalam dan keputusasaan memilih mati rasa (*emotional apathy*). Mereka membeku perlahan menjadi patung kristal es biru berisi fragmen ingatan masa lalu yang terperangkap dalam siklus penderitaan abadi.
-- **Kaelen (Protagonis — Sang Pengelana Duka)**:
-  Pengelana *class-less* bertubuh atletis (proporsi 1:6.8, tinggi $1.78\text{ m}$) berambut abu-abu perak acak (`#C9CDD1`) yang memikul rasa bersalah atas tragedi masa lalu.
-  - **Lengan Kiri**: Membeku total dibalut kluster prisma kristal es kutukan (`#4A6FA5` & `#7EE8FA`), berdenyut reaktif dengan pendaran emissive seiring meningkatnya *Curse Meter*. Dilengkapi cakar es (*crystal talons*).
-  - **Mata Kanan (The Sealed Eye)**: Mengenakan penutup mata kulit hitam (*eyepatch* `#141013`) sebagai segel bekas luka beku. Menjadi mekanik persepsi *Risk-Reward* (membuka segel sesaat mengungkap simbol tersembunyi & jalur memori, namun mempercepat laju kutukan $+3\text{ poin/detik}$).
-  - **Pakaian**: Jubah kelana usang gelap (`#2A211C`) dengan tali selempang kantung (*baldric harness*) bersilang di dada.
-  - **Combat Style**: Bertarung tangan kosong berbobot & cakar es (*Bare Hand Punch* + *Cursed Ice Strike* + *12-Frame Tight Parry* dengan Rantai Kinetik penuh).
-- **Aina (Jiwa Syal Lentera — Sang Pelindung Abadi)**:
-  Sahabat sekaligus belahan jiwa Kaelen yang mengorbankan wujud fisiknya menjadi syal api kuning abadi di leher Kaelen.
-  - **The Fading Scarf**: Syal kain emas memancarkan cahaya hangat (`#F4B860` 2700K). Menggunakan simulasi fisika kain (*Dual-Mode*: Chaos Cloth Stiffness 0.4–0.6 saat gameplay & Hand-Keyframed Control Rig saat cutscene) yang berkibar dinamis sebagai kompas emosional penunjuk arah. Setiap kali Kaelen menyalakan Altar Duka di dungeon, syal memendek secara permanen dalam 4 tahap (*4 Stages of Sacrifice*).
-- **5 Sektor Dungeon (Pemetaan 5 Tahapan Berduka — 5 Stages of Grief & Environmental Storytelling)**:
-  *Tata ruang spasial, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md).*
-  1. **Sektor 1: Denial (Penyangkalan)** — *The Silent Crypts*: Makam beku kuno tempat roh menolak kenyataan bahwa mereka telah tiada. Koridor sempit simetris berulang (*looping claustrophobia*, Bos: Lord Alden).
-  2. **Sektor 2: Anger (Kemarahan)** — *The Blazing Frost*: Ruang pembakaran es di mana amarah dingin meledak-ledak. Jalur terputus tajam, friksi navigasi tinggi, dan reruntuhan *destructible* (Bos: Ignis Vulkan).
-  3. **Sektor 3: Bargaining (Tawar-Menawar)** — *The Hall of Mirrors*: Labirin cermin waktu tempat jiwa memohon penundaan takdir. Rute bercabang semu dan refleksi es manipulatif (Bos: Lady Vespera).
-  4. **Sektor 4: Depression (Depresi)** — *The Abyss of Stillness*: Danau keheningan gelap tanpa suara, tempat kepasrahan total. Ruang luas hampa dengan *descending verticality* (Bos: The Hollow Reflection).
-  5. **Sektor 5: Acceptance (Penerimaan)** — *The Dawning Altar*: Puncak rekonsiliasi emosional Kaelen dan Aina, ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*).
-
-### 1.3 Teori Warna & Kontras Suhu Kelvin (The Triad of Lentera Pudar)
-Seluruh perancangan seni visual 3D, pencahayaan, shader, dan material wajib tunduk pada **Hukum Tiga Warna (The Triad)**:
-1. **Kuning Hangat (`#F4B860` — 2700K Kelvin Warm Emissive)**:
-   Mewakili Jiwa Aina, api syal lentera, sumber harapan, dan cinta tanpa pamrih. Memancarkan cahaya dinamis lembut via point light 3D.
-2. **Biru Dingin (`#4A6FA5` & `#7EE8FA` — 6500K Kelvin Cold Shard)**:
-   Mewakili Kutukan Pudar, kristal es memori, dan keputusasaan. Memancarkan uap beku dan pendaran emissive kristal pada lengan kiri Kaelen.
-3. **Netral Gelap (`#2A211C` & `#141013` — Dark Neutral Stone & Leather)**:
-   Mewakili batuan dungeon kuno, tanah fana, bayangan, pakaian kelana, dan penentu atmosferik kegelapan 3D.
-
-### 1.4 Arsitektur Pipeline 3D (Blender 5.2 LTS + Unreal Engine 5)
-Proyek ini mengadopsi pipeline **High-Fidelity 3D Action RPG**:
-- **Blender 5.2 LTS (3D Modeler & Rigger)**:
-  - Memodelkan karakter high-detail proporsional (1:6.8, Hero LOD0 $40\text{k}–60\text{k}\text{ tris}$, Texel Density $512\text{ px/m}$).
-  - Rigging armature biomekanik lengkap, validasi Bony Landmarks, corrective shape keys, dan rantai tulang syal dinamis (*spring bones* 5-chain).
-  - Material PBR non-outline (transmissive crystal ice SSS, emissive gold fabric, weathered leather, trim sheets).
-  - Ekspor glTF 2.0 / FBX deterministik atau direct via **Blender-Unreal Pipeline Plugin** resmi Epic Games ke Unreal Engine 5.
-- **Unreal Engine 5 (Game Engine & Systems)**:
-  - Rendering 3D modern (Lumen Lighting GI, Nanite, Niagara Particles untuk uap es & percikan hangat lentera, Lightmass hybrid).
-  - Character Controller 3D dengan *Adaptive Dynamic Camera* (Eksplorasi FOV 78° vs Duel Lock-On FOV 70° berbasis Quaternion SLERP).
-  - Third-Person Action Combat FSM berbobot dengan parry window 12 frame dan hit-stop 50ms (GAS `UAbilityTask_HitStop` Delta-Time Accumulator — ADR-040).
-  - Dynamic XPBD Chaos Cloth Simulation pada Syal Aina dan jubah.
-
-### 1.5 Mandat Anti-RPG Konvensional (Batasan Desain Progresi & Larangan Mekanik)
-Seluruh AI Agent DILARANG KERAS mengusulkan, merancang, atau mengimplementasikan mekanik RPG konvensional berikut:
-- ❌ **DILARANG Free-Form Skill Tree / Belanja Poin Bebas**: Progresi Kaelen wajib 100% naratif-sekuensial (Model GRIS) terikat pengorbanan Altar Duka 1–5 (merujuk pada [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/sector-ability-progression.md)).
-- ❌ **DILARANG Stat Leveling Numerik (STR, DEX, INT, HP Pool, Level 1..99)**: Kaelen adalah pengelana *class-less* bertubuh atletis dengan bobot kinetik nyata, bukan tumpukan angka stat.
-- ❌ **DILARANG Loot Table Acak, Gacha, & Grinding Koin Emas**: Musuh yang dikalahkan tidak menjatuhkan uang/item loot acak; reward murni berupa katarsis naratif, resonansi ingatan, dan penyucian jiwa beku.
-- **Alasan Filosofis**: Mekanik RPG generik merusak tensi psikologis duka, menghancurkan immersion deliberate combat ala Hellblade, dan mengubah duka puitis menjadi kalkulasi angka dangkal.
+- **Otoritas Desain Master**: [game-design-document.md](references/01-core/game-design-document.md).
 
 ---
 
-## BAB II: PRINSIP DASAR & INTEGRITAS TEKNIS (ANTI-THEATER & PRODUCTION PROTOCOL)
+## 2. Invariant Proyek Kunci (*Critical Project Invariants*)
 
-1. **Observability-First Mandate (Inspeksi Sebelum Mutasi)**: Tool pembaca status dan pelacak error WAJIB dipanggil SEBELUM mengeksekusi modifikasi file, mesh, atau shader.
-2. **Wajib Bukti Fisik Konkret (Artifact-Driven)**: Dilarang keras mengklaim "selesai" hanya melalui narasi teks. Setiap klaim selesai WAJIB disertai bukti fisik konkret: path file aktual di disk, data numerik tool call, atau screenshot render 3D aktual.
-3. **Kepatuhan Standar Komersial (Steam-Ready Grade & 6-DoD Compliance)**:
-   - Wajib memenuhi checklist **6 Pilar Definition of Done (DoD)** sesuai [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) (Model 3D, Material, Rigging/Animasi, Audio, Level, dan Gameplay).
-   - Validasi emosional duka manusia berbasis kerangka *Intended vs Perceived* sesuai [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md).
-   - Performa solid 60 FPS lock ($99^{th}\text{ percentile frame time} < 16.6\text{ ms}$) dan zero blocking bugs.
-4. **Disiplin Peran Hub-and-Spoke**: Seluruh koordinasi dilakukan terarah dengan fokus alat utama pada **Blender 5.2 LTS (Port 8097)** dan **Unreal Engine 5 (Python Scripting MCP)** sesuai [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md).
-5. **Kepatuhan Dokumen Master & Filosofi The Triad**: Seluruh perancangan aset 3D dan sistem wajib patuh pada palet *The Triad* (`#F4B860`, `#4A6FA5`, `#2A211C`), Master Index ([master-index.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/master-index.md)), Master GDD ([game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md)), Master Theory Bible ([theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md)), Kitab Visi Kreatif ([creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md)), serta Rantai Tools ([tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md)).
-6. **Kepatuhan Prosedural SOP 7-Tahap (SOP Workflow Compliance)**: Seluruh tugas operasional berulang (pembuatan prop, material, rigging, cloth sim, level grey-box, gameplay GAS, dan audio) WAJIB mengikuti urutan kerja sekuensial pada [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md). Dilarang melompati tahapan (contoh: dilarang masuk visual detail sebelum lolos playtest grey-box).
-7. **Kalibrasi Mutu Mandiri (Few-Shot Calibration & Gap-Handling)**: Setiap agen wajib melakukan evaluasi diri (*self-critique*) sebelum melapor selesai merujuk pada benchmark benar vs salah di [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md). Kebutuhan di luar dokumen wajib ditandai sebagai **GAP** dan dilarang diimprovisasi diam-diam.
-8. **Kurasi Visual Reference Board**: Pemodelan 3D, tata cahaya, dan environment wajib mengacu pada 9 kategori shot-list legal terkurasi pada [reference-board-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/reference-board-guide.md).
-9. **Kepatuhan Biomekanika & Kinesiologi**: Pemodelan mesh, rigging, dan animasi wajib mematuhi titik tumpu Bony Landmarks, rantai kinetik transfer tenaga combat, siklus 8-fase lokomosi, ekspresi wajah FACS (Action Units & Duchenne marker), dan corrective morphs sesuai [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) dan [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md).
-10. **Kepatuhan Integritas API & Teknik Praktis 3D**: Otomasi skrip `bpy` dan `unreal` wajib mengikuti protokol *Inspect-Before-Execute* pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md), serta menerapkan trim sheets, texel density ($512\text{ px/m}$), modular kit-bashing ($300\text{ cm}$), dan LUT post-process sesuai [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md).
-11. **Kepatuhan Fondasi Ilmiah Expert Suite**: Menyetel rotasi, kurva spline C2, solver kain XPBD, retakan es Voronoi lattice-bias, BRDF Cook-Torrance, SDT 3-Needs, Loss Aversion $2.5\text{x}$, dan pacing emotional bandwidth merujuk pada [mathematics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/mathematics.md), [physics.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/physics.md), dan [psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md).
-12. **Kepatuhan Kerangka Estetika & Kritik Seni Expert**: Mengevaluasi komposisi visual via uji *Value-First Grayscale*, proporsi warna 60-30-10, triad kritik seni (*Unity, Tension, Resolution*), dan konsistensi semiotika simbolis merujuk pada [art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md).
-13. **Kepatuhan Metodologi Kerja AI Expert**: Menerapkan mode kerja lugas anti-roleplay (alat produksi fungsional), grounding 3-sumber anti-halusinasi, dekomposisi masalah bertahap, loop verifikasi mandiri (*self-verification*), isolasi variabel debugging, dan pelaporan jujur transparan merujuk pada [ai-agent-methodology.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/ai-agent-methodology.md).
-14. **Kepatuhan Teori Fondasi 3D Expert**: Menerapkan topologi edge flow berorientasi deformasi, alokasi pole strategis, penempatan UV seam tersembunyi, PBR albedo murni (metallic biner 0/1), skinning weight sum $=1.0$ (maks 4 bone influence), tangent space normal baking dengan cage mesh, dan retensi siluet LOD merujuk pada [3d-asset-pipeline.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md).
-15. **Kepatuhan Protokol Komunikasi ITS**: Seluruh respons wajib diawali header Intent Transparency System (ITS) v1 — format `[MODE] [TIER] [KEYAKINAN] → [interpretasi]` — sesuai [`.agents/AGENTS.md` §4](file:///d:/GodotProjects/Lentera-Pudar/.agents/AGENTS.md) dan [`prompt_refinement/SKILL.md`](file:///d:/GodotProjects/Lentera-Pudar/.agents/skills/prompt_refinement/SKILL.md).
+### A. Invariant Tumpukan Teknologi (*Current vs Legacy Stack*)
+- **Tumpukan Aktif (*Active Stack*)**: Unreal Engine 5 + Blender 5.2 LTS (Pipeline Produksi 3D).
+- **Tumpukan Historis (*Legacy / Archived Stack*)**: Godot Engine + Aseprite + PixelLab (2D Pixel-Art / Top-Down RPG).
+- **Penegasan Status**: Catatan historis era 2D pada [design-decisions.md](references/01-core/design-decisions.md) (ADR-001 s.d. ADR-003, ADR-008) berstatus `SUPERSEDED` dan DILARANG dijadikan rujukan implementasi aktif.
+
+### B. Mandat Anti-RPG Konvensional (*Anti-RPG Progression Guard*)
+Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan mekanik RPG konvensional berikut:
+- ❌ **Dilarang Free-Form Skill Tree**: Pembelian poin kemampuan bebas atau pohon bakat non-linear.
+- ❌ **Dilarang Stat Leveling Numerik**: Peningkatan atribut angka generik (STR, DEX, INT, HP Pool, Level 1..99).
+- ❌ **Dilarang Loot Drop Acak & Gacha**: Grinding koin emas, drop item probabilitas, atau peti harta acak.
+- **Model Progresi Kanonikal**: Progresi Kaelen 100% naratif-sekuensial (Model GRIS) terikat pengorbanan Altar Duka 1–5.
+- **Otoritas Kanonikal**: [design-decisions.md](references/01-core/design-decisions.md) (ADR-037) & [sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md).
 
 ---
 
-## BAB III: STRUKTUR PERAN & ROUTING TUGAS 3D
-
-| Trigger Keyword di Task | Agent Utama | Consult Tambahan | Tool MCP Utama | Output Fisik Wajib (Artifact) |
-|---|---|---|---|---|
-| dungeon 3D, level design, lighting, room layout | Game Designer | Art Director (review visual) | Unreal Engine / Blender | Dokumen spek layout & 3D blocking map |
-| model 3D, high-poly, armature, rig, glTF/FBX export | 3D Modeler | Art Director (review siluet) | Blender MCP (8097) | File `.blend`, `.gltf` / `.fbx`, render showcase |
-| cloth physics, scarf spring-damper, hair cards | 3D Modeler | — | Blender MCP (8097) | Setup tulang rig syal & parameter fisika kain |
-| material PBR, crystal ice shader, 2700K lighting | Art Director | — | Blender / Shaders | Shader material & render pass |
-| combat 3D, FSM, third-person controller, camera | Game Engineer | — | Unreal Engine 5 | Blueprint / C++ Character Class & FSM |
-| verifikasi komersial, 3D visual QC, runtime 60 FPS | QC Agent | — | Test Runners | Laporan QC 4-Tier + Render Bukti |
-| prompt ambigu, intent unclear, rekonstruksi intent, cek dokumen | ITS Protocol | — | `prompt_refinement/SKILL.md` | Header ITS + Rencana Perubahan + Konfirmasi |
+## 3. Tata Kelola Sumber Kebenaran (*Source-of-Truth Governance*)
+- **Otoritas Berbasis Lingkup (*Scope-Based Authority*)**: Otoritas dokumen diatur berdasarkan domain fungsional dan lingkup penentu yang dideklarasikan secara resmi pada [master-index.md](references/01-core/master-index.md). Tidak ada hierarki dokumen universal sepihak.
+- **Batasan Otoritas ADR**: ADR hanya memiliki otoritas keputusan arsitektur jika berstatus `ACCEPTED` dan secara eksplisit mengatur topik/perubahan terkait. Jika tidak, dokumen otoritas kanonikal domain tetap berlaku.
+- **Penanganan Konflik (*Conflict Protocol*)**: Jika terdeteksi pertentangan data tanpa resolusi yang jelas, agen dilarang memilih diam-diam; wajib menandai `[CONFLICT]` dan meminta resolusi manusia. Pembuatan atau pembaruan ADR dilakukan HANYA jika resolusi tersebut merepresentasikan keputusan arsitektur atau desain yang memerlukan pencatatan rekam jejak resmi.
+- **Batas Inferensi AI**: Asumsi mandiri AI memiliki tingkat otoritas terendah dan dilarang menimpa dokumen spesifikasi tertulis.
 
 ---
 
-## BAB IV: ROADMAP PRODUKSI 3D ACTION RPG
+## 4. Kebijakan Anti-Halusinasi & Integritas Bukti (*Anti-Hallucination Policy*)
+- **Larangan Fabrikasi**: Agen dilarang mengarang (*fabricate*) status repositori, isi file, ketersediaan tools, kapabilitas MCP, hasil build/test, keberadaan aset, state Blender/Unreal, atau keputusan desain.
+- **Distingsi Status Kebenaran**: Bedakan secara tegas dalam pelaporan:
+  - `VERIFIED FACT`: Fakta fisik yang baru saja diperiksa di disk / output tool aktual.
+  - `INFERENCE`: Kesimpulan logis berbasis data terverifikasi (wajib dinyatakan sebagai inferensi).
+  - `UNKNOWN`: Bukti yang tersedia tidak mencukupi untuk memverifikasi fakta/status (mencakup ketiadaan bukti repositori, runtime state yang tidak dapat diakses, tool yang tidak tersedia, build/test yang belum dieksekusi, atau data yang belum terbukti). Dilarang mengisi celah informasi dengan asumsi.
+  - `CONFLICT`: Pertentangan langsung antara dua sumber otoritatif aktif.
+- **Otoritas Kebijakan**: [ai-agent-methodology.md](references/06-pipeline-qc/ai-agent-methodology.md).
 
-```mermaid
-flowchart TD
-    F1["FASE 1: High-Detail 3D Mesh Kaelen (Blender 5.2)"]
-    F2["FASE 2: Biomechanical Rigging & Scarf Cloth Physics"]
-    F3["FASE 3: Material Shading The Triad & Niagara Particles"]
-    F4["FASE 4: Unreal Engine 5 Scene Assembly & 3D Character Controller"]
-    F5["FASE 5: Third-Person Combat FSM (Punch & Cursed Palm)"]
-    VS["VERTICAL SLICE: Sektor 1 (The Silent Crypts) 3D Playable Demo"]
+---
 
-    F1 --> F2 --> F3 --> F4 --> F5 --> VS
-```
+## 5. Kebenaran Kapabilitas (*Capability Truth Policy*)
+- **Alur Status Kebenaran**:
+  $$\text{DOCUMENTED} \longrightarrow \text{IMPLEMENTED} \longrightarrow \text{AVAILABLE} \longrightarrow \text{EXECUTED} \longrightarrow \text{VERIFIED}$$
+- **Distingsi Kritis**: $\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availability} \neq \text{Execution} \neq \text{Verification}$.
+- **Anti-Mock Guard**: Respons payload `{status: "ok"}` dari stub mock HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai mutasi selesai.
+- **Hak Klaim Selesai**: Klaim bahwa suatu tugas selesai HANYA sah jika berstatus `VERIFIED`.
+- **Otoritas Kanonikal**: [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
 
-1. **Fase 1: Pemodelan 3D High-Detail Kaelen (Blender 5.2 LTS)**
-   - Proporsi Atletis 1:6.8, Hero LOD0 $40\text{k}–60\text{k}\text{ tris}$, Texel Density $512\text{ px/m}$.
-   - Detail Asimetris: Lengan kiri kluster kristal es prisma (`#4A6FA5` & `#7EE8FA`), lengan kanan balutan perban, penutup mata kulit hitam (`#141013`), jubah kelana bertali baldric, hybrid hair (`#C9CDD1`), dan syal melingkar leher (`#F4B860`).
-2. **Fase 2: Biomechanical Armature Rigging & Scarf Spring-Damper Setup**
-   - Hierarki Armature: `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head` (Bony Landmarks & Corrective Morphs siku 140° + bisep bulge).
-   - Rantai Syal: Rantai 5-bone (`scarf_01` s.d. `scarf_05`) untuk simulasi kain dinamis XPBD & Dual-Mode cutscene.
-3. **Fase 3: Material Shading 3D & Efek Visual (The Triad 3D)**
-   - Shader Kaca Kristal Es Kutukan dengan pendaran biru dingin 6500K, SSS 0.5–1.2cm, Cook-Torrance GGX.
-   - Shader Kain Syal Emas Aina dengan pendaran hangat 2700K (Lumen GI).
-4. **Fase 4: Integrasi Unreal Engine 5 & 3D Locomotion**
-   - Third-Person Character Controller 3D dengan rotasi kamera bebas (Quaternion SLERP).
-   - 8-Fase Gait Cycle dengan Pelvic Tilt, Counter-Rotation, dan Two-Bone FABRIK Foot IK.
-   - Pencahayaan Lumen 3D di dungeon makam beku (*The Silent Crypts*) dengan Post-Process LUT.
-5. **Fase 5: Combat FSM & Boss Fight Sektor 1**
-   - State: `Idle`, `Jog`, `Sprint`, `PunchCombo_1..3`, `CursedIceStrike`, `DashEvade`, `Hurt`, `Death`.
-   - Enemy Archetypes: S1 *The Echo* & *Lord Alden* dengan telegraf serangan 12–18 frame dan fun guardrails sesuai [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md).
+---
 
+## 6. Kebijakan Verifikasi (*Verification Policy*)
+- **Formula Verifikasi Baku**:
+  $$\text{VERIFIED} = \text{Task Acceptance Criteria} + \text{Observed Target State} + \text{Independent Evidence}$$
+- **Standar Bukti Independen**: Bukti fisik wajib disajikan sesuai domain tugas (inspeksi geometri mesh, render screenshot visual, validasi hierarki tulang, build log, atau script link-check).
+- **Otoritas Kanonikal**: [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md).
+
+---
+
+## 7. Prinsip Observability-First (*Inspect Before Mutate*)
+- **Inspeksi Sebelum Mutasi**: Agen wajib memeriksa target state yang relevan sebelum melakukan modifikasi file, mesh 3D, atau shader saat lingkungan dan perkakas mendukung inspeksi.
+- **Otoritas Kebijakan**: [ai-agent-methodology.md](references/06-pipeline-qc/ai-agent-methodology.md).
+
+---
+
+## 8. Protokol Komunikasi Agen (*Active ITS Protocol*)
+- **Kepatuhan Protokol Aktif**: Agen AI wajib mematuhi protokol Intent Transparency System (ITS) aktif yang didefinisikan secara kanonikal pada spesifikasi ITS proyek.
+- **Otoritas Protokol**: Spesifikasi protokol komunikasi aktif di [.agents/skills/prompt_refinement/SKILL.md](.agents/skills/prompt_refinement/SKILL.md).
+
+---
+
+## 9. Manajemen Perubahan & Eksekusi (*Change Management*)
+- **Perubahan Terisolasi**: Utamakan perubahan kecil yang dapat ditinjau (*reviewable*).
+- **Disiplin Lingkup**: Tentukan batasan file yang boleh diubah, cegah pergeseran lingkup (*scope creep*), dan jangan menyatakan selesai tanpa bukti verifikasi.
+- **Otoritas Prosedur**: [sop-workflow.md](references/06-pipeline-qc/sop-workflow.md).
+
+---
+
+## 10. Pengambilan Referensi Dinamis (*Dynamic Reference Routing*)
+- **Prinsip Utama**: **Global Minimum Context + Relevant On-Demand Knowledge**.
+- Agen dilarang memuat seluruh dokumen sekaligus ke context window. Dokumen referensi dimuat secara selektif per domain tugas merujuk pada peta navigasi dan panduan pencarian dinamis di [master-index.md](references/01-core/master-index.md).

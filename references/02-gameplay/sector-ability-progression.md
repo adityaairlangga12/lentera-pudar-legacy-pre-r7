@@ -1,3 +1,13 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: gameplay.progression
+canonical: true
+introduced_by: ADR-034
+governed_by: ADR-037
+---
+
+
 # Daftar Kemampuan Kaelen per Sektor — Lentera Pudar Master Reference
 ### Sistem Progresi Naratif Sekuensial (Model GRIS), Pengorbanan Altar Duka, & Utilitas Kumulatif 5 Sektor
 

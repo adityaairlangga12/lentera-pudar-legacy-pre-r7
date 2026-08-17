@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: gameplay.ui_ux
+canonical: true
+introduced_by: ADR-032
+---
+
+
 # UI/UX & Aksesibilitas — Lentera Pudar Master Reference
 ### Spesifikasi Minimal-HUD, Antarmuka Diegetik, Fitur Aksesibilitas Empatik, & Arsitektur Siap Lokalisasi
 

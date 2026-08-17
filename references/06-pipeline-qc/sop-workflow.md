@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: PROCEDURE
+authority_scope: pipeline.sop
+canonical: true
+governed_by: ADR-017
+---
+
+
 # SOP / Workflow Operasional — Lentera Pudar: 3D Action RPG Edition
 ### Resep Langkah-per-Langkah untuk Tugas Berulang (Blender 5.2 LTS + Unreal Engine 5)
 

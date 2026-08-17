@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: VERIFICATION_QC
+authority_scope: pipeline.playtesting
+canonical: false
+introduced_by: ADR-028
+---
+
+
 # Playtesting & Validasi Emosional — Lentera Pudar Master Reference
 ### Metodologi Pengukuran Resonansi Duka (*Grief Impact*), Observasi Non-Intrusif, & Evaluasi Intended vs Perceived
 

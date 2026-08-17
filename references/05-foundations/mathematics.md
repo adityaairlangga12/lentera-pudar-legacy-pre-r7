@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: foundations.mathematics
+canonical: true
+authority_set: foundations.scientific
+---
+
+
 # Matematika Tingkat Expert — Lentera Pudar Master Reference
 ### Acuan Matematika Vektor, Quaternion SLERP, Cubic Bezier, Arc-Length Spline, SDF, & Fractal Noise
 

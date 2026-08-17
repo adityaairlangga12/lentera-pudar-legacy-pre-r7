@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: POLICY
+authority_scope: ai.methodology
+canonical: true
+---
+
+
 # Metodologi & Cara Berpikir AI Tingkat Expert — Lentera Pudar Master Reference
 ### Kerangka Kerja Anti-Roleplay, Grounding Anti-Halusinasi, Problem Decomposition, Self-Verification, & Isolasi Debugging
 

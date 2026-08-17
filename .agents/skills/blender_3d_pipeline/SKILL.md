@@ -1,70 +1,92 @@
 ---
 name: blender_3d_pipeline
-description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, topologi berorientasi deformasi, UV seam, hierarki armature rigging biomekanik, konsistensi bone roll, PBR & cel materials The Triad, cloth physics syal, ekspor glTF/FBX deterministik, kepatuhan SOP 1/3/4, dan kurasi reference board."
+description: "Pustaka keahlian pemodelan 3D High-Detail di Blender 5.2 LTS, topologi berorientasi deformasi, UV seam, hierarki armature rigging biomekanik, konsistensi bone roll, PBR materials, cloth physics syal, ekspor glTF/FBX deterministik, dan kepatuhan SOP 1/3/4."
 ---
 
-# Blender 5.2 LTS 3D High-Detail & UE5 Asset Pipeline
+# Blender 5.2 LTS 3D High-Detail & Asset Pipeline
 
-Skill ini memuat seluruh standar teknis pemodelan 3D, topologi deformasi, penempatan UV seam, rigging biomekanik, shading PBR, baking pipeline, dan ekspor aset karakter/lingkungan untuk semesta 3D Action RPG *Lentera Pudar* merujuk pada [3d-asset-pipeline.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/3d-asset-pipeline.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md), [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md), [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md), prosedur kerja [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), dan riset teknis [kena-art-research.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/kena-art-research.md).
+## Purpose
+Skill ini mengatur **prosedur teknis pemodelan 3D, topologi berorientasi deformasi, penataan UV seam, rigging biomekanik, shading PBR, dan ekspor deterministik** di Blender 5.2 LTS untuk semesta *Lentera Pudar*.
 
----
-
-## 1. Standar Pemodelan Karakter & Teori Topologi (Hero Proportions 1:6.8 — SOP 1 & SOP 3)
-- **Kaelen**: Tinggi 1.78m, proporsi atletis 1:6.8 bergaya *Final Fantasy VII Remake / Kena Grade*.
-- **Prinsip Topologi & Deformasi**:
-  - *Edge Flow Organik*: Edge loops wajib melingkari kelompok otot dan lipatan sendi aktif (siku, lutut, deltoid, kelopak mata, mulut).
-  - *Quad Dominance*: Wajib 100% Quad pada area bergerak; N-gon dilarang keras pada area deformasi.
-  - *Alokasi Pole*: Pole 3/5-edge wajib dialihkan ke area statis berdeformasi rendah (belakang kepala, ketiak); dilarang di lipatan sendi.
-- **Poly Budget & Texel Density**:
-  - Target **40,000–60,000 tris** untuk Hero LOD0 ($15.000–30.000$ deform base mesh).
-  - **Texel Density Baku**: $512\text{ px/m}$ untuk Kaelen & Boss, $256\text{ px/m}$ untuk Prop Lingkungan.
-- **Titik Rujukan Tulang Baku (Bony Landmarks Wajib Terbaca)**:
-  - *Acromion & Clavicle* (Bahu), *Olecranon* (Siku), *Iliac Crest & Greater Trochanter* (Panggul), *Patella* (Lutut), *Malleolus* (Mata Kaki), dan *Vertebra Prominens* (Pangkal Leher).
-- **Lengan Kiri (Tri-Layer Biomechanical Shingling)**:
-  - Layer 1: Daging bawah smooth skinning dengan SSS dan denyut urat es reaktif (`Curse_Spread`).
-  - Layer 2: Kluster prisma kristal es utama di humerus dan radius/ulna di-weight 100% kaku (rigid) tanpa gradient falloff.
-  - Layer 3 (Olecranon Shingle System): Lempeng kristal siku bertingkat geologis (*interlocking shingles*) yang meluncur masuk di bawah prisma lain saat fleksi siku $\ge 90^\circ$ (anti-rubbery deformation).
-- **Lengan Ranan**: Balutan perban spiral bersilang (*cross-wrapped bandages* `#FAF2EC`).
-- **Kepala & Wajah**: Kulit `#D8B79A` (undertone hangat SSS anti-uncanny), penutup mata kulit hitam `#141013` pada mata kanan.
-- **Hybrid Hair System (Kena Benchmark)**:
-  - *Solid Geometry Base*: Gumpalan massa volume utama rambut perak Kaelen (`#C9CDD1`) untuk siluet tegas dan highlight tajam.
-  - *Alpha Cards*: Strip poligon helai transparan di lapisan luar untuk ketidakteraturan alami (*flyaway imperfections*).
-- **Pakaian**: Jubah kelana usang gelap `#2A211C` dengan sabuk baldric melintang di dada dan gesper perak.
-- **Syal Jiwa Aina (Modular Scarf System)**:
-  - Empat variasi panjang syal (`SK_Scarf_Stage1` 180cm s.d. `SK_Scarf_Stage4` 10cm) berbagi skeleton rig 5-bone yang sama (`scarf_01..05`).
+Seluruh konstanta numerik, batas poligon, palet warna baku, dan proporsi anatomis diatur secara kanonikal di [style-guide.md](references/04-art-3d/style-guide.md), [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md), dan [3d-asset-pipeline.md](references/04-art-3d/3d-asset-pipeline.md).
 
 ---
 
-## 2. Standar UV Unwrapping & Pipeline Baking Presisi
-- **Penempatan Seam Tersembunyi**: Tempatkan garis potong UV di sisi dalam lengan, bawah selangkangan, dan sambungan batas material alami untuk meminimalkan distorsi.
-- **Tangent Space Normal Baking**: Selalu gunakan Tangent Space Normal Map dengan **Cage Mesh** (ekstrusi ray-casting halus) untuk transfer detail High-Poly ke Low-Poly tanpa artefak robek.
-- **Baking AO Mikro vs Lumen GI**: Batasi baking Ambient Occlusion hanya pada celah mikro (pori kain, ukiran runik); hindari baking AO skala makro agar tidak bentrok dengan Lumen real-time.
+## Activate When
+- Pembuatan atau pengeditan mesh 3D karakter, monster, prop, dan modular environment.
+- Penataan topologi quad dominance pada area lipatan sendi dan otot aktif.
+- Unwrapping UV, normal map cage baking, dan penataan material PBR.
+- Pembangunan armature, skinning weight painting, FACS blend shapes, dan dual-mode cloth bones.
+- Validasi ekspor glTF / FBX ke pipeline engine.
 
 ---
 
-## 3. Standar Rigging Armature, Biomekanik & Dual-Mode Scarf (SOP 3)
-- **Hierarki Skeletal**: `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
-- **Integritas Skinning Weight**:
-  - Total bobot per vertex $= 1.0$ ($100\%$) dengan maksimal 4 bone influences per vertex.
-  - Blending gradual pada lipatan sendi untuk mencegah *pinching*.
-- **Rigging Wajah & FACS Blend Shapes (SOP 3)**:
-  - Setup Shape Keys per Action Unit (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU23`, `AU43`).
-  - Pemisahan independen antara *Eye Region* dan *Mouth Region* untuk ekspresi duka tertahan.
-  - Duchenne Marker (`AU6+AU12`) untuk senyum tulus vs Senyum topeng sosial (`AU12` tanpa `AU6`).
-  - Asimetri 5–15% dan ekspresi mikro 1/25–1/5 detik.
-  - Batasan rotasi rahang bawah (mandibula pitch $0^\circ–20^\circ$).
-- **Scarf Spring Bones (Dual-Mode)**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: 0.4–0.6, Damping: 0.3–0.5) — beralih mulus antara Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif) dengan *5-frame Pre-Roll Physics Warm-Up*.
-- **Corrective Shape Keys (Pose-Driven Morphs)**:
-  - Setup morph koreksi volume lipatan siku 140° (+ Muscle Bulge bisep), bahu elevasi, lutut fleksi 140°, dan kerutan dahi glabella (`AU1+AU4`).
-- **Batasan Rotasi Sendi (Joint Limits)**:
-  - Siku (0°–145° anti-hyperextension), Lutut (0°–140° fleksi belakang), Tulang Belakang ($\pm 35^\circ–45^\circ$), Leher ($\pm 80^\circ$ yaw).
+## Do Not Use When
+- Modifikasi aset 2D historis (Godot / Aseprite) yang telah berstatus `SUPERSEDED`.
+- Penulisan skrip naratif murni tanpa interaksi permodelan 3D DCC.
 
 ---
 
-## 4. Shading & Material The Triad 3D (SOP 2 — Zero Black Outline)
-- **Stylized-Realistic PBR non-outline**: Tidak menggunakan cel-shading outline hitam (meniru standar visual *Kena: Bridge of Spirits*).
-- **Shader Kristal Es Kutukan**:
-  - PBR Transmissive Glass/Ice dengan Subsurface Scattering (SSS Radius 0.5–1.2cm).
-  - Emissive glow biru dingin 6500K terkontrol melalui parameter scalar `Curse_Spread` ($0.0–1.0$).
-- **Shader Kain Syal Emas Aina**:
-  - Warna dasar `#F4B860` dengan pendaran emissive lembut 2700K (Lumen GI).
+## Canonical Dependencies
+- [references/04-art-3d/style-guide.md](references/04-art-3d/style-guide.md) — Konstanta Numerik, Poly Budget, Texel Density & Warna The Triad.
+- [references/04-art-3d/anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) — Proporsi Hero, Bony Landmarks, Tri-Layer Shingling & Limit Sendi.
+- [references/04-art-3d/human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md) — FACS Action Units & Blend Shape Expressions.
+- [references/04-art-3d/3d-asset-pipeline.md](references/04-art-3d/3d-asset-pipeline.md) — Teori Fondasi 3D, Baking & LOD Architecture.
+- [references/04-art-3d/environment-modular-techniques.md](references/04-art-3d/environment-modular-techniques.md) — Grid Modular & Kit-Bashing.
+- [references/06-pipeline-qc/sop-workflow.md](references/06-pipeline-qc/sop-workflow.md) — SOP 1 (Prop), SOP 2 (Mat), SOP 3 (Rig), SOP 4 (Cloth).
+- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Tool MCP Blender.
+
+---
+
+## Prosedur Kerja Terstandarisasi
+
+### 1. SOP 1: Mesh Modeling & Topologi Deformasi
+- **Proporsi & Bony Landmarks**: Bentuk siluet karakter mengikuti proporsi hero dan pastikan bony landmarks terbaca jelas merujuk ke [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) Bab 1 & 2.
+- **Prinsip Edge Flow & Quad Dominance**:
+  - Edge loops wajib melingkari kelompok otot dan lipatan sendi aktif.
+  - Wajib 100% Quad pada area bergerak; N-gon dilarang keras pada area deformasi.
+  - Alihkan pole 3/5-edge ke area statis berdeformasi rendah (belakang kepala, ketiak).
+- **Poly Budget & Texel Density**: Validasi jumlah poligon dan texel density terhadap batas aktif di [style-guide.md](references/04-art-3d/style-guide.md) Bab 2.
+- **Struktur Tri-Layer Biomechanical Shingling**: Terapkan arsitektur 3-lapisan (Layer 1 Base Flesh, Layer 2 Rigid Prism Cluster, Layer 3 Sliding Olecranon Shingles) pada lengan es kutukan untuk mencegah distorsi elastis (*anti-rubbery deformation*).
+- **Hybrid Hair Geometry**: Bangun gumpalan volume utama rambut perak sebagai basis siluet, dilapisi alpha cards untuk variasi helai alami.
+
+### 2. SOP 2: UV Unwrapping & Baking Pipeline
+- **Penempatan Seam Tersembunyi**: Letakkan seam di sisi dalam lengan, bawah selangkangan, dan batas pertemuan material alami.
+- **Normal Baking Cage**: Gunakan Tangent Space Normal Map dengan cage mesh halus untuk transfer detail High-Poly ke Low-Poly tanpa artefak perpecahan.
+- **Baking AO Mikro**: Batasi baking Ambient Occlusion pada celah mikro; hindari AO makro yang bentrok dengan dynamic GI engine.
+
+### 3. SOP 3: Skeletal Rigging, FACS & Biomekanika
+- **Hierarki Armature**: Susun hierarki skeletal standar (`Root` $\rightarrow$ `Pelvis` $\rightarrow$ `Spine` $\rightarrow$ `Chest` $\rightarrow$ `Neck` $\rightarrow$ `Head`).
+- **Integritas Skinning**: Total bobot per vertex $= 1.0$ ($100\%$) dengan maksimal 4 bone influences.
+- **FACS Blend Shapes**: Siapkan shape keys berbasis Facial Action Units merujuk ke [human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md) dengan pemisahan area mata dan mulut.
+- **Corrective Pose-Driven Morphs**: Tambahkan corrective shape keys untuk menjaga volume lipatan siku, bahu, dan lutut merujuk ke limit rotasi sendi di [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) Bab 4.
+
+### 4. SOP 4: Cloth & Secondary Dynamics
+- **Dual-Mode Scarf Rigging**: Pasang rantai 5-bone spring bones pada syal lentera untuk mendukung peralihan antara simulasi fisika kain dan keyframe animasi sinematik.
+
+### 5. Ekspor Deterministik
+- Wajib apply all transforms (`Location=(0,0,0)`, `Rotation=(0,0,0)`, `Scale=(1,1,1)`).
+- Orientasi rest pose baku $+Z$ forward / $+Y$ up.
+
+---
+
+## Tool Execution & Safety Guidance
+
+> [!IMPORTANT]
+> **Prinsip Keamanan Kapabilitas Tool**:  
+> Status pendaftaran tool (*Tool Registration*) tidak sama dengan ketersediaan implementasi nyata (*Effective Capability*). Sebelum mengeksekusi aksi mutasi:
+> 1. Verifikasi bahwa tool MCP yang dipanggil berstatus `AVAILABLE` dan memiliki handler backend nyata.
+> 2. Dilarang mengasumsikan respons mock/stub sebagai mutasi geometri yang berhasil.
+> 3. Jalankan observabilitas sebelum mutasi (`get_scene_state`, `get_console_output`, `get_last_error`).
+
+### Penanganan Kegagalan:
+- Jika terjadi error pada eksekusi tool MCP: panggil `get_last_error`, lakukan `undo` jika diperlukan, dan isolasi parameter penyebab masalah satu per satu.
+
+---
+
+## Validation Checklist
+- [ ] Transform mesh ter-apply 100% pada semua objek sebelum ekspor.
+- [ ] Topologi 100% Quad pada area lipatan sendi; zero N-gons.
+- [ ] Total bobot vertex pada skinning tepat 1.0 (maksimal 4 bone influences).
+- [ ] Poly count dan texel density memenuhi batas spesifikasi [style-guide.md](references/04-art-3d/style-guide.md).
+- [ ] Visual Shading konsisten dengan palet The Triad non-outline.

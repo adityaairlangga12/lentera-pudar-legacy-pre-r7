@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: PROJECT_KNOWLEDGE
+authority_scope: theory.compendium
+canonical: false
+---
+
+
 # Referensi Teori Pendukung — Lentera Pudar (Master Theory Bible)
 ### Kerangka Teori Desain, Psikologi, Technical Art & Produksi untuk AI Agent (Blender 5.2 LTS + Unreal Engine 5)
 

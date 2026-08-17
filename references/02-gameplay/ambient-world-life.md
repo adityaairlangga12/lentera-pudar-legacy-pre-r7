@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: gameplay.ambient_world
+canonical: false
+introduced_by: ADR-033
+---
+
+
 # NPC Ambient & Kehidupan Lingkungan — Lentera Pudar Master Reference
 ### Perilaku NPC Latar, Ekosistem Satwa Spasial, Reaktivitas Lingkungan (*World Awareness*), & Karakter Sampingan
 

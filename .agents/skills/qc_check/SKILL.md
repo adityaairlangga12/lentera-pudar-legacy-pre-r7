@@ -5,196 +5,132 @@ description: "Standar eksekusi Quality Control (QC Gate) Komersial / Steam-Ready
 
 # Commercial Release Quality Control (3D QC Gate Protocol)
 
-> **Standar Mutu Komersial (Steam-Ready Grade)**: Setiap aset 3D, armature rig, material shader, skrip gameplay, level, dan audio diuji dengan tolok ukur kelayakan rilis publik di PC/Steam merujuk pada [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), alur eksekusi [sop-workflow.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/sop-workflow.md), [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md), dan kalibrasi mutu [few-shot-calibration.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/few-shot-calibration.md).
+## Purpose
+Skill ini mengatur **prosedur eksekusi Quality Control (QC Gate)** tingkat komersial (Steam-Ready Grade) untuk memverifikasi aset 3D, armature rig, material shader, skrip gameplay, level, dan audio di semesta *Lentera Pudar*.
+
+Seluruh kriteria penerimaan, parameter numerik baku, dan 6 Pilar Definition of Done (DoD) diatur secara kanonikal di [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) dan [style-guide.md](references/04-art-3d/style-guide.md).
 
 ---
 
-## 1. Enam Pilar Definition of Done (DoD) & 4-Tier Inspection
+## Activate When
+- Dipicu via perintah `/qc-check` atau penugasan verifikasi mutu stage-gate.
+- Verifikasi penyelesaian task sebelum disahkan ke milestone berikutnya.
+- Pengujian regresi pasca-perubahan pada sistem inti (combat timing, physics, level streaming).
+
+---
+
+## Do Not Use When
+- Proses perancangan/drafting awal yang masih dalam iterasi aktif oleh pembuat.
+- Penilaian mandiri oleh agen pembuat (self-grading dilarang keras).
+
+---
+
+## Canonical Dependencies
+- [references/06-pipeline-qc/qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) — 6 Pilar DoD (A s.d. F), 8-Stage Gate & Kriteria Verifikasi Baku.
+- [references/04-art-3d/style-guide.md](references/04-art-3d/style-guide.md) — Parameter Presisi Numerik, Palet The Triad & Konstanta Visual.
+- [references/06-pipeline-qc/sop-workflow.md](references/06-pipeline-qc/sop-workflow.md) — 7 SOP Operasional.
+- [references/06-pipeline-qc/qc-patterns.md](references/06-pipeline-qc/qc-patterns.md) — Anti-Pattern & Root Cause Registry.
+- [references/06-pipeline-qc/few-shot-calibration.md](references/06-pipeline-qc/few-shot-calibration.md) — Benchmark Mutu Few-Shot.
+- [references/06-pipeline-qc/emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md) — Gate Validasi Emosional.
+
+---
+
+## 4-Tier Inspection Workflow
 
 ```mermaid
 flowchart TD
-    A["3D Asset / Blueprint / Audio Under Test"] --> B["Tier 1: 3D Visual & Material Fidelity (The Triad & Texel Density)"]
-    B -->|PASS| C["Tier 2: Functional & Runtime Performance (60 FPS / 0 Errors)"]
-    C -->|PASS| D["Tier 3: Input, Save & Platform Compliance (Steam-Ready)"]
-    D -->|PASS| E["Tier 4: Rigging, Bone Roll & glTF/FBX Export Integrity"]
-    E -->|ALL PASS| F["APPROVED FOR COMMERCIAL 3D BUILD"]
-    B -->|FAIL| R["REJECT & LOG TO qc-patterns.md"]
+    A["Target Inspeksi (Aset / Modul / Skrip)"] --> B["Tier 1: 3D Visual & Material Fidelity"]
+    B -->|PASS| C["Tier 2: Functional & Runtime Performance"]
+    C -->|PASS| D["Tier 3: Input, Audio & Platform Compliance"]
+    D -->|PASS| E["Tier 4: Rigging, Bone Roll & Export Integrity"]
+    E -->|PASS| F["Gate Validasi Emosional (Intended vs Perceived)"]
+    F -->|ALL PASS| G["APPROVED / VERIFIED"]
+    B -->|FAIL| R["REJECT & LOG BUG"]
     C -->|FAIL| R
     D -->|FAIL| R
     E -->|FAIL| R
+    F -->|FAIL| R
 ```
 
----
+### 1. Tier 1: 3D Visual & Material Fidelity
+- Validasi palet warna The Triad, nilai Kelvin pencahayaan, dan parameter PBR terhadap [style-guide.md](references/04-art-3d/style-guide.md).
+- Validasi texel density dan kualitas shading dari minimal 2 sudut cahaya.
+- Verifikasi konsistensi asimetri geometris 3D dan integritas deformasi siku (*Tri-Layer Shingling*).
 
-### 🎨 Tier 1: 3D Visual & Material Fidelity (Standar Grafis, The Triad & Texel Density)
-- [ ] **Kepatuhan Palet The Triad 3D**:
-  - Kuning Jiwa Aina: `#F4B860` (2700K Kelvin Warm Emissive pada syal, terhubung ke MPC).
-  - Biru Kutukan Pudar: `#4A6FA5` & `#7EE8FA` (6500K Kelvin Cold Shard kristal es transparan dengan Subsurface Scattering).
-  - Netral Gelap: `#2A211C` / `#141013` (Jubah kelana, eyepatch, batu dungeon).
-- [ ] **Kualitas Shading, Siluet & Texel Density (Kena Benchmark)**:
-  - Material PBR terdefinisi presisi (Roughness, Metallic, Transmission, SSS teruji dari $\ge 2$ sudut cahaya).
-  - **Texel Density**: $512\text{ px/m}$ untuk Hero & Boss, $256\text{ px/m}$ untuk Prop Lingkungan.
-  - Pencahayaan dinamis Lumen/PointLight tidak overexposed (Chiaroscuro 8:1 s.d. 12:1).
-  - Lolos uji simulasi filter buta warna (*Colorblind Accessibility Check*).
-- [ ] **Konsistensi Asimetri 3D & Tri-Layer Shingling**:
-  - Lengan kiri kluster kristal es prisma $(-X)$ dan eyepatch mata kanan $(+X)$ konsisten secara geometris di seluruh sudut pandang kamera 360°.
-  - Uji fleksi siku $145^\circ$: Lempeng prisma kristal es siku meluncur masuk tumpang-tindih tanpa distorsi volume elastis (*zero rubbery deformation artifact*).
+### 2. Tier 2: Functional & Runtime Performance
+- Verifikasi nol error konsol, zero softlock, dan konsistensi frame rate target pada scene terpadat merujuk ke [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) DoD B & C.
+- Validasi siklus lokomosi, simulasi fisika kain (Chaos Cloth), dan konsistensi hit-stop gameplay.
 
----
+### 3. Tier 3: Input, Audio & Platform Compliance
+- Validasi dukungan kontrol ganda (Gamepad / Keyboard+Mouse) dengan button glyphs dinamis.
+- Verifikasi integritas save/load data atomic.
+- Validasi normalisasi loudness audio, ducking, dan tata suara spasial 3D merujuk ke [style-guide.md](references/04-art-3d/style-guide.md) Bab 10.
+- Validasi aksesibilitas UI/UX (mode buta warna, closed captions, text scaling) merujuk ke [ui-ux-accessibility.md](references/02-gameplay/ui-ux-accessibility.md).
 
-### ⚡ Tier 2: Functional & Runtime Performance (Stabilitas Mesin & 60 FPS)
-- [ ] **Nol Error Konsol & Zero Blocking Bugs**:
-  - Runtime bersih dari error fatal, warning memori, dan zero softlock.
-- [ ] **Penguncian Frame Rate Solid 60 FPS / 120 FPS**:
-  - Waktu frame persentil ke-99 ($99^{th}$ percentile frame time) $< 16.6\text{ ms}$ di area terpadat sektor.
-- [ ] **Animasi, Kinematika & Hit-Stop Presisi**:
-  - Siklus gerak 8-fase lokomosi mulus dengan *Pelvic Tilt* dan *Counter-Rotation* tanpa *foot sliding*.
-  - Simulasi fisika kain Syal Aina (*Chaos Cloth & 5-Bone Spring Chain*) berkibar alami tanpa distorsi atau clipping parah pada gerakan Idle, Jog, dan Evade Dash dengan transisi *5-frame Pre-Roll Warm-Up*.
-  - **Hit-Stop Presisi 50ms**: GAS Ability Task `UAbilityTask_HitStop` berjalan stabil dan frame-rate independent di 30 FPS, 60 FPS, maupun 120 FPS.
-  - IK kaki aktif menyesuaikan kontur tanah/lantai dungeon.
+### 4. Tier 4: Rigging, Bone Roll & Export Integrity
+- Validasi transform mesh ter-apply 100% (`Location=0, Rotation=0, Scale=1`).
+- Verifikasi pembacaan bony landmarks, konsistensi bone roll, dan ketiadaan artefak pinching pada fleksi sendi ekstrem merujuk ke [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md).
+
+### 5. Gate Validasi Emosional
+- Evaluasi keselarasan *Intended vs Perceived* terhadap momen naratif.
+- Tandai status `[Needs Human Playtest Validation]` untuk respon emosional yang tidak dapat divalidasi penuh oleh AI.
 
 ---
 
-### 🎮 Tier 3: Input, Save-State, Audio & Platform Compliance (Standar Steam & PC)
-- [ ] **Dukungan Input Komprehensif**:
-  - Kontrol Keyboard + Mouse dan Gamepad (Xbox, DualSense, Steam Deck) responsif dengan button glyphs dinamis.
-  - Kamera Third-Person Adaptif (Eksplorasi FOV 78° vs Duel Boss FOV 70°) mulus dengan collision clipping prevention.
-- [ ] **Integritas Save/Load (Steam Cloud Ready)**:
-  - Protokol penulisan simpanan atomic anti-korupsi teruji stabil $\ge 10\text{x}$ siklus.
-- [ ] **Audio Dynamic Ducking & Binaural Spatialization**:
-  - Normalisasi loudness $-16\text{ LUFS}$ (Combat BGM) / $-18\text{ LUFS}$ (Dialog) dengan audio ducking ($-6\text{ dB}$, attack 150ms, release 400ms) saat narasi/bisikan jiwa beku.
-  - Tata suara 3D binaural terverifikasi via headphone fisik.
-- [ ] **Kepatuhan UI/UX & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md))**:
-  - Mode Buta Warna teruji (Protanopia/Deuteranopia/Tritanopia) dengan pembedaan bentuk/simbol.
-  - Closed Captions lengkap mencakup deskripsi vokal non-verbal (`[napas tercekat]`, `[jeda hening]`).
-  - Full Control Remapping & Parry Window Assist slider berfungsi tanpa distorsi gameplay.
-  - Text container adaptif (+40% ekspansi) dan zero baked text pada aset tekstur 3D.
+## Protokol Pengujian Adversarial (Anti-False-Negative)
+
+Cheklist verifikasi pasif tidak memadai untuk menemukan edge case. Setiap sesi QC wajib menyertakan pengujian adversarial aktif:
+1. **Minimal 3 Skenario Adversarial per Modul**: Rancang skenario untuk memicu race condition, tumpang tindih state, batas nilai ekstrem, atau tabrakan sistem.
+2. **Dokumentasi Hasil Skenario**: Format wajib `"Dicoba: [deskripsi aksi ekstrem] ➔ Hasil: [tidak ada anomali / ditemukan bug]"`.
+3. **Penandaan First-Pass Clean**: Sesi QC perdana yang tidak menemukan bug WAJIB berstatus `⚠️ First-Pass Clean — Perlu Verifikasi Independen`. Status `Verified & Approved` penuh mensyaratkan verifikasi terpisah.
 
 ---
 
-### 🧪 Tier 4: Rigging, Bone Roll, Bony Landmarks & glTF/FBX Export Integrity
-- [ ] **Armature & Transforms**:
-  - Transform ter-apply 100% (`Location=(0,0,0)`, `Rotation=(0,0,0)`, `Scale=(1,1,1)`).
-  - Orientasi rest pose $+Z$ forward / $+Y$ up.
-- [ ] **Weight Painting & Bony Landmarks**:
-  - Bony landmarks terbaca jelas (Acromion, Clavicle, Olecranon, Iliac Crest, Patella, Malleolus).
-  - Corrective shape keys aktif pada fleksi siku 140° (+ Biceps Muscle Bulge) tanpa pinching atau volume loss.
-
----
-
-### 💖 Gate Validasi Emosional (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md))
-- [ ] **Intended vs Perceived Alignment**:
-  - Momen naratif dan transisi altar duka memiliki dokumen *Intended Emotion* vs *Design Signals* (lighting, FACS, audio).
-  - Ditandai status `[Needs Human Playtest Validation]` — verifikasi AI tidak menggantikan validasi pemain manusia sungguhan.
-- [ ] **Observasi Non-Intrusif & Retensi**:
-  - Format wawancara pasca-sesi reflektif tanpa leading questions.
-
----
-
-## 2. Klasifikasi Severity Bug & Format Pencatatan Wajib
+## Klasifikasi Bug & Aturan Tindakan
 
 | Severity | Dampak | Aturan Tindakan |
 |---|---|---|
-| 🔴 **Blocking** | Softlock, crash saat streaming level, progres terhenti total. | Wajib difix instan sebelum gate berikutnya. |
-| 🟠 **Critical** | Pengalaman gameplay/narasi rusak (Curse Meter macet, clipping parah). | Wajib difix sebelum masuk fase Beta. |
-| 🟡 **Major** | Transisi animasi kaku, ducking audio terlambat. | Wajib difix sebelum Release Candidate. |
-| 🟢 **Minor** | Masalah kosmetik minor pada area tersembunyi. | Masuk backlog pemeliharaan. |
-
-### 📝 Format Wajib Pencatatan Bug
-Setiap bug yang ditemukan wajib dicatat dengan struktur field berikut (bukan catatan naratif bebas):
-- **ID & Severity**: Format `BUG-[BLK/CRT/MAJ/MIN]-[XXX]` (contoh: `BUG-CRT-001`).
-- **Langkah Reproduksi**: Urutan langkah presisi untuk memicu bug.
-- **Kondisi**: Sektor/ruang, commit git/versi build, platform/hardware.
-- **Status Lifecycle**: `Open` ➔ `Fixed` ➔ `Verified`.
-  > [!CAUTION]
-  > Status `Fixed` tanpa proses `Verified` ulang oleh reviewer/agent terpisah **TIDAK DIANGGAP SELESAI** dan tidak boleh menutup task atau milestone Stage-Gate manapun.
+| 🔴 **Blocking** | Softlock, crash runtime, progres gameplay terhenti total. | Wajib difix seketika sebelum melangkah ke gate berikutnya. |
+| 🟠 **Critical** | Kerusakan mekanik/narasi mayor (Curse Meter macet, clipping parah). | Wajib diselesaikan sebelum build Beta. |
+| 🟡 **Major** | Anomali animasi, ducking audio terlambat, glitch visual sekunder. | Wajib diselesaikan sebelum Release Candidate. |
+| 🟢 **Minor** | Cacat kosmetik minor pada area non-kritis. | Dicatat ke backlog pemeliharaan. |
 
 ---
 
-## 3. Protokol Anti-Theater & Larangan Self-Grading
-
-1. **Observability-First**: Tool inspeksi wajib dijalankan sebelum menyatakan aset/fitur selesai.
-2. **Larangan Self-Grading**: AI pembuat/pengedit suatu modul **DILARANG KERAS** menulis status "✅ Lolos QC", "Passed", atau "100% Terverifikasi" untuk hasil kerjanya sendiri.
-   - Status awal maksimal AI pembuat: **`Ready for QC / Menunggu Verifikasi`**.
-   - Status **`Verified / Lolos`** hanya sah setelah proses QC dijalankan sebagai langkah verifikasi terpisah yang secara eksplisit mencari potensi cacat/regresi.
-
----
-
-## 4. Protokol Regression Check
-
-Sebelum suatu perubahan pada sistem inti disahkan, wajib dilakukan verifikasi dampak silang ke sistem dependen:
-- **Combat Timing (Hit-Stop / Frame Data)** ➔ Verifikasi parry window, kinetic chain animation, dan haptic feedback.
-- **Curse Meter Mechanics** ➔ Verifikasi *Freeze of Despair*, *Breather Room recovery*, *Sealed Eyepatch*, dan *Ice Palm strike*.
-- **Cloth / XPBD Physics** ➔ Verifikasi Syal Aina (Chaos Cloth), jubah kelana Kaelen, dan *Hybrid Hair System*.
-- **Level & Collision Layout** ➔ Verifikasi *Safe Archway Checkpoints*, *World Partition Streaming*, dan *BP_SpectralLandingZone*.
-
-## 5. Protokol Anti-False-Negative (Adversarial QC Mandate)
-
-QC yang hanya memverifikasi checklist DoD TIDAK CUKUP untuk menemukan bug — checklist hanya mengonfirmasi kesesuaian spesifikasi, bukan ketahanan terhadap *edge case*. Setiap sesi QC wajib menyertakan usaha aktif mencari kegagalan sistem:
-
-1. **Wajib Minimal 3 Skenario Adversarial per Modul/Sistem**:
-   - Skenario dirancang sengaja untuk memicu anomali, *race condition*, tumpang tindih state mesin, atau kegagalan logika.
-2. **Dokumentasi Hasil Skenario Wajib**:
-   - Format pencatatan: `"Dicoba: [deskripsi skenario adversarial] ➔ Hasil: [tidak ada anomali / ditemukan bug]"`
-   - Laporan "Nol Bug" tanpa rincian skenario adversarial dianggap **TIDAK VALID**.
-3. **Penandaan First-Pass Clean**:
-   - Sesi QC perdana untuk sistem yang belum pernah diuji sebelumnya jika tidak menemukan bug **WAJIB** berstatus:  
-     `⚠️ First-Pass Clean — Perlu Verifikasi Independen`  
-     (Bukan langsung `Verified & Approved`).
-   - Status `Verified & Approved` penuh hanya sah setelah $\ge 2$ sesi QC terpisah dengan variasi skenario adversarial berbeda.
-4. **Pemicu Audit Meta**:
-   - Jika 3 laporan QC berturut-turut untuk sistem berbeda semuanya mengklaim "Nol Bug", audit meta terhadap standar keketatan pengujian wajib dipicu.
-
----
-
-## 6. Format Laporan QC Wajib (Standardized Template)
+## Output Expectations (Standard QC Inspection Report)
 
 ```markdown
 # 🛡️ 3D Quality Control Inspection Report
 
-- **Target Inspeksi**: [Nama Asset 3D / Blueprint / Dokumen / Sistem]
+- **Target Inspeksi**: [Nama Aset / Modul / Dokumen]
 - **Kategori**: [3D Visual / Rigging / Combat / Audio / Level / Narrative]
-- **Commit / Versi Target**: [Hash commit git & path file aktual]
-- **Status Pra-QC (Dari Pembuat)**: `Ready for QC / Menunggu Verifikasi`
-- **Waktu Eksekusi QC**: [Timestamp]
-- **QC Pass Number**: [Pass 1 (First-Pass) / Pass 2 (Independent Re-verification)]
+- **Commit / Versi Target**: [Hash commit & path aktual]
+- **Status Pra-QC**: `Ready for QC / Menunggu Verifikasi`
+- **QC Pass**: [Pass 1 (First-Pass) / Pass 2 (Independent Re-verification)]
 
-### 📋 Checklist Evaluation (6-DoD & 4-Tier):
-- [x] Tier 1: 3D Visual & Material Fidelity (The Triad & Texel Density) — PASS
-- [x] Tier 2: Functional & Runtime Performance (60 FPS) — PASS
-- [x] Tier 3: Input, Save & Platform Compliance — PASS
-- [x] Tier 4: Rigging & Export Integrity — PASS
-- [x] Emotional Gate: Intended vs Perceived Framework — PASS / [Needs Human Playtest Validation]
+### 📋 Hasil Evaluasi 4-Tier & DoD:
+- [x] Tier 1: Visual & Material Fidelity — PASS / FAIL
+- [x] Tier 2: Functional & Runtime Performance — PASS / FAIL
+- [x] Tier 3: Input, Audio & Platform Compliance — PASS / FAIL
+- [x] Tier 4: Rigging & Export Integrity — PASS / FAIL
+- [x] Emotional Gate: Intended vs Perceived — PASS / [Needs Human Playtest Validation]
 
-### 🥊 Pengujian Skenario Adversarial (Anti-False-Negative):
-1. **Skenario Adversarial 1**:
-   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
-   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
-   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
-2. **Skenario Adversarial 2**:
-   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
-   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
-   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
-3. **Skenario Adversarial 3**:
-   - *Aksi*: [Deskripsi tindakan ekstrem / edge case]
-   - *Ekspektasi Kegagalan*: [Potensi crash/softlock/race condition yang dicari]
-   - *Hasil Uji*: Dicoba: [X] ➔ Hasil: [tidak ada anomali / ditemukan bug]
+### 🥊 Pengujian Skenario Adversarial:
+1. *Aksi*: [Deskripsi tindakan ekstrem] ➔ *Hasil*: Dicoba: [X] ➔ Hasil: [Pass/Bug]
+2. *Aksi*: [Deskripsi tindakan ekstrem] ➔ *Hasil*: Dicoba: [X] ➔ Hasil: [Pass/Bug]
+3. *Aksi*: [Deskripsi tindakan ekstrem] ➔ *Hasil*: Dicoba: [X] ➔ Hasil: [Pass/Bug]
 
-### 🔄 Sistem Terdampak & Hasil Regression Check:
-| Sistem Dependen Terdampak | Potensi Risiko Dampak | Hasil Uji Regresi |
+### 🔄 Hasil Uji Regresi (Cross-Impact Check):
+| Sistem Dependen Terdampak | Potensi Risiko Dampak | Status Regresi |
 |---|---|---|
-| [Sistem A] | [Risiko desinkronisasi/perubahan nilai] | PASS / NO REGRESSION |
-| [Sistem B] | [Risiko clipping/logic loop] | PASS / NO REGRESSION |
+| [Sistem A] | [Risiko desinkronisasi/perubahan] | PASS / NO REGRESSION |
 
-### 🐛 Log Temuan Bug Terstruktur (Jika Ada):
-| ID & Severity | Langkah Reproduksi | Kondisi | Status Lifecycle |
+### 🐛 Temuan Bug Terstruktur (Jika Ada):
+| ID & Severity | Langkah Reproduksi | Kondisi / Sektor | Status Lifecycle |
 |---|---|---|---|
-| `BUG-XXX-001` | 1. ... 2. ... | Sektor X, Commit Y | Open / Fixed / Verified |
+| `BUG-[BLK/CRT/MAJ/MIN]-001` | 1. ... 2. ... | Sektor X, Commit Y | Open / Fixed / Verified |
 
 ### 🎯 Keputusan Akhir QC Gate:
-**STATUS AKHIR QC: [⚠️ First-Pass Clean — Perlu Verifikasi Independen / VERIFIED & APPROVED / REJECTED]**
-- **Severity (Jika Reject)**: [Blocking / Critical / Major / Minor]
-- **Catatan & Tindakan Lanjutan**: [Langkah verifikasi atau perbaikan teknis]
+**STATUS AKHIR: [⚠️ First-Pass Clean — Perlu Verifikasi Independen / VERIFIED & APPROVED / REJECTED]**
+- **Catatan & Rekomendasi Tindak Lanjut**: [Rincian verifikasi atau perbaikan teknis]
 ```
-
-

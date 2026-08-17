@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: narrative.cinematics
+canonical: true
+introduced_by: ADR-030
+---
+
+
 # Arahan Sinematik & Cutscene — Lentera Pudar Master Reference
 ### Bahasa Kamera Emosional per Sektor Duka, Pacing Cutscene, Sinkronisasi FACS AU, & Transisi Seamless
 

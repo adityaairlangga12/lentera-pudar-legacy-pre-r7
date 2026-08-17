@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: PROJECT_KNOWLEDGE
+authority_scope: creative.vision
+canonical: true
+---
+
+
 # Lentera Pudar — Master Creative Vision & Artistic Direction (3D Action RPG Edition)
 
 > **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md) untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.

@@ -1,63 +1,75 @@
 ---
 name: mcp_tools_pipeline
-description: "Pemahaman mendalam mengenai arsitektur Blender 5.2 LTS MCP dan Unreal Engine 5 Python MCP, standar 3-layer API (Atomic, Macro, Workflow), dan protokol observabilitas 3D."
+description: "Pemahaman arsitektur Blender 5.2 LTS MCP dan tata kelola integrasi tool 3D, standar layer API (Atomic, Macro, Workflow), prinsip observabilitas, dan kepatuhan kapabilitas 5-dimensi."
 ---
 
-# Lentera Pudar — 3D MCP Tools Pipeline (Blender 5.2 LTS + Unreal Engine 5)
+# Lentera Pudar — 3D MCP Tools Pipeline
 
-Skill ini memastikan AI memahami arsitektur, batasan waktu (*timeout*), pembagian layer tool, protokol anti-halusinasi sintaks API, dan protokol observabilitas di ekosistem **Blender 5.2 LTS MCP** dan **Unreal Engine 5 Python MCP** merujuk pada [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md) dan [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md).
+## Purpose
+Skill ini mengatur **protokol orkestrasi perkakas 3D MCP, pembagian layer API, batasan waktu (timeout), prinsip observabilitas sebelum mutasi, dan tata kelola kebenaran kapabilitas perkakas** di semesta *Lentera Pudar*.
 
----
-
-## 1. Protokol Integritas API & Anti-Halusinasi (Inspect-Before-Execute)
-1. **Introspeksi Wajib**: Sebelum mengeksekusi operasi penting, jalankan introspeksi `dir()` atau `help()` untuk memastikan fungsi/properti tersedia pada versi engine yang aktif.
-2. **Dilarang Menebak Nama Alternatif**: Jika fungsi tidak ditemukan, tandai sebagai **GAP**, buka dokumentasi resmi (`docs.blender.org/api` / `dev.epicgames.com/documentation`), dan sesuaikan dengan [api-cheat-sheet.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/api-cheat-sheet.md).
+Seluruh spesifikasi antarmuka API, kontrak perkakas, dan arsitektur MCP diatur secara kanonikal di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
 
 ---
 
-## 2. Pembagian 3 Layer Tool yang Seragam (Berlaku di Blender & UE5)
-Di seluruh ekosistem MCP proyek ini, perkakas dikelompokkan ke dalam 3 layer terstandarisasi:
-
-1. **Atomic Tools**: Aksi tunggal, kecil, deterministik, dan mudah di-rollback.
-   - Blender: `create_mesh_primitive`, `add_bone`, `set_bone_roll`, `set_shading_mode`, `set_material_property`.
-   - UE5: `spawn_actor`, `set_material_parameter`, `set_light_property`, `import_asset`.
-2. **Macro Tools**: Aksi level tugas bermakna yang menggabungkan beberapa atomic tool.
-   - Blender: `create_armature`, `auto_weight_paint`, `unwrap_uv`, `apply_modifier`, `setup_cloth_simulation`.
-   - UE5: `create_blueprint_class`, `setup_chaos_cloth`, `configure_niagara_system`, `setup_material_parameter_collection`.
-3. **Workflow Tools**: Pipeline multi-langkah dengan pelaporan eksplisit di tiap tahap.
-   - Blender: `export_gltf`, `validate_export`, `render_viewport_screenshot`, `full_character_pipeline`.
-   - UE5: `import_and_setup_skeletal_mesh`, `configure_lumen_lighting`, `package_build`.
+## Activate When
+- Menjalankan operasi pemodelan, rigging, shading, atau ekspor melalui server MCP Blender 5.2 LTS.
+- Melakukan inspeksi scene state dan penanganan error/timeout pada eksekusi perkakas.
+- Mengorkestrasi pipeline multi-langkah (*workflow tools*) yang melibatkan interaksi DCC.
 
 ---
 
-## 3. Prinsip Observabilitas Sebelum Mutasi
-Sebelum melakukan aksi modifikasi yang kompleks:
-- **Blender**: Panggil `get_scene_state` / `render_viewport_screenshot` dan periksa `get_console_output` atau `get_last_error`.
-- **UE5**: Panggil `get_editor_log` / `get_asset_list` sebelum memanipulasi Blueprint atau Level.
+## Do Not Use When
+- Pengeditan dokumentasi konseptual murni yang tidak memerlukan pemanggilan tool MCP.
+- Mengasumsikan eksekusi pada server perkakas yang belum diimplementasikan atau belum tersedia.
 
 ---
 
-## 4. Arsitektur Jaringan & Batasan Waktu (Timeouts)
-
-| Engine/Tool | Timeout | Koneksi | Catatan |
-|---|---|---|---|
-| **Blender MCP** | `COMMAND_TIMEOUT_MS = 25000` | Port `8097` / Stdio dispatch | Operasi pemodelan high-poly (40k–60k tris), skinning armature, dan ekspor glTF/FBX harus selesai dalam 25 detik. |
-| **UE5 Python MCP** | `COMMAND_TIMEOUT_MS = 30000` | Unreal Python Editor Scripting Plugin | Operasi level loading, Lumen baking, dan World Partition setup butuh alokasi lebih besar. |
-
-> **Wajib aktifkan di UE5**: `Edit ➔ Plugins ➔ Python Editor Script Plugin` sebelum koneksi MCP.
+## Canonical Dependencies
+- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Rantai Perkakas MCP, Kontrak API & Status Implementasi.
+- [references/06-pipeline-qc/api-cheat-sheet.md](references/06-pipeline-qc/api-cheat-sheet.md) — API Cheat Sheet & Tata Nama Fungsi.
+- [references/01-core/master-index.md](references/01-core/master-index.md) — Arsitektur Kapabilitas 5-Dimensi & Tingkatan Kebenaran Kapabilitas.
 
 ---
 
-## 5. Arsitektur Bridge & Otomasi Ekspor (Epic Pipeline Plugin)
+## Kebijakan Kebenaran Kapabilitas (*Capability Truth Policy*)
 
-```
-[Blender 5.2 LTS]
-    ↓ "Send to Unreal" (Blender-Unreal Pipeline Plugin resmi Epic Games)
-[Unreal Engine 5 Content Browser]
-    → SK_Kaelen_Body.uasset (Skeletal Mesh)
-    → M_Cursed_Crystal.uasset (Master Material)
-    → ABP_Kaelen.uasset (Animation Blueprint)
-```
+Setiap agen wajib membedakan 5 dimensi kapabilitas perkakas sesuai [master-index.md](references/01-core/master-index.md) §1.5:
+$$\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availability} \neq \text{Execution} \neq \text{Verification}$$
 
-- Otomasi transfer aset direct-to-engine menggunakan **Blender-Unreal Pipeline Plugin**.
-- Selalu validasi poly count, texel density ($512\text{ px/m}$), dan transform setelah import.
+### 1. Status Unreal Engine 5 MCP
+- Server MCP Unreal Engine 5 berstatus **`PLANNED`** (penanda sengaja `_TODO_lentera-ue5` di `mcp_config.json`, dijadwalkan pada Fase 4 Roadmap).
+- AI Agent **DILARANG MENGKLAIM** bahwa UE5 MCP saat ini aktif, tersedia, atau dapat dieksekusi secara otomatis.
+
+### 2. Status Blender 5.2 LTS MCP
+- Implementasi perkakas Blender MCP berstatus perkakas eksekusi parsial saat ini.
+- Ketersediaan proses server runtime wajib diverifikasi di lingkungan kerja aktif sebelum eksekusi dan tidak boleh diasumsikan otomatis tersedia.
+- Status pendaftaran skema perkakas (*Tool Registration*) tidak sama dengan keberadaan kode eksekusi nyata (*Implemented Handler*).
+- Gunakan jalur transport/eksekusi yang terkonfigurasi pada kontrak aktif di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan lingkungan runtime saat ini.
+- Sebelum mengeksekusi operasi mutasi, verifikasi apakah fungsi handler terkait berstatus `IMPLEMENTED` atau masih berupa `STUB` merujuk ke [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) Bab 3.
+- Respons `{status: "ok"}` dari stub mock HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai mutasi selesai.
+
+---
+
+## Pembagian 3 Layer API Terstandarisasi
+
+Perkakas diorganisasikan ke dalam 3 layer:
+1. **Atomic Tools**: Aksi tunggal deterministik dengan batas lingkup kecil (misal: `set_bone_roll`, `set_shading_mode`, `create_mesh_primitive`).
+2. **Macro Tools**: Penggabungan beberapa aksi atomic menjadi satu tugas bermakna (misal: `create_armature`, `auto_weight_paint`, `unwrap_uv`, `apply_modifier`).
+3. **Workflow Tools**: Eksekusi alur sekuensial multi-tahap dengan pelaporan status per langkah (misal: `export_gltf`, `validate_export`, `render_viewport_screenshot`).
+
+---
+
+## Prinsip Observabilitas Sebelum Mutasi (*Inspect-Before-Mutate*)
+
+Sebelum mengeksekusi operasi mutasi yang kompleks pada scene 3D:
+1. **Inspeksi Awal**: Panggil tool observasi seperti `get_scene_state` atau `render_viewport_screenshot` untuk memeriksa kondisi objek aktif.
+2. **Eksekusi dengan Guard Batas Waktu**: Operasi perkakas dibatasi oleh batas waktu (*timeout*) aktif yang didefinisikan secara kanonikal pada kontrak MCP di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md).
+3. **Inspeksi Error Pasca-Eksekusi**: Jika terjadi anomali atau kegagalan, segera periksa output log via `get_console_output` atau `get_last_error`.
+4. **Verifikasi Hasil Fisik**: Validasi target geometri aktual sebelum menyatakan task selesai.
+
+---
+
+## Output Expectations
+- Pelaporan pemanggilan tool yang jujur mencantumkan status kapabilitas riil.
+- Penggunaan alat observasi secara konsisten sebelum dan sesudah mutasi.

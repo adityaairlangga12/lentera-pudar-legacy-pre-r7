@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: art.biomechanics
+canonical: true
+introduced_by: ADR-019
+---
+
+
 # Anatomi Manusia & Kinesiologi — Lentera Pudar Master Reference
 ### Acuan Ilmiah Sculpting, Biomechanical Rigging, Kinetic Chain Combat, & 8-Fase Lokomosi
 

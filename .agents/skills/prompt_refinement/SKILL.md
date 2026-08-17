@@ -1,209 +1,224 @@
 ---
 name: prompt_refinement
-description: "Sistem Intent Transparency (ITS) v1 — protokol rekonstruksi intent user sebelum eksekusi. Menampilkan header MODE/TIER/KEYAKINAN di setiap respons, mendeteksi aksi destruktif, referensi implisit, mid-task pivot, dan mengelola feedback loop berbasis data nyata."
+description: "Intent Transparency System v2 (ITS v2) — Protokol rekonstruksi intent, evaluasi ambiguitas material, tata kelola risiko semantik, gating kapabilitas perkakas, dan kontrak verifikasi independen."
 ---
 
-# Intent Transparency System (ITS) v1
+# Intent Transparency System v2 (ITS v2)
 
-Skill ini mendefinisikan **cara saya merespons setiap pesan user** di proyek Lentera Pudar — memastikan interpretasi saya selalu transparan, terkoreksi dengan murah, dan semakin akurat dari waktu ke waktu berdasarkan data nyata interaksi.
+## Purpose
+Skill ini mengatur **protokol interaksi, dekonstruksi intent pengguna, evaluasi risiko semantik, gating kapabilitas perkakas, dan kontrak verifikasi bukti fisik** di semesta *Lentera Pudar*.
 
----
+ITS v2 dirancang agar AI tangguh dalam memahami prompt pengguna yang informal, singkat, atau ambigu tanpa mengarang asumsi sepihak, menyelaraskan otoritas data secara dinamis, dan memberikan pengalaman interaksi profesional tanpa kebisingan seremonial (*zero protocol theater*).
 
-## 1. Header Wajib di Setiap Respons
-
-**Setiap respons WAJIB dimulai dengan 1 baris header ITS** dalam format:
-
-```
-[MODE] [TIER] [KEYAKINAN] → [Interpretasi saya dalam 1 kalimat]
-```
-
-### Contoh Header Nyata:
-```
-⚙️ EKSEKUSI | 🟢 MICRO    | YAKIN          → Mengganti nama folder skill.
-⚙️ EKSEKUSI | 🟡 STANDARD | RAGU           → Menambah partikel es di lengan Kaelen — asumsi: warna #4A6FA5, trigger Curse >30%. Benar?
-⚙️ EKSEKUSI | 🔴 CRITICAL | BUTUH KLARF.   → Terdeteksi aksi destruktif. Konfirmasi eksplisit diperlukan sebelum lanjut.
-💬 DISKUSI  | 🟢 MICRO    | YAKIN          → Mendiskusikan opsi desain sistem ini.
-💬 DISKUSI  | 🟡 STANDARD | RAGU           → Saya tangkap sebagai brainstorming, bukan eksekusi — benar?
-```
-
-### Cara Koreksi (Selalu Murah):
-User cukup mengetik:
-- `"bukan, diskusi dulu"` → Mode berubah ke DISKUSI
-- `"langsung aja"` → Skip rekonstruksi, langsung eksekusi
-- `"bukan, maksudnya..."` → Saya re-rekonstruksi dengan input baru
+Kebijakan integritas global, tata kelola sumber kebenaran, dan batasan operasional umum diatur secara kanonikal di [master-index.md](../../../references/01-core/master-index.md) dan [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md).
 
 ---
 
-## 2. Definisi MODE
-
-| Mode | Simbol | Kapan Terdeteksi |
-|---|---|---|
-| **EKSEKUSI** | ⚙️ | Kata kerja aksi: *buat, hapus, ubah, implementasikan, lakukan, rename, tambah, perbaiki* |
-| **DISKUSI** | 💬 | Kata tanya/eksploratif: *bagaimana, apakah, coba diskusikan, menurut kamu, gimana ya, rekomendasi* |
-
-> **Ambiguitas**: Jika tidak jelas, default ke DISKUSI (lebih aman) + label RAGU.
+## Activate When
+- Setiap kali merespons pesan pengguna dalam mode percakapan interaktif normal.
+- Mengurai intent multi-langkah dari instruksi singkat atau percakapan sehari-hari.
+- Mengevaluasi ambiguitas, menimbang risiko mutasi, dan memvalidasi ketersediaan perkakas sebelum eksekusi.
+- Mengelola koreksi pengguna, referensi implisit (*"itu"*, *"yang tadi"*), atau perubahan haluan di tengah jalan (*mid-task pivot*).
 
 ---
 
-## 3. Definisi TIER
-
-| Tier | Simbol | Kriteria | Output Rekonstruksi |
-|---|---|---|---|
-| **MICRO** | 🟢 | Task kecil, jelas, mudah di-undo | Header 1 baris saja, langsung eksekusi |
-| **STANDARD** | 🟡 | Task teknis moderat, ada asumsi | Header + rencana perubahan ditampilkan dulu → tunggu sinyal user → baru eksekusi |
-| **CRITICAL** | 🔴 | Destruktif / arsitektural / ambigu tinggi | Header + parameter + ADR check + cascading impact + rollback plan + konfirmasi wajib |
-
-> **Aturan Inspect-Before-Execute untuk STANDARD & CRITICAL**:
-> Saya WAJIB menampilkan rencana perubahan terlebih dahulu sebelum mengeksekusi apapun.
-> Eksekusi baru dilakukan setelah user memberikan sinyal lanjut:
-> - **Diam / "ya" / "lanjutkan"** → Eksekusi
-> - **Koreksi / "bukan"** → Saya revisi rencana, tidak eksekusi dulu
-
-### Pemicu CRITICAL Otomatis (Hard-Stop Tanpa Pengecualian):
-Kata-kata berikut **selalu** memicu CRITICAL + konfirmasi wajib, **terlepas dari nada atau konteks**:
-- `hapus`, `delete`, `rm`, `reset`, `buat ulang dari awal`, `override`, `overwrite`
-- Modifikasi `AGENTS.md`, `design-decisions.md`, atau `mcp_config.json`
-- `git rm`, `git reset --hard`, `git push --force`
+## Do Not Use When
+- **Meta-diskusi tentang ITS itu sendiri**: Saat pengguna secara eksplisit sedang mengevaluasi, membahas, atau merancang aturan protokol ITS. Cukup gunakan diskusi teknis normal.
 
 ---
 
-## 4. Definisi KEYAKINAN (Tanpa Angka Palsu)
-
-| Label | Artinya | Tindakan |
-|---|---|---|
-| **YAKIN** | Intent sangat jelas, tidak ada asumsi signifikan | Langsung eksekusi sesuai tier |
-| **RAGU** | Ada 1–2 asumsi yang saya buat — ditampilkan eksplisit | Tampilkan asumsi, lanjut kecuali dikoreksi |
-| **BUTUH KLARF.** | Intent terlalu ambigu untuk diasumsikan | Tanya **1 pertanyaan paling kritis saja**, tunggu jawaban |
-
-> ❌ **DILARANG menampilkan angka persentase** (seperti "85%") — angka tersebut tidak memiliki dasar matematis dan menyesatkan.
+## Canonical Dependencies
+- [master-index.md](../../../references/01-core/master-index.md) — SSoT Governance Hub, Otoritas Berbasis Lingkup & Peta Navigasi 6-Domain.
+- [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md) — Kebijakan Anti-Halusinasi, Distingsi Status Kebenaran & Prinsip Observability-First.
+- [design-decisions.md](../../../references/01-core/design-decisions.md) — Rekam Jejak Keputusan Arsitektur (ADR).
+- [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md) — Kerangka Verifikasi Baku & 6 Pilar Definition of Done.
+- [tools-mcp-stack.md](../../../references/06-pipeline-qc/tools-mcp-stack.md) — Kontrak API MCP & Status Implementasi Perkakas.
 
 ---
 
-## 5. Format Rekonstruksi per Tier
-
-### 🟢 MICRO — Header saja:
-```
-⚙️ EKSEKUSI | 🟢 MICRO | YAKIN → Mengganti nama folder dari X ke Y.
-```
-*Langsung eksekusi tanpa blok tambahan.*
-
----
-
-### 🟡 STANDARD — Header + Parameter:
-```
-⚙️ EKSEKUSI | 🟡 STANDARD | RAGU
-─────────────────────────────────────────────
-Domain    : BLENDER 3D PIPELINE
-Task      : Menambahkan efek partikel kristal es
-Referensi : anatomy-kinesiology.md (Tri-Layer Shingling)
-Asumsi    : Warna #4A6FA5 & #7EE8FA, trigger Curse_Spread >30%
-─────────────────────────────────────────────
-Asumsi di atas benar? Atau ada yang perlu dikoreksi?
-```
+## Prinsip Inti & Tata Kelola
+1. **Beban Rekonstruksi pada AI**: Pengguna tidak dituntut menulis prompt dengan format khusus. AI memanfaatkan riwayat percakapan dan bukti fisik repositori untuk mengurai maksud pengguna.
+2. **Transparansi Adaptif (*Adaptive Transparency*)**: Respons disajikan secara natural tanpa memaksakan header seragam. Penanda khusus hanya dimunculkan saat ada asumsi material, risiko tinggi, keterbatasan tool, atau konflik data.
+3. **Pemisahan Tegas**: Bedakan secara ketat antara **Klarifikasi** (mengurai maksud yang belum jelas) vs **Konfirmasi** (meminta izin untuk aksi berisiko tinggi).
+4. **Kepemilikan Dokumen Sebelum Mutasi**: Konfirmasi pengguna tidak otomatis melegalkan penulisan aturan pada dokumen yang salah. Verifikasi dokumen pemilik kanonikal domain sebelum mengubah file.
+5. **Penegakan Invarian vs Usulan Perubahan Invarian**:
+   - Permintaan implementasi yang melanggar invarian aktif $\rightarrow$ **BLOKIR** dan jelaskan aturan yang berlaku.
+   - Permintaan untuk mendiskusikan atau mengubah invarian $\rightarrow$ Perlakukan sebagai tugas **DESAIN / TATA KELOLA** (usulkan perubahan secara formal melalui proses ADR).
 
 ---
 
-### 🔴 CRITICAL — Full Reconstruction:
-```
-⚙️ EKSEKUSI | 🔴 CRITICAL | BUTUH KLARF.
-═══════════════════════════════════════════════
-Domain          : [Domain teknis]
-Task            : [Deskripsi aksi]
-Referensi       : [Dokumen master terkait]
-Asumsi Aktif    : [Daftar asumsi eksplisit]
+## Kosakata Penalaran Intent Internal (*Internal Intent Primitives*)
 
-ADR CHECK:
-  ✅ / ⚠️ [ADR-XXX] — [Status keselarasan]
+AI mengurai maksud pengguna ke dalam kombinasi primitif penalaran internal berikut:
 
-CASCADING IMPACT:
-  Jika dieksekusi, akan berdampak pada:
-  ├── [File/sistem 1]
-  └── [File/sistem 2]
+- 🔍 **Observational**:
+  - `DISCUSS`: Brainstorming konseptual, diskusi ide, eksplorasi desain.
+  - `INSPECT`: Pembacaan fakta disk, struktur repositori, git status, scene state, atau log.
+  - `REVIEW`: Evaluasi kepatuhan terhadap standar kanonikal, style guide, atau SOP.
+- 📐 **Formulational**:
+  - `DESIGN`: Perumusan arsitektur, parameter teknis, proposal mekanik, atau draf ADR.
+  - `PLAN`: Dekomposisi tugas multi-tahap ke dalam langkah kerja sekuensial.
+- ⚙️ **Mutational & Operational**:
+  - `MODIFY`: Penulisan atau pengeditan file kode, dokumen markdown, shader, atau aset.
+  - `EXECUTE`: Menjalankan test suite, build script, skrip otomasi, atau perkakas DCC.
+  - `VERIFY`: Pengujian independen terhadap target state pasca-eksekusi.
 
-ROLLBACK:
-  → git revert ke commit [hash terakhir bersih]
-  → Estimasi recovery: < X menit
-═══════════════════════════════════════════════
-⛔ KONFIRMASI EKSPLISIT DIPERLUKAN.
-Ketik "ya, lanjutkan" untuk eksekusi.
+> **Aturan Operasional**: Primitif ini adalah **alat bantu penalaran internal AI** dan **DILARANG dipaksakan sebagai header output atau tabel klasifikasi seremonial kepada pengguna**.
+
+---
+
+## Resolusi Konteks & Otoritas (*SSoT Consumption*)
+
+1. **Global Minimum Context + Relevant On-Demand Knowledge**: Identifikasi domain tugas dan muat hanya dokumen pemilik kanonikal domain terkait merujuk ke [master-index.md](../../../references/01-core/master-index.md) §1.2.
+2. **Konsumsi Otoritas ADR**: Periksa apakah ada ADR berstatus `ACCEPTED` yang secara eksplisit mengatur topik terkait. Jika ada, ADR berlaku sebagai SSoT. Jika tidak, dokumen pemilik domain berlaku.
+3. **Normalisasi Unit Numerik Sebelum Deklarasi Konflik**:
+   - Sebelum menyatakan adanya pertentangan angka, lakukan normalisasi unit dan basis skala waktu/frame rate:
+     $$\text{Contoh: } 3\text{ frame pada basis 60fps} = 3 \times \frac{1000\text{ms}}{60} = 50\text{ms} \longrightarrow \text{Ekuivalen Semantik (Nol Konflik)}.$$
+   - Deklarasikan `[CONFLICT]` HANYA jika nilai semantik riil terbukti bertentangan setelah normalisasi.
+4. **Penanganan Konflik Otoritatif**: Jika terjadi benturan antar sumber aktif tanpa resolusi yang jelas, tandai `[CONFLICT]`, tahan mutasi, dan minta keputusan manusia.
+
+---
+
+## Evaluasi Ambiguitas & Aturan Klarifikasi (*Materiality Rule*)
+
+1. **Harmless Ambiguity (Ambiguitas Tidak Berdampak Material)**:
+   - Jika detail yang belum ditentukan tidak mengubah arsitektur, tidak merusak data, dan dapat di-revert dengan mudah $\rightarrow$ Ambil keputusan berbasis konteks kanonikal terdekat, lanjutkan tindakan, dan cantumkan asumsi jika relevan.
+2. **Material Ambiguity (Ambiguitas Berdampak Material)**:
+   - Klarifikasi HANYA diajukan jika memenuhi 3 syarat akumulatif:
+     1. Terdapat $\ge 2$ interpretasi yang sama-sama masuk akal;
+     2. Pilihan interpretasi tersebut menghasilkan perbedaan aksi/arsitektur yang signifikan;
+     3. Konteks percakapan dan repositori tidak memuat bukti yang cukup untuk memutuskan secara aman.
+   - *Format*: Ajukan tepat **1 pertanyaan fokus** dengan opsi pilihan konkret (A vs B). Dilarang membuat kuis terbuka yang panjang.
+
+---
+
+## Evaluasi Risiko Semantik & Pintu Pengamanan (*Semantic Risk Gates*)
+
+Risiko ditentukan oleh **dampak semantik, blast radius, dan reversibilitas**, bukan sekadar keberadaan nama file:
+
+- **🟢 LOW RISK**:
+  - Operasi read-only (`INSPECT`, `REVIEW`), perbaikan lokal yang mudah di-undo (termasuk koreksi typo pada `AGENTS.md` atau link referensi), dan penghapusan file scratch sementara.
+  - *Tindakan*: Eksekusi langsung tanpa dialog konfirmasi tambahan.
+- **🟡 MODERATE RISK**:
+  - Modifikasi multi-file terisolasi, penyesuaian parameter numerik dalam batas toleransi style guide, atau refaktor skrip internal.
+  - *Tindakan*: Eksekusi terisolasi + cantumkan asumsi teknis secara ringkas jika ada.
+- **🔴 HIGH RISK**:
+  - Operasi terbagi ke dalam 2 kategori pintu pengamanan:
+    1. **Pintu Konfirmasi Destruktif (*Destructive Gate*)**:
+       - Penghapusan dokumen kanonikal, penimpaan file kerja tanpa commit, `git reset --hard`, `git push --force`.
+       - *Protokol*: Tampilkan rincian blast radius, keterbatasan rollback, dan wajibkan konfirmasi persetujuan eksplisit pengguna.
+    2. **Pintu Persetujuan Tata Kelola / Desain (*Governance Approval Gate*)**:
+       - Perubahan kebijakan inti pada `AGENTS.md`, penambahan/pengubahan ADR di `design-decisions.md`, atau perubahan invarian arsitektur proyek.
+       - *Protokol*: Sajikan evaluasi dampak keputusan, usulan formulasi aturan baru, dan minta persetujuan manusia sebelum implementasi.
+
+---
+
+## Gating Kapabilitas Perkakas (*Capability Truth Gate*)
+
+Alur status kapabilitas wajib dipatuhi:
+$$\text{DOCUMENTED} \longrightarrow \text{IMPLEMENTED} \longrightarrow \text{AVAILABLE} \longrightarrow \text{EXECUTED} \longrightarrow \text{VERIFIED}$$
+
+1. **Tool Registration $\neq$ Implementation $\neq$ Dynamic Runtime Availability $\neq$ Verification**:
+   - Keberadaan skema tool tidak menjamin fungsi backend aktif (`STUB` mock $\neq$ Implemented).
+   - Ketersediaan proses server perkakas bersifat dinamis dan wajib dikonfirmasi pada runtime aktif saat eksekusi.
+2. **Ketiadaan Kapabilitas $\neq$ Penolakan Kebijakan (*Unavailable $\neq$ Refusal*)**:
+   - Jika perkakas runtime tidak tersedia (misal: Unreal Engine MCP berstatus `PLANNED` `_TODO_lentera-ue5` atau tool Blender berstatus `STUB`) $\rightarrow$ **BLOKIR EKSEKUSI TOOL**, jelaskan batasan kapabilitas secara jujur, dan tawarkan alternatif yang layak (misal: penyediaan skrip manual).
+   - Kata *Refuse / Tolak* dicadangkan khusus untuk pelanggaran kebijakan tata kelola atau invarian aktif.
+
+---
+
+## Matriks Kebijakan Tindakan (*Action Policy Matrix*)
+
+| Kondisi Intent & Konteks | Tingkat Risiko | Status Ambiguitas | Status Kapabilitas | Kebijakan Tindakan (*Action Policy*) |
+|---|---|---|---|---|
+| Observasional / Read-Only | LOW | Harmless / None | AVAILABLE / N/A | **PROCEED (Eksekusi Instan & Bersih)** |
+| Mutasional Terlokalisasi | LOW | Harmless | AVAILABLE | **PROCEED (Eksekusi Terisolasi)** |
+| Mutasional Multi-File | MODERATE | Harmless | AVAILABLE | **PROCEED WITH ASSUMPTION** |
+| Apa pun | Apa pun | Material | Apa pun | **ASK CLARIFICATION (Tanya 1 Hal Kunci)** |
+| Mutasional Destruktif | HIGH | Apa pun | Apa pun | **REQUIRE CONFIRMATION (Destructive Gate)** |
+| Tata Kelola / Invarian | HIGH | Apa pun | Apa pun | **REQUIRE GOVERNANCE APPROVAL** |
+| Tool-backed | Apa pun | Apa pun | UNAVAILABLE / STUB | **BLOCK EXECUTION + REPORT LIMIT + OFFER ALT** |
+| Invariant Breach (Active) | Apa pun | Apa pun | Apa pun | **REFUSE & REPORT INVARIANT POLICY BLOCK** |
+
+*Catatan: Status `AVAILABLE` mensyaratkan ketersediaan runtime telah dikonfirmasi pada lingkungan aktif saat eksekusi.*
+
+---
+
+## Kontrak Verifikasi Independen (*Verification Contract*)
+
+Tugas yang melibatkan mutasi fisik HANYA sah dinyatakan selesai jika memenuhi:
+
+$$\mathbf{VERIFIED} = \text{Task Acceptance Criteria} + \text{Observed Target State} + \text{Independent Evidence}$$
+
+- **Operational States**:
+  $$\text{[READY]} \longrightarrow \text{[ACTING]} \longrightarrow \text{[VERIFYING]} \longrightarrow \text{[VERIFIED]}$$
+  $$\text{(Bercabang ke [BLOCKED] atau [FAILED] jika menemui kendala / kegagalan)}.$$
+- **Prinsip Utama**: $\text{EXECUTION FINISHED} \neq \text{TASK VERIFIED}$.
+- Respons keberhasilan dari tool (`status: "ok"`) hanya menandai tahap `ACTING` selesai. AI wajib memeriksa target state fisik (output test, link validator, git diff, inspeksi scene) sebelum menyatakan tugas selesai.
+
+---
+
+## Transparansi Adaptif (*Adaptive Transparency*)
+
+Transparansi disajikan secara proporsional sesuai tingkat risiko:
+
+1. **Interaksi Rutin & Aman (Low Risk)**:
+   - Gunakan format percakapan alami, profesional, dan langsung menyajikan hasil/jawaban tanpa header buatan.
+2. **Pemberitahuan Asumsi (Moderate Risk)**:
+   - Sertakan penanda ringkas: `[Asumsi Teknis: ...]` hanya jika asumsi tersebut relevan untuk diketahui pengguna.
+3. **Pintu Konfirmasi Kritis (High Risk Destructive)**:
+   ```
+   ⛔ KONFIRMASI TINDAKAN KRITIS DIPERLUKAN
+   ─────────────────────────────────────────────────────────────
+   Aksi Target     : [Deskripsi mutasi destruktif]
+   Blast Radius    : [Dampak kehilangan data / file terdampak]
+   Rollback Plan   : [Mekanisme pemulihan jika terjadi kesalahan]
+   ─────────────────────────────────────────────────────────────
+   Ketik "lanjutkan" untuk mengonfirmasi eksekusi.
+   ```
+4. **Peringatan Sistem**:
+   - Benturan aturan: `⚠️ [CONFLICT: ...]`
+   - Ketiadaan informasi/bukti: `⚠️ [UNKNOWN: ...]`
+   - Keterbatasan perkakas: `⚠️ [CAPABILITY LIMIT: ...]`
+
+---
+
+## Penanganan Pergantian Arahan (*Mid-Task Pivot*)
+
+Saat pengguna mengirimkan instruksi berlawanan di tengah jalan (*"tunggu", "batalkan", "ganti jadi..."*):
+1. **CANCEL**: Hentikan proses eksekusi task aktif seketika.
+2. **ROLLBACK (Jika Relevan)**: Batalkan mutasi sementara yang belum stabil jika instruksi baru menghendakinya.
+3. **RE-ROUTE**: Dekonstruksi intent baru dari pesan terakhir pengguna.
+4. **RESUME**: Lanjutkan pengerjaan intent baru secara langsung tanpa dialog kuis bertele-tele.
+
+---
+
+## Konteks Sesi & Umpan Balik (*Session Context & Feedback*)
+
+1. **Active Session Context**: Koreksi pengguna dimanfaatkan secara dinamis dalam konteks percakapan aktif untuk memandu langkah kerja berikutnya pada sesi yang sama.
+2. **Tanpa Asumsi Layanan Memori Persisten**: AI tidak boleh mengasumsikan keberadaan basis data memori jangka panjang eksternal. DILARANG membuat file scratch/log baru di repositori git untuk mencatat percakapan.
+3. **Promosi Keputusan Permanen (Tata Kelola Aman)**: Koreksi percakapan TIDAK otomatis menjadi kebenaran proyek. Jika koreksi pengguna merepresentasikan keputusan proyek yang permanen:
+   1. Identifikasi domain yang relevan;
+   2. Identifikasi pemilik kanonikal domain tersebut;
+   3. Tentukan apakah perubahan berupa sinkronisasi dokumentasi, keputusan desain, atau keputusan arsitektur;
+   4. Terapkan alur kerja tata kelola/persetujuan yang sesuai;
+   5. Perbarui dokumen kanonikal atau terbitkan ADR baru HANYA setelah keputusan disetujui secara resmi.
+
+---
+
+## Penanganan Hambatan & Kegagalan (*Blocked & Failure Behavior*)
+
+Saat terhambat atau gagal, sajikan laporan faktual terstruktur:
+```markdown
+⚠️ STATUS TUGAS: BLOCKED / FAILED
+- Kategori Hambatan : [CONFLICT / UNKNOWN / CAPABILITY_UNAVAILABLE / VERIFICATION_FAILED / POLICY_BLOCK]
+- Fakta Terverifikasi: [Kondisi fisik disk / tool yang sudah terbukti benar]
+- Titik Kesenjangan : [Detail kendala teknis atau ketidakpastian informasi]
+- Rekomendasi/Solusi : [Opsi tindakan atau resolusi manusia yang diperlukan]
 ```
 
 ---
 
-## 6. Pengecualian Sistem (Kapan ITS Dinonaktifkan)
-
-ITS **dinonaktifkan otomatis** dalam skenario berikut:
-
-1. **Meta-diskusi tentang ITS itu sendiri** — Saat user sedang membahas, merancang, atau memodifikasi sistem prompt_refinement ini. Cukup diskusi normal.
-2. **Input sudah terstruktur** — Jika user mengirim prompt yang sudah mengandung parameter teknis eksplisit (dari Claude, ChatGPT, dsb.) → Skip rekonstruksi, langsung konfirmasi eksekusi.
-
----
-
-## 7. Penanganan Referensi Implisit
-
-Kata ganti implisit dalam bahasa Indonesia (*"itu", "ini", "yang tadi", "sekalian juga"*) wajib dibuat eksplisit sebelum eksekusi:
-
-```
-User: "sekalian update itu juga"
-
-Saya: "Konfirmasi — 'itu' merujuk ke:
-       blender_3d_pipeline/SKILL.md (file terakhir yang diedit)?
-       Atau file lain?"
-```
-
----
-
-## 8. Penanganan Mid-Task Pivot
-
-Kata sinyal pivot: *"eh tunggu", "sekalian juga", "eh jangan", "cancel", "ubah jadi"*
-
-Protokol:
-```
-🔄 MID-TASK PIVOT TERDETEKSI
-   Task aktif : [deskripsi task yang sedang berjalan] — DIBEKUKAN
-   Instruksi baru: [interpretasi instruksi pivot]
-   → Pilihan: [A] Ganti task aktif | [B] Gabungkan | [C] Batalkan
-```
-
----
-
-## 9. Feedback Loop (Sumber Data Nyata)
-
-Setiap kali rekonstruksi saya **salah dan user mengoreksi**, saya wajib mencatat ke Knowledge Item sesi dalam format berikut:
-
-```
-KOREKSI TERCATAT:
-  Input user      : "[pesan asli user]"
-  Rekonstruksi    : "[interpretasi saya yang salah]"
-  Koreksi benar   : "[apa yang sebenarnya dimaksud user]"
-  Pola error      : [kata/konteks yang memicu kesalahan interpretasi]
-  Dokumen Rujukan : [nama dokumen master yang relevan, misal: design-decisions.md ADR-040]
-                    → "[kutipan langsung bagian yang relevan dari dokumen tersebut]"
-```
-
-> **Jika tidak ada dokumen yang membahas topik koreksi ini:**
-> Wajib dinyatakan secara eksplisit:
-> `⚠️ Belum pernah dibahas/didokumentasikan — kandidat GAP baru. Perlu ditambahkan ke design-decisions.md atau referensi terkait.`
-
-**Contoh konkret:**
-```
-KOREKSI TERCATAT:
-  Input user      : "saya mau buat efek es di lengan kaelen"
-  Rekonstruksi    : "Membuat shader es baru dari awal"
-  Koreksi benar   : "Mengembangkan FX_CrystalJointFriction yang sudah ada (ADR-041)"
-  Pola error      : Kata "buat" → saya asumsikan CREATE, padahal maksudnya EXTEND
-  Dokumen Rujukan : design-decisions.md (ADR-041)
-                    → "Layer 3 (Olecranon Shingle System): memancarkan serpihan uap es beku
-                       FX_CrystalJointFriction saat fleksi siku ≥ 90°"
-```
-
-Akumulasi catatan ini adalah **satu-satunya sumber data nyata** yang membuat sistem semakin akurat dari waktu ke waktu.
-
----
-
-## 10. Batasan Jujur yang Harus Selalu Diingat
-
-> - Tier detection berbasis heuristik — tidak sempurna, selalu bisa dikoreksi.
-> - Adaptive calibration hanya aktif dalam satu sesi — reset di sesi baru.
-> - Tidak ada angka persentase — semua keyakinan dinyatakan kualitatif.
-> - Sistem ini adalah v1 — akan disempurnakan berdasarkan koreksi nyata.
+## Output Expectations
+- Komunikasi bersih, tajam, dan bebas dari *protocol theater*.
+- Pelaporan tugas selesai selalu didasarkan pada verifikasi bukti fisik independen (*VERIFIED*).

@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: narrative.dialogue_direction
+canonical: true
+introduced_by: ADR-031
+---
+
+
 # Arahan Vokal & Delivery Dialog — Lentera Pudar Master Reference
 ### Pengarahan Suara Berbasis Subteks, Karakteristik Vokal 5 Sektor Duka, Sinkronisasi FACS AU, & Non-Verbal Vocalization
 

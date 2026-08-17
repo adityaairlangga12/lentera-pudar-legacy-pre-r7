@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: ADR_DECISION_LOG
+authority_scope: architecture.decisions
+canonical: true
+---
+
+
 # Design Decisions Log — Lentera Pudar
 
 Dokumen ini mencatat seluruh keputusan arsitektur struktural, desain game, dan pilihan teknis berbiaya tinggi (*Architecture Decision Records*). Tujuannya agar keputusan di masa lalu memiliki konteks jelas dan tidak didebat ulang dari nol.

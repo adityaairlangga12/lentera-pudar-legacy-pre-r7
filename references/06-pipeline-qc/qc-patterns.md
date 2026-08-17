@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: REFERENCE
+authority_scope: pipeline.patterns
+canonical: false
+---
+
+
 # QC Patterns Log — Lentera Pudar: 3D Action RPG Edition
 
 Dokumen ini adalah rekam jejak kegagalan kontrol kualitas (*Quality Control failures & rejection patterns*). Setiap kali ada aset 3D, mesh, armature rig, shader, atau class yang ditolak oleh QC Gate, polanya dicatat di sini untuk mencegah kesalahan yang sama terulang (Quality Assurance).

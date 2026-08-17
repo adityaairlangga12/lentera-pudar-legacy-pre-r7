@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: VERIFICATION_QC
+authority_scope: pipeline.qc
+canonical: true
+governed_by: ADR-015
+---
+
+
 # Kerangka QA/QC — Lentera Pudar: 3D Action RPG Edition
 ### Standar Kontrol Kualitas, Definition of Done (DoD), Stage-Gate Process & Protokol Verifikasi AI
 

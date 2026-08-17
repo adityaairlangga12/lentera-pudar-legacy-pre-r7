@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: narrative.script
+canonical: false
+introduced_by: ADR-036
+---
+
+
 # Skenario & Naskah Step-by-Step Tutorial Prolog Onboarding — Lentera Pudar Master Reference
 ### Alur Pembelajaran Mekanik Diegetik Non-Verbal (Teaching Through Geometry & Organic Onboarding)
 

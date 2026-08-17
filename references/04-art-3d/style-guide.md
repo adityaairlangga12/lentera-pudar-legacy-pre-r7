@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: art.visual_constants
+canonical: true
+governed_by: ADR-016
+---
+
+
 # Style Guide Numerik & Visual — Lentera Pudar: 3D Action RPG Master Visual Standard
 
 > **Dokumen Sumber Kebenaran Parameter Numerik & Visual (*Visual & Numerical Source of Truth*)**  

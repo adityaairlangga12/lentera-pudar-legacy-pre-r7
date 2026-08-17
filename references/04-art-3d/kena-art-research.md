@@ -1,3 +1,11 @@
+---
+status: ACTIVE
+type: REFERENCE
+authority_scope: art.reference_benchmark
+canonical: false
+---
+
+
 # Riset Mendalam: 3D Art Kena: Bridge of Spirits — Lentera Pudar Master Reference
 ### Acuan Teknis Estetika Stylized-Realistic, Shading, Hybrid Hair & Dynamic Environmental Thawing
 

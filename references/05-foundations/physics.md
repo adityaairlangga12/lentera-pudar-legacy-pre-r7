@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: foundations.physics
+canonical: true
+authority_set: foundations.scientific
+---
+
+
 # Fisika Tingkat Expert — Lentera Pudar Master Reference
 ### Acuan Fisika Rigid Body, XPBD Cloth Dynamics, Voronoi Fracture, SPH Fluida, & Light Transport
 

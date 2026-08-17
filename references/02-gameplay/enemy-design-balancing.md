@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: DESIGN_SPEC
+authority_scope: gameplay.enemy_balancing
+canonical: true
+introduced_by: ADR-029
+---
+
+
 # Desain Musuh & Balancing Combat — Lentera Pudar Master Reference
 ### Dari FSM Generik Menuju Arketipe Manifestasi Duka, Telegraphing Readability, & Batasan Kepuasan Mekanik
 

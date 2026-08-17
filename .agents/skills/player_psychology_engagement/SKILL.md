@@ -1,87 +1,94 @@
 ---
 name: player_psychology_engagement
-description: Panduan psikologi pemain untuk Psychology Agent (Consultant). Digunakan saat mereview motivasi dialog NPC, atmosferik dread vs hope, resonansi emosional tragedi Kaelen & Aina, 5 Stages of Grief, dan kejelasan bahasa tubuh 3D serta kamera sinematik ala Hellblade.
+description: "Panduan psikologi pemain untuk Psychology Agent (Consultant). Digunakan saat mereview motivasi dialog NPC, atmosferik dread vs hope, resonansi emosional tragedi Kaelen & Aina, 5 Stages of Grief, dan kejelasan bahasa tubuh 3D serta kamera sinematik ala Hellblade."
 ---
 
 # Player Psychology & Emotional Engagement (Psychology Agent)
 
-Panduan konsultasi psikologi pemain untuk mengevaluasi resonansi emosional, kepuasan loop gameplay, kurva duka non-linear, dan keselarasan karakter di semesta **Lentera Pudar** — 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS) merujuk pada [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md).
+## Purpose
+Skill ini mengatur **prosedur konsultasi dan evaluasi psikologi pemain** untuk meninjau resonansi emosional, motivasi karakter, dinamika duka non-linear, dan kejelasan bahasa tubuh 3D di semesta *Lentera Pudar*.
+
+Seluruh teori psikologi ilmiah, dinamika kebutuhan dasar SDT, dan metodologi evaluasi duka diatur secara kanonikal di [psychology.md](references/05-foundations/psychology.md) dan [emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md).
 
 ---
 
-## 1. Sifat Peran: Konsultan Kritis (Bukan Pemilik Tahap)
-- Psychology Agent **BUKAN** pemilik tahap independen di pipeline linear.
-- Bekerja sebagai **Reviewer/Consultant** terhadap rancangan yang SUDAH DIBUAT oleh Game Designer atau Art Director.
-- Fokus: Memberikan catatan kritis dan actionable (bukan pujian kosong) terkait motivasi, dampak emosi, dan kejelasan ekspresi.
+## Activate When
+- Mereview rancangan motivasi dialog karakter, skrip cutscene, dan subteks emosional.
+- Mengevaluasi keseimbangan ketegangan (*dread*) vs kehangatan (*hope*) pada level dan pacing dungeon.
+- Mengaudit kejelasan ekspresi wajah FACS, dinamika tatapan mata (*gaze*), dan postur kinesiologi 3D.
+- Menilai dampak psikologis pengorbanan naratif (*Loss Aversion*) pada progresi kemampuan Kaelen.
 
 ---
 
-## 2. Tiga Pilar Resonansi Psikologis Lentera Pudar
-
-### A. Dualitas Kehangatan vs Kehampaan (The Triad of Emotion)
-- **Kehangatan (`#F4B860` 2700K)**: Merupakan metafora cinta, ingatan, dan rasa sakit perjuangan hidup. Harus terasa melegakan dan sakral setelah melewati kegelapan.
-- **Dingin Pudar (`#4A6FA5`)**: Merupakan metafora mati rasa (*emotional numbness / anhedonia*). Kematian beku terasa nyaman bagi korban karena membebaskan mereka dari rasa sakit.
-- **Prinsip Review**: Jangan biarkan dunia terasa 100% dingin atau 100% hangat. Kekuatan game ada pada **kontras eksistensial** saat syal Aina menerangi air mata beku para korban di kegelapan dungeon.
-
-### B. Hubungan Emosional Kaelen & Aina (*The Fading Scarf Dilemma*)
-- Aina adalah jiwa di balik syal lentera kuning yang perlahan menipis setiap kali Kaelen menyalakan altar distrik dungeon.
-- **Review Dialog & Momen**: Pastikan interaksi Aina terasa halus, penuh kasih, dan tidak klise. Aina tidak pernah memarahi Kaelen, ia adalah sauh yang menahan Kaelen agar tidak mati rasa.
-
-### C. Kurva Duka 5 Sektor (*The 5 Stages of Grief Review*)
-Saat mereview rancangan bos dan narasi per sektor dungeon, pastikan motivasi mereka mencerminkan tahapan psikologisnya:
-1. **Sektor 1 (Denial)**: Dialog dan perilaku bos mencerminkan penolakan realitas.
-2. **Sektor 2 (Anger)**: Pola serangan agresif melukai diri sendiri, dialog meledak-ledak.
-3. **Sektor 3 (Bargaining)**: Taktik manipulatif, menawarkan ilusi dan tawar-menawar palsu.
-4. **Sektor 4 (Depression)**: Kesunyian total, dialog membujuk pemain untuk menyerah dan tidur.
-5. **Sektor 5 (Acceptance)**: Keberanian untuk melepaskan, berdamai dengan luka, dan menyongsong fajar baru.
+## Do Not Use When
+- Pembuatan aset mesh 3D primer atau penulisan kode implementasi langsung.
+- Persetujuan build teknis murni yang tidak bersinggungan dengan respons pemain.
 
 ---
 
-## 3. Diagnostik Desain Lanjutan (Self-Determination Theory & Loss Aversion)
-
-### A. 3 Kebutuhan Dasar SDT (Autonomy, Competence, Relatedness)
-- **Autonomy**: Pastikan pilihan rute via Eyepatch dan strategi bertarung adalah pilihan nyata, bukan kosmetik.
-- **Competence**: Kepuasan berasal dari penguasaan parry 12-frame dan pola musuh yang adil.
-- **Relatedness**: Hubungan Kaelen-Aina terbangun lewat ketergantungan gameplay nyata.
-- **Anti-Crowding Out**: Tolak sistem leaderboard/skor angka yang merusak motivasi intrinsik kontemplatif.
-
-### B. Prospect Theory & Loss Aversion 2.5x
-- Kerugian dirasakan **2.0–2.5x lebih berat** dibanding keuntungan bernilai setara ($V(\text{Loss}) \approx 2.25 \times V(\text{Gain})$).
-- Konsekuensi pemendekan fisik Syal Aina wajib diperlihatkan sebelum pemain mengonfirmasi aktivasi Altar Duka.
-
-### C. Emotional Bandwidth & Pacing Anti-Burnout
-- Sisipkan *Breather Rooms* dan jeda hening di antara beat emosional berat untuk mencegah kelelahan afektif (*emotional burnout*).
-
-### D. Dinamika Duka Non-Linear (Kübler-Ross Echoes)
-- Izinkan gema halus dari sektor sebelumnya (misal bisikan penolakan S1 di kedalaman S4) untuk mencerminkan proses berduka yang realistis.
+## Canonical Dependencies
+- [references/05-foundations/psychology.md](references/05-foundations/psychology.md) — Fondasi Psikologi Pemain, SDT 3-Needs, Loss Aversion & Dinamika Duka.
+- [references/06-pipeline-qc/emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md) — Kerangka Evaluasi Intended vs Perceived & Analisis Kesenjangan Resonansi.
+- [references/03-narrative/vocal-direction-dialogue.md](references/03-narrative/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
+- [references/03-narrative/cinematics-cutscenes.md](references/03-narrative/cinematics-cutscenes.md) — Master Bahasa Kamera Spasial & Sinematik.
+- [references/04-art-3d/human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md) — Anatomi Ekspresi Wajah, FACS & Dinamika Gaze.
+- [references/04-art-3d/anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) — Postur Emosional & Biomekanika Gerak.
 
 ---
 
-## 4. Evaluasi Bahasa Tubuh & Ekspresi 3D (Hellblade-Grade Cinematics & Kinesiologi)
-
-Dalam 3D Third-Person (Unreal Engine 5), emosi disampaikan lewat animasi biomekanik, kamera intim, dan audio spasial:
-- **Postur Tubuh per Sektor Duka (Grief Body Language Archetypes)**:
-  - *Sektor 1 & 2 (Denial & Anger)*: Postur tegap, bahu terbuka defensif, langkah kaki tegas, kuda-kuda kokoh.
-  - *Sektor 4 (Depression — Abyss of Stillness)*: Postur menunduk, bahu merosot ke depan (*kyphotic posture*), langkah melambat, kepala tertunduk lesu (mengurangi vertikal bobbing).
-  - *Sektor 5 (Acceptance — Dawning Altar)*: Postur tegap rileks, bahu terbuka damai, tatapan mata stabil menyongsong fajar.
-  - *Pose Idle Alami*: Mengadopsi *Contrapposto* (berat badan bertumpu lebih besar pada satu kaki) agar tidak kaku seperti manekin.
-- **Kutukan Mengambil Alih**: Lengan kiri es merambat dari siku ke bahu ke dada, emissive kristal berdenyut 0.8–1.2 Hz saat Curse Meter 61–90%, intensitas meningkat ke 2.0–3.0 Hz saat Surge.
-- **Penutup Mata Kanan (*Eyepatch*)**: Simbol *grieving blindspot* (mata trauma yang disegel). Saat dibuka sesaat, post-process filter dingin mengubah persepsi visual dunia. Binaural whispers meningkat intensitasnya (+3 pts/detik pada Curse Meter).
-- **Momen Kamera Intim (Hellblade II Style)**: Saat Altar Duka menyala dan syal Aina memendek, kamera otomatis blur ke close-up wajah Kaelen (FOV 35°–50°, jarak 1.2–1.8m) — rekam ekspresi grief non-verbal untuk dampak emosional maksimal.
-- **Ekspresi Wajah FACS & Dinamika Gaze (Facial Expression Review)**:
-  - *FACS per Grief Stage*: S1 Denial (`AU1+AU2` + gaze drift), S2 Anger (`AU4` corrugator + `AU23`), S4 Depression (`AU1+AU15+AU43` parsial + downward gaze), S5 Acceptance (`AU12` lembut tanpa `AU6`).
-  - *Duchenne Marker vs Topeng*: Senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa kerutan mata `AU6`) saat berpura-pura tegar.
-  - *Gaze Dynamics*: Gaze aversion (rasa bersalah), gaze lock (duel 1v1 intens), gaze drift (disosiasi mental).
+## Sifat Peran: Konsultan Kritis
+- Psychology Agent bertindak sebagai **Reviewer / Konsultan Kritis** independen terhadap rancangan yang telah disusun oleh Game Designer, Narrative Writer, atau Art Director.
+- Fokus: Memberikan catatan kritis berbasis bukti ilmiah psikologi (bukan pujian normatif) terkait motivasi, dampak emosi, dan kejelasan ekspresi.
 
 ---
 
-## 5. Referensi Dokumen
-- [references/05-foundations/psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md) — Master Psikologi Pemain Tingkat Lanjut.
-- [references/06-pipeline-qc/emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md) — Master Playtesting & Validasi Emosional Duka.
-- [references/03-narrative/vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
-- [references/03-narrative/cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md) — Master Arahan Sinematik & Bahasa Kamera Duka.
-- [references/04-art-3d/human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md) — Master Anatomi Wajah, FACS Action Units & Bahasa Emosi Gaze.
-- [references/04-art-3d/anatomy-kinesiology.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/anatomy-kinesiology.md) — Master Anatomi, Kinesiologi & Postur Emosional.
-- [references/01-core/game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) — Bab III (Kaelen & Aina), Bab VII (Psikologi Auditori), Bab VIII (5 Boss Manifestation).
-- [references/04-art-3d/style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) — Bab 7 (Parameter Kamera 3D), Bab 8 (Timing Combat), Bab 9 (Curse Meter).
-- [references/01-core/creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md) — Pedoman diksi dialog & nada narasi.
+## Alur Prosedur Evaluasi Psikologis
+
+### 1. Evaluasi Dualitas Emosi (Warmth vs Numbness)
+- **Kehangatan (Cahaya Syal Aina)**: Metafora cinta, ingatan, dan rasa sakit perjuangan hidup. Harus terasa melegakan dan sakral setelah melewati kegelapan.
+- **Kebekuan (Kutukan Es Pudar)**: Metafora mati rasa batin (*anhedonia / apathy*).
+- **Prinsip Evaluasi**: Pastikan dunia game mempertahankan **kontras eksistensial**; jangan biarkan suatu sektor terasa 100% dingin tanpa harapan atau 100% hangat tanpa ancaman.
+
+### 2. Evaluasi 5 Tahapan Berduka (*5 Stages of Grief*)
+Tinjau motivasi bos, narasi lingkungan, dan interaksi karakter per sektor merujuk ke [psychology.md](references/05-foundations/psychology.md) Bab 3:
+- **Sektor 1 (Denial)**: Penolakan realitas dan isolasi kognitif.
+- **Sektor 2 (Anger)**: Agresi meledak-ledak dan frustrasi menyalahkan pihak luar.
+- **Sektor 3 (Bargaining)**: Taktik manipulatif, janji kompromi palsu, dan ilusi penundaan.
+- **Sektor 4 (Depression)**: Kehampaan eksistensial, letih mental, dan ajakan untuk menyerah.
+- **Sektor 5 (Acceptance)**: Keberanian berdamai dengan kehilangan dan menyongsong fajar baru.
+
+### 3. Diagnostik Self-Determination Theory (SDT) & Loss Aversion
+- **Autonomy**: Pastikan pilihan rute dan penggunaan taktis Eyepatch adalah keputusan bermakna.
+- **Competence**: Kepuasan berasal dari penguasaan ritme kombat yang adil dan telegraf terbaca.
+- **Relatedness**: Hubungan Kaelen-Aina terbangun lewat ketergantungan mekanik gameplay nyata.
+- **Loss Aversion (Prospect Theory)**: Evaluasi bobot psikologis pemendekan fisik Syal Aina di tiap Altar Duka menggunakan model Loss Aversion kanonikal di [psychology.md](references/05-foundations/psychology.md) Bab 2 agar pemain merasakan pengorbanan nyata sebelum mengonfirmasi aktivasi altar.
+
+### 4. Evaluasi Bahasa Tubuh 3D & Ekspresi FACS
+- **Postur Kinesiologi per Sektor**: Pastikan siluet karakter mencerminkan kondisi mental Kaelen (postur tegap defensif di Sektor 1/2 vs bahu merosot *kyphotic posture* di Sektor 4) merujuk ke [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md).
+- **FACS & Dinamika Gaze**: Validasi shape keys ekspresi wajah terhadap kombinasi Action Units di [human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md), termasuk pembedaan Duchenne marker (senyum tulus) vs senyum topeng sosial saat Kaelen menyembunyikan kerapuhan batin.
+
+---
+
+## Output Expectations (Psychological Consultation Report)
+
+```markdown
+# 🧠 Psychological Review & Engagement Audit
+- **Target Review**: [Modul / Scene / Bos / Naskah]
+- **Auditor**: Psychology Agent (Consultant)
+- **Status Resonansi**: [ALIGNED / EMOTIONAL GAP DETECTED]
+
+### 1. Diagnostik Resonansi Duka & Motivasi Karakter
+- [Evaluasi motivasi psikologis dan keselarasan 5 Stages of Grief]
+
+### 2. Evaluasi SDT (Autonomy, Competence, Relatedness) & Loss Aversion
+- [Catatan motivasi intrinsik dan bobot pengorbanan pemain]
+
+### 3. Evaluasi Bahasa Tubuh 3D, FACS & Ekspresi Gaze
+- [Kesesuaian postur kinesiologi dan ekspresi mikro wajah]
+
+### 4. Catatan Validasi Playtest Manusia ([Needs Human Playtest Validation])
+- [Identifikasi hipotesis emosional yang wajib diuji pada playtest manusia sungguhan]
+
+### 5. Rekomendasi Penajaman Psikologis (Actionable Advice)
+- [Langkah perbaikan konkret untuk Game Designer / Writer]
+```

@@ -1,3 +1,12 @@
+---
+status: ACTIVE
+type: TECHNICAL_SPEC
+authority_scope: art.3d_pipeline
+canonical: false
+introduced_by: ADR-024
+---
+
+
 # Teori Fondasi 3D Expert — Lentera Pudar Master Reference
 ### Prinsip Inti Topology, UV Seam, PBR Shading, Rigging Deformation, LOD Siluet, & Baking Pipeline
 
