@@ -1,17 +1,17 @@
 ---
 status: ACTIVE
-type: DESIGN_SPEC
+type: SPECIFICATION
 authority_scope: gameplay.ui_ux
 canonical: true
-introduced_by: ADR-032
+owner: ui-team
+last_reviewed: 2026-08-18
 ---
-
 
 # UI/UX & Aksesibilitas — Lentera Pudar Master Reference
 ### Spesifikasi Minimal-HUD, Antarmuka Diegetik, Fitur Aksesibilitas Empatik, & Arsitektur Siap Lokalisasi
 
 > **Dokumen Sumber Kebenaran UI/UX & Aksesibilitas (*UI/UX & Accessibility Reference*)**  
-> Melengkapi [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md), [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), dan [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md). Menetapkan antarmuka pengguna yang meminimalkan beban kognitif (*cognitive load*) dan menjamin aksesibilitas inklusif untuk seluruh pemain.
+> Melengkapi [expert-psychology.md](../07-foundations/psychology.md), [style-guide.md](../04-art-3d/style-guide.md), [level-design-storytelling.md](level-design-storytelling.md), dan [qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md). Menetapkan antarmuka pengguna yang meminimalkan beban kognitif (*cognitive load*) dan menjamin aksesibilitas inklusif untuk seluruh pemain.
 
 ---
 

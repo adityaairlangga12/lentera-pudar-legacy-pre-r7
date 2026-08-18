@@ -1,11 +1,10 @@
 ---
 status: ACTIVE
-type: PROJECT_KNOWLEDGE
-authority_scope: foundations.art_creativity
-canonical: true
-authority_set: foundations.scientific
+type: REFERENCE
+canonical: false
+owner: art-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Kreativitas & Nilai Seni Tingkat Expert — Lentera Pudar Master Reference
 ### Kerangka Estetika, Evaluasi Komposisi, Teori Warna 60-30-10, Semiotika Visual, & Kritik Seni

@@ -1,17 +1,17 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: SPECIFICATION
 authority_scope: narrative.dialogue_direction
 canonical: true
-introduced_by: ADR-031
+owner: narrative-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Arahan Vokal & Delivery Dialog — Lentera Pudar Master Reference
 ### Pengarahan Suara Berbasis Subteks, Karakteristik Vokal 5 Sektor Duka, Sinkronisasi FACS AU, & Non-Verbal Vocalization
 
 > **Dokumen Sumber Kebenaran Arahan Vokal & Dialog (*Vocal Direction & Dialogue Delivery Reference*)**  
-> Melengkapi [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md), dan [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md). Mengatur bagaimana baris dialog diucapkan secara vokal agar selaras sempurna dengan ekspresi wajah dan bobot emosional adegan.
+> Melengkapi [creative-vision.md](../01-core/creative-vision.md), [human-facial-expressions.md](../04-art-3d/human-facial-expressions.md), dan [expert-psychology.md](../07-foundations/psychology.md). Mengatur bagaimana baris dialog diucapkan secara vokal agar selaras sempurna dengan ekspresi wajah dan bobot emosional adegan.
 
 ---
 

@@ -1,17 +1,17 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: SPECIFICATION
 authority_scope: narrative.cinematics
 canonical: true
-introduced_by: ADR-030
+owner: cinematics-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Arahan Sinematik & Cutscene — Lentera Pudar Master Reference
 ### Bahasa Kamera Emosional per Sektor Duka, Pacing Cutscene, Sinkronisasi FACS AU, & Transisi Seamless
 
 > **Dokumen Sumber Kebenaran Sinematografi & Cutscene (*Cinematics & Cutscenes Reference*)**  
-> Melengkapi [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md), [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md), [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md). Mengatur pergerakan kamera sebagai representasi kondisi mental Kaelen (*Hellblade Cinematic Benchmark*).
+> Melengkapi [creative-vision.md](../01-core/creative-vision.md), [human-facial-expressions.md](../04-art-3d/human-facial-expressions.md), [level-design-storytelling.md](../02-gameplay/level-design-storytelling.md), dan [expert-art-creativity.md](../07-foundations/art-creativity.md). Mengatur pergerakan kamera sebagai representasi kondisi mental Kaelen (*Hellblade Cinematic Benchmark*).
 
 ---
 
@@ -58,5 +58,5 @@ Kamera di *Lentera Pudar* bukan sekadar alat perekam aksi yang netral, melainkan
 
 ## 5. Kontinuitas Teknis (Technical Continuity)
 - **Match-Cut Positioning**: Posisi akhir kamera di ujung cutscene harus berada dalam radius orientasi kamera gameplay default untuk mencegah disorientasi pemain.
-- **Konsistensi Pencahayaan Kelvin**: Tata cahaya sinematik cutscene tetap tunduk pada hukum 2700K (Syal Aina) vs 6500K (Kristal Es) dan sistem Lumen GI real-time.
+- **Konsistensi Pencahayaan Kelvin**: Desain tata cahaya sinematik cutscene wajib mempertahankan kontras 2700K (Syal Aina) vs 6500K (Kristal Es). Lumen GI merupakan kandidat implementasi real-time yang akan diverifikasi setelah arsitektur Unreal diaudit.
 - **State Persistence**: Posisi musuh, sisa HP, dan status partikel es tidak boleh bergeser (*snap*) saat transisi cutscene berakhir.

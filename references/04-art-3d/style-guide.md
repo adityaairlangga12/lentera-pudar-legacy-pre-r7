@@ -1,11 +1,11 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: SPECIFICATION
 authority_scope: art.visual_constants
 canonical: true
-governed_by: ADR-016
+owner: art-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Style Guide Numerik & Visual — Lentera Pudar: 3D Action RPG Master Visual Standard
 
@@ -63,7 +63,7 @@ governed_by: ADR-016
   - Sektor 5 (*The Dawning Altar*): Rebound bertahap ke **100%** saat fajar terbit (`LUT_Sector05_Acceptance`).
 
 ### D. Implementasi Color Grading & Post-Process LUT
-Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara global melalui **Look-Up Table (LUT) 3D** di dalam UE5 `PostProcessVolume`, bukan dengan mengubah nilai albedo material satu per satu (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)).
+Perubahan saturasi dan atmosfer emosional antar sektor dirancang untuk diterapkan melalui **Look-Up Table (LUT) 3D** pada post-process Unreal Engine 5, alih-alih mengubah nilai albedo material satu per satu (lihat [environment-modular-techniques.md](environment-modular-techniques.md)).
 
 ---
 
@@ -88,7 +88,7 @@ Perubahan saturasi dan atmosfer emosional antar sektor diimplementasikan secara 
 ## 3. Parameter Emissive Real-Time & Render Target Thawing System
 
 ### A. Parameter Emissive & Rambatan Kristal Es (Material Parameter Collection)
-Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara real-time melalui 3 parameter yang saling terhubung:
+Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dirancang untuk dikendalikan secara real-time melalui 3 parameter yang saling terhubung:
 - **`CurseMeter` (Gameplay Attribute)**: Nilai logika gameplay berbobot $0\text{ s.d. } 100\text{ poin}$ ($0\%\text{ s.d. } 100\%$).
 - **`Curse_Spread` (MPC Scalar Parameter)**: Skala normalisasi $0.0\text{ s.d. } 1.0$ ($\text{Curse\_Spread} = \text{CurseMeter} / 100.0$) yang mengontrol vertex gradient rambatan es pada mesh Kaelen.
 - **`Emissive_Intensity` (Material Scalar Multiplier)**: Kekuatan pancaran cahaya pendaran kristal es ($0.5\text{ s.d. } 12.0$) pada sistem pencahayaan Lumen GI.
@@ -101,7 +101,7 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 | **91–100% (Surge)** | **0.91–1.00** | **8.0–12.0** | *Kritis / Ledakan Es*: Es menutupi leher dan pipi, berdenyut cepat (**Pulse: 2.0–3.0 Hz**). |
 
 ### B. Render Target Mask Dynamic Thawing (Pencairan Es Altar Duka)
-- **Mekanisme**: Saat Altar Duka diaktifkan, Blueprint memproyeksikan mask pemuaian radius melingkar ke *Render Target* lantai arena.
+- **Mekanisme**: Saat Altar Duka diaktifkan, alur interaksi dirancang memproyeksikan mask pemuaian radius melingkar ke *Render Target* / runtime mask lantai arena (arsitektur implementasi akan diaudit pada H1).
 - **Transisi Shader**: Lapisan es retak (`#4A6FA5`, Roughness 0.22) bertransisi mulus menjadi batu kuno hangat (`#5C5A55`, Roughness 0.75) dengan partikel `FX_Warmth_Embers` menyebar organik.
 
 ---
@@ -109,16 +109,16 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 ## 4. Parameter Simulasi Kain & Dual-Mode Animation (Syal Aina & Jubah)
 
 ### A. Dual-Mode Animation Pipeline & Blend Weight Transition
-1. **Mode Gameplay Runtime (Locomotion & Combat 60 FPS)**: Menerapkan **UE5 Chaos Cloth Solver** dan 5-bone spring chain untuk efisiensi performa dan respons inersia dinamis.
-2. **Mode Sinematik Naratif (Altar Duka & Boss Intro)**: Menerapkan **Hand-Keyframed Control Rig** pada rantai 5-bone syal untuk kontrol emosi puitis sutradara (syal memeluk leher, meredup, atau melambai terarah).
+1. **Mode Gameplay Runtime (Locomotion & Combat 60 FPS)**: Dirancang untuk menerapkan solusi simulasi inersia kain real-time (seperti solver kain/spring chain) untuk efisiensi performa dan respons dinamis (evaluasi runtime pada H1).
+2. **Mode Sinematik Naratif (Altar Duka & Boss Intro)**: Dirancang untuk menerapkan **Hand-Keyframed Control Rig** pada rantai 5-bone syal untuk kontrol emosi puitis sutradara (syal memeluk leher, meredup, atau melambai terarah).
 3. **Protokol Handoff Transisi Halus (*Cloth Physical Blend Weight Curve*)**:
    - Transisi antara Hand-Keyframed Control Rig dan Chaos Cloth Solver **DILARANG MENGGUNAKAN TOGGLE BINER (0/1 instan)**.
    - Wajib menerapkan **Blend Weight Transition Curve (0.0 ➔ 1.0) selama 0.5 detik (15 frame @30fps / 30 frame @60fps)** via parameter `ClothPhysicalBlendWeight`. Saat cutscene berakhir, Control Rig memegang 100% kendali pada frame awal, lalu secara mulus menyerahkan bobot inersia ke Chaos Cloth Solver untuk mencegah visual snapping, artefak melompat, atau penetrasi mesh ke dada Kaelen.
 4. **Proteksi Oklusi Kamera (*Camera Occlusion Avoidance*)**:
-   - Spring arm kamera *Over-The-Shoulder* dilengkapi *Invisible Collision Volume* tipis yang menolak kibasan ujung kain syal agar tidak menempel atau menghalangi pandangan kamera saat Kaelen berputar cepat atau melakukan *Evade Dash*.
+   - Desain implementasi wajib melengkapi spring arm kamera *Over-The-Shoulder* dengan *Invisible Collision Volume* tipis yang menolak kibasan ujung kain syal agar tidak menempel atau menghalangi pandangan kamera saat Kaelen berputar cepat atau melakukan *Evade Dash*.
 5. **Modular Scarf Swapping & Physics Pre-Roll Warm-Up**:
-   - Empat variasi panjang syal (`SK_Scarf_Stage1` 180cm, `SK_Scarf_Stage2` 120cm, `SK_Scarf_Stage3` 70cm, `SK_Scarf_Stage4` 10cm) berbagi **satu hierarki skeleton rig 5-bone yang sama** (`scarf_01` s.d. `scarf_05`).
-   - Eksekusi pertukaran asset mesh (`SetSkeletalMeshAsset`) dilakukan **persis pada frame blackout transisi cutscene Altar Duka**.
+   - Empat variasi panjang syal (`SK_Scarf_Stage1` 180cm, `SK_Scarf_Stage2` 120cm, `SK_Scarf_Stage3` 70cm, `SK_Scarf_Stage4` 10cm) wajib berbagi **satu hierarki skeleton rig 5-bone yang sama** (`scarf_01` s.d. `scarf_05`).
+   - Pertukaran asset mesh ditargetkan menggunakan mekanisme yang setara dengan `SetSkeletalMeshAsset` dan wajib dieksekusi **persis pada frame blackout transisi cutscene Altar Duka**; API konkret akan dikonfirmasi pada audit arsitektur Unreal.
    - Sistem wajib menjalankan **5-frame Pre-Roll Physics Warm-Up** secara tersembunyi (*off-screen*) sebelum kamera memudar kembali (*fade-in*), sehingga saat layar terang kembali, kain sudah berada dalam kondisi kestabilan inersia alami tanpa artefak drop atau jiggle di frame awal.
 
 ### B. Parameter Solver Chaos Cloth
@@ -172,7 +172,7 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
 ### Standar Texel Density
 - **Hero & Boss Karakter**: **$512\text{ px/m}$** (resolusi tinggi tajam untuk framing close-up kamera naratif).
 - **Environment Props & Modular Kit**: **$256\text{ px/m}$** (optimalisasi efisiensi memori tekstur VRAM).
-- **Teknik Produksi**: Mengadopsi *Trim Sheets & Texture Atlasing* untuk prop reruntuhan dungeon guna menekan draw call (lihat [additional-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)).
+- **Teknik Produksi**: Mengadopsi *Trim Sheets & Texture Atlasing* untuk prop reruntuhan dungeon guna menekan draw call (lihat [additional-techniques.md](environment-modular-techniques.md)).
 
 ---
 
@@ -242,4 +242,4 @@ Shader kristal es (`M_Cursed_Crystal` / `M_Kaelen_Master`) dikendalikan secara r
   - `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
   - **Lengan Kiri**: `Clavicle_L` ➔ `UpperArm_L` ➔ `Forearm_L` ➔ `Hand_L` ➔ `Talon_01..05` (Rig cakar es).
   - **Lengan Kanan**: `Clavicle_R` ➔ `UpperArm_R` ➔ `Forearm_R` ➔ `Hand_R` ➔ `Fingers_R` (Rig jari berban).
-  - **Rantai Syal Dual-Mode**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) — siap beralih antara Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene).
+  - **Rantai Syal Dual-Mode**: Rantai 5-bone (`Scarf_01` s.d. `Scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) — dirancang untuk mendukung transisi antara mode simulasi inersia kain gameplay dan keyframed control rig cutscene.

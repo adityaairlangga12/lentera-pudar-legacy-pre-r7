@@ -1,11 +1,10 @@
 ---
 status: ACTIVE
-type: PROJECT_KNOWLEDGE
-authority_scope: foundations.psychology
-canonical: true
-authority_set: foundations.scientific
+type: REFERENCE
+canonical: false
+owner: narrative-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Psikologi Pemain Tingkat Expert — Lentera Pudar Master Reference
 ### Acuan Psikologi Naratif, SDT, Loss Aversion 2.5x, Emotional Bandwidth, & Non-Linear Grief

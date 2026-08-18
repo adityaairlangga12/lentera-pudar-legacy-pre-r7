@@ -1,7 +1,7 @@
 # Lentera Pudar — Core Agent Policy & Project Invariants
 
 > **Dokumen Tata Kelola Inti Agen AI (*Global Minimum Context & Core Policy*)**  
-> Dokumen ini adalah acuan tata kelola global yang dimuat di setiap sesi kerja AI Asisten Teknis dan Sub-Agent. Dokumen ini menetapkan identitas inti proyek, batasan invarian mutlak, kebijakan integritas teknis, dan pointer rujukan ke dokumen spesifikasi kanonikal. Seluruh detail pengetahuan naratif, numerik, dan prosedural diakses secara dinamis (*on-demand*) merujuk pada [master-index.md](references/01-core/master-index.md).
+> Dokumen ini adalah acuan tata kelola global yang dimuat di setiap sesi kerja AI Asisten Teknis dan Sub-Agent. Dokumen ini menetapkan identitas inti proyek, batasan invarian mutlak, kebijakan integritas teknis, dan pointer rujukan ke dokumen spesifikasi kanonikal. Seluruh detail pengetahuan naratif, numerik, dan prosedural diakses secara dinamis (*on-demand*) merujuk pada [master-index.md](references/00-governance/master-index.md).
 
 ---
 
@@ -32,7 +32,7 @@ Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan
 ---
 
 ## 3. Tata Kelola Sumber Kebenaran (*Source-of-Truth Governance*)
-- **Otoritas Berbasis Lingkup (*Scope-Based Authority*)**: Otoritas dokumen diatur berdasarkan domain fungsional dan lingkup penentu yang dideklarasikan secara resmi pada [master-index.md](references/01-core/master-index.md). Tidak ada hierarki dokumen universal sepihak.
+- **Otoritas Berbasis Lingkup (*Scope-Based Authority*)**: Otoritas dokumen diatur berdasarkan domain fungsional dan lingkup penentu yang dideklarasikan secara resmi pada [master-index.md](references/00-governance/master-index.md). Tidak ada hierarki dokumen universal sepihak.
 - **Batasan Otoritas ADR**: ADR hanya memiliki otoritas keputusan arsitektur jika berstatus `ACCEPTED` dan secara eksplisit mengatur topik/perubahan terkait. Jika tidak, dokumen otoritas kanonikal domain tetap berlaku.
 - **Penanganan Konflik (*Conflict Protocol*)**: Jika terdeteksi pertentangan data tanpa resolusi yang jelas, agen dilarang memilih diam-diam; wajib menandai `[CONFLICT]` dan meminta resolusi manusia. Pembuatan atau pembaruan ADR dilakukan HANYA jika resolusi tersebut merepresentasikan keputusan arsitektur atau desain yang memerlukan pencatatan rekam jejak resmi.
 - **Batas Inferensi AI**: Asumsi mandiri AI memiliki tingkat otoritas terendah dan dilarang menimpa dokumen spesifikasi tertulis.
@@ -56,7 +56,7 @@ Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan
 - **Distingsi Kritis**: $\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availability} \neq \text{Execution} \neq \text{Verification}$.
 - **Anti-Mock Guard**: Respons payload `{status: "ok"}` dari stub mock HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai mutasi selesai.
 - **Hak Klaim Selesai**: Klaim bahwa suatu tugas selesai HANYA sah jika berstatus `VERIFIED`.
-- **Otoritas Kanonikal**: [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
+- **Otoritas Kanonikal**: [master-index.md](references/00-governance/master-index.md) Bab I (§1.5 & §1.6).
 
 ---
 
@@ -89,4 +89,4 @@ Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan
 
 ## 10. Pengambilan Referensi Dinamis (*Dynamic Reference Routing*)
 - **Prinsip Utama**: **Global Minimum Context + Relevant On-Demand Knowledge**.
-- Agen dilarang memuat seluruh dokumen sekaligus ke context window. Dokumen referensi dimuat secara selektif per domain tugas merujuk pada peta navigasi dan panduan pencarian dinamis di [master-index.md](references/01-core/master-index.md).
+- Agen dilarang memuat seluruh dokumen sekaligus ke context window. Dokumen referensi dimuat secara selektif per domain tugas merujuk pada peta navigasi dan panduan pencarian dinamis di [master-index.md](references/00-governance/master-index.md).

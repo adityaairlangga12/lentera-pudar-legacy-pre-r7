@@ -1,10 +1,10 @@
 ---
 status: ACTIVE
 type: REFERENCE
-authority_scope: art.reference_curation
 canonical: false
+owner: art-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Panduan Kurasi Reference Image Board — Lentera Pudar: 3D Action RPG Edition
 ### Shot-List Terkurasi Visual Legal (Kena: Bridge of Spirits + Hellblade I & II)
