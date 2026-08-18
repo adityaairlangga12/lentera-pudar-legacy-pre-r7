@@ -8,7 +8,7 @@ description: "Pemahaman arsitektur Blender 5.2 LTS MCP dan tata kelola integrasi
 ## Purpose
 Skill ini mengatur **protokol orkestrasi perkakas 3D MCP, pembagian layer API, targeting file fisik persisten (`blend_file`), prinsip observabilitas sebelum mutasi, dan tata kelola kebenaran kapabilitas perkakas** di semesta *Lentera Pudar*.
 
-Seluruh spesifikasi antarmuka API, kontrak 23 Tool Publik, dan arsitektur MCP diatur secara kanonikal di [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) dan [master-index.md](references/01-core/master-index.md) Bab I (§1.5 & §1.6).
+Seluruh kontrak API dan status capability diatur di [tools-mcp-stack.md](../../../references/06-pipeline-qc/tools-mcp-stack.md) dan [master-index.md](../../../references/00-governance/master-index.md). Skill ini tidak membuktikan server telah didaftarkan atau tersedia pada runtime aktif.
 
 ---
 
@@ -26,24 +26,24 @@ Seluruh spesifikasi antarmuka API, kontrak 23 Tool Publik, dan arsitektur MCP di
 ---
 
 ## Canonical Dependencies
-- [references/06-pipeline-qc/tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) — Spesifikasi Rantai Perkakas MCP, Kontrak 23 Tool Publik & Status Implementasi.
-- [references/06-pipeline-qc/api-cheat-sheet.md](references/06-pipeline-qc/api-cheat-sheet.md) — API Cheat Sheet & Contoh Pemanggilan MCP.
-- [references/01-core/master-index.md](references/01-core/master-index.md) — Arsitektur Kapabilitas 5-Dimensi & Tingkatan Kebenaran Kapabilitas.
+- [tools-mcp-stack.md](../../../references/06-pipeline-qc/tools-mcp-stack.md) — Kontrak public registry dan status revalidasi.
+- [api-cheat-sheet.md](../../../references/06-pipeline-qc/api-cheat-sheet.md) — Contoh pemanggilan non-evidence.
+- [master-index.md](../../../references/00-governance/master-index.md) — Capability truth dan owner scope.
 
 ---
 
 ## Kebijakan Kebenaran Kapabilitas (*Capability Truth Policy*)
 
-Setiap agen wajib membedakan 5 dimensi kapabilitas perkakas sesuai [master-index.md](references/01-core/master-index.md) §1.5:
+Setiap agen membedakan maturity, availability, dan disposition sesuai [master-index.md](../../../references/00-governance/master-index.md):
 $$\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availability} \neq \text{Execution} \neq \text{Verification}$$
 
 ### 1. Status Unreal Engine 5 MCP
-- Server MCP Unreal Engine 5 berstatus **`PLANNED`** (penanda sengaja `_TODO_lentera-ue5` di `mcp_config.json`, dijadwalkan pada Fase 4 Roadmap).
+- Server MCP Unreal Engine 5 berstatus **`NOT_STARTED / UNAVAILABLE / PLANNED`**. Placeholder konfigurasi bukan tool registration.
 - AI Agent **DILARANG MENGKLAIM** bahwa UE5 MCP saat ini aktif, tersedia, atau dapat dieksekusi secara otomatis.
 
 ### 2. Status Blender 5.2 LTS MCP (Hardened v1)
-- Model eksekusi aktif adalah **`HEADLESS_FILE_BACKED`** via stdio MCP server.
-- Tepat **23 Tool Publik Aktif** dan **17 Tool Deferred** (merujuk ke [tools-mcp-stack.md](references/06-pipeline-qc/tools-mcp-stack.md) Bab 3).
+- Model eksekusi yang diterima adalah **`HEADLESS_FILE_BACKED`** via stdio MCP server; availability tetap dicek pada runtime aktif.
+- Tepat **23 tool berada dalam public registry** dan 17 tool deferred tidak dipublikasikan. Revalidasi 2026-08-18 menemukan screenshot integration path gagal; lihat [tools-mcp-stack.md](../../../references/06-pipeline-qc/tools-mcp-stack.md).
 - Status pendaftaran skema perkakas (*Tool Registration*) tidak sama dengan keberadaan kode eksekusi nyata (*Implemented Handler*).
 - Sebelum mengeksekusi operasi mutasi, pastikan tool yang dipanggil termasuk dalam 23 tool publik aktif.
 - Respons `{status: "ok"}` atau payload hasil eksekusi HANYA berstatus `EXECUTED` dan dilarang diklaim sebagai tugas selesai sebelum diverifikasi secara independen.
@@ -64,14 +64,8 @@ $$\text{Tool Registration} \neq \text{Implementation} \neq \text{Server Availabi
 
 Perkakas publik diorganisasikan ke dalam 3 layer:
 1. **Atomic Tools**: Aksi tunggal deterministik dengan batas lingkup kecil (misal: `set_bone_roll`, `set_shading_mode`, `create_mesh_primitive`).
-2. **Macro Tools**: Penggabungan beberapa aksi atomic menjadi satu tugas terarah (misal: alur `create_armature` $
-ightarrow$ `add_bone` $
-ightarrow$ `set_bone_roll`, atau `apply_modifier` $
-ightarrow$ `merge_by_distance` $
-ightarrow$ `unwrap_uv`).
-3. **Workflow Tools**: Eksekusi alur sekuensial multi-tahap dengan pelaporan status per langkah (misal: `export_gltf` $
-ightarrow$ `validate_export` $
-ightarrow$ `render_viewport_screenshot`).
+2. **Macro Pattern**: Orkestrasi beberapa tool public menjadi tugas terarah, misalnya `create_armature` → `add_bone` → `set_bone_roll`, atau `apply_modifier` → `merge_by_distance` → `unwrap_uv`.
+3. **Workflow Pattern**: Eksekusi multi-tahap dengan status per langkah, misalnya `export_gltf` → `validate_export`. Screenshot viewport tidak menjadi gate wajib selama regresinya masih terbuka.
 
 ---
 

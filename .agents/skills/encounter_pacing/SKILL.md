@@ -8,7 +8,7 @@ description: "Standar kurva kesulitan (difficulty curve), ritme encounter musuh,
 ## Purpose
 Skill ini mengatur **prosedur perancangan intensitas pertempuran, ritme encounter musuh, kurva emosi pemain, dan alokasi emotional bandwidth** di dungeon *Lentera Pudar*.
 
-Seluruh parameter timing kombat, frame data kemampuan GAS, daftar arketipe musuh, dan spesifikasi visibilitas sektor diatur secara kanonikal di [enemy-design-balancing.md](references/02-gameplay/enemy-design-balancing.md), [sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md), dan [style-guide.md](references/04-art-3d/style-guide.md).
+Seluruh parameter timing kombat, daftar arketipe musuh, dan spesifikasi visibilitas sektor diatur secara kanonikal di [enemy-design-balancing.md](../../../references/02-gameplay/enemy-design-balancing.md), [sector-ability-progression.md](../../../references/02-gameplay/sector-ability-progression.md), dan [style-guide.md](../../../references/04-art-3d/style-guide.md). Penyebutan GAS adalah target desain, bukan bukti arsitektur Unreal telah diaudit.
 
 ---
 
@@ -27,11 +27,11 @@ Seluruh parameter timing kombat, frame data kemampuan GAS, daftar arketipe musuh
 ---
 
 ## Canonical Dependencies
-- [references/02-gameplay/enemy-design-balancing.md](references/02-gameplay/enemy-design-balancing.md) — 5 Arketipe Duka, Telegraphing Readability & Balancing Kombat.
-- [references/02-gameplay/sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md) — 5 Kemampuan Naratif GRIS & Frame Data Kombat.
-- [references/02-gameplay/level-design-storytelling.md](references/02-gameplay/level-design-storytelling.md) — Spasial Duka, Breadcrumbing Diegetik & Breather Rooms.
-- [references/04-art-3d/style-guide.md](references/04-art-3d/style-guide.md) — Timing Kombat Numerik, Radius Cahaya Syal & Parameter Curse Meter.
-- [references/05-foundations/psychology.md](references/05-foundations/psychology.md) — Teori Flow, Loss Aversion & Emotional Bandwidth.
+- [enemy-design-balancing.md](../../../references/02-gameplay/enemy-design-balancing.md) — Arketipe duka, telegraphing, dan balancing kombat.
+- [sector-ability-progression.md](../../../references/02-gameplay/sector-ability-progression.md) — Kemampuan naratif dan frame data kombat.
+- [level-design-storytelling.md](../../../references/02-gameplay/level-design-storytelling.md) — Spasial duka, breadcrumbing, dan breather rooms.
+- [style-guide.md](../../../references/04-art-3d/style-guide.md) — Timing kombat dan parameter visual.
+- [psychology.md](../../../references/07-foundations/psychology.md) — Teori flow, loss aversion, dan emotional bandwidth.
 
 ---
 
@@ -44,19 +44,19 @@ Seluruh parameter timing kombat, frame data kemampuan GAS, daftar arketipe musuh
 4. **Relief & Reward (Pelepasan & Hadiah)**: Ruangan aman (Altar Duka atau Breather Room) dengan pencahayaan hangat untuk memulihkan emotional bandwidth pemain.
 
 ### 2. Manajemen Ketegangan (Tension vs Relief)
-- **Tekanan Kutukan (Curse Pressure)**: Tangan es menciptakan urgensi taktis. Pemain harus mengelola akumulasi kutukan dari serangan yang diterima vs peluruhan pasif saat menghindari bahaya merujuk ke [style-guide.md](references/04-art-3d/style-guide.md) Bab 9.
-- **Lantern Light as Resource / Safety (Lumen Stakes)**: Radius cahaya syal Aina bertindak sebagai zona keamanan psikologis. Semakin dalam sektor yang dijelajahi, semakin terbatas radius penerangan (merujuk ke tabel visibilitas di [style-guide.md](references/04-art-3d/style-guide.md) Bab 7.C).
-- **Keterbacaan Telegraf Serangan (Competence via Readability)**: Seluruh serangan musuh wajib memiliki jeda telegraf visual/audio yang jelas sebelum frame aktif merujuk ke [enemy-design-balancing.md](references/02-gameplay/enemy-design-balancing.md) Bab 3 agar pemain dapat merespons secara adil.
+- **Tekanan Kutukan (Curse Pressure)**: Tangan es menciptakan urgensi taktis; rujuk [style-guide.md](../../../references/04-art-3d/style-guide.md) Bab 9.
+- **Lantern Light as Resource / Safety**: Rujuk tabel visibilitas di [style-guide.md](../../../references/04-art-3d/style-guide.md) Bab 7.C.
+- **Keterbacaan Telegraf Serangan**: Rujuk [enemy-design-balancing.md](../../../references/02-gameplay/enemy-design-balancing.md) Bab 3.
 
 ### 3. Penegakan Frame Data Kombat
-- Evaluasi rangkaian kombo Kaelen, buffer window finisher (`GA_ShatterStrike`), parry window, dan hit-stop presisi terhadap tabel kanonikal di [sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md) dan [enemy-design-balancing.md](references/02-gameplay/enemy-design-balancing.md).
+- Evaluasi rangkaian kombo Kaelen, buffer window finisher, parry window, dan hit-stop terhadap [sector-ability-progression.md](../../../references/02-gameplay/sector-ability-progression.md) dan [enemy-design-balancing.md](../../../references/02-gameplay/enemy-design-balancing.md).
 
 ### 4. Aturan Wajib Breather Room & Safe Archways
-- Validasi keberadaan dan interval kemunculan ruang **Breather Room** (area non-combat berpenerangan hangat) terhadap spesifikasi aktif di [level-design-storytelling.md](references/02-gameplay/level-design-storytelling.md) dan [design-decisions.md](references/01-core/design-decisions.md).
+- Validasi Breather Room terhadap [level-design-storytelling.md](../../../references/02-gameplay/level-design-storytelling.md); jangan memakai log keputusan retired sebagai authority.
 - Breather Room berfungsi untuk: 1) titik checkpoint diegetik, 2) pemulihan pasif Curse Meter, 3) alokasi jeda kontemplatif untuk mencegah kelelahan afektif pemain (*emotional burnout*), 4) penyampaian lore puitis Aina.
 
 ### 5. Simbiosis Spasial Arena vs FSM Musuh
-- Hindari arena datar berbentuk kotak polos. Integrasikan pilar reruntuhan, elevasi tangga, dan retakan es destructible untuk memberi opsi navigasi taktis bagi pemain merujuk ke [level-design-storytelling.md](references/02-gameplay/level-design-storytelling.md).
+- Hindari arena datar berbentuk kotak polos; rujuk [level-design-storytelling.md](../../../references/02-gameplay/level-design-storytelling.md).
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "_configurationStatus": "CLIENT_SPECIFIC_COMPATIBILITY_CONFIG_ACTIVATION_NOT_VERIFIED",
+  "_templateStatus": "OPTIONAL_CLIENT_SPECIFIC_NOT_RUNTIME_PROOF",
   "block-force-push": {
     "enabled": true,
     "PreToolUse": [

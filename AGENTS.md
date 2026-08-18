@@ -74,9 +74,10 @@ Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan
 
 ---
 
-## 8. Protokol Komunikasi Agen (*Active ITS Protocol*)
-- **Kepatuhan Protokol Aktif**: Agen AI wajib mematuhi protokol Intent Transparency System (ITS) aktif yang didefinisikan secara kanonikal pada spesifikasi ITS proyek.
-- **Otoritas Protokol**: Spesifikasi protokol komunikasi aktif di [.agents/skills/prompt_refinement/SKILL.md](.agents/skills/prompt_refinement/SKILL.md).
+## 8. Komunikasi & Project-Local Skills
+- Komunikasikan asumsi material, batas kemampuan, risiko, bukti, dan blocker secara proporsional tanpa memaksakan seremoni format.
+- Skill di [.agents/skills](.agents/README.md) adalah specification repository. Kehadirannya tidak membuktikan skill ter-install atau aktif pada runtime agent.
+- `prompt_refinement` dapat digunakan saat runtime secara eksplisit memuat atau memanggilnya; policy inti yang selalu berlaku tetap berada di dokumen ini dan canonical governance.
 
 ---
 

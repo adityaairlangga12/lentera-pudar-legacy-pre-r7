@@ -3,14 +3,14 @@ status: ACTIVE
 type: POLICY
 authority_scope: ai.methodology
 canonical: true
+governed_by: [ADR-004]
+last_reviewed: 2026-08-18
 ---
 
 
-# Metodologi & Cara Berpikir AI Tingkat Expert — Lentera Pudar Master Reference
-### Kerangka Kerja Anti-Roleplay, Grounding Anti-Halusinasi, Problem Decomposition, Self-Verification, & Isolasi Debugging
+# Metodologi Kerja AI — Lentera Pudar
 
-> **Dokumen Sumber Kebenaran Metodologi AI (*Expert AI Methodology Framework*)**  
-> Menjadi pedoman mutlak bagi seluruh AI Agent, Sub-Agent, dan Technical Assistant dalam menjalankan proses berpikir, verifikasi kode/aset, dekomposisi masalah, penanganan ambiguitas, dan komunikasi profesional di seluruh lini produksi **Lentera Pudar**.
+Dokumen ini mengatur grounding, dekomposisi, verifikasi, debugging, dan pelaporan. Instruksi system/platform tetap lebih tinggi daripada kebijakan repository; [master-index.md](../00-governance/master-index.md) menentukan pemilik authority scope.
 
 ---
 
@@ -24,9 +24,9 @@ canonical: true
 ---
 
 ## 2. Grounding & Protokol Anti-Halusinasi
-- **Prinsip Validitas 3-Sumber**: Setiap klaim teknis, angka numerik, nama API, atau kapabilitas engine wajib berasal dari salah satu sumber:
+- **Sumber Bukti**: Klaim teknis, angka numerik, nama API, atau kapabilitas engine harus dapat ditelusuri ke sumber yang relevan:
   1. Dokumen resmi project di `references/` yang baru saja diinspeksi.
-  2. Dokumentasi resmi engine/tools via introspeksi tool/API yang baru saja diverifikasi.
+  2. Dokumentasi resmi engine/tools atau introspeksi tool/API yang relevan dan mutakhir.
   3. Perhitungan analitis atau hasil observasi aktual di disk.
 - **Protokol Saat Tidak Tahu**:
   - Jika AI ragu atau tidak memiliki data pasti: **Cari dan verifikasi secara aktif** — dilarang keras mengarang jawaban meyakinkan (*confident hallucination*).
@@ -35,7 +35,7 @@ canonical: true
 ---
 
 ## 3. Dekomposisi Masalah Bertahap (*Problem Decomposition*)
-- **Rencana Sebelum Eksekusi**: Tugas dengan lebih dari 2–3 langkah wajib dipecah menjadi sub-tugas terstruktur sebelum mutasi file dilakukan.
+- **Rencana Proporsional**: Tugas multi-langkah atau berisiko dipecah menjadi sub-tugas sebelum mutasi; pekerjaan kecil tidak memerlukan seremoni rencana yang berlebihan.
 - **Struktur Dekomposisi Baku**:
   1. *Definisi Deliverable*: Menetapkan hasil akhir konkret (bukan abstrak).
   2. *Urutan Dependensi*: Menentukan prasyarat mutlak yang harus selesai terlebih dahulu.
@@ -48,7 +48,7 @@ canonical: true
 - **Prinsip Dasar**: Pekerjaan BELUM selesai sebelum diverifikasi secara konkret.
 - **Protokol Domain**:
   - *Kode/Skrip*: Dijalankan/disimulasikan; lolos uji runtime tanpa error atau regresi.
-  - *Dokumen/Desain*: Diaudit konsistensi silang terhadap 19 master references dan log ADR.
+  - *Dokumen/Desain*: Diaudit terhadap owner scope, ADR aktif yang relevan, tautan, metadata, dan klaim current-state.
   - *Data Numerik*: Dihitung ulang dan dicocokkan dengan tabel standar (Golden Numbers).
 
 ---
@@ -67,15 +67,15 @@ canonical: true
 ---
 
 ## 6. Konsistensi Keputusan & Manajemen Perubahan
-- Seluruh dokumen diperlakukan sebagai satu kesatuan (*Single Source of Truth*).
-- Dilarang membuat keputusan baru yang diam-diam bertentangan dengan master references lama.
-- Jika keputusan baru memang merevisi dokumen terdahulu, wajib dicatat secara resmi sebagai **ADR baru** dan disinkronkan ke seluruh file terkait.
+- Otoritas bersifat berbasis scope; tidak ada satu dokumen yang otomatis menguasai semua domain.
+- Dilarang membuat keputusan baru yang diam-diam bertentangan dengan owner scope atau ADR aktif.
+- ADR baru hanya dibuat untuk keputusan arsitektur/governance yang memerlukan rekam jejak, bukan untuk setiap koreksi editorial.
 
 ---
 
 ## 7. Debugging Sistematis & Isolasi Variabel
-- **Larangan Coba-Coba Acak (*Anti-Scattershot Debugging*)**:
-  - Dilarang mengubah banyak variabel sekaligus tanpa dasar pengujian.
+- **Hindari Coba-Coba Acak (*Anti-Scattershot Debugging*)**:
+  - Isolasi variabel bila memungkinkan; perubahan terkoordinasi multi-file tetap sah jika satu akar masalah memang melintasi beberapa file.
 - **Metodologi 4-Langkah**:
   1. Reproduksi masalah secara konsisten.
   2. Ubah tepat **satu variabel** dalam satu waktu dan catat dampaknya.
@@ -91,5 +91,5 @@ canonical: true
 ---
 
 ## 9. Meta-Kognisi & Kesadaran Batasan
-- AI wajib peka mengenali sinyal ketidakyakinan internal.
-- Mengakui ketidakyakinan dan segera mengambil langkah verifikasi aktif adalah wujud profesionalisme tertinggi, bukan kelemahan.
+- Nyatakan `VERIFIED FACT`, `INFERENCE`, `UNKNOWN`, atau `CONFLICT` ketika perbedaannya material terhadap keputusan.
+- Jika verifikasi tidak dapat dilakukan, laporkan batas bukti dan jangan menaikkan status berdasarkan keyakinan internal.

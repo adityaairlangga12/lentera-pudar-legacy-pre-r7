@@ -24,9 +24,9 @@ Skill ini mengatur **prosedur audit konsistensi silang dokumentasi pra-produksi*
 ---
 
 ## Canonical Dependencies
-- [references/01-core/master-index.md](references/01-core/master-index.md) — SSoT Governance Hub, Pemilik Kanonikal Domain & Resolusi Konflik.
-- [references/01-core/design-decisions.md](references/01-core/design-decisions.md) — Log Keputusan Arsitektur Resmi.
-- [references/06-pipeline-qc/ai-agent-methodology.md](references/06-pipeline-qc/ai-agent-methodology.md) — Kebijakan Anti-Halusinasi & Integritas Bukti.
+- [master-index.md](../../../references/00-governance/master-index.md) — Router owner `authority_scope` dan resolusi konflik.
+- [ADR register](../../../references/00-governance/adr/README.md) — Keputusan arsitektur aktif.
+- [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md) — Kebijakan anti-halusinasi dan integritas bukti.
 
 ---
 
@@ -54,7 +54,7 @@ Skill ini mengatur **prosedur audit konsistensi silang dokumentasi pra-produksi*
 
 ## Model Otoritas & Resolusi Konflik
 
-Audit konsistensi silang menyelaraskan perbedaan data menggunakan prinsip **Otoritas Berbasis Lingkup (*Scope-Based Authority*)** yang diatur secara kanonikal pada [master-index.md](references/01-core/master-index.md) Bab I (§1.1 & §1.7):
+Audit konsistensi silang menggunakan **Otoritas Berbasis Lingkup** yang diatur pada [master-index.md](../../../references/00-governance/master-index.md) dan [ADR-004](../../../references/00-governance/adr/ADR-004-scope-authority-capability-truth-verification-governance.md):
 - ADR memegang otoritas keputusan HANYA jika berstatus `ACCEPTED` dan secara eksplisit mengatur domain/nilai terkait.
 - Jika tidak ada ADR eksplisit, Dokumen Otoritas Kanonikal untuk domain tersebut berlaku penuh.
 - Jika terdeteksi konflik tanpa resolusi jelas $\rightarrow$ tandai `[CONFLICT]`, laporkan kutipan kedua sumber, dan minta resolusi manusia.
@@ -88,8 +88,8 @@ Target: **0 Broken Links** di seluruh repositori.
 ### Tahap 3: Pemindaian 4 Rantai Ketergantungan 6-Domain
 1. **Rantai Biomekanika**: `04-art-3d` (Shingling) $\rightarrow$ `06-pipeline-qc` (SOP 3 & DoD C) $\rightarrow$ `02-gameplay` (Ability Specs).
 2. **Rantai Fisika Kain**: `04-art-3d` (Modular Scarf) $\rightarrow$ `06-pipeline-qc` (SOP 4 & DoD C) $\rightarrow$ `03-narrative` (Sacrifice Stages).
-3. **Rantai Combat Timing**: `01-core` (ADR-040 Hit-Stop) $\rightarrow$ `02-gameplay` (GDD & Progression) $\rightarrow$ `06-pipeline-qc` (DoD C).
-4. **Rantai Psikologi & Level**: `05-foundations` (Psychology) $\rightarrow$ `02-gameplay` (Level & Visibility Stakes) $\rightarrow$ `06-pipeline-qc` (Emotional Playtesting).
+3. **Rantai Combat Timing**: owner scope combat di `01-core`/`02-gameplay` $\rightarrow$ `06-pipeline-qc` (DoD C), tanpa identifier ADR retired.
+4. **Rantai Psikologi & Level**: `07-foundations` (Psychology) $\rightarrow$ `02-gameplay` (Level & Visibility Stakes) $\rightarrow$ `06-pipeline-qc` (Emotional Playtesting).
 
 ### Tahap 4: Deep Critical Reasoning 4-Pilar
 Evaluasi titik lemah teknis, batasan handoff antar-sistem, pencegahan bias AI, dan identifikasi asumsi yang membutuhkan pengujian manusia.

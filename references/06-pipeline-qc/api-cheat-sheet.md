@@ -3,14 +3,15 @@ status: ACTIVE
 type: TOOL_CONTRACT
 authority_scope: pipeline.api_contract
 canonical: false
+last_reviewed: 2026-08-18
 ---
 
 
-# API Cheat Sheet — Blender MCP (Hardened v1) & UE5 Python
-### Panduan Praktis Pemanggilan Perkakas MCP 23-Tool & Scripting Otomasi
+# API Cheat Sheet — Blender MCP Hardened-v1
 
-> **Dokumen Panduan Penggunaan Praktis (*Usage Patterns & API Cheat Sheet*)**  
-> Berisi contoh pemanggilan representatif untuk 23 Tool Publik `lentera-blender-mcp` (Model `HEADLESS_FILE_BACKED`) dan otomasi Unreal Engine 5 Python. Untuk spesifikasi kontrak lengkap, rujuk dokumen kanonikal [tools-mcp-stack.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/tools-mcp-stack.md).
+Panduan ini berisi contoh pemanggilan representatif. Kontrak dan status kemampuan tetap dimiliki [tools-mcp-stack.md](tools-mcp-stack.md). Contoh tidak membuktikan bahwa file, objek, atau hasil eksekusi sudah ada.
+
+Gunakan `<PROJECT_ROOT>` sebagai placeholder dokumentasi. Saat eksekusi, resolve menjadi path absolut pada host aktif.
 
 ---
 
@@ -23,7 +24,7 @@ canonical: false
   "type": "cylinder",
   "size": 2.0,
   "name": "SM_IceCrystal_Base",
-  "output_blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend"
+  "output_blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend"
 }
 ```
 
@@ -31,7 +32,7 @@ canonical: false
 ```json
 // Tool: apply_modifier
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend",
   "object": "SM_IceCrystal_Base",
   "modifier_type": "BEVEL",
   "params": {
@@ -45,7 +46,7 @@ canonical: false
 ```json
 // Tool: merge_by_distance
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend",
   "object": "SM_IceCrystal_Base",
   "threshold": 0.001
 }
@@ -55,7 +56,7 @@ canonical: false
 ```json
 // Tool: unwrap_uv
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend",
   "object": "SM_IceCrystal_Base",
   "method": "SMART_PROJECT"
 }
@@ -65,7 +66,7 @@ canonical: false
 ```json
 // Tool: get_mesh_stats
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend",
   "object": "SM_IceCrystal_Base"
 }
 ```
@@ -76,13 +77,13 @@ canonical: false
 // Tool: create_armature
 {
   "name": "SK_Kaelen_Rig",
-  "output_blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Characters/Kaelen_Rig.blend"
+  "output_blend_file": "<PROJECT_ROOT>/Assets/Models/SK_Kaelen_Rig.blend"
 }
 
 // 2. Tambah Tulang Root
 // Tool: add_bone
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Characters/Kaelen_Rig.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SK_Kaelen_Rig.blend",
   "armature": "SK_Kaelen_Rig",
   "name": "Bone_Root",
   "head": [0.0, 0.0, 0.0],
@@ -92,7 +93,7 @@ canonical: false
 // 3. Tambah Tulang Child dengan Head Snapping
 // Tool: add_bone
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Characters/Kaelen_Rig.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SK_Kaelen_Rig.blend",
   "armature": "SK_Kaelen_Rig",
   "name": "Bone_Spine",
   "parent": "Bone_Root",
@@ -104,7 +105,7 @@ canonical: false
 // 4. Set Sudut Roll Kanonikal (Radian)
 // Tool: set_bone_roll
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Characters/Kaelen_Rig.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SK_Kaelen_Rig.blend",
   "armature": "SK_Kaelen_Rig",
   "bone": "Bone_Spine",
   "angle_rad": 1.570796
@@ -113,7 +114,7 @@ canonical: false
 // 5. Inspeksi State Armature
 // Tool: get_armature_state
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Characters/Kaelen_Rig.blend",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SK_Kaelen_Rig.blend",
   "armature": "SK_Kaelen_Rig"
 }
 ```
@@ -123,15 +124,15 @@ canonical: false
 // 1. Ekspor Scene ke GLB
 // Tool: export_gltf
 {
-  "blend_file": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Props/IceCrystal.blend",
-  "path": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Export/SM_IceCrystal.glb",
+  "blend_file": "<PROJECT_ROOT>/Assets/Models/SM_IceCrystal_Base.blend",
+  "path": "<PROJECT_ROOT>/Artifacts/SM_IceCrystal_Base.glb",
   "overwrite": true
 }
 
 // 2. Validasi Independen Struktur Biner Artefak
 // Tool: validate_export
 {
-  "path": "d:/GodotProjects/Lentera-Pudar/Assets/3D/Export/SM_IceCrystal.glb",
+  "path": "<PROJECT_ROOT>/Artifacts/SM_IceCrystal_Base.glb",
   "expected_nodes": ["SM_IceCrystal_Base"],
   "require_meshes": true
 }
@@ -142,14 +143,16 @@ canonical: false
 
 ---
 
-## 2. Unreal Engine Python Module (`unreal`) Reference
+## 2. Future Reference — Unreal Python (`unreal`)
+
+> **Current-state gate:** Unreal project dan Unreal MCP belum tersedia. Contoh di bawah hanya design reference, belum dieksekusi, dan wajib diperiksa ulang terhadap versi engine yang kelak dikunci.
 
 ### A. Asset Import Otomatis (SOP 1, Langkah 11)
 ```python
 import unreal
 
 task = unreal.AssetImportTask()
-task.filename = "d:/GodotProjects/Lentera-Pudar/Assets/3D/Export/SM_IceCrystal.glb"
+task.filename = "<PROJECT_ROOT>/Artifacts/SM_IceCrystal_Base.glb"
 task.destination_path = "/Game/Props/IceCrystal"
 task.destination_name = "SM_IceCrystal_01"
 task.automated = True
@@ -190,3 +193,7 @@ actor.set_actor_scale3d(unreal.Vector(1.0, 1.0, 1.0))
 ```python
 unreal.AutomationLibrary.take_high_res_screenshot(1920, 1080, "QC_Review_Sector01_Altar.png")
 ```
+
+## 3. Known Verification Limit
+
+`render_viewport_screenshot` pada Blender MCP berstatus `VERIFICATION_FAILED` berdasarkan integration test 2026-08-18. Jangan menjadikannya jalur bukti wajib sampai regression test kembali lulus.

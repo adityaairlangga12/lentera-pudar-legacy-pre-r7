@@ -8,7 +8,7 @@ description: "Pustaka keahlian arahan visi kreatif, filosofi seni melankolis-han
 ## Purpose
 Skill ini mengatur **prosedur evaluasi visi kreatif, kritik seni formal, keselarasan nada dialog emosional, dan konsistensi estetika melankolis-hangat** di semesta *Lentera Pudar*.
 
-Seluruh filosofi naratif, diksi dialog master, dan kerangka estetika diatur secara kanonikal di [creative-vision.md](references/01-core/creative-vision.md), [art-creativity.md](references/05-foundations/art-creativity.md), dan [vocal-direction-dialogue.md](references/03-narrative/vocal-direction-dialogue.md).
+Seluruh filosofi naratif, diksi dialog master, dan kerangka estetika diatur secara kanonikal di [creative-vision.md](../../../references/01-core/creative-vision.md), [art-creativity.md](../../../references/07-foundations/art-creativity.md), dan [vocal-direction-dialogue.md](../../../references/03-narrative/vocal-direction-dialogue.md).
 
 ---
 
@@ -27,13 +27,13 @@ Seluruh filosofi naratif, diksi dialog master, dan kerangka estetika diatur seca
 ---
 
 ## Canonical Dependencies
-- [references/01-core/creative-vision.md](references/01-core/creative-vision.md) — Master Visi Kreatif, Filosofi The Triad & Resonansi Kaelen-Aina.
-- [references/05-foundations/art-creativity.md](references/05-foundations/art-creativity.md) — Kerangka Estetika, Kritik Seni Formal & Teori Warna.
-- [references/04-art-3d/style-guide.md](references/04-art-3d/style-guide.md) — Konstanta Numerik Warna The Triad & Kelvin Pencahayaan.
-- [references/03-narrative/vocal-direction-dialogue.md](references/03-narrative/vocal-direction-dialogue.md) — Arahan Vokal, Format Naskah & Subteks.
-- [references/03-narrative/cinematics-cutscenes.md](references/03-narrative/cinematics-cutscenes.md) — Bahasa Kamera & Transisi Sinematik.
-- [references/06-pipeline-qc/few-shot-calibration.md](references/06-pipeline-qc/few-shot-calibration.md) — Benchmark Mutu Few-Shot.
-- [references/04-art-3d/reference-board-guide.md](references/04-art-3d/reference-board-guide.md) — Panduan Kurasi Reference Board 9 Kategori.
+- [creative-vision.md](../../../references/01-core/creative-vision.md) — Visi kreatif, The Triad, dan resonansi Kaelen-Aina.
+- [art-creativity.md](../../../references/07-foundations/art-creativity.md) — Kerangka estetika, kritik seni, dan teori warna.
+- [style-guide.md](../../../references/04-art-3d/style-guide.md) — Konstanta numerik warna dan pencahayaan.
+- [vocal-direction-dialogue.md](../../../references/03-narrative/vocal-direction-dialogue.md) — Arahan vokal, format naskah, dan subteks.
+- [cinematics-cutscenes.md](../../../references/03-narrative/cinematics-cutscenes.md) — Bahasa kamera dan transisi sinematik.
+- [few-shot-calibration.md](../../../references/06-pipeline-qc/few-shot-calibration.md) — Contoh format berbasis bukti, bukan bukti implementasi.
+- [reference-board-guide.md](../../../references/04-art-3d/reference-board-guide.md) — Panduan kurasi reference board.
 
 ---
 
@@ -44,11 +44,11 @@ Seluruh filosofi naratif, diksi dialog master, dan kerangka estetika diatur seca
 - Titik fokus emosional utama (Syal Aina / Landmark Altar Duka) wajib tetap terbaca jelas dan kontras tanpa bergantung pada warna.
 
 ### 2. Evaluasi Komposisi Dominasi Warna
-- Evaluasi komposisi dominasi warna menggunakan panduan kanonikal komposisi seni di [art-creativity.md](references/05-foundations/art-creativity.md) Bab 3:
+- Evaluasi komposisi dominasi warna menggunakan panduan kanonikal komposisi seni di [art-creativity.md](../../../references/07-foundations/art-creativity.md) Bab 3:
   - **Dominan**: Netral Gelap (batuan makam, bayangan dungeon, jubah kelana).
   - **Sekunder**: Biru Dingin Kutukan (kristal es, kabut pudar, keputusasaan).
   - **Aksen**: Kuning Hangat Jiwa Aina (pendaran syal lentera, bara harapan).
-- Rujuk nilai Hex sRGB dan Kelvin baku di [style-guide.md](references/04-art-3d/style-guide.md) Bab 1.A.
+- Rujuk nilai Hex sRGB dan Kelvin baku di [style-guide.md](../../../references/04-art-3d/style-guide.md) Bab 1.A.
 
 ### 3. Kritik Seni Formal Tiga Pilar (Unity, Tension, Resolution)
 - **Unity**: Seluruh elemen visual, audio, dan pencahayaan harus melayani satu mood melankolis yang koheren.
@@ -70,7 +70,7 @@ Seluruh filosofi naratif, diksi dialog master, dan kerangka estetika diatur seca
 - **Eyepatch (Penglihatan Spektral)**: Membuka segel mata trauma adalah metafora bahwa melihat kebenaran selalu berharga mahal.
 
 ### 6. Keselarasan Sinematik & Bahasa Kamera
-- Pastikan pergerakan dan sudut kamera bertindak sebagai **representasi psikologis** Kaelen di 5 sektor duka merujuk ke [cinematics-cutscenes.md](references/03-narrative/cinematics-cutscenes.md).
+- Pastikan pergerakan dan sudut kamera bertindak sebagai **representasi psikologis** Kaelen di 5 sektor duka merujuk ke [cinematics-cutscenes.md](../../../references/03-narrative/cinematics-cutscenes.md).
 - Terapkan transisi seamless dari gameplay over-shoulder ke cutscene sinematik tanpa hard cut layar hitam.
 
 ---

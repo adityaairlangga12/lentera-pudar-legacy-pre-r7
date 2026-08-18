@@ -11,10 +11,10 @@ last_reviewed: 2026-08-18
 
 - **Current Project Phase**: Phase 0 (Pre-Production & Toolchain Foundation).
 - **Target Runtime Engine**: Unreal Engine 5 (Selected Target Runtime; Engine Project Not Initialized; Technical Implementation Architecture Not Yet Audited).
-- **Target DCC Software**: Blender 5.2 LTS (Primary DCC; Runtime Integration Verified via lentera-blender-mcp Test Suite).
+- **Target DCC Software**: Blender 5.2 LTS (Primary DCC; Blender 5.2.0 LTS executable observed available on the R4 audit host).
 - **External Tooling Status**:
-  - `lentera-blender-mcp`: Package Version `1.0.0`, Hardened-v1 Baseline `VERIFIED` (23 Public Tools, 17 Deferred Tools, Fast Tests 33/33 PASS, Integration Tests 14/14 PASS).
-  - `lentera-ue5-mcp`: `PLANNED` / `NOT IMPLEMENTED` / `UNAVAILABLE` (Placeholder `_TODO_lentera-ue5`; Maturity: NOT_STARTED, Availability: UNAVAILABLE, Disposition: PLANNED; Planned after Unreal pipeline readiness and architecture review).
+  - `lentera-blender-mcp`: Package Version `1.0.0`; public registry 23 tools and 17 deferred tools. R4 revalidation on 2026-08-18: contract tests `33/33 PASS`; integration tests `13/14 PASS`. `render_viewport_screenshot` is `VERIFICATION_FAILED` pending investigation in the MCP repository. Other behavior is not generalized beyond test evidence.
+  - `lentera-ue5-mcp`: Maturity `NOT_STARTED`, Availability `UNAVAILABLE`, Disposition `PLANNED`. A compatibility placeholder is not server availability or tool registration.
 - **Game Implementation Status**:
   - Gameplay, Narrative & Visual Design: `DOCUMENTED` (In `references/01`–`04`).
   - Unreal Engine Gameplay Systems: `NOT_STARTED` (Maturity: NOT_STARTED).
@@ -23,7 +23,10 @@ last_reviewed: 2026-08-18
   - R1 Information Architecture & Governance Baseline: `ACCEPTED` and implemented in the current repository baseline.
   - R2 Canonical Content Migration & Semantic Closure: `ACCEPTED`; migration and pre-R3 semantic corrections are validated in the current repository baseline.
   - R3 ADR Refoundation: `ACCEPTED`; four architecture/governance ADRs and the active ADR register have passed metadata, link, scope, and semantic validation.
-  - Deferred R4 cleanup: Domain 06, `.agents`, and tooling may still contain identifiers from the retired monolithic decision log. These identifiers are not active decision authority.
-  - Next planned gate: R4 Pipeline/QC, Agents & Skills Refoundation. R4 has not started.
+  - R4 Pipeline/QC, Agents & Skills Refoundation: `ACCEPTED`; eight Domain 06 documents, nine project-local skill specifications, agent configuration status, and read-only repository validators passed metadata, link, scope, JSON, and semantic validation.
+  - Documentation Refoundation R1–R4: `CLOSED`.
+  - Next planned gate: H1 Unreal Pipeline Readiness Audit. H1 has not started.
 - **Blocker Registry**:
-  - No verified blockers recorded for the current documentation-refoundation phase.
+  - H1 cannot verify Unreal runtime architecture until an Unreal project and selected engine version are available for inspection.
+  - Blender MCP screenshot verification is open; it blocks use of that tool as verified visual evidence but does not invalidate the completed R4 documentation refoundation.
+  - Optional shell safety hook is `NOT_EXECUTED` on the R4 audit host because `bash` is unavailable; client activation remains `UNKNOWN`.
