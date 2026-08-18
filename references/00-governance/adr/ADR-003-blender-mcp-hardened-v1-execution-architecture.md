@@ -29,9 +29,17 @@ Arsitektur eksekusi `lentera-blender-mcp` yang diterima adalah model **`HEADLESS
 
 ## Verified Baseline Boundary
 
-Repository mencatat package version `1.0.0` dan Hardened-v1 baseline sebagai `VERIFIED`, dengan 23 public tools, 17 deferred tools, fast tests 33/33 PASS, dan integration tests 14/14 PASS.
+Keputusan arsitektur `HEADLESS_FILE_BACKED` di atas tetap `ACCEPTED`. Status keputusan tersebut terpisah dari hasil verifikasi tooling terbaru, yang dapat berubah saat pengujian diulang.
 
-Angka tersebut mendeskripsikan baseline tooling yang telah diuji. Angka itu tidak memperluas kapabilitas ke tool deferred atau ke integrasi Unreal yang belum diverifikasi.
+Evidence terbaru yang tercatat untuk package version `1.0.0` adalah:
+
+- 23 public tools;
+- 17 deferred tools;
+- contract tests `33/33 PASS`;
+- integration tests `13/14 PASS`;
+- `render_viewport_screenshot`: `VERIFICATION_FAILED`.
+
+Angka tersebut mendeskripsikan hasil pengujian tooling pada baseline yang diperiksa. Kegagalan satu execution path screenshot tidak digeneralisasi sebagai kegagalan tool lain, dan evidence tersebut tidak memperluas kapabilitas ke tool deferred atau ke integrasi Unreal yang belum diverifikasi.
 
 ## Explicit Non-Decisions
 
