@@ -106,7 +106,7 @@ Tutorial semesta *Lentera Pudar* dirancang dengan 3 pilar utama:
   - Jika pemain terlambat menangkis atau terkena serangan:
     - Kaelen hanya menerima damage kecil (10% HP) dan terdorong mundur dengan *knockback soft*.
     - Musuh memiliki jeda *recovery* panjang (2 detik) sebelum menyerang kembali, memberi ruang bagi pemain untuk mencoba lagi.
-    - Jika Kaelen tumbang, ia respawn seketika di ambang pintu masuk ruangan (*ADR-035*) dan musuh mengulang siklus windup lambat yang sama hingga pemain berhasil mengeksekusi parry.
+    - Jika Kaelen tumbang, ia respawn seketika di ambang pintu masuk ruangan dan musuh mengulang siklus windup lambat yang sama hingga pemain berhasil mengeksekusi parry.
 
 ---
 

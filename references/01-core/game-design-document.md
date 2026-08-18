@@ -168,7 +168,7 @@ Sistem kegagalan naratif khusus pada pertempuran bos atau pertempuran intens tin
 
 1. **Kondisi Pemicu (*Trigger Condition*)**:
    - Terpicu ketika *Curse Meter* terisi penuh ($100\%$) sebanyak **3 kali kumulatif** dalam satu sesi pertempuran bos (`CurseOverloadCount == 3`).
-   - Berbeda dari kematian HP biasa (ADR-035), pemicuan ini menandakan Kaelen menyerah pada keputusasaan dan mati rasa emosional (*The Freeze of Despair*).
+   - Berbeda dari kematian HP biasa, pemicuan ini menandakan Kaelen menyerah pada keputusasaan dan mati rasa emosional (*The Freeze of Despair*).
 
 2. **Sinematik Refleksi Trauma & Pacing Bertingkat (*Layered Narrative Pacing*)**:
    - **Pemicuan Pertama (Full Trauma Cutscene)**:

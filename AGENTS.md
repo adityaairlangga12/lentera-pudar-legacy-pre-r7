@@ -16,10 +16,10 @@
 
 ## 2. Invariant Proyek Kunci (*Critical Project Invariants*)
 
-### A. Invariant Tumpukan Teknologi (*Current vs Legacy Stack*)
-- **Tumpukan Aktif (*Active Stack*)**: Unreal Engine 5 + Blender 5.2 LTS (Pipeline Produksi 3D).
-- **Tumpukan Historis (*Legacy / Archived Stack*)**: Godot Engine + Aseprite + PixelLab (2D Pixel-Art / Top-Down RPG).
-- **Penegasan Status**: Catatan historis era 2D pada [design-decisions.md](references/01-core/design-decisions.md) (ADR-001 s.d. ADR-003, ADR-008) berstatus `SUPERSEDED` dan DILARANG dijadikan rujukan implementasi aktif.
+### A. Invariant Tumpukan Teknologi (*Target Technology Stack*)
+- **Target Runtime & DCC**: Unreal Engine 5 + Blender 5.2 LTS untuk pipeline produksi 3D.
+- **Batas Status**: Pemilihan stack tidak membuktikan bahwa Unreal project, gameplay systems, atau production assets telah diimplementasikan. Periksa [project-status.md](references/00-governance/project-status.md) untuk current state.
+- **Otoritas Keputusan**: [ADR-001 — Primary Runtime & DCC Stack](references/00-governance/adr/ADR-001-primary-runtime-and-dcc-stack.md).
 
 ### B. Mandat Anti-RPG Konvensional (*Anti-RPG Progression Guard*)
 Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan mekanik RPG konvensional berikut:
@@ -27,7 +27,7 @@ Seluruh AI Agent DILARANG KERAS merancang, mengusulkan, atau mengimplementasikan
 - ❌ **Dilarang Stat Leveling Numerik**: Peningkatan atribut angka generik (STR, DEX, INT, HP Pool, Level 1..99).
 - ❌ **Dilarang Loot Drop Acak & Gacha**: Grinding koin emas, drop item probabilitas, atau peti harta acak.
 - **Model Progresi Kanonikal**: Progresi Kaelen 100% naratif-sekuensial (Model GRIS) terikat pengorbanan Altar Duka 1–5.
-- **Otoritas Kanonikal**: [design-decisions.md](references/01-core/design-decisions.md) (ADR-037) & [sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md).
+- **Otoritas Kanonikal**: [sector-ability-progression.md](references/02-gameplay/sector-ability-progression.md).
 
 ---
 

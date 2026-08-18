@@ -20,8 +20,10 @@ last_reviewed: 2026-08-18
   - Unreal Engine Gameplay Systems: `NOT_STARTED` (Maturity: NOT_STARTED).
   - Production 3D & Audio Assets: `NOT_STARTED` (Specifications Documented in `references/04-art-3d/style-guide.md`).
 - **Documentation Refoundation Status**:
-  - R1 Information Architecture & Governance Baseline: `ACCEPTED` and implemented in the current working tree.
-  - R2 Canonical Content Migration & Semantic Closure: `ACCEPTED`; migration and pre-R3 semantic corrections are validated in the current working tree.
-  - Next planned gate: R3 ADR migration and decision-history normalization. R3 has not started.
+  - R1 Information Architecture & Governance Baseline: `ACCEPTED` and implemented in the current repository baseline.
+  - R2 Canonical Content Migration & Semantic Closure: `ACCEPTED`; migration and pre-R3 semantic corrections are validated in the current repository baseline.
+  - R3 ADR Refoundation: `ACCEPTED`; four architecture/governance ADRs and the active ADR register have passed metadata, link, scope, and semantic validation.
+  - Deferred R4 cleanup: Domain 06, `.agents`, and tooling may still contain identifiers from the retired monolithic decision log. These identifiers are not active decision authority.
+  - Next planned gate: R4 Pipeline/QC, Agents & Skills Refoundation. R4 has not started.
 - **Blocker Registry**:
   - No verified blockers recorded for the current documentation-refoundation phase.
