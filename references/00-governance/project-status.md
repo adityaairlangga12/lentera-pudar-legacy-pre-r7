@@ -25,8 +25,8 @@ last_reviewed: 2026-08-18
   - R3 ADR Refoundation: `ACCEPTED`; four architecture/governance ADRs and the active ADR register have passed metadata, link, scope, and semantic validation.
   - R4 Pipeline/QC, Agents & Skills Refoundation: `ACCEPTED`; eight Domain 06 documents, nine project-local skill specifications, agent configuration status, and read-only repository validators passed metadata, link, scope, JSON, and semantic validation.
   - Documentation Refoundation R1–R4: `CLOSED`.
-  - R4-C Roadmap Continuity Correction: `PENDING EXTERNAL REVIEW`; this bounded governance-only change restores the required post-R4 roadmap order and does not self-assign an acceptance verdict.
-  - R5 Legacy Contamination & Cross-Domain Consistency Audit: `NOT_STARTED`; next substantive gate only after R4-C is externally accepted.
+  - R4-C Roadmap Continuity Correction: `ACCEPTED`; this bounded governance-only correction restores the required post-R4 roadmap order.
+  - R5 Legacy Contamination & Cross-Domain Consistency Audit: `NOT_STARTED`; `NEXT` substantive gate.
   - R6 Fresh Repository Genesis Preparation: `NOT_STARTED`.
   - R7 Fresh `lentera-pudar` Repository Genesis: `NOT_STARTED`.
   - R8 Migration Verification & Legacy Repository Retirement Gate: `NOT_STARTED`.
