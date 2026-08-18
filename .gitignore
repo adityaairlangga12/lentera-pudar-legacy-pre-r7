@@ -30,5 +30,5 @@ desktop.ini
 .agents/mcp_config.local.json
 .agents/hooks.local.json
 
-# --- Git LFS tracked (DO NOT ignore) ---
-# *.blend, *.fbx, *.gltf, *.wav, *.uasset — tracked via Git LFS, bukan di-ignore
+# --- Future Git LFS candidates (policy deferred to R6) ---
+# *.blend, *.fbx, *.gltf, *.wav, *.uasset sengaja tidak di-ignore karena dapat menjadi project assets; kebijakan tracking/LFS final belum ditetapkan.

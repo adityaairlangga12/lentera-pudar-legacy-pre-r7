@@ -1,6 +1,6 @@
 ---
 name: cross_check_docs
-description: "Skill audit konsistensi silang yang dipicu via /cross-check-docs. Memeriksa konsistensi seluruh dokumen Lentera Pudar berbasis bukti fisik kutipan langsung, Negative Testing 5-Scan, Otoritas Berbasis Lingkup, pemindaian rantai dependensi, pelaporan gap jujur, dan update artifact persisten."
+description: "Skill audit konsistensi silang yang dipicu via /cross-check-docs. Memeriksa konsistensi seluruh dokumen Lentera Pudar berbasis bukti fisik kutipan langsung, Negative Testing 5-Scan, Otoritas Berbasis Lingkup, pemindaian rantai dependensi, dan pelaporan gap jujur."
 ---
 
 # Cross-Check Documentation Protocol (/cross-check-docs)
@@ -68,7 +68,7 @@ flowchart TD
     T1["Tahap 1: Negative Testing 5-Scan"] --> T2["Tahap 2: Verifikasi Integritas Tautan"]
     T2 --> T3["Tahap 3: Pemindaian 4 Rantai Dependensi"]
     T3 --> T4["Tahap 4: Deep Critical Reasoning 4-Pilar"]
-    T4 --> T5["Tahap 5: Persistensi Laporan ke Artifact"]
+    T4 --> T5["Tahap 5: Pengembalian Laporan"]
 ```
 
 ### Tahap 1: Negative Testing 5-Scan (Grep Active Hunting)
@@ -81,7 +81,7 @@ flowchart TD
 ### Tahap 2: Otomasi Verifikasi Integritas Tautan
 Jalankan skrip otomasi verifikasi tautan:
 ```bash
-python tools/update_and_verify_links.py
+node tools/verify_repository.mjs
 ```
 Target: **0 Broken Links** di seluruh repositori.
 
@@ -94,8 +94,8 @@ Target: **0 Broken Links** di seluruh repositori.
 ### Tahap 4: Deep Critical Reasoning 4-Pilar
 Evaluasi titik lemah teknis, batasan handoff antar-sistem, pencegahan bias AI, dan identifikasi asumsi yang membutuhkan pengujian manusia.
 
-### Tahap 5: Persistensi Laporan
-Simpan dan perbarui laporan lengkap pada artifact persisten di direktori `brain/` sesi kerja.
+### Tahap 5: Pengembalian Laporan
+Kembalikan laporan lengkap ke task Work/Chat aktif. Persistensi hanya dilakukan jika diminta secara eksplisit dan ke lokasi yang telah disetujui secara eksplisit; audit tidak membuat direktori penyimpanan implisit.
 
 ---
 

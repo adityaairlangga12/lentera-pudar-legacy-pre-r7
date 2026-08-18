@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
-import { dirname, relative, resolve } from "node:path";
+import { execFileSync } from "node:child_process";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { basename, dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const gitSafeRoot = root.replaceAll("\\", "/");
 const markdownLink = /\[[^\]]+\]\(([^)]+)\)/g;
 const retiredAdr = /\bADR-(?:00[5-9]|0[1-9][0-9]|[1-9][0-9]{2,})\b/g;
 const retiredPaths = [
@@ -12,6 +14,12 @@ const retiredPaths = [
   "references/01-core/design-decisions.md",
   "references/05-foundations/",
 ];
+const configurationFile = /\.(?:jsonc?|ya?ml|toml|ini|cfg|conf|env|properties|xml)$/i;
+const textualFile = /\.(?:jsonc?|ya?ml|toml|ini|cfg|conf|env|properties|xml|md|txt|mjs|cjs|js|ts|tsx|py|sh|ps1|bat|cmd)$/i;
+const portableAbsolutePathPlaceholder = /<ABSOLUTE_PATH_TO_[A-Z0-9_]+>/g;
+const machineLocalFileUrl = /file:\/\/\/[A-Za-z]:\/+[^\s"'<>]*/i;
+const windowsAbsolutePath = /\b[A-Za-z]:[\\/]+[^\s"'<>]*/i;
+const strongWindowsHostPath = /\b[A-Za-z]:[\\/]+(?:Users|Program Files(?: \(x86\))?|ProgramData|[A-Za-z0-9_-]*Projects|Documents and Settings)(?:[\\/]+|$)/i;
 
 function walk(directory, predicate) {
   const results = [];
@@ -26,6 +34,20 @@ function walk(directory, predicate) {
 
 function projectPath(path) {
   return relative(root, path).replaceAll("\\", "/");
+}
+
+function trackedTextFiles() {
+  const output = execFileSync(
+    "git",
+    ["-c", `safe.directory=${gitSafeRoot}`, "ls-files", "-z"],
+    { cwd: root, encoding: "utf8" },
+  );
+  return output
+    .split("\0")
+    .filter(Boolean)
+    .filter((path) => textualFile.test(path) || basename(path) === ".gitignore")
+    .map((path) => resolve(root, path))
+    .filter(existsSync);
 }
 
 function frontmatter(text) {
@@ -44,6 +66,17 @@ const issues = [];
 const markdownFiles = walk(root, (path) => path.endsWith(".md")).sort();
 const canonicalScopes = new Map();
 let canonicalCount = 0;
+
+for (const source of trackedTextFiles()) {
+  const sourceName = projectPath(source);
+  const text = readFileSync(source, "utf8").replace(portableAbsolutePathPlaceholder, "");
+  if (machineLocalFileUrl.test(text)) {
+    issues.push(`${sourceName}: machine-local file URL in tracked content`);
+    continue;
+  }
+  const pathPattern = configurationFile.test(sourceName) ? windowsAbsolutePath : strongWindowsHostPath;
+  if (pathPattern.test(text)) issues.push(`${sourceName}: machine-local absolute path in tracked content`);
+}
 
 for (const source of markdownFiles) {
   const text = readFileSync(source, "utf8");

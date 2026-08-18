@@ -6,8 +6,9 @@ Direktori ini menyimpan policy scoped, skill specification, template konfigurasi
 
 - Kehadiran `SKILL.md` berarti skill **terdokumentasi dalam repository**.
 - Kehadiran file tidak membuktikan skill telah di-install, didaftarkan, dimuat otomatis, atau dipanggil oleh Codex/client lain.
-- `mcp_config.example.json` dan `hooks.example.json` adalah template. Salin ke konfigurasi lokal yang didukung client dan isi path host secara lokal; jangan commit konfigurasi lokal.
-- `mcp_config.json` dan `hooks.json` lama dipertahankan sebagai compatibility snapshot karena activation client belum dapat dibuktikan. Field status di dalamnya melarang penafsiran sebagai bukti availability.
+- `mcp_config.example.json` dan `hooks.example.json` adalah template portabel terdokumentasi. Salin ke konfigurasi lokal yang didukung client dan isi path host secara lokal; jangan commit konfigurasi lokal.
+- Konfigurasi MCP host aktual hanya boleh berada pada konfigurasi lokal yang di-ignore Git. `hooks.json` tetap dipertahankan sebagai compatibility snapshot karena activation client belum dapat dibuktikan.
+- Kehadiran template atau compatibility snapshot di repository tidak membuktikan registration, runtime loading, availability, atau execution.
 - Policy yang harus selalu berlaku ditempatkan di root [AGENTS.md](../AGENTS.md) atau dokumen canonical, bukan hanya di skill opsional.
 - Instruksi system/platform dan permission runtime tetap lebih tinggi daripada asset repository ini.
 
