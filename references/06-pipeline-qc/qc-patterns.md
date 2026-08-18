@@ -21,7 +21,7 @@ Dokumen ini mencatat pola kegagalan dan tindakan preventif yang memiliki evidenc
 - **Kategori**: [Visual QC / Functional QC / Rigging & Physics QC / Consistency QC]
 - **Komponen Terdampak**: (Nama file/mesh/armature/material)
 - **Evidence Reference**: Commit, test/log, artifact, atau laporan inspeksi yang dapat diperiksa.
-- **Evidence Status**: `VERIFIED` / `PARTIAL` / `UNVERIFIED_LEGACY_NOTE`.
+- **Evidence Status**: `VERIFIED` / `PARTIAL`; `PARTIAL` tetap memerlukan Evidence Reference yang dapat diperiksa dan tidak boleh mewakili narasi historis tanpa bukti.
 - **Gejala / Error**: Deskripsi error atau kecacatan visual yang muncul.
 - **Akar Masalah**: Mengapa kesalahan ini bisa terjadi?
 - **Tindakan Perbaikan (Fix)**: Solusi teknis yang diterapkan.
