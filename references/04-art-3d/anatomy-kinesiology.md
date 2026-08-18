@@ -19,7 +19,7 @@ last_reviewed: 2026-08-18
 
 | Parameter | Kaelen (Dewasa, Atletis) | Fungsi & Keterangan |
 |---|---|---|
-| **Tinggi Total** | 7.5–8 Kepala ($1.78\text{ m}$) | Kanon proporsi atletis pengelana (*Heroic Proportions*). |
+| **Tinggi Total** | $\approx 6.8$ Kepala ($1.78\text{ m}$) | Kanon proporsi atletis pengelana (*Heroic Proportions*). |
 | **Lebar Bahu** | $\approx 2\text{x}$ Lebar Kepala | Build tubuh ramping terlatih, bahu kokoh untuk mengimbangi jubah. |
 | **Titik Tengah Tubuh** | Pangkal Paha (*Hip / Pubic Arch*) | Titik acuan simetri pembagian tubuh atas dan bawah. |
 | **Panjang Lengan** | Ujung jari mencapai pertengahan paha | Acuan validasi instan panjang humerus + radius/ulna. |
