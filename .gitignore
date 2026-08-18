@@ -27,6 +27,8 @@ __pycache__/
 .vscode/
 Thumbs.db
 desktop.ini
+.agents/mcp_config.local.json
+.agents/hooks.local.json
 
 # --- Git LFS tracked (DO NOT ignore) ---
 # *.blend, *.fbx, *.gltf, *.wav, *.uasset — tracked via Git LFS, bukan di-ignore

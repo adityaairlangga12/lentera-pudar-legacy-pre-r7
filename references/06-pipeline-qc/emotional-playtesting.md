@@ -3,7 +3,7 @@ status: ACTIVE
 type: VERIFICATION_QC
 authority_scope: pipeline.playtesting
 canonical: false
-introduced_by: ADR-028
+last_reviewed: 2026-08-18
 ---
 
 
@@ -11,7 +11,9 @@ introduced_by: ADR-028
 ### Metodologi Pengukuran Resonansi Duka (*Grief Impact*), Observasi Non-Intrusif, & Evaluasi Intended vs Perceived
 
 > **Dokumen Sumber Kebenaran Validasi Emosional (*Emotional Playtesting Reference*)**  
-> Melengkapi [qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md). Menjawab pertanyaan krusial: *"Apakah dampak emosional duka Kaelen & Aina benar-benar tersampaikan kepada pemain manusia, bukan sekadar berfungsi tanpa bug secara teknis?"*
+Melengkapi [qa-qc-framework.md](qa-qc-framework.md), [psychology.md](../07-foundations/psychology.md), dan [creative-vision.md](../01-core/creative-vision.md).
+
+> **Current-state boundary:** belum ada Unreal build atau sesi playtest yang tercatat. Seluruh metrik dan prosedur di bawah adalah rancangan verifikasi masa depan; tidak ada hasil emosional yang boleh diklaim sebelum data pemain manusia tersedia.
 
 ---
 

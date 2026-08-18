@@ -3,14 +3,14 @@ status: ACTIVE
 type: CALIBRATION
 authority_scope: pipeline.calibration
 canonical: false
+last_reviewed: 2026-08-18
 ---
 
 
 # Few-Shot Quality Calibration — Lentera Pudar: 3D Action RPG Edition
 ### Standar Mutu Konkret & Kalibrasi Diri AI Agent (Benchmark Benar vs Salah)
 
-> **Dokumen Kalibrasi Mutu (*Self-Correction & Quality Calibration Bible*)**  
-> Menjadi instrumen penilaian mandiri bagi AI Agent dan developer untuk membedakan output profesional berbasis bukti fisik (*Steam-Ready Grade*) dengan klaim narasi subjektif / teater.
+Dokumen ini berisi contoh hipotetis untuk membedakan laporan berbasis bukti dari klaim subjektif. Contoh “benar” adalah format yang diharapkan, bukan bukti bahwa asset, Unreal project, material, cloth, lighting, boss, atau animation tersebut sudah diimplementasikan.
 
 ---
 
@@ -24,7 +24,7 @@ Kaelen_Model (1).blend
 ```
 > *Akar Kesalahan*: Tidak mengikuti prefix kategori (`SM_`, `SK_`, `T_`), memakai spasi/duplikasi software bawaan, dan tidak deskriptif.
 
-✅ **BENAR (Steam-Ready Standard)**:
+✅ **BENAR (Naming yang Dapat Diaudit)**:
 ```
 SM_IceCrystal_Cluster_01.blend
 SM_IceCrystal_Cluster_01.uasset
@@ -39,7 +39,7 @@ SK_Kaelen_Body.blend
 ❌ **SALAH (Subjektif & Tanpa Dasar)**:
 > *"Saya membuat material es dengan roughness 0.05 dan warna biru terang supaya kelihatan berkilau dan bagus."*
 
-> *Akar Kesalahan*: Nilai Roughness 0.05 di luar batas [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) (0.15–0.30), mengabaikan Subsurface Scattering (SSS), dan beralasan subjektif.
+> *Akar Kesalahan*: Nilai Roughness 0.05 di luar batas [style-guide.md](../04-art-3d/style-guide.md) (0.15–0.30), mengabaikan Subsurface Scattering (SSS), dan beralasan subjektif.
 
 ✅ **BENAR (Berbasis Dokumen Acuan)**:
 > *"Material kristal es (`M_Cursed_Crystal`) dikonfigurasi dengan Base Color `#4A6FA5`, Roughness 0.22 (rentang Style Guide 0.15–0.30), Metallic 0.0, dan Subsurface Scattering Radius 0.8 cm dengan hamburan warna `#7EE8FA`. Emissive terhubung ke Material Parameter Collection `MPC_CurseMeter` sesuai Teori Bab 11.C, diuji pada kondisi pencahayaan terang dan gelap dungeon."*
@@ -55,7 +55,7 @@ SK_Kaelen_Body.blend
 
 > *Akar Kesalahan*: Klaim subjektif, tidak mencantumkan parameter fisika, tidak menguji 4 kondisi gerak wajib, dan menyembunyikan potensi clipping.
 
-✅ **BENAR (Transparan, Terukur & Kategori Severity Jelas)**:
+✅ **BENAR JIKA DIDUKUNG OUTPUT UJI (Transparan dan Terukur)**:
 > *"Cloth simulation Syal Aina selesai dikonfigurasi pada Chaos Cloth UE5 dengan parameter: Stiffness 0.5, Damping 0.4, Solver Iterations 10 (sesuai Style Guide Bab 4). Telah disimulasikan pada 4 kondisi gerak:*
 > - *Idle (0 cm/s): Lolos tanpa distorsi.*
 > - *Jog (150 cm/s): Kibaran dinamis alami.*
@@ -74,7 +74,7 @@ SK_Kaelen_Body.blend
 
 > *Akar Kesalahan*: Merusak rasio chiaroscuro, menghilangkan kontras emosional antara 2700K (Aina) vs 6500K (Kutukan), dan merusak estetika gelap dungeon.
 
-✅ **BENAR (Menjaga Rasio Chiaroscuro & Teori Warna)**:
+✅ **BENAR JIKA DIDUKUNG INSPEKSI SCENE (Menjaga Rasio Chiaroscuro)**:
 > *"Pencahayaan ambient dungeon Sektor 1 diset pada intensitas 80 lm (6200K Kelvin) sebagai fill light sangat redup. Syal Aina menjadi satu-satunya key light dominan (1000 lm, 2700K Kelvin). Rasio kontras key-to-ambient diuji pada 10:1 (memenuhi target minimal 8:1 sesuai Style Guide Bab 5). Tidak ada penambahan lampu statis buatan di koridor agar syal tetap menjadi fokus visual satu-satunya."*
 
 > *Keunggulan*: Menjaga pilar artistik melankolis-hangat dan mematuhi batas rasio kontras.

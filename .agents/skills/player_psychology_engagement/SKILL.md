@@ -8,7 +8,7 @@ description: "Panduan psikologi pemain untuk Psychology Agent (Consultant). Digu
 ## Purpose
 Skill ini mengatur **prosedur konsultasi dan evaluasi psikologi pemain** untuk meninjau resonansi emosional, motivasi karakter, dinamika duka non-linear, dan kejelasan bahasa tubuh 3D di semesta *Lentera Pudar*.
 
-Seluruh teori psikologi ilmiah, dinamika kebutuhan dasar SDT, dan metodologi evaluasi duka diatur secara kanonikal di [psychology.md](references/05-foundations/psychology.md) dan [emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md).
+Seluruh teori psikologi, dinamika kebutuhan dasar SDT, dan metodologi evaluasi duka dirujuk dari [psychology.md](../../../references/07-foundations/psychology.md) dan [emotional-playtesting.md](../../../references/06-pipeline-qc/emotional-playtesting.md).
 
 ---
 
@@ -27,12 +27,12 @@ Seluruh teori psikologi ilmiah, dinamika kebutuhan dasar SDT, dan metodologi eva
 ---
 
 ## Canonical Dependencies
-- [references/05-foundations/psychology.md](references/05-foundations/psychology.md) — Fondasi Psikologi Pemain, SDT 3-Needs, Loss Aversion & Dinamika Duka.
-- [references/06-pipeline-qc/emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md) — Kerangka Evaluasi Intended vs Perceived & Analisis Kesenjangan Resonansi.
-- [references/03-narrative/vocal-direction-dialogue.md](references/03-narrative/vocal-direction-dialogue.md) — Master Arahan Vokal & Subteks Dialog.
-- [references/03-narrative/cinematics-cutscenes.md](references/03-narrative/cinematics-cutscenes.md) — Master Bahasa Kamera Spasial & Sinematik.
-- [references/04-art-3d/human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md) — Anatomi Ekspresi Wajah, FACS & Dinamika Gaze.
-- [references/04-art-3d/anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md) — Postur Emosional & Biomekanika Gerak.
+- [psychology.md](../../../references/07-foundations/psychology.md) — Psikologi pemain, SDT, loss aversion, dan dinamika duka.
+- [emotional-playtesting.md](../../../references/06-pipeline-qc/emotional-playtesting.md) — Intended vs perceived; belum dieksekusi tanpa playtest manusia.
+- [vocal-direction-dialogue.md](../../../references/03-narrative/vocal-direction-dialogue.md) — Arahan vokal dan subteks dialog.
+- [cinematics-cutscenes.md](../../../references/03-narrative/cinematics-cutscenes.md) — Bahasa kamera.
+- [human-facial-expressions.md](../../../references/04-art-3d/human-facial-expressions.md) — Ekspresi wajah dan FACS.
+- [anatomy-kinesiology.md](../../../references/04-art-3d/anatomy-kinesiology.md) — Postur dan biomekanika.
 
 ---
 
@@ -50,7 +50,7 @@ Seluruh teori psikologi ilmiah, dinamika kebutuhan dasar SDT, dan metodologi eva
 - **Prinsip Evaluasi**: Pastikan dunia game mempertahankan **kontras eksistensial**; jangan biarkan suatu sektor terasa 100% dingin tanpa harapan atau 100% hangat tanpa ancaman.
 
 ### 2. Evaluasi 5 Tahapan Berduka (*5 Stages of Grief*)
-Tinjau motivasi bos, narasi lingkungan, dan interaksi karakter per sektor merujuk ke [psychology.md](references/05-foundations/psychology.md) Bab 3:
+Tinjau motivasi bos, narasi lingkungan, dan interaksi karakter per sektor merujuk ke [psychology.md](../../../references/07-foundations/psychology.md) Bab 3:
 - **Sektor 1 (Denial)**: Penolakan realitas dan isolasi kognitif.
 - **Sektor 2 (Anger)**: Agresi meledak-ledak dan frustrasi menyalahkan pihak luar.
 - **Sektor 3 (Bargaining)**: Taktik manipulatif, janji kompromi palsu, dan ilusi penundaan.
@@ -61,11 +61,11 @@ Tinjau motivasi bos, narasi lingkungan, dan interaksi karakter per sektor meruju
 - **Autonomy**: Pastikan pilihan rute dan penggunaan taktis Eyepatch adalah keputusan bermakna.
 - **Competence**: Kepuasan berasal dari penguasaan ritme kombat yang adil dan telegraf terbaca.
 - **Relatedness**: Hubungan Kaelen-Aina terbangun lewat ketergantungan mekanik gameplay nyata.
-- **Loss Aversion (Prospect Theory)**: Evaluasi bobot psikologis pemendekan fisik Syal Aina di tiap Altar Duka menggunakan model Loss Aversion kanonikal di [psychology.md](references/05-foundations/psychology.md) Bab 2 agar pemain merasakan pengorbanan nyata sebelum mengonfirmasi aktivasi altar.
+- **Loss Aversion (Prospect Theory)**: Evaluasi bobot psikologis pemendekan fisik Syal Aina menggunakan [psychology.md](../../../references/07-foundations/psychology.md) Bab 2.
 
 ### 4. Evaluasi Bahasa Tubuh 3D & Ekspresi FACS
-- **Postur Kinesiologi per Sektor**: Pastikan siluet karakter mencerminkan kondisi mental Kaelen (postur tegap defensif di Sektor 1/2 vs bahu merosot *kyphotic posture* di Sektor 4) merujuk ke [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md).
-- **FACS & Dinamika Gaze**: Validasi shape keys ekspresi wajah terhadap kombinasi Action Units di [human-facial-expressions.md](references/04-art-3d/human-facial-expressions.md), termasuk pembedaan Duchenne marker (senyum tulus) vs senyum topeng sosial saat Kaelen menyembunyikan kerapuhan batin.
+- **Postur Kinesiologi per Sektor**: Rujuk [anatomy-kinesiology.md](../../../references/04-art-3d/anatomy-kinesiology.md).
+- **FACS & Dinamika Gaze**: Rujuk [human-facial-expressions.md](../../../references/04-art-3d/human-facial-expressions.md).
 
 ---
 

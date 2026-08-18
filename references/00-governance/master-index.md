@@ -47,8 +47,8 @@ last_reviewed: 2026-08-18
 | **Pipeline Produksi Aset 3D** | [3d-asset-pipeline.md](../04-art-3d/3d-asset-pipeline.md) | `art.3d_pipeline` | Topologi quad organik, UV seam, baking cage, ekspor glTF Blender MCP. |
 | **Modular Environment 3D** | [environment-modular-techniques.md](../04-art-3d/environment-modular-techniques.md) | `art.environment_modular` | Grid 300cm, trim sheets, texel density 512/256 px/m, post-process LUTs. |
 | **Prosedur SOP Produksi 3D** | [sop-workflow.md](../06-pipeline-qc/sop-workflow.md) | `pipeline.sop` | 7 SOP sekuensial (Prop, Mat, Rig, Cloth, Level Grey-Box, GAS, Audio). |
-| **Kontrol Kualitas Komersial** | [qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md) | `pipeline.qc` | 6 Pilar DoD (A s.d. F), 4-Tier Gate, severity classification bug P0–P3. |
-| **Rantai Perkakas & MCP Stack** | [tools-mcp-stack.md](../06-pipeline-qc/tools-mcp-stack.md) | `pipeline.tools_stack` | Kontrak 23 tool publik Blender MCP (HEADLESS_FILE_BACKED), status UE5 MCP. |
+| **Kontrol Kualitas** | [qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md) | `pipeline.qc` | DoD per deliverable, stage-gate roadmap, evidence contract, severity P0–P3. |
+| **Rantai Perkakas & MCP Stack** | [tools-mcp-stack.md](../06-pipeline-qc/tools-mcp-stack.md) | `pipeline.tools_stack` | Registry Blender MCP Hardened-v1, hasil revalidasi, capability gate Unreal. |
 
 ### 1.3 Taksonomi Tipe Dokumen (*Document-Type Taxonomy*)
 - **`GOVERNANCE`**: Dokumen tata kelola, indeks navigasi, rekam jejak status, dan baseline.
@@ -175,9 +175,9 @@ flowchart TD
 | Dokumen Master | Isi & Fokus Utama | Kapan Harus Dirujuk |
 |---|---|---|
 | [sop-workflow.md](../06-pipeline-qc/sop-workflow.md) | 7 SOP Prosedural: Prop, Material, Rigging, Cloth, Level Grey-Box, Gameplay GAS, Audio | Mengerjakan tugas produksi operasional berulang secara konsisten. |
-| [tools-mcp-stack.md](../06-pipeline-qc/tools-mcp-stack.md) | Rantai Tools Terkini: Blender MCP (23 Public Tools, HEADLESS_FILE_BACKED), status UE5 MCP | Setup environment produksi atau integrasi toolchain 3D. |
+| [tools-mcp-stack.md](../06-pipeline-qc/tools-mcp-stack.md) | Kontrak Blender MCP `HEADLESS_FILE_BACKED`, public registry 23 tool, regresi terbuka, dan status Unreal MCP | Memeriksa capability sebelum setup atau eksekusi toolchain. |
 | [api-cheat-sheet.md](../06-pipeline-qc/api-cheat-sheet.md) | Referensi sintaks stabil antarmuka JSON-RPC Blender MCP | Menjalankan otomasi skrip di Blender 5.2 LTS via MCP. |
-| [qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md) | 6 Pilar Definition of Done (DoD), Stage-Gate 0 s.d. 7, 4-Tier Bug Classification | Melakukan pengujian kualitas sebelum menyatakan tugas selesai. |
+| [qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md) | DoD per deliverable, Stage-Gate 0 s.d. 7, verification contract, P0–P3 | Melakukan pengujian kualitas sebelum menyatakan tugas selesai. |
 | [qc-patterns.md](../06-pipeline-qc/qc-patterns.md) | Knowledge base pola anomali visual 3D, rigging, audio, dan tindakan korektif | Menangani bug atau anomali spesifik saat inspeksi QC. |
 | [few-shot-calibration.md](../06-pipeline-qc/few-shot-calibration.md) | 7 Contoh Benchmark Benar vs Salah (Few-Shot Calibration) | Melakukan evaluasi mandiri (*self-critique*) sebelum melapor ke user. |
 | [emotional-playtesting.md](../06-pipeline-qc/emotional-playtesting.md) | Validasi Emosional, Intended vs Perceived Framework, Observasi Non-Intrusif | Memvalidasi apakah resonansi duka tersampaikan ke pemain manusia. |

@@ -8,7 +8,7 @@ description: "Protokol orkestrasi untuk Supervisor Agent dalam memecah task besa
 ## Purpose
 Skill ini mengatur **protokol orkestrasi kerja multi-agent, siklus delegasi terstruktur, verifikasi bukti fisik, dan koordinasi antar-spesialis** bagi peran Supervisor Agent di semesta *Lentera Pudar*.
 
-Seluruh kebijakan integritas AI, tata kelola sumber kebenaran, dan alur SOP operasional diatur secara kanonikal di [ai-agent-methodology.md](references/06-pipeline-qc/ai-agent-methodology.md), [sop-workflow.md](references/06-pipeline-qc/sop-workflow.md), dan [master-index.md](references/01-core/master-index.md).
+Kebijakan integritas AI, tata kelola authority scope, dan SOP diatur di [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md), [sop-workflow.md](../../../references/06-pipeline-qc/sop-workflow.md), dan [master-index.md](../../../references/00-governance/master-index.md).
 
 ---
 
@@ -27,11 +27,11 @@ Seluruh kebijakan integritas AI, tata kelola sumber kebenaran, dan alur SOP oper
 ---
 
 ## Canonical Dependencies
-- [references/06-pipeline-qc/ai-agent-methodology.md](references/06-pipeline-qc/ai-agent-methodology.md) — Metodologi AI Expert, Anti-Roleplay & Grounding 3-Sumber.
-- [references/06-pipeline-qc/sop-workflow.md](references/06-pipeline-qc/sop-workflow.md) — 7 SOP Operasional Terstandarisasi.
-- [references/01-core/master-index.md](references/01-core/master-index.md) — SSoT Governance Hub & Peta Navigasi 6-Domain.
-- [references/06-pipeline-qc/qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) — Kerangka 6-DoD Stage-Gate QC.
-- [references/06-pipeline-qc/few-shot-calibration.md](references/06-pipeline-qc/few-shot-calibration.md) — Benchmark Mutu Few-Shot.
+- [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md) — Grounding dan evidence-first work.
+- [sop-workflow.md](../../../references/06-pipeline-qc/sop-workflow.md) — SOP dan capability gate.
+- [master-index.md](../../../references/00-governance/master-index.md) — Router authority scope.
+- [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md) — Kriteria verifikasi dan verdict.
+- [few-shot-calibration.md](../../../references/06-pipeline-qc/few-shot-calibration.md) — Contoh format berbasis bukti.
 
 ---
 
@@ -47,10 +47,10 @@ flowchart TD
 ```
 
 ### 1. Dekomposisi Prosedural & Penyelarasan SOP
-- Pecah tugas kompleks menjadi sub-task berurutan: tentukan hasil akhir konkret, urutan dependensi, titik verifikasi, dan risiko mengacu pada 7 SOP di [sop-workflow.md](references/06-pipeline-qc/sop-workflow.md).
+- Pecah tugas kompleks menjadi sub-task berurutan dengan merujuk [sop-workflow.md](../../../references/06-pipeline-qc/sop-workflow.md).
 
 ### 2. Penugasan dengan Kriteria Selesai Eksplisit
-- Delegasikan ke sub-agent dengan instruksi terukur merujuk ke benchmark [few-shot-calibration.md](references/06-pipeline-qc/few-shot-calibration.md) dan dokumen pemilik kanonikal terkait.
+- Delegasikan hanya ketika runtime/policy mengizinkan dan subtask independen; rujuk [few-shot-calibration.md](../../../references/06-pipeline-qc/few-shot-calibration.md) serta owner scope terkait.
 - Cantumkan secara tegas: target file, standar SOP, kriteria DoD, dan format bukti yang wajib diserahkan.
 
 ### 3. Verifikasi Bukti Fisik (*Artifact Gate*)
@@ -58,7 +58,7 @@ flowchart TD
 - *Larangan*: Dilarang menerima klaim naratif semata tanpa verifikasi bukti independen.
 
 ### 4. Penanganan Kegagalan & Rejection Loop
-- Jika artifact tidak memenuhi standar QC (merujuk ke [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md)), lakukan debugging sistematis dengan **mengisolasi tepat satu variabel dalam satu waktu**.
+- Jika artifact tidak memenuhi [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md), lakukan debugging sistematis dan isolasi variabel bila memungkinkan.
 - Batas maksimal: 3x siklus perbaikan sebelum eskalasi terstruktur ke pengguna.
 
 ### 5. Laporan Akhir Faktual & Transparan
@@ -72,7 +72,7 @@ flowchart TD
   2. Pertimbangan & Alasan Teknis
   3. Trade-off yang Dikorbankan
   4. Keselarasan dengan dokumen kanonikal terkait
-- Jika keputusan disahkan, catat ke [design-decisions.md](references/01-core/design-decisions.md).
+- Jika keputusan arsitektur disahkan, buat/perbarui ADR yang sesuai melalui [ADR register](../../../references/00-governance/adr/README.md); koreksi editorial tidak otomatis memerlukan ADR.
 
 ---
 

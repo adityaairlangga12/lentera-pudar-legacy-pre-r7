@@ -1,16 +1,18 @@
 import os
 import re
+import subprocess
 import sys
+from pathlib import Path
 
-WORKSPACE_ROOT = r"d:\GodotProjects\Lentera-Pudar"
+WORKSPACE_ROOT = str(Path(__file__).resolve().parents[1])
 
 FILE_MAPPING = {
     # 01-core
     "creative-vision.md": "01-core/creative-vision.md",
-    "design-decisions.md": "01-core/design-decisions.md",
+    "project-status.md": "00-governance/project-status.md",
     "game-design-document.md": "01-core/game-design-document.md",
-    "master-index.md": "01-core/master-index.md",
-    "theory-reference.md": "01-core/theory-reference.md",
+    "master-index.md": "00-governance/master-index.md",
+    "theory-reference.md": "07-foundations/theory-reference.md",
     
     # 02-gameplay
     "ambient-world-life.md": "02-gameplay/ambient-world-life.md",
@@ -35,15 +37,15 @@ FILE_MAPPING = {
     "reference-board-guide.md": "04-art-3d/reference-board-guide.md",
     "style-guide.md": "04-art-3d/style-guide.md",
     
-    # 05-foundations
-    "expert-art-creativity.md": "05-foundations/art-creativity.md",
-    "art-creativity.md": "05-foundations/art-creativity.md",
-    "expert-mathematics.md": "05-foundations/mathematics.md",
-    "mathematics.md": "05-foundations/mathematics.md",
-    "expert-physics.md": "05-foundations/physics.md",
-    "physics.md": "05-foundations/physics.md",
-    "expert-psychology.md": "05-foundations/psychology.md",
-    "psychology.md": "05-foundations/psychology.md",
+    # 07-foundations
+    "expert-art-creativity.md": "07-foundations/art-creativity.md",
+    "art-creativity.md": "07-foundations/art-creativity.md",
+    "expert-mathematics.md": "07-foundations/mathematics.md",
+    "mathematics.md": "07-foundations/mathematics.md",
+    "expert-physics.md": "07-foundations/physics.md",
+    "physics.md": "07-foundations/physics.md",
+    "expert-psychology.md": "07-foundations/psychology.md",
+    "psychology.md": "07-foundations/psychology.md",
     
     # 06-pipeline-qc
     "api-cheat-sheet.md": "06-pipeline-qc/api-cheat-sheet.md",
@@ -60,14 +62,16 @@ FILE_MAPPING = {
 REPLACE_MAP = {
     "references/04-art-3d/additional-techniques.md": "references/04-art-3d/environment-modular-techniques.md",
     "references/04-art-3d/expert-3d-foundations.md": "references/04-art-3d/3d-asset-pipeline.md",
-    "references/05-foundations/expert-mathematics.md": "references/05-foundations/mathematics.md",
-    "references/05-foundations/expert-physics.md": "references/05-foundations/physics.md",
-    "references/05-foundations/expert-psychology.md": "references/05-foundations/psychology.md",
-    "references/05-foundations/expert-art-creativity.md": "references/05-foundations/art-creativity.md",
+    "references/05-foundations/expert-mathematics.md": "references/07-foundations/mathematics.md",
+    "references/05-foundations/expert-physics.md": "references/07-foundations/physics.md",
+    "references/05-foundations/expert-psychology.md": "references/07-foundations/psychology.md",
+    "references/05-foundations/expert-art-creativity.md": "references/07-foundations/art-creativity.md",
     "references/06-pipeline-qc/expert-ai-methodology.md": "references/06-pipeline-qc/ai-agent-methodology.md",
 }
 
 def update_links_in_file(filepath):
+    raise RuntimeError("Mutating link updates were retired in R4; use the read-only repository validator.")
+
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
@@ -130,23 +134,9 @@ def verify_all_links():
         return True
 
 def main():
-    print("Starting automated link updates...")
-    updated_files = 0
-    
-    for root, dirs, files in os.walk(WORKSPACE_ROOT):
-        if ".git" in root:
-            continue
-        for file in files:
-            if file.endswith(".md"):
-                filepath = os.path.join(root, file)
-                if update_links_in_file(filepath):
-                    print(f"Updated: {filepath}")
-                    updated_files += 1
-
-    print(f"\nTotal files updated: {updated_files}")
-    success = verify_all_links()
-    if not success:
-        sys.exit(1)
+    print("DEPRECATED: forwarding to the read-only `node tools/verify_repository.mjs` validator.")
+    validator = Path(__file__).with_name("verify_repository.mjs")
+    sys.exit(subprocess.run(["node", str(validator)], check=False).returncode)
 
 if __name__ == "__main__":
     main()

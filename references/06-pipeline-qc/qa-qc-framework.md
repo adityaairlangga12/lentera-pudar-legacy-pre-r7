@@ -3,14 +3,21 @@ status: ACTIVE
 type: VERIFICATION_QC
 authority_scope: pipeline.qc
 canonical: true
-governed_by: ADR-015
+governed_by: [ADR-004]
+last_reviewed: 2026-08-18
 ---
 
 
-# Kerangka QA/QC — Lentera Pudar: 3D Action RPG Edition
-### Standar Kontrol Kualitas, Definition of Done (DoD), Stage-Gate Process & Protokol Verifikasi AI
+# Kerangka QA/QC — Lentera Pudar
 
-Dokumen ini adalah **lapisan kontrol kualitas mutlak** yang memastikan setiap aset 3D, material, animasi, level, audio, dan sistem gameplay memenuhi standar komersial (*Steam-Ready Grade*).
+Dokumen ini menetapkan cara menentukan kriteria penerimaan, mengumpulkan bukti, mengklasifikasikan temuan, dan memberi verdict. Checklist adalah template verifikasi per deliverable, bukan klaim bahwa aset atau sistem tersebut sudah ada.
+
+### Current-State Boundary
+
+- Unreal project, gameplay systems, production assets, build, dan playtest: `NOT_STARTED`.
+- Unreal runtime/MCP: `UNAVAILABLE / PLANNED`.
+- Blender MCP revalidation 2026-08-18: contract tests 33/33 pass; integration tests 13/14 pass dengan kegagalan screenshot viewport.
+- Karena itu, tidak ada production gate Unreal yang dinyatakan lulus oleh dokumen ini.
 
 ---
 
@@ -34,11 +41,11 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 - [ ] Nama aset mengikuti standar konvensi baku (`SK_Kaelen_Body`, `SM_Crypt_Pillar_01`).
 - [ ] Topologi bersih: Nol non-manifold geometry, tidak ada n-gon bermasalah pada area deformasi.
 - [ ] UV Unwrap bersih tanpa overlap tidak disengaja; seam ditempatkan tersembunyi.
-- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [environment-modular-techniques.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/environment-modular-techniques.md)).
+- [ ] **Texel Density Terstandarisasi**: 512 px/m untuk Hero & Boss, 256 px/m untuk Environment Props (sesuai [environment-modular-techniques.md](../04-art-3d/environment-modular-techniques.md)).
 - [ ] Skala dan orientasi benar saat diimpor ke UE5 ($1\text{ unit} = 1\text{ cm}$, $+Z$ Up, $+Y$ Forward).
 - [ ] LOD tersedia untuk aset berulang (prop lingkungan dan musuh umum).
 - [ ] Custom collision mesh sudah dikonfigurasi (bukan auto-convex kasar untuk geometri kompleks).
-- [ ] Anggaran poligon (*Poly Budget*) sesuai kategori (**40.000–60.000 tris (LOD0) untuk Hero Character**, 50.000–80.000 tris untuk Boss, 8.000–15.000 tris untuk Musuh Umum — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 6).
+- [ ] Anggaran poligon (*Poly Budget*) sesuai kategori (**40.000–60.000 tris (LOD0) untuk Hero Character**, 50.000–80.000 tris untuk Boss, 8.000–15.000 tris untuk Musuh Umum — sesuai [style-guide.md](../04-art-3d/style-guide.md) Bab 6).
 
 ### B. DoD — Material & Shaders (The Triad)
 - [ ] Struktur PBR lengkap (Base Color, Roughness, Metallic, Normal).
@@ -49,9 +56,9 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 
 ### C. DoD — Rigging, Biomekanika & Animasi
 - [ ] Hierarki Skeleton humanoid kompatibel dengan UE5 Control Rig dan Animation Retargeting.
-- [ ] **Tri-Layer Biomechanical Shingling (ADR-041)**: Uji fleksi siku $145^\circ$ pada lengan es Kaelen terbukti bebas dari distorsi elastis/karet (*zero rubbery deformation*).
+- [ ] **Tri-Layer Biomechanical Shingling**: Uji fleksi siku $145^\circ$ pada lengan es Kaelen terbukti bebas dari distorsi elastis/karet, sesuai [anatomy-kinesiology.md](../04-art-3d/anatomy-kinesiology.md).
 - [ ] Rantai tulang syal (*5-Bone Spring Chain*) diuji pada 3 skenario gerakan (Idle, Jog, Evade Dash) tanpa clipping parah ke tubuh.
-- [ ] **Handoff Kain Syal & Pre-Roll (ADR-040)**: Transisi cutscene ke gameplay terbukti mulus via *Cloth Physical Blend Weight Curve* 0.5s dan *5-Frame Physics Pre-Roll Warm-Up*.
+- [ ] **Handoff Kain Syal & Pre-Roll**: Transisi cutscene ke gameplay terbukti mulus via *Cloth Physical Blend Weight Curve* 0.5s dan *5-Frame Physics Pre-Roll Warm-Up*, sesuai [style-guide.md](../04-art-3d/style-guide.md).
 - [ ] Animasi combat memiliki frame *anticipation*, *impact*, dan *follow-through* (12 Prinsip Animasi Disney).
 - [ ] **Hit-Stop GAS Presisi 50ms**: Durasi hentakan benturan `UAbilityTask_HitStop` terverifikasi konstan 50ms di 30 FPS, 60 FPS, maupun 120 FPS.
 - [ ] Locomotion Blend Tree berjalan mulus tanpa fenomena *foot sliding*.
@@ -78,12 +85,14 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 
 ---
 
-## 3. The 8-Stage Gate Process (Gerbang Milestone)
+## 3. Stage-Gate Roadmap
+
+Seluruh gate berikut adalah target roadmap. Status aktual gate harus dicatat di [project-status.md](../00-governance/project-status.md), tidak diinferensikan dari keberadaan checklist.
 
 ```
 [GATE 0: Pra-Produksi] ➔ GDD, Moodboard, Teori, Tools, QA Framework disahkan.
        ↓
-[GATE 1: Fondasi Teknis] ➔ Blender MCP + UE5 Python Scripting aktif, Naming standard terkunci.
+[GATE 1: Fondasi Teknis] ➔ Runtime project, toolchain yang diperlukan, dan naming standard diverifikasi.
        ↓
 [GATE 2: Grey-Box Prototype] ➔ Layout Sektor 1 kasar, Core Combat loop Playable.
        ↓
@@ -95,7 +104,7 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
        ↓
 [GATE 6: Beta] ➔ Feature complete, balancing kesulitan, playtest eksternal.
        ↓
-[GATE 7: Release Candidate] ➔ Final QC Pass, Steamworks Packaging, Steam Deck Verified.
+[GATE 7: Release Candidate] ➔ Final QC pass dan target distribusi/platform yang telah disetujui diverifikasi.
 ```
 
 ---
@@ -104,14 +113,14 @@ Setiap AI Agent dan developer wajib memverifikasi checklist berikut sebelum meny
 
 | Severity | Definisi | Contoh Kasus | Aturan Penanganan |
 |---|---|---|---|
-| 🔴 **Blocking** | Progres game terhenti total atau crash fatal. | Softlock di Altar Duka, crash saat streaming level. | Wajib difix instan sebelum gate berikutnya. |
-| 🟠 **Critical** | Merusak pengalaman inti gameplay/narasi. | Curse Meter tidak merespon damage, clipping parah cutscene. | Wajib difix sebelum masuk fase Beta. |
-| 🟡 **Major** | Mengganggu kenyamanan visual/audio tapi tidak merusak fungsi. | Transisi animasi kaku, ducking audio terlambat 1 detik. | Wajib difix sebelum Release Candidate. |
-| 🟢 **Minor** | Isu kosmetik ringan di area tersembunyi. | Tekstur resolusi rendah di sudut dinding terpencil. | Masuk backlog perbaikan berkala. |
+| 🔴 **P0 — Blocking** | Progress/build/test terhenti total, data rusak, atau risiko keamanan kritis. | Softlock, crash deterministik pada critical path, korupsi save. | Blokir release/gate terkait; prioritaskan triage segera. |
+| 🟠 **P1 — Critical** | Merusak pengalaman atau fungsi inti tanpa menghentikan seluruh eksekusi. | Sistem progres salah, clipping parah pada beat utama. | Harus diselesaikan sebelum gate yang bergantung padanya. |
+| 🟡 **P2 — Major** | Degradasi nyata tetapi ada workaround atau fungsi utama masih berjalan. | Transisi animasi kaku, audio ducking terlambat. | Jadwalkan sesuai milestone dan risiko regresi. |
+| 🟢 **P3 — Minor** | Isu kosmetik atau polish dengan dampak terbatas. | Tekstur kurang tajam pada area non-kritis. | Backlog terukur; tidak otomatis memblokir gate. |
 
 ### Format Wajib Pencatatan Bug
 Setiap bug yang ditemukan (di severity manapun) wajib dicatat dengan field terstruktur berikut, bukan sebagai catatan naratif bebas:
-- **ID & Severity**: Sesuai klasifikasi tabel di atas (contoh: `BUG-BLK-001`, `BUG-CRT-002`, `BUG-MAJ-003`, `BUG-MIN-004`).
+- **ID & Severity**: Sesuai klasifikasi tabel di atas (contoh: `BUG-P0-001`, `BUG-P1-002`, `BUG-P2-003`, `BUG-P3-004`).
 - **Langkah Reproduksi**: Urutan aksi persis untuk memicu bug (Langkah 1 ➔ Langkah 2 ➔ Langkah 3).
 - **Kondisi**: Sektor/area, versi build/commit git, platform/hardware (jika relevan).
 - **Status Lifecycle**: `Open` ➔ `Fixed` ➔ `Verified` (status `Fixed` tanpa `Verified` ulang oleh proses/agent penguji terpisah TIDAK dianggap selesai dan tidak boleh menutup item di Stage-Gate manapun).
@@ -120,14 +129,15 @@ Setiap bug yang ditemukan (di severity manapun) wajib dicatat dengan field terst
 
 ## 5. Protokol Verifikasi AI Agent & Anti-Theater
 
-1. **Observability-First Mandate**: AI Agent wajib memanggil tool inspeksi sebelum melakukan modifikasi file atau ekspor 3D.
-2. **No Auto-Merge**: Seluruh kode, mesh, dan blueprint dari AI Agent harus melalui review dan verifikasi fisik di editor.
-3. **Wajib Bukti Fisik Konkret**: Setiap laporan selesai wajib menyertakan path file aktual, data parameter numerik, atau screenshot visual.
-4. **Larangan Self-Grading**: AI Agent yang membuat/mengedit suatu aset, sistem, atau dokumen **DILARANG** menulis status "✅ Lolos QC", "Passed", atau "100% Terverifikasi" pada laporan yang ia buat sendiri untuk hasil kerjanya sendiri. Status maksimal yang boleh ditulis AI pembuat adalah **"Ready for QC / Menunggu Verifikasi"**. Status "Verified/Lolos" hanya boleh dicantumkan setelah proses QC dijalankan sebagai langkah terpisah (baik oleh reviewer manusia, atau oleh instruksi AI yang eksplisit diminta mencari masalah, bukan mengonfirmasi kelengkapan).
+1. **Inspect Before Mutate**: inspeksi target state dilakukan bila lingkungan/tool mendukungnya dan relevan terhadap risiko perubahan.
+2. **Kriteria Sebelum Eksekusi**: acceptance criteria dan bukti yang diperlukan ditentukan sebelum klaim selesai.
+3. **Bukti Domain-Appropriate**: gunakan diff dan link-check untuk dokumen, test/log untuk kode, inspeksi state untuk Blender, dan editor/build/artifact untuk Unreal. Path lokal atau screenshot tunggal tidak selalu cukup.
+4. **Verification Activity Terpisah**: setelah implementasi, jalankan langkah yang bertujuan mencari kegagalan terhadap target aktual. Pemisahan aktivitas lebih penting daripada identitas agen; untuk perubahan berisiko tinggi, review manusia atau reviewer independen tetap diperlukan.
+5. **Verdict Terbatas Bukti**: `VERIFIED` hanya sah untuk acceptance criteria yang benar-benar diamati. Area yang tidak diuji tetap `UNKNOWN` atau `NOT_EXECUTED`.
 
 ---
 
-## 6. Validasi Emosional & Playtesting Manusia (Lihat [emotional-playtesting.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/emotional-playtesting.md))
+## 6. Validasi Emosional & Playtesting Manusia (Lihat [emotional-playtesting.md](emotional-playtesting.md))
 - **Fungsional vs Emosional**: Pengujian teknis 6-DoD memastikan game bebas bug, sedangkan validasi emosional memastikan tema 5 Tahap Berduka dirasakan secara otentik oleh pemain.
 - **Kerangka Intended vs Perceived Emotion**: Menganalisis kesenjangan (*gap analysis*) antara emosi yang dirancang dengan respon alami playtester.
 - **Mandat Batasan AI Agent**: Kepatuhan teknis AI terhadap parameter desain **TIDAK MENGGANTIKAN** validasi emosional playtester manusia. Setiap beat naratif kunci wajib ditandai status `[Needs Human Playtest Validation]`.
@@ -163,6 +173,6 @@ QC yang hanya memverifikasi checklist DoD (kepatuhan terhadap spesifikasi) TIDAK
    - Jika laporan QC melaporkan "Nol Bug" pada percobaan pertama suatu sistem yang baru dibuat/diubah, statusnya **WAJIB** ditandai sebagai:  
      `⚠️ First-Pass Clean — Perlu Verifikasi Independen`  
      (DILARANG langsung memberi status `Verified / Approved`).
-   - Status **`Verified`** penuh baru sah diberikan setelah minimal 2 sesi QC terpisah (dengan skenario adversarial berbeda) sama-sama tidak menemukan masalah.
+   - Status `VERIFIED` baru sah setelah kriteria penerimaan, observed target state, dan bukti independen mencukupi. Jumlah sesi ditentukan oleh risiko dan domain; satu angka universal tidak menggantikan kualitas bukti.
 4. **Pelacakan Pola Mencurigakan (Meta-Audit Trigger)**:
    - Jika 3 laporan QC berturut-turut (untuk sistem berbeda) semuanya melaporkan "Nol Bug", ini **WAJIB memicu audit meta** terhadap kriteria QC — mengevaluasi apakah penguji/AI terlalu pasif atau bias meloloskan tanpa pengujian mendalam.

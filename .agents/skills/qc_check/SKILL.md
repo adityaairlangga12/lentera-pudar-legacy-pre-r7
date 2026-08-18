@@ -1,6 +1,6 @@
 ---
 name: qc_check
-description: "Standar eksekusi Quality Control (QC Gate) Komersial / Steam-Ready Grade via perintah /qc-check untuk 3D Action RPG (Unreal Engine 5 + Blender 5.2 LTS). Menjalankan 6 Pilar Definition of Done (DoD), 4-Tier Inspection, dan Klasifikasi Severity Bug."
+description: "Panduan project-local untuk QC adversarial, evidence review, Definition of Done, dan klasifikasi severity P0–P3 sesuai capability yang tersedia."
 ---
 
 # Commercial Release Quality Control (3D QC Gate Protocol)
@@ -8,7 +8,7 @@ description: "Standar eksekusi Quality Control (QC Gate) Komersial / Steam-Ready
 ## Purpose
 Skill ini mengatur **prosedur eksekusi Quality Control (QC Gate)** tingkat komersial (Steam-Ready Grade) untuk memverifikasi aset 3D, armature rig, material shader, skrip gameplay, level, dan audio di semesta *Lentera Pudar*.
 
-Seluruh kriteria penerimaan, parameter numerik baku, dan 6 Pilar Definition of Done (DoD) diatur secara kanonikal di [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) dan [style-guide.md](references/04-art-3d/style-guide.md).
+Seluruh kriteria penerimaan, parameter numerik, dan Definition of Done diatur di [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md) dan [style-guide.md](../../../references/04-art-3d/style-guide.md).
 
 ---
 
@@ -26,12 +26,12 @@ Seluruh kriteria penerimaan, parameter numerik baku, dan 6 Pilar Definition of D
 ---
 
 ## Canonical Dependencies
-- [references/06-pipeline-qc/qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) — 6 Pilar DoD (A s.d. F), 8-Stage Gate & Kriteria Verifikasi Baku.
-- [references/04-art-3d/style-guide.md](references/04-art-3d/style-guide.md) — Parameter Presisi Numerik, Palet The Triad & Konstanta Visual.
-- [references/06-pipeline-qc/sop-workflow.md](references/06-pipeline-qc/sop-workflow.md) — 7 SOP Operasional.
-- [references/06-pipeline-qc/qc-patterns.md](references/06-pipeline-qc/qc-patterns.md) — Anti-Pattern & Root Cause Registry.
-- [references/06-pipeline-qc/few-shot-calibration.md](references/06-pipeline-qc/few-shot-calibration.md) — Benchmark Mutu Few-Shot.
-- [references/06-pipeline-qc/emotional-playtesting.md](references/06-pipeline-qc/emotional-playtesting.md) — Gate Validasi Emosional.
+- [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md) — DoD, stage gates, severity, dan verification contract.
+- [style-guide.md](../../../references/04-art-3d/style-guide.md) — Parameter numerik dan visual.
+- [sop-workflow.md](../../../references/06-pipeline-qc/sop-workflow.md) — SOP dan capability gate.
+- [qc-patterns.md](../../../references/06-pipeline-qc/qc-patterns.md) — Pattern registry dengan evidence status.
+- [few-shot-calibration.md](../../../references/06-pipeline-qc/few-shot-calibration.md) — Contoh non-evidence.
+- [emotional-playtesting.md](../../../references/06-pipeline-qc/emotional-playtesting.md) — Gate playtest manusia yang belum dieksekusi.
 
 ---
 
@@ -53,23 +53,23 @@ flowchart TD
 ```
 
 ### 1. Tier 1: 3D Visual & Material Fidelity
-- Validasi palet warna The Triad, nilai Kelvin pencahayaan, dan parameter PBR terhadap [style-guide.md](references/04-art-3d/style-guide.md).
+- Validasi palet warna The Triad, nilai Kelvin pencahayaan, dan parameter PBR terhadap [style-guide.md](../../../references/04-art-3d/style-guide.md).
 - Validasi texel density dan kualitas shading dari minimal 2 sudut cahaya.
 - Verifikasi konsistensi asimetri geometris 3D dan integritas deformasi siku (*Tri-Layer Shingling*).
 
 ### 2. Tier 2: Functional & Runtime Performance
-- Verifikasi nol error konsol, zero softlock, dan konsistensi frame rate target pada scene terpadat merujuk ke [qa-qc-framework.md](references/06-pipeline-qc/qa-qc-framework.md) DoD B & C.
+- Verifikasi error konsol, softlock, dan frame rate hanya ketika runtime tersedia; rujuk [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md).
 - Validasi siklus lokomosi, simulasi fisika kain (Chaos Cloth), dan konsistensi hit-stop gameplay.
 
 ### 3. Tier 3: Input, Audio & Platform Compliance
 - Validasi dukungan kontrol ganda (Gamepad / Keyboard+Mouse) dengan button glyphs dinamis.
 - Verifikasi integritas save/load data atomic.
-- Validasi normalisasi loudness audio, ducking, dan tata suara spasial 3D merujuk ke [style-guide.md](references/04-art-3d/style-guide.md) Bab 10.
-- Validasi aksesibilitas UI/UX (mode buta warna, closed captions, text scaling) merujuk ke [ui-ux-accessibility.md](references/02-gameplay/ui-ux-accessibility.md).
+- Validasi audio merujuk ke [style-guide.md](../../../references/04-art-3d/style-guide.md) Bab 10.
+- Validasi aksesibilitas merujuk ke [ui-ux-accessibility.md](../../../references/02-gameplay/ui-ux-accessibility.md).
 
 ### 4. Tier 4: Rigging, Bone Roll & Export Integrity
 - Validasi transform mesh ter-apply 100% (`Location=0, Rotation=0, Scale=1`).
-- Verifikasi pembacaan bony landmarks, konsistensi bone roll, dan ketiadaan artefak pinching pada fleksi sendi ekstrem merujuk ke [anatomy-kinesiology.md](references/04-art-3d/anatomy-kinesiology.md).
+- Verifikasi bony landmarks, bone roll, dan deformasi merujuk ke [anatomy-kinesiology.md](../../../references/04-art-3d/anatomy-kinesiology.md).
 
 ### 5. Gate Validasi Emosional
 - Evaluasi keselarasan *Intended vs Perceived* terhadap momen naratif.

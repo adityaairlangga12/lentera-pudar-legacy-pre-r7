@@ -10,7 +10,7 @@ Skill ini mengatur **protokol interaksi, dekonstruksi intent pengguna, evaluasi 
 
 ITS v2 dirancang agar AI tangguh dalam memahami prompt pengguna yang informal, singkat, atau ambigu tanpa mengarang asumsi sepihak, menyelaraskan otoritas data secara dinamis, dan memberikan pengalaman interaksi profesional tanpa kebisingan seremonial (*zero protocol theater*).
 
-Kebijakan integritas global, tata kelola sumber kebenaran, dan batasan operasional umum diatur secara kanonikal di [master-index.md](../../../references/01-core/master-index.md) dan [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md).
+Kebijakan integritas global, tata kelola authority scope, dan batas operasional diatur di [master-index.md](../../../references/00-governance/master-index.md) dan [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md). File skill ini tidak otomatis aktif hanya karena ada di repository.
 
 ---
 
@@ -28,9 +28,9 @@ Kebijakan integritas global, tata kelola sumber kebenaran, dan batasan operasion
 ---
 
 ## Canonical Dependencies
-- [master-index.md](../../../references/01-core/master-index.md) — SSoT Governance Hub, Otoritas Berbasis Lingkup & Peta Navigasi 6-Domain.
+- [master-index.md](../../../references/00-governance/master-index.md) — Router authority scope dan peta navigasi.
 - [ai-agent-methodology.md](../../../references/06-pipeline-qc/ai-agent-methodology.md) — Kebijakan Anti-Halusinasi, Distingsi Status Kebenaran & Prinsip Observability-First.
-- [design-decisions.md](../../../references/01-core/design-decisions.md) — Rekam Jejak Keputusan Arsitektur (ADR).
+- [ADR register](../../../references/00-governance/adr/README.md) — Rekam jejak keputusan arsitektur aktif.
 - [qa-qc-framework.md](../../../references/06-pipeline-qc/qa-qc-framework.md) — Kerangka Verifikasi Baku & 6 Pilar Definition of Done.
 - [tools-mcp-stack.md](../../../references/06-pipeline-qc/tools-mcp-stack.md) — Kontrak API MCP & Status Implementasi Perkakas.
 
@@ -69,8 +69,8 @@ AI mengurai maksud pengguna ke dalam kombinasi primitif penalaran internal berik
 
 ## Resolusi Konteks & Otoritas (*SSoT Consumption*)
 
-1. **Global Minimum Context + Relevant On-Demand Knowledge**: Identifikasi domain tugas dan muat hanya dokumen pemilik kanonikal domain terkait merujuk ke [master-index.md](../../../references/01-core/master-index.md) §1.2.
-2. **Konsumsi Otoritas ADR**: Periksa apakah ada ADR berstatus `ACCEPTED` yang secara eksplisit mengatur topik terkait. Jika ada, ADR berlaku sebagai SSoT. Jika tidak, dokumen pemilik domain berlaku.
+1. **Global Minimum Context + Relevant On-Demand Knowledge**: Identifikasi domain tugas dan muat dokumen owner scope terkait dari [master-index.md](../../../references/00-governance/master-index.md).
+2. **Konsumsi Otoritas ADR**: ADR `ACCEPTED` berlaku hanya pada keputusan dan scope yang dinyatakannya; fakta domain lain tetap dimiliki dokumen owner scope.
 3. **Normalisasi Unit Numerik Sebelum Deklarasi Konflik**:
    - Sebelum menyatakan adanya pertentangan angka, lakukan normalisasi unit dan basis skala waktu/frame rate:
      $$\text{Contoh: } 3\text{ frame pada basis 60fps} = 3 \times \frac{1000\text{ms}}{60} = 50\text{ms} \longrightarrow \text{Ekuivalen Semantik (Nol Konflik)}.$$
@@ -108,7 +108,7 @@ Risiko ditentukan oleh **dampak semantik, blast radius, dan reversibilitas**, bu
        - Penghapusan dokumen kanonikal, penimpaan file kerja tanpa commit, `git reset --hard`, `git push --force`.
        - *Protokol*: Tampilkan rincian blast radius, keterbatasan rollback, dan wajibkan konfirmasi persetujuan eksplisit pengguna.
     2. **Pintu Persetujuan Tata Kelola / Desain (*Governance Approval Gate*)**:
-       - Perubahan kebijakan inti pada `AGENTS.md`, penambahan/pengubahan ADR di `design-decisions.md`, atau perubahan invarian arsitektur proyek.
+       - Perubahan kebijakan inti pada `AGENTS.md`, penambahan/pengubahan ADR aktif, atau perubahan invarian arsitektur proyek.
        - *Protokol*: Sajikan evaluasi dampak keputusan, usulan formulasi aturan baru, dan minta persetujuan manusia sebelum implementasi.
 
 ---
@@ -122,7 +122,7 @@ $$\text{DOCUMENTED} \longrightarrow \text{IMPLEMENTED} \longrightarrow \text{AVA
    - Keberadaan skema tool tidak menjamin fungsi backend aktif (`STUB` mock $\neq$ Implemented).
    - Ketersediaan proses server perkakas bersifat dinamis dan wajib dikonfirmasi pada runtime aktif saat eksekusi.
 2. **Ketiadaan Kapabilitas $\neq$ Penolakan Kebijakan (*Unavailable $\neq$ Refusal*)**:
-   - Jika perkakas runtime tidak tersedia (misal: Unreal Engine MCP berstatus `PLANNED` `_TODO_lentera-ue5` atau tool Blender berstatus `STUB`) $\rightarrow$ **BLOKIR EKSEKUSI TOOL**, jelaskan batasan kapabilitas secara jujur, dan tawarkan alternatif yang layak (misal: penyediaan skrip manual).
+   - Jika perkakas runtime tidak tersedia (misal: Unreal MCP `NOT_STARTED / UNAVAILABLE / PLANNED` atau tool Blender deferred) → **blokir execution path tersebut**, jelaskan batas capability, dan tawarkan alternatif yang tidak mengarang hasil eksekusi.
    - Kata *Refuse / Tolak* dicadangkan khusus untuk pelanggaran kebijakan tata kelola atau invarian aktif.
 
 ---

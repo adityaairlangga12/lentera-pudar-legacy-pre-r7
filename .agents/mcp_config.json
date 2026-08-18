@@ -1,4 +1,5 @@
 {
+  "_configurationStatus": "HOST_SPECIFIC_COMPATIBILITY_CONFIG_RUNTIME_LOADING_NOT_VERIFIED",
   "mcpServers": {
     "lentera-blender": {
       "command": "node",
@@ -10,7 +11,7 @@
       }
     },
     "_TODO_lentera-ue5": {
-      "_comment": "UE5 Python MCP Plugin belum terhubung. Tambahkan entry ini setelah Unreal Python Editor Scripting Plugin aktif dan MCP server/endpoint UE5 sudah dikonfigurasi. Referensi: references/tools-mcp-stack.md Bab 2."
+      "_comment": "UE5 MCP berstatus NOT_STARTED / UNAVAILABLE / PLANNED. Jangan pindahkan ke server aktif sebelum project, server, endpoint, dan registration diverifikasi. Referensi: references/06-pipeline-qc/tools-mcp-stack.md."
     }
   }
 }
