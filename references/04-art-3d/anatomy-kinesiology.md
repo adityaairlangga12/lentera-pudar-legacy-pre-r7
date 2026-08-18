@@ -1,11 +1,11 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: SPECIFICATION
 authority_scope: art.biomechanics
 canonical: true
-introduced_by: ADR-019
+owner: character-art-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Anatomi Manusia & Kinesiologi — Lentera Pudar Master Reference
 ### Acuan Ilmiah Sculpting, Biomechanical Rigging, Kinetic Chain Combat, & 8-Fase Lokomosi
@@ -159,19 +159,19 @@ Untuk mencegah kecacatan visual di mana material kristal es padat melar elastis 
 ```
 
 1. **Layer 1 (Daging & Urat Subsurface)**:
-   - Daging lengan di bawah balutan es menggunakan *smooth skinning* standar dengan deformasi elastis alami, dihiasi material urat es biru yang berdenyut reaktif sesuai nilai `Curse_Spread`.
+   - Spesifikasi target menggunakan *smooth skinning* standar untuk daging lengan di bawah balutan es, dengan deformasi elastis alami dan desain material urat es biru yang bereaksi terhadap nilai `Curse_Spread`.
 2. **Layer 2 (Kluster Prisma Utama — Rigid 100% Weight)**:
-   - Prisma kristal es di sepanjang *humerus* dan *radius/ulna* di-weight $100\%$ kaku ke bone `upperarm_l` dan `lowerarm_l` masing-masing tanpa gradient falloff, mempertahankan sifat getas dan solid kristal es.
+   - Prisma kristal es di sepanjang *humerus* dan *radius/ulna* ditargetkan memiliki weight $100\%$ kaku ke bone `upperarm_l` dan `lowerarm_l` masing-masing tanpa gradient falloff, untuk mempertahankan sifat getas dan solid kristal es.
 3. **Layer 3 (Engsel Siku & Pergelangan — Olecranon Shingle System)**:
-   - Pada pivot sendi siku (*Olecranon Landmark*) dan pergelangan tangan (*Styloid Landmark*), kristal dimodelkan sebagai **lempeng prisma bertingkat (*interlocking geological shingles*)**. Saat siku ditekuk $\ge 90^\circ$, prisma lengan bawah meluncur masuk ke bawah prisma lengan atas secara mekanis mulus. Saat lengan lurus, lempeng kembali mengunci rapat tanpa meninggalkan celah kosong.
+   - Pada pivot sendi siku (*Olecranon Landmark*) dan pergelangan tangan (*Styloid Landmark*), kristal dirancang sebagai **lempeng prisma bertingkat (*interlocking geological shingles*)**. Target deformasinya: saat siku ditekuk $\ge 90^\circ$, prisma lengan bawah meluncur masuk ke bawah prisma lengan atas secara mekanis mulus; saat lengan lurus, lempeng kembali mengunci rapat tanpa meninggalkan celah kosong.
 4. **Efek Mikro-Friction Niagara (`FX_CrystalJointFriction`)**:
-   - Pemancaran partikel debu uap es beku halus pada titik gesekan engsel siku saat terjadi ekstensi/fleksi kecepatan tinggi (serangan pukulan dan parry).
+   - Desain VFX menargetkan partikel debu uap es beku halus pada titik gesekan engsel siku saat terjadi ekstensi/fleksi kecepatan tinggi (serangan pukulan dan parry). Implementasi Niagara belum dimulai.
 
 ---
 
 ## 8. Batas Rotasi Sendi Realistis (Joint Constraint Limits)
 
-Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
+Batasan rotasi anatomis dirancang untuk dikunci pada sistem Control Rig dan IK Solvers di engine target:
 
 | Sendi | Rentang Rotasi Wajar | Catatan Biomekanik |
 |---|---|---|
@@ -185,7 +185,7 @@ Batasan rotasi anatomis wajib dikunci pada UE5 Control Rig dan IK Solvers:
 
 ---
 
-## 9. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/human-facial-expressions.md))
+## 9. Anatomi Wajah, FACS & Bahasa Emosi (Lihat [human-facial-expressions.md](human-facial-expressions.md))
 - **Otot Wajah Subkutan**: Frontalis, Corrugator Supercilii, Orbicularis Oculi, Zygomaticus Major, Depressor Anguli Oris, dan Mentalis.
 - **FACS Action Units (AU)**: Rigging shape keys berbasis AU (`AU1`, `AU4`, `AU6`, `AU12`, `AU15`, `AU17`, `AU43`).
 - **Duchenne Marker**: Pembeda senyum tulus (`AU6+AU12`) vs senyum topeng sosial (`AU12` tanpa `AU6`).

@@ -1,11 +1,10 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
-authority_scope: foundations.mathematics
-canonical: true
-authority_set: foundations.scientific
+type: REFERENCE
+canonical: false
+owner: technical-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Matematika Tingkat Expert — Lentera Pudar Master Reference
 ### Acuan Matematika Vektor, Quaternion SLERP, Cubic Bezier, Arc-Length Spline, SDF, & Fractal Noise
@@ -83,4 +82,4 @@ authority_set: foundations.scientific
 - **Automata Formal**: 5-tuple $(S, \Sigma, \delta, s_0, F)$ untuk Character Combat Controller Kaelen ($S = \{\text{Idle}, \text{Attack}, \text{Recovery}\}$).
 - **Hierarchical State Machine (HSM) & Behavior Tree**:
   - Mengelompokkan sub-state untuk mencegah ledakan kombinatorial transisi ($S \times S$).
-  - Digunakan pada AI musuh jiwa beku dan pola bertarung Boss 5 Sektor di Unreal Engine 5.
+  - Behavior Tree dan HSM merupakan kandidat struktur representasi logika untuk AI musuh dan boss; arsitektur runtime konkret belum diaudit.

@@ -1,11 +1,11 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: SPECIFICATION
 authority_scope: art.environment_modular
 canonical: true
-introduced_by: ADR-020
+owner: environment-art-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Teknik Tambahan — Lentera Pudar: 3D Action RPG Edition
 ### Pelengkap Praktis 3D Production Pipeline: Trim Sheets, Texel Density, Modular Kit & Color Grading
@@ -23,10 +23,10 @@ introduced_by: ADR-020
 ---
 
 ## 2. Vertex Color Masking & Render Target Dynamic Thawing
-- **Konsep**: Memanfaatkan channel warna titik vertex (RGBA) dan Render Target Mask untuk memadukan dua set shader PBR pada satu mesh tunggal tanpa seam.
+- **Konsep Kandidat**: Memanfaatkan channel warna titik vertex (RGBA) dan Render Target Mask untuk memadukan dua set shader PBR pada satu mesh tunggal tanpa seam; implementasi runtime belum ditetapkan.
 - **Aplikasi di Altar Duka**:
-  - Saat Altar Duka dinyalakan, Blueprint memproyeksikan mask radius pemuaian ke Render Target / Vertex Color lantai.
-  - Channel Mask mengontrol transisi live: kristal es retak (`#4A6FA5`, Roughness 0.22) mencair menjadi batu hangat kering (`#5C5A55`, Roughness 0.75).
+  - Saat Altar Duka dinyalakan, mekanisme interaksi dirancang memproyeksikan mask radius pemuaian ke Render Target / Vertex Color lantai (arsitektur runtime konkret dievaluasi pada H1).
+  - Desain channel mask menargetkan kontrol transisi live: kristal es retak (`#4A6FA5`, Roughness 0.22) mencair menjadi batu hangat kering (`#5C5A55`, Roughness 0.75).
   - Mencegah kebutuhan penggantian (*swap*) static mesh yang kasar dan menghasilkan transisi sinematik ala *Deadzone Regrowth* Kena.
 
 ---
@@ -52,12 +52,12 @@ introduced_by: ADR-020
 - **Target Baku Lentera Pudar**:
   - **Hero Kaelen & Boss Utama**: **$512\text{ px/m}$** (resolusi tinggi tajam untuk close-up kamera).
   - **Aset Environment & Props Umum**: **$256\text{ px/m}$** (keseimbangan optimal ketajaman vs VRAM).
-- **Kepatuhan**: Menjadi checklist wajib pada DoD Model 3D ([qa-qc-framework.md](file:///d:/GodotProjects/Lentera-Pudar/references/06-pipeline-qc/qa-qc-framework.md) Bab 2.A) untuk mencegah kontras blur antar prop berdampingan.
+- **Kepatuhan**: Menjadi checklist wajib pada DoD Model 3D ([qa-qc-framework.md](../06-pipeline-qc/qa-qc-framework.md) Bab 2.A) untuk mencegah kontras blur antar prop berdampingan.
 
 ---
 
 ## 6. Color Grading & Post-Process Look-Up Tables (LUT)
-- **Konsep**: Menerapkan koreksi warna, kurva kontras, dan kurva desaturasi global melalui file LUT 3D di dalam *Unreal Engine PostProcessVolume*.
+- **Konsep**: Dirancang untuk menerapkan koreksi warna, kurva kontras, dan kurva desaturasi global melalui file LUT 3D pada *post-process* Unreal Engine 5.
 - **Pemetaan Sektor Duka**:
   - `LUT_Sector01_Denial`: Saturasi 100%, kontras dingin-hangat seimbang.
   - `LUT_Sector02_Anger`: Saturasi 85%, rona kemerahan dingin tajam.

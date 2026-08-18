@@ -1,11 +1,11 @@
 ---
 status: ACTIVE
-type: TECHNICAL_SPEC
+type: REFERENCE
 authority_scope: foundations.physics
-canonical: true
-authority_set: foundations.scientific
+canonical: false
+owner: technical-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Fisika Tingkat Expert — Lentera Pudar Master Reference
 ### Acuan Fisika Rigid Body, XPBD Cloth Dynamics, Voronoi Fracture, SPH Fluida, & Light Transport
@@ -50,8 +50,8 @@ authority_set: foundations.scientific
 
 ## 4. Dinamika Fluida Disederhanakan (Real-Time Approximations)
 - **Eulerian Grid-Based Approximation**: Solusi murah untuk efek uap dingin dan embun beku.
-- **Smoothed Particle Hydrodynamics (SPH Disederhanakan)**: Modul partikel fluida ringan di UE5 Niagara untuk percikan partikel lentera.
-- **Flipbook Textures**: Simulasi fluida offline yang di-bake ke flipbook atlas 2D untuk efek pencairan es berulang tanpa beban komputasi runtime.
+- **Smoothed Particle Hydrodynamics (SPH Disederhanakan)**: Modul partikel fluida ringan sebagai kandidat simulasi partikel uap dan percikan lentera.
+- **Flipbook Textures**: Simulasi fluida offline yang di-bake ke flipbook atlas tekstur planar untuk efek pencairan es berulang tanpa beban komputasi runtime.
 - **Shallow Water Equations (SWE)**: Simulasi riak genangan air hasil lelehan es di lantai dungeon.
 
 ---

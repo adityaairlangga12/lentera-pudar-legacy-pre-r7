@@ -1,17 +1,17 @@
 ---
 status: ACTIVE
-type: DESIGN_SPEC
+type: SPECIFICATION
 authority_scope: narrative.script
-canonical: false
-introduced_by: ADR-036
+canonical: true
+owner: narrative-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Skenario & Naskah Step-by-Step Tutorial Prolog Onboarding — Lentera Pudar Master Reference
 ### Alur Pembelajaran Mekanik Diegetik Non-Verbal (Teaching Through Geometry & Organic Onboarding)
 
 > **Dokumen Sumber Kebenaran Skenario Tutorial Prolog (*Prologue Tutorial Script Reference*)**  
-> Melengkapi [theory-reference.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/theory-reference.md) (Bab 2.A), [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md) (Bab 3), [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md) (Bab 2), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md) (Bab IV & V), dan [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md). Menetapkan alur langkah-demi-langkah pengenalan seluruh kontrol dan mekanik dasar dari detik pertama Kaelen membuka mata hingga memasuki gerbang Sektor 1 (*The Silent Crypts*).
+> Melengkapi [theory-reference.md](../07-foundations/theory-reference.md) (Bab 2.A), [enemy-design-balancing.md](../02-gameplay/enemy-design-balancing.md) (Bab 3), [ui-ux-accessibility.md](../02-gameplay/ui-ux-accessibility.md) (Bab 2), [game-design-document.md](../01-core/game-design-document.md) (Bab IV & V), dan [style-guide.md](../04-art-3d/style-guide.md). Menetapkan alur langkah-demi-langkah pengenalan seluruh kontrol dan mekanik dasar dari detik pertama Kaelen membuka mata hingga memasuki gerbang Sektor 1 (*The Silent Crypts*).
 
 ---
 
@@ -165,5 +165,5 @@ Tutorial semesta *Lentera Pudar* dirancang dengan 3 pilar utama:
 
 - [ ] Seluruh transisi antar-langkah berlangsung *seamless* tanpa layar pemuatan (*loading screen*) atau pop-up teks tutorial yang membekukan gameplay.
 - [ ] Jendela parry pada Langkah 4 terkalibrasi presisi pada 12 frame (0.2 detik @60fps) dengan jeda hit-stop 3 frame.
-- [ ] Efek rambatan es pada Langkah 3 dan pembukaan mata pada Langkah 5 terhubung langsung ke parameter *Curse Meter* MPC di engine Unreal Engine 5.
+- [ ] Efek rambatan es pada Langkah 3 dan pembukaan mata pada Langkah 5 dirancang terhubung ke parameter visual *Curse Meter* pada integrasi engine.
 - [ ] Pengorbanan syal pada Langkah 6 memicu perubahan skeletal mesh/cloth collision syal Kaelen secara permanen dan menyimpan save-state di disk.

@@ -1,17 +1,17 @@
 ---
 status: ACTIVE
-type: DESIGN_SPEC
+type: SPECIFICATION
 authority_scope: gameplay.ambient_world
-canonical: false
-introduced_by: ADR-033
+canonical: true
+owner: world-team
+last_reviewed: 2026-08-18
 ---
-
 
 # NPC Ambient & Kehidupan Lingkungan — Lentera Pudar Master Reference
 ### Perilaku NPC Latar, Ekosistem Satwa Spasial, Reaktivitas Lingkungan (*World Awareness*), & Karakter Sampingan
 
 > **Dokumen Sumber Kebenaran Kehidupan Lingkungan (*Ambient World Life Reference*)**  
-> Melengkapi [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md), [game-design-document.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/game-design-document.md), [expert-psychology.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/psychology.md), dan [creative-vision.md](file:///d:/GodotProjects/Lentera-Pudar/references/01-core/creative-vision.md). Menetapkan lapisan keempat dunia *Lentera Pudar*: **"Kehidupan yang terus berjalan tanpa menunggu pemain."**
+> Melengkapi [level-design-storytelling.md](level-design-storytelling.md), [game-design-document.md](../01-core/game-design-document.md), [expert-psychology.md](../07-foundations/psychology.md), dan [creative-vision.md](../01-core/creative-vision.md). Menetapkan lapisan keempat dunia *Lentera Pudar*: **"Kehidupan yang terus berjalan tanpa menunggu pemain."**
 
 ---
 

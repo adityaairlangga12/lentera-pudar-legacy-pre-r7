@@ -1,11 +1,11 @@
 ---
 status: ACTIVE
-type: DESIGN_SPEC
+type: SPECIFICATION
 authority_scope: project.identity
 canonical: true
-governed_by: ADR-013
+owner: game-design-team
+last_reviewed: 2026-08-18
 ---
-
 
 # Game Design Document (GDD) — Lentera Pudar: 3D Action RPG Master Bible
 
@@ -33,7 +33,7 @@ governed_by: ADR-013
 - **Judul Resmi**: *Lentera Pudar — The First Spark* (Seri Pembuka Semesta Lentera Pudar).
 - **Genre**: 3D Third-Person Action-Adventure RPG (Stylized-Realistic / Poetic Dark Fantasy).
 - **Target Platform**: PC Windows (Steam-Ready), Steam Deck, dan Controller Support penuh.
-- **Engine & Pipeline**: Unreal Engine 5 (UE5 Pipeline, Nanite, Lumen GI, Niagara, Chaos Cloth) + Blender 5.2 LTS.
+- **Target Engine & Pipeline**: Unreal Engine 5 (kandidat teknologi: Nanite, Lumen GI, Niagara, Chaos Cloth) + Blender 5.2 LTS. Unreal project belum diinisialisasi dan arsitektur implementasinya belum diaudit.
 - **Target Performa**: Solid 60 FPS / 120 FPS pada resolusi 1080p, 1440p, dan 4K ($99^{th}\text{ percentile frame time} < 16.6\text{ ms}$).
 
 ### 1.2 Cetak Biru Arsitektur Dual-Layer (*The Dual-Layer Benchmark Architecture*)
@@ -86,7 +86,7 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 3. **The Drifters (Para Pengelana — Seperti Kaelen)**: Terjebak di batas kenyataan: separuh tubuh mati rasa oleh es, separuh tubuh menahan perihnya api lentera.
 
 ### 2.3 Pemetaan 5 Sektor Dungeon (Model Kübler-Ross & Environmental Storytelling)
-*Detail tata ruang spasial, verticality, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/level-design-storytelling.md).*
+*Detail tata ruang spasial, verticality, breadcrumbing diegetik, dan simbiosis arena FSM merujuk pada [level-design-storytelling.md](../02-gameplay/level-design-storytelling.md).*
 
 ```
 [Sektor 1: DENIAL] ➔ [Sektor 2: ANGER] ➔ [Sektor 3: BARGAINING] ➔ [Sektor 4: DEPRESSION] ➔ [Sektor 5: ACCEPTANCE]
@@ -101,7 +101,7 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 | **Sektor 5** | **Acceptance** (Penerimaan) | *The Dawning Altar* | Puncak menara di mana fajar pertama menembus badai es abadi. Ruang lapang terbuka dengan sightline panjang menuju Benua Luar (*Overworld*). | **The Sovereign of Dawn** (Ujian akhir rekonsiliasi batin). |
 
 ### 2.4 Kehidupan Lingkungan & Reaktivitas Dunia (*Ambient World Life & Local World Awareness*)
-*Spesifikasi perilaku NPC latar, ekosistem satwa duka, dan persistensi lokal merujuk pada [ambient-world-life.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ambient-world-life.md).*
+*Spesifikasi perilaku NPC latar, ekosistem satwa duka, dan persistensi lokal merujuk pada [ambient-world-life.md](../02-gameplay/ambient-world-life.md).*
 - **Kontras Dunia Netral**: Dunia tetap hidup dan bergerak netral, mempertegas kontras dengan beban batin Kaelen.
 - **Rutinitas NPC Ambient**: 2–3 idle actions asinkron dengan kontak mata singkat halus saat Kaelen melintas.
 - **Ekosistem Satwa Spasial**: Perilaku satwa latar mencerminkan tahap duka (Denial: pola berulang; Anger: panik kabur; Acceptance: hinggap tenang).
@@ -131,7 +131,7 @@ Kutukan Pudar bukan sekadar es fisik atau sihir kutukan iblis. Pudar adalah **pe
 
 ### 3.2 Sang Pelindung Abadi: Aina (Jiwa di Balik Syal Kuning)
 - **The Fading Scarf (`#F4B860` 2700K)**: Syal kain emas melingkar di leher Kaelen, memancarkan cahaya hangat lembut yang menerangi lingkungan 3D dungeon.
-- **Simulasi Fisika Kain Dinamis**: Menggunakan *Cloth Simulation & Spring Bones* (5-bone chain di Blender) sehingga syal berkibar anggun mengikuti gravitasi, inersia langkah kaki, dan tiupan angin badai es.
+- **Simulasi Fisika Kain Dinamis**: Desain target menggunakan *Cloth Simulation & Spring Bones* (5-bone chain) agar syal dapat berkibar mengikuti gravitasi, inersia langkah kaki, dan tiupan angin badai es; implementasi Unreal belum dimulai.
 - **Mekanik Naratif: *4 Stages of Sacrifice***:
   Setiap kali Kaelen menyalakan Altar Duka di akhir sektor dungeon, nyala api menyerap jiwa Aina, menyebabkan panjang syal memendek secara permanen (Panjang ➔ Sedang ➔ Pendek ➔ Koyak/Fragmen).
 
@@ -153,7 +153,7 @@ flowchart LR
 
 ### 4.1 Pertumbuhan Es Fisik (*The Curse Spread / The Darkness*)
 - Tidak ada health/curse bar konvensional yang mendominasi layar.
-- **Rambatan Kristal Es**: Saat Kaelen terkena serangan berat, gagal parry, atau menggunakan kekuatan es secara berlebihan, shader *Dynamic Material Instance* pada model 3D Kaelen via parameter MPC `Curse_Spread` (skala normalisasi $0.0\text{ s.d. } 1.0$, dipetakan dari gameplay `CurseMeter` $0\text{ s.d. } 100\text{ poin}$ via formula $\text{Curse\_Spread} = \text{CurseMeter} / 100.0$) secara visual merambatkan es dari cakar ($0.0$), siku ($0.25$), bahu ($0.60$), dada ($0.90$), hingga menyentuh pipi dan leher ($1.0$).
+- **Rambatan Kristal Es**: Saat Kaelen terkena serangan berat, gagal parry, atau menggunakan kekuatan es secara berlebihan, rancangan shader visual via parameter dinamis `Curse_Spread` (skala normalisasi $0.0\text{ s.d. } 1.0$, dipetakan dari gameplay `CurseMeter` $0\text{ s.d. } 100\text{ poin}$ via formula $\text{Curse\_Spread} = \text{CurseMeter} / 100.0$) secara visual merambatkan es dari cakar ($0.0$), siku ($0.25$), bahu ($0.60$), dada ($0.90$), hingga menyentuh pipi dan leher ($1.0$).
 - **Peringatan Kritis**: Saat *Curse Meter* mendekati 90% (`Curse_Spread \ge 0.90`), urat-urat es di wajah Kaelen berpendar biru tajam dan layar mengalami desaturasi dingin (*frost vignette*).
 
 ### 4.2 Kompas Emosional Syal Aina (*Scarf Emotional Compass*)
@@ -189,7 +189,7 @@ Sistem kegagalan naratif khusus pada pertempuran bos atau pertempuran intens tin
    - **Status Bos & Arena**: Pertarungan bos me-reset penuh (**HP Bos $100\%$**, fase serangan kembali ke Fase 1, dan destruksi pilar khusus arena bos kembali utuh) untuk menjaga keutuhan tantangan duel 1v1.
 
 5. **Guardrails Teknis Anti-Interupsi & State Locks**:
-   - **Cutscene Invulnerability Lock**: Saat kondisi `CurseOverloadCount == 3` terdeteksi, sistem GAS langsung menyuntikkan tag `State.TraumaCutsceneLock` dan `State.Invulnerable`. Seluruh input pemain (gerak, serang, dodge) dikunci, damage eksternal dan akumulasi kutukan dihentikan total, dan AI bos langsung dinonaktifkan (`AIController: DeactivateBehaviorTree`) agar tidak ada proyektil atau animasi serangan yang menginterupsi sinematik.
+   - **Cutscene Invulnerability Lock**: Saat kondisi `CurseOverloadCount == 3` terdeteksi, mekanisme gameplay dirancang untuk mengaplikasikan tag status `State.TraumaCutsceneLock` dan `State.Invulnerable`. Seluruh input pemain (gerak, serang, dodge) dikunci, damage eksternal dan akumulasi kutukan dihentikan total, dan AI bos dinonaktifkan agar tidak ada proyektil atau animasi serangan yang menginterupsi sinematik.
    - **Spectral & Animation Cleanup**: Event `OnFreezeOfDespairTrigger` memanggil pembersihan status spektral (`ClearAllSpectralStates`), mengunci kembali penutup mata (`bIsEyepatchActive = false`), mereset modifier kecepatan, dan melepas kuncian kamera (`ClearBossLockOn`).
 
 #### 4.3.2 Sistem Respawn Combat Biasa (*Non-Freeze of Despair / Minor Failure Loop*)
@@ -215,14 +215,14 @@ Dirancang khusus untuk kegagalan saat melawan musuh koridor/kroco biasa tanpa me
    - **Batas Ambang Minimum (*Sector Baseline Floor*)**: Pemulihan di Breather Room berhenti pada batas ambang **$25\%$** (tidak bisa turun hingga 0%). Hanya penyalaan Altar Duka resmi yang dapat menyucikan kutukan hingga $0\%$.
    - **Isyarat Visual & Audio Diegetik**: Pendaran biru dingin pada kristal siku Kaelen perlahan meredup, uap beku di dada menguap menjadi percikan partikel bara emas hangat Aina (`#F4B860` 2700K), diiringi efek audio desis es yang mencair lembut (*gentle thaw hum*) dan detak denyut syal yang melambat tenang.
 7. **Guardrails Teknis & Edge-Case Failure Handling**:
-   - **Sanctuary State & Cutscene Invulnerability**: Area Altar Duka berstatus zona suci bebas musuh (*Sanctuary State*). Saat interaksi cutscene dimulai, sistem GAS memicu tag `State.Invulnerable` pada Kaelen (imun terhadap seluruh damage dan penambahan kutukan) hingga kontrol pemain pulih sepenuhnya, mencegah desinkronisasi kamera atau kematian saat cutscene.
+   - **Sanctuary State & Cutscene Invulnerability**: Area Altar Duka berstatus zona suci bebas musuh (*Sanctuary State*). Saat interaksi cutscene dimulai, alur gameplay dirancang untuk memicu tag `State.Invulnerable` pada Kaelen (imun terhadap seluruh damage dan penambahan kutukan) hingga kontrol pemain pulih sepenuhnya, mencegah desinkronisasi kamera atau kematian saat cutscene.
    - **Encounter Aggro Boundary & Anti-Spawn-Camping**: Titik respawn di *Safe Archway* terletak di luar batas pemicu aggro musuh (`BP_EncounterTriggerBoundary`). Musuh tidak dapat melintasi ambang batas ini dan posisi AI musuh otomatis me-reset ke titik asal ruangan saat pemain respawn, mencegah loop kematian instan.
    - **Shader Parameter Clamping & Reset**: Scalar parameter `FrostVignetteOpacity` pada post-process dan dynamic vertex thawing mesh Kaelen wajib di-clamp ketat ($0.0 \le \text{FrostOpacity} \le 1.0$) dengan perintah reset paksa ke $0.0$ saat Kaelen bangkit berdiri, mencegah tumpukan visual glitch jika terjadi kegagalan berturut-turut.
    - **Hierarki Prioritas FSM & Reset Status Spektral**:
      - *Hierarki Failure*: Jika HP Kaelen habis tepat bersamaan dengan tercapainya ambang 3x Curse Meter 100% pada pertarungan bos, FSM kematian mendahulukan *The Freeze of Despair* (`Priority Level 1`) di atas *Minor Combat Respawn* (`Priority Level 2`).
      - *Spectral Reset on Respawn*: Pemicuan event respawn (`OnRespawnInitialize`) secara otomatis mengeksekusi pembersihan status spektral (`ClearAllSpectralStates`), mengunci kembali *Sealed Eyepatch* (`bIsEyepatchActive = false`), menghentikan timer laju kutukan $+3\text{ poin/detik}$, dan mengembalikan color grading kamera ke profil default.
 
-### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/ui-ux-accessibility.md))
+### 4.4 Sistem Antarmuka Minimal & Aksesibilitas Empatik (Lihat [ui-ux-accessibility.md](../02-gameplay/ui-ux-accessibility.md))
 - **Antarmuka Diegetik Utama**: Indikator status tersemat langsung pada tubuh Kaelen (es lengan kiri & panjang syal emas). HUD non-diegetik memudar otomatis saat eksplorasi.
 - **Aksesibilitas Komprehensif**: Mode buta warna berbasis bentuk simbol, closed captions vokal emosional, visual cues untuk audio tell, dan slider parry window assist (12 frame ➔ 18 frame).
 - **Localization-Ready Architecture**: Desain text container dinamis (+40% ekspansi) dan zero baked text pada aset tekstur 3D.
@@ -297,23 +297,23 @@ stateDiagram-v2
 2. **Heavy Cursed Strike / Ice Palm Strike**:
    Hantaman cakar kristal es tangan kiri yang memicu ledakan kristal es area (`#4A6FA5`). Menghasilkan *stagger* besar pada musuh, namun menaikkan *Curse Meter* Kaelen sebesar +10%.
 3. **Tight Parry Window & Deflect**:
-   Jendela tangkisan presisi (12 frame / 0.2 detik). Tangkisan sukses memicu efek *hit-stop* 50ms (GAS `UAbilityTask_HitStop` Delta-Time Accumulator), pecahan bunga api emas Aina, dan membuka ruang untuk *Parry Counter* mematikan.
+   Jendela tangkisan presisi (12 frame / 0.2 detik). Tangkisan sukses memicu efek *hit-stop* 50ms (rancangan *hit-stop task* Delta-Time Accumulator), pecahan bunga api emas Aina, dan membuka ruang untuk *Parry Counter* mematikan.
 4. **Evade Dash**:
    Gerakan meluncur cepat ke samping/belakang meninggalkan jejak percikan api emas syal Aina (`#F4B860`), memiliki *invulnerability frames* (i-frames) singkat.
 
 ### 6.3 Rasa Hantaman & Kinematika (*Combat Kinematics & Weight*)
 - **Hit-Stop (Delta-Time Accumulator / Impact Freeze)**: 
-  - Diimplementasikan melalui GAS Ability Task khusus (`UAbilityTask_HitStop`) dengan durasi waktu absolut **$50\text{ ms}$ ($0.050\text{ detik}$)** menggunakan *Delta-Time Accumulator* (menghentikan `PlayRate = 0.0f` pada Anim Montage dan mengembalikannya ke `1.0f` saat akumulasi waktu tercapai).
+  - Dirancang untuk dipetakan ke rancangan task ability (`UAbilityTask_HitStop`) dengan durasi waktu absolut **$50\text{ ms}$ ($0.050\text{ detik}$)** menggunakan *Delta-Time Accumulator* (menghentikan `PlayRate = 0.0f` pada Anim Montage dan mengembalikannya ke `1.0f` saat akumulasi waktu tercapai; arsitektur runtime konkret akan diaudit pada H1).
   - *Frame-Rate Independent*: Menjamin rasa benturan tulang dan kristal es terasa konsisten dan berbobot di 30 FPS (Steam Deck), 60 FPS, maupun 120 FPS tanpa terpengaruh lonjakan *frame-drop*.
 - **Procedural Screen Shake & Impulse**: Getaran kamera directional sesuai sudut tebasan/pukulan.
 - **Physical Particle Feedback**: Pecahan kristal es tajam dan debu reruntuhan batu berhamburan saat pukulan mendarat.
 
-### 6.4 Arketipe Musuh & Balancing Kombat (Lihat [enemy-design-balancing.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/enemy-design-balancing.md))
+### 6.4 Arketipe Musuh & Balancing Kombat (Lihat [enemy-design-balancing.md](../02-gameplay/enemy-design-balancing.md))
 - **Arketipe Manifestasi Duka**: *The Echo* (Denial - duplikasi & ilusi), *The Berserker* (Anger - agresif & parry-reward), *The Deceiver* (Bargaining - proyektil semu & cover), *The Weight* (Depression - tanky & shockwave), *The Mirror* (Acceptance - refleksi gaya Kaelen).
 - **Attack Telegraphing**: Fase windup minimal 12–18 frame dengan kilau biru dingin `#4A6FA5`, perubahan siluet instan, dan audio cues spasial.
 - **Fun Guardrails**: Nilai kepuasan mekanik (*mechanical satisfaction*) dan responsivitas kontrol tidak boleh dikorbankan demi tema berat.
 
-### 6.5 Progresi Kemampuan Kaelen per Sektor Duka (Lihat [sector-ability-progression.md](file:///d:/GodotProjects/Lentera-Pudar/references/02-gameplay/sector-ability-progression.md))
+### 6.5 Progresi Kemampuan Kaelen per Sektor Duka (Lihat [sector-ability-progression.md](../02-gameplay/sector-ability-progression.md))
 - **Model GRIS Naratif-Sekuensial**: Kemampuan baru terbuka di akhir sektor saat menyalakan Altar Duka dan mengorbankan panjang Syal Aina:
   1. *Sektor 1 (Denial)* ➔ **Retakan Penyangkalan (*Fracture of Denial*)**: Guard break tameng tebal & penghancur dinding kristal es rapuh.
   2. *Sektor 2 (Anger)* ➔ **Pusaran Amarah Beku (*Frost Surge*)**: Forward lunging thrust stagger, knockback area & gap-jump melintasi jurang es.
@@ -326,7 +326,7 @@ stateDiagram-v2
 ## BAB VII: PSIKOLOGI AUDITORI & ENVIRONMENT MENTAL REAL-TIME
 
 ### 7.1 Bisikan Spasial Binaural 3D (*Binaural Whispers of the Frozen*)
-- Lentera Pudar menggunakan teknologi tata suara 3D spatialized (MetaSounds / Audio Spatialization):
+- Desain audio Lentera Pudar menargetkan tata suara 3D spatialized; MetaSounds / Audio Spatialization merupakan kandidat teknologi yang akan diaudit pada fase implementasi Unreal:
 - **Suara Jiwa Beku (Binaural Whispers)**: Bisikan-bisikan dingin berbicara langsung ke telinga kiri dan kanan pemain menggunakan headset:
   - *"Menyerahlah Kaelen... menjadi es tidak terasa sakit."*
   - *"Lihat syalnya, dia sekarat karenamu..."*
@@ -335,7 +335,7 @@ stateDiagram-v2
 
 ### 7.2 Perubahan Lingkungan Mental Real-Time (*Live Mental Morphing Environment*)
 Terinspirasi dari *Hellblade II*, ruangan dungeon tidak statis:
-- Ketika *Curse Meter* Kaelen meningkat tinggi atau saat menghadapi trauma masa lalu, **koridor dungeon merekah, dinding es memanjang secara visual, dan siluet wajah-wajah beku muncul di dinding** secara langsung (*real-time World Position Offset & Nanite Morphing*) tanpa layar loading.
+- Ketika *Curse Meter* Kaelen meningkat tinggi atau saat menghadapi trauma masa lalu, desain menargetkan **koridor dungeon merekah, dinding es memanjang secara visual, dan siluet wajah-wajah beku muncul di dinding** tanpa layar loading. *World Position Offset* dan teknik morphing yang kompatibel dengan Nanite masih merupakan kandidat implementasi dan akan diaudit setelah arsitektur Unreal tersedia.
 - Ketika Kaelen menyalakan Altar Duka, dinding kembali stabil dan rona hangat 2700K perlahan merambat menyelimuti lantai batu.
 
 ### 7.3 Hierarki Musik Adaptif & Audio Ducking
@@ -387,19 +387,19 @@ flowchart TD
 - **Hybrid Hair System**: Rambut perak Kaelen (`#C9CDD1`) dimodelkan dengan *Solid Geometry Base Mesh* (massa volume utama) dipadu *Alpha Strip Cards* (helai acak alami/flyaways) — mengadopsi standar teknis Kena.
 - **Hierarki Armature Biomekanik**:
   - `Root` ➔ `Pelvis` ➔ `Spine_01..03` ➔ `Chest` ➔ `Neck` ➔ `Head`.
-  - **Rantai Syal Dinamis (Dual-Mode)**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif Altar Duka) — sesuai [style-guide.md](file:///d:/GodotProjects/Lentera-Pudar/references/04-art-3d/style-guide.md) Bab 4.
+  - **Rantai Syal Dinamis (Dual-Mode)**: 5-Bone Chain (`scarf_01` s.d. `scarf_05`) dengan parameter *Spring-Damper* (Stiffness: **0.4–0.6**, Damping: **0.3–0.5**) untuk simulasi inersia kain Chaos Cloth (gameplay) dan Hand-Keyframed Control Rig (cutscene naratif Altar Duka) — sesuai [style-guide.md](../04-art-3d/style-guide.md) Bab 4.
 - **Konsistensi Bone Roll**: Bone Roll terkunci rapi ($+Y$ along bone, $+Z$ normal forward).
-- **Format Ekspor**: glTF 2.0 / FBX deterministik ($+Z$ Up, $+Y$ Forward) ke Unreal Engine 5.
+- **Format Ekspor & Pertukaran Data**: Kapabilitas ekspor Blender yang saat ini telah diverifikasi melalui lentera-blender-mcp adalah glTF/GLB. Format pertukaran final dari Blender ke Unreal Engine 5 belum ditetapkan dan akan diputuskan setelah H1.
 
 ### 9.2 Sistem Shading, Rendering & Restorasi Lingkungan di Unreal Engine 5
 1. **Stylized-Realistic PBR (Zero Black Outline)**: Shading PBR murni tanpa post-process cel-shading outline hitam.
 2. **Crystal Ice Shader (M_Cursed_Crystal)**:
    - Transmissive Surface, Refraction index 1.31 (Es), Subsurface Scattering (Radius 0.5–1.2cm `#7EE8FA`), dan Emissive Fresnel (`#4A6FA5` & `#7EE8FA`).
-   - Parameter dinamis `Curse_Spread` mengontrol perambatan material kristal es ke seluruh tubuh mesh via MPC.
+   - Parameter dinamis `Curse_Spread` dirancang untuk mengontrol perambatan material kristal es ke seluruh tubuh mesh (kandidat integrasi parameter material real-time dievaluasi pada H1).
 3. **Warm Fabric Shader (M_Aina_Scarf)**:
-   - Velvet / Cloth shading model, Two-Sided, Emissive 2700K (`#F4B860`), terintegrasi dengan *Chaos Cloth Solver* di UE5.
-4. **Render Target Mask Dynamic Thawing (Pencairan Es Altar Duka)**:
-   - Pengaktifan Altar Duka menulis mask pemuaian radius melingkar ke Render Target lantai dungeon, mentransisikan es retak menjadi batu hangat (`#5C5A55`) secara live.
+   - Velvet / Cloth shading model, Two-Sided, Emissive 2700K (`#F4B860`), dirancang untuk terintegrasi dengan solver kain real-time di UE5 (evaluasi runtime pada H1).
+4. **Dynamic Thawing (Pencairan Es Altar Duka)**:
+   - Pencairan es Altar Duka dirancang menggunakan pendekatan runtime mask / render target untuk mentransisikan es retak menjadi batu hangat (`#5C5A55`) secara dinamis (arsitektur implementasi konkret akan diaudit pada H1).
 5. **Niagara FX Systems**:
    - `FX_Warmth_Embers`: Partikel percikan api emas syal Aina yang menyebar di area dungeon yang telah disucikan.
    - `FX_Frost_Mist`: Uap beku dingin di sekitar cakar es Kaelen.

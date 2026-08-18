@@ -1,14 +1,15 @@
 ---
 status: ACTIVE
-type: PROJECT_KNOWLEDGE
+type: GUIDELINE
 authority_scope: creative.vision
 canonical: true
+owner: creative-director
+last_reviewed: 2026-08-18
 ---
-
 
 # Lentera Pudar — Master Creative Vision & Artistic Direction (3D Action RPG Edition)
 
-> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini dan [expert-art-creativity.md](file:///d:/GodotProjects/Lentera-Pudar/references/05-foundations/art-creativity.md) untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
+> **Dokumen Visi Kreatif**: Sumber kebenaran estetika, emosional, puitis, dan artistik semesta *Lentera Pudar*. Seluruh sub-agent (Art Director, Game Designer, Psychology Agent, 3D Modeler, QC Agent) wajib merujuk dokumen ini dan [expert-art-creativity.md](../07-foundations/art-creativity.md) untuk menjaga jiwa, resonansi duka, dan kehangatan semesta *Lentera Pudar*.
 
 ---
 
@@ -60,9 +61,9 @@ flowchart LR
 ## BAB III: PEDOMAN VISUAL & DESAIN 3D
 
 ### 3.1 Kontras Siluet & Kejelasan Asimetri 3D
-- **Tangan Kiri Kutukan Es**: Kluster kristal es prisma bersudut tajam (`#4A6FA5` & `#7EE8FA`) dengan cakar es dan partikel uap beku halus (*frost mist Niagara*).
+- **Tangan Kiri Kutukan Es**: Kluster kristal es prisma bersudut tajam (`#4A6FA5` & `#7EE8FA`) dengan cakar es dan target VFX berupa partikel uap beku halus; Niagara merupakan kandidat implementasi UE5.
 - **Tangan Reruntuhan Normal**: Dibalut perban spiral pelindung kepalan tangan (`#FAF2EC` / `#D0C4BA`). Pukulan berbobot fisik nyata (*earthy impact*).
-- **Syal Aina (The Fading Scarf)**: Menjuntai di punggung Kaelen, berkibar lembut dengan simulasi fisika kain (*Dual-Mode*: Chaos Cloth & Hand-Keyed). Memancarkan cahaya keemasan lembut (PointLight 2700K Lumen) yang menerangi dungeon.
+- **Syal Aina (The Fading Scarf)**: Menjuntai di punggung Kaelen. Desain targetnya adalah gerak kain *Dual-Mode* (simulasi runtime dan animasi *hand-keyed*) serta cahaya keemasan lembut 2700K yang menerangi dungeon; Chaos Cloth, Control Rig, dan konfigurasi pencahayaan UE5 belum diimplementasikan.
 
 ---
 
@@ -83,7 +84,7 @@ flowchart LR
    - **Elemen Hangat (Jiwa Aina)**: Denting piano berdebu yang intim, petikan gitar akustik nylon, melodi soliter cello melankolis.
 2. **Dynamic Audio Ducking**:
    - Saat Kaelen memasuki zona altar lentera, gemuruh dungeon meredup (*ducking -6dB*), memberi ruang bagi melodi piano Aina yang lembut dan suara kayu terbakar hangat.
-3. **Arahan Vokal & Subteks Dialog (Lihat [vocal-direction-dialogue.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/vocal-direction-dialogue.md))**:
+3. **Arahan Vokal & Subteks Dialog (Lihat [vocal-direction-dialogue.md](../03-narrative/vocal-direction-dialogue.md))**:
    - Subteks emosional mendahului teks literal; distingsi vokal *Denial* (tenang karena menahan badai emosi) vs *Acceptance* (tenang karena keikhlasan melepaskan).
    - Sinkronisasi intonasi vokal dengan FACS Action Units wajah (`AU1`, `AU4`, `AU17`) dan jeda hening bermakna (*meaningful silence*).
 
@@ -105,7 +106,7 @@ flowchart LR
 
 ---
 
-## BAB VII: ARAHAN SINEMATIK & BAHASA KAMERA (LIHAT [cinematics-cutscenes.md](file:///d:/GodotProjects/Lentera-Pudar/references/03-narrative/cinematics-cutscenes.md))
+## BAB VII: ARAHAN SINEMATIK & BAHASA KAMERA (LIHAT [cinematics-cutscenes.md](../03-narrative/cinematics-cutscenes.md))
 
 1. **Kamera Sebagai Representasi Mental Kaelen**: Sudut pandang kamera ditentukan berdasarkan kejujuran ekspresi kondisi batin Kaelen, bukan sekadar sudut estetis netral.
 2. **Bahasa Kamera per Sektor Duka**: S1 Denial (framing simetris kaku), S2 Anger (handheld shake & cut cepat), S3 Bargaining (Dutch angle & rotasi cermin), S4 Depression (long take lambat & framing luas kerdil), S5 Acceptance (framing lapang stabil & transisi fajar mulus).
