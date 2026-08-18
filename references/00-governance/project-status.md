@@ -27,8 +27,8 @@ last_reviewed: 2026-08-18
   - Documentation Refoundation R1–R4: `CLOSED`.
   - R4-C Roadmap Continuity Correction: `ACCEPTED`; this bounded governance-only correction restores the required post-R4 roadmap order.
   - R5 Legacy Contamination & Cross-Domain Consistency Audit: `ACCEPTED`; final read-only re-audit passed after bounded R5-A, R5-B, and R5-C corrections.
-  - R6 Fresh Repository Genesis Preparation: `NOT_STARTED`; `NEXT` substantive gate.
-  - R7 Fresh `lentera-pudar` Repository Genesis: `NOT_STARTED`.
+  - R6 Fresh Repository Genesis Preparation: `ACCEPTED`; canonical genesis manifest, safety boundary, execution procedure, and R8 verification contract are recorded in `references/00-governance/repository-genesis-plan.md`.
+  - R7 Fresh `lentera-pudar` Repository Genesis: `NOT_STARTED`; `NEXT` substantive gate.
   - R8 Migration Verification & Legacy Repository Retirement Gate: `NOT_STARTED`.
   - H1 Unreal Pipeline Readiness Audit: `BLOCKED`; it must not start until R8 is externally accepted.
   - R4-C does not constitute execution or acceptance of R5–R8.
